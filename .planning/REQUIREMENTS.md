@@ -69,15 +69,15 @@
 | CONF-01 | Phase 2 | Pending |
 | CONF-02 | Phase 2 | Pending |
 | CONF-03 | Phase 2 | Pending |
-| CONF-04 | Phase 2 | Pending |
-| CONF-05 | Phase 2 | Pending |
-| CONF-06 | Phase 3 | Pending |
-| TRST-01 | Phase 3 | Pending |
-| TRST-02 | Phase 3 | Pending |
+| TRST-01 | Phase 2 | Pending |
+| TRST-02 | Phase 2 | Pending |
+| CONF-04 | Phase 3 | Pending |
+| CONF-05 | Phase 3 | Pending |
 | TRST-03 | Phase 3 | Pending |
-| DESG-01 | Phase 3 | Pending |
-| DESG-02 | Phase 3 | Pending |
-| DESG-03 | Phase 3 | Pending |
+| CONF-06 | Phase 4 | Pending |
+| DESG-01 | Phase 4 | Pending |
+| DESG-02 | Phase 4 | Pending |
+| DESG-03 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 16 total
@@ -86,4 +86,4 @@
 
 ---
 *Requirements defined: 2026-03-20*
-*Last updated: 2026-03-20 after initial definition*
+*Last updated: 2026-03-20 after roadmap creation*
