@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: "Checkpoint: human-verify Task 2 in 02-02-PLAN.md"
-last_updated: "2026-03-20T19:46:11.010Z"
+stopped_at: Completed 02-02-PLAN.md
+last_updated: "2026-03-20T20:02:54.696Z"
 progress:
   total_phases: 4
   completed_phases: 2
@@ -50,6 +50,7 @@ Plan: 1 of 2
 | Phase 01-scaffolding P02 | 20 | 2 tasks | 1 files |
 | Phase 02 P01 | 1min | 2 tasks | 3 files |
 | Phase 02-data-and-controls P02 | 1min | 1 tasks | 2 files |
+| Phase 02-data-and-controls P02 | 15min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -74,6 +75,8 @@ Recent decisions affecting current work:
 - [Phase 02]: toLocaleString Nunjucks filter registered in Eleventy config for comma-formatted number display in templates
 - [Phase Phase 02]: htmlTemplateEngine: 'njk' added to eleventy.config.js — Eleventy defaults to Liquid for .html files; Nunjucks is required for dump filter and loop.first patterns
 - [Phase Phase 02]: window.LIBRARY_DATA embedded via config | dump | safe pattern — Phase 3 calculator reads full config from this global at runtime
+- [Phase 02-data-and-controls]: Collections budget uses select dropdown (k-k, k default) — allows residents to explore budget scenarios; k minimum is placeholder pending real data
+- [Phase 02-data-and-controls]: isDefault flag on options array drives pre-selected state in Nunjucks select loops; select data-cost set at build time, Phase 3 must update on change events
 
 ### Pending Todos
 
@@ -86,6 +89,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-20T19:46:11.007Z
-Stopped at: Checkpoint: human-verify Task 2 in 02-02-PLAN.md
+Last session: 2026-03-20T20:02:54.694Z
+Stopped at: Completed 02-02-PLAN.md
 Resume file: None
