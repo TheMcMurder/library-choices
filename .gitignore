@@ -3,3 +3,4 @@ node_modules/
 .cache/
 *.log
 src/css/compiled.css
+.DS_Store
