@@ -1,3 +1,3 @@
-module.exports = {
+export default {
   siteName: "Cache County Library Choices",
 };
