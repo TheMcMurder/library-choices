@@ -18,14 +18,14 @@
           <legend class="text-xl font-semibold text-gray-900 px-1">Staffing Level</legend>
           {% for level in config.staffingLevels %}
             <div class="flex flex-col gap-2">
-              <div class="flex items-baseline gap-2">
+              <div class="flex items-center gap-2 min-h-[44px]">
                 <input
                   type="radio"
                   name="staffing"
                   id="staffing-{{ level.id }}"
                   value="{{ level.id }}"
                   data-cost="{{ level.annualCost }}"
-                  class="accent-blue-600"
+                  class="accent-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
                   {% if loop.first %}checked{% endif %}
                 />
                 <label for="staffing-{{ level.id }}" class="text-base font-semibold text-gray-900 cursor-pointer">
@@ -63,14 +63,14 @@
           <legend class="text-xl font-semibold text-gray-900 px-1">Participating Cities</legend>
           {% for city in config.cities %}
             <div class="flex flex-col gap-2">
-              <div class="flex items-baseline gap-2">
+              <div class="flex items-center gap-2 min-h-[44px]">
                 <input
                   type="checkbox"
                   name="cities"
                   id="city-{{ city.id }}"
                   value="{{ city.id }}"
                   data-households="{{ city.households }}"
-                  class="accent-blue-600"
+                  class="accent-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
                   checked
                 />
                 <label for="city-{{ city.id }}" class="text-base font-semibold text-gray-900 cursor-pointer">
@@ -85,7 +85,7 @@
       </form>
 
       {# --- Result Placeholder --- #}
-      <div id="result" class="mt-8 p-6 bg-gray-50 border border-gray-200 rounded-lg">
+      <div id="result" class="mt-8 p-6 bg-gray-50 border border-gray-200 rounded-lg" aria-live="polite" aria-atomic="true">
         <h2 class="text-xl font-semibold text-gray-900">Annual cost per household</h2>
         <p class="text-sm text-gray-600 mt-2">Select options above to see the estimated cost.</p>
       </div>
