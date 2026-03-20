@@ -54,14 +54,12 @@ Source: index.html codebase scan
 
 | Role | Size | Weight | Line Height | Tailwind Class | Notes |
 |------|------|--------|-------------|----------------|-------|
-| Display | 30px (text-3xl) | 700 (font-bold) | 1.2 | `text-3xl font-bold text-blue-700` | Per-household dollar result only |
-| Heading | 20px (text-xl) | 600 (font-semibold) | 1.2 | `text-xl font-semibold text-gray-900` | Fieldset legends, result heading |
+| Display | 30px (text-3xl) | 600 (font-semibold) | 1.2 | `text-3xl font-semibold text-blue-700` | Per-household dollar result only |
+| Heading | 20px (text-xl) | 600 (font-semibold) | 1.2 | `text-xl font-semibold text-gray-900` | Page title (h1), fieldset legends, result heading |
 | Label | 16px (text-base) | 600 (font-semibold) | 1.5 | `text-base font-semibold text-gray-900` | Radio labels, checkbox labels, select label |
 | Body | 14px (text-sm) | 400 (regular) | 1.5 | `text-sm text-gray-600 leading-normal` | Descriptions, citations, result subtotals |
 
-Page title (h1): `text-2xl font-semibold` (24px, weight 600) — same weight family as Heading but larger; treated as a one-off page title, not a repeating pattern.
-
-Weights in use: 400 (regular) and 600 (semibold), plus 700 (bold) for the single display result. The 700 weight is reserved exclusively for the per-household cost figure.
+Weights in use: 400 (regular) and 600 (semibold). The 30px display size and blue-700 color provide sufficient visual hierarchy for the per-household cost figure without a third weight.
 
 Source: index.html codebase scan + RESEARCH.md Pattern 3 (result innerHTML template)
 
@@ -77,7 +75,7 @@ Source: index.html codebase scan + RESEARCH.md Pattern 3 (result innerHTML templ
 | Destructive | — | not applicable | No destructive actions in Phase 3 |
 
 Accent reserved for:
-1. Per-household dollar result text (`text-blue-700` on the `text-3xl font-bold` display value)
+1. Per-household dollar result text (`text-blue-700` on the `text-3xl font-semibold` display value)
 2. Form control accent color on radio and checkbox inputs (`accent-blue-600`)
 3. Select focus ring (`focus:ring-2 focus:ring-blue-600`)
 4. Keyboard focus indicators on radio and checkbox inputs (`focus-visible:outline-blue-600`)
