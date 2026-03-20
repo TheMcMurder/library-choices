@@ -61,10 +61,17 @@ export default {
   ],
 
   collections: {
-    annualCost: 30000, // PLACEHOLDER
     description:
       "New books, periodicals, and digital media added to the collection each year.",
     source: "Cache County Library Services budget proposal FY2025",
+    options: [
+      { value: 10000, isDefault: false }, // PLACEHOLDER — update with real minimum
+      { value: 20000, isDefault: false },
+      { value: 30000, isDefault: true }, // current budget
+      { value: 40000, isDefault: false },
+      { value: 50000, isDefault: false },
+      { value: 60000, isDefault: false },
+    ],
   },
 
   cities: [
