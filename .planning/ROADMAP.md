@@ -24,7 +24,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Depends on**: Nothing (first phase)
 **Requirements**: INFR-01, INFR-02, INFR-03
 **Success Criteria** (what must be TRUE):
-  1. Running `npm run build` produces a `_site/` directory with valid HTML, CSS, and JS
+  1. Running `pnpm run build` produces a `_site/` directory with valid HTML, CSS, and JS
   2. GitHub Actions deploys on push to main and the deployed page loads at the GitHub Pages URL with no 404 errors on any asset
   3. `_site/` is absent from the git repository (gitignored) and never committed to main
 **Plans:** 2/2 plans complete
