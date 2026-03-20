@@ -35,7 +35,7 @@
 ### Infrastructure
 
 - [x] **INFR-01**: Eleventy v3 static site generator with `_data/config.js` data cascade
-- [ ] **INFR-02**: GitHub Actions deploy to GitHub Pages
+- [x] **INFR-02**: GitHub Actions deploy to GitHub Pages
 - [x] **INFR-03**: No runtime server dependencies — fully static output
 
 ## v2 Requirements
@@ -61,7 +61,7 @@
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | INFR-01 | Phase 1 | Complete |
-| INFR-02 | Phase 1 | Pending |
+| INFR-02 | Phase 1 | Complete |
 | INFR-03 | Phase 1 | Complete |
 | DATA-01 | Phase 2 | Pending |
 | DATA-02 | Phase 2 | Pending |

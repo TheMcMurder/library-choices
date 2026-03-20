@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: "Checkpoint: Task 2 human-verify — 01-02 awaiting deployment confirmation"
-last_updated: "2026-03-20T08:21:34.849Z"
+stopped_at: Completed 01-scaffolding-02-PLAN.md — Phase 01 complete
+last_updated: "2026-03-20T08:39:55.753Z"
 progress:
   total_phases: 4
   completed_phases: 1
@@ -47,6 +47,7 @@ Plan: 1 of 2
 
 *Updated after each plan completion*
 | Phase 01-scaffolding P01 | 5 | 2 tasks | 8 files |
+| Phase 01-scaffolding P02 | 20 | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -65,6 +66,8 @@ Recent decisions affecting current work:
 - [Phase 01-scaffolding]: Converted src/_data/config.js to ESM export default — required by type:module context
 - [Phase 01-scaffolding]: Used Node.js 22 in CI workflow — current LTS, satisfies >=20 requirement for @tailwindcss/oxide native bindings
 - [Phase 01-scaffolding]: Separated build and deploy into two jobs — deploy job holds Pages permissions, keeps permissions scoped and matches GitHub-native recommended pattern
+- [Phase 01-scaffolding]: Used pnpm/action-setup@v4 in CI after project migrated from npm to pnpm — frozen-lockfile install for reproducibility
+- [Phase 01-scaffolding]: CI package manager must match local tooling — pnpm/action-setup@v4 + frozen-lockfile pattern established for CI
 
 ### Pending Todos
 
@@ -77,6 +80,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-20T08:21:30.630Z
-Stopped at: Checkpoint: Task 2 human-verify — 01-02 awaiting deployment confirmation
+Last session: 2026-03-20T08:39:55.752Z
+Stopped at: Completed 01-scaffolding-02-PLAN.md — Phase 01 complete
 Resume file: None
