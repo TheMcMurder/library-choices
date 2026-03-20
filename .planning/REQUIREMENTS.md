@@ -16,9 +16,9 @@
 
 ### Data & Updatability
 
-- [ ] **DATA-01**: All costs and household counts live in a single `_data/config.js` file with inline comments
-- [ ] **DATA-02**: Adding or removing a city requires editing only the data file (no template changes)
-- [ ] **DATA-03**: Data file is simple enough to edit via GitHub's web UI without a local dev environment
+- [x] **DATA-01**: All costs and household counts live in a single `_data/config.js` file with inline comments
+- [x] **DATA-02**: Adding or removing a city requires editing only the data file (no template changes)
+- [x] **DATA-03**: Data file is simple enough to edit via GitHub's web UI without a local dev environment
 
 ### Trust & Accessibility
 
@@ -63,9 +63,9 @@
 | INFR-01 | Phase 1 | Complete |
 | INFR-02 | Phase 1 | Complete |
 | INFR-03 | Phase 1 | Complete |
-| DATA-01 | Phase 2 | Pending |
-| DATA-02 | Phase 2 | Pending |
-| DATA-03 | Phase 2 | Pending |
+| DATA-01 | Phase 2 | Complete |
+| DATA-02 | Phase 2 | Complete |
+| DATA-03 | Phase 2 | Complete |
 | CONF-01 | Phase 2 | Pending |
 | CONF-02 | Phase 2 | Pending |
 | CONF-03 | Phase 2 | Pending |

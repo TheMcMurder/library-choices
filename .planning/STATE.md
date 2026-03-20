@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Phase 2 context gathered
-last_updated: "2026-03-20T14:13:38.281Z"
+stopped_at: Completed 02-01-PLAN.md
+last_updated: "2026-03-20T19:42:45.937Z"
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 2
-  completed_plans: 2
+  total_plans: 4
+  completed_plans: 3
 ---
 
 # Project State
@@ -19,11 +19,11 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-20)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 01 — scaffolding
+**Current focus:** Phase 02 — data-and-controls
 
 ## Current Position
 
-Phase: 01 (scaffolding) — EXECUTING
+Phase: 02 (data-and-controls) — EXECUTING
 Plan: 1 of 2
 
 ## Performance Metrics
@@ -48,6 +48,7 @@ Plan: 1 of 2
 *Updated after each plan completion*
 | Phase 01-scaffolding P01 | 5 | 2 tasks | 8 files |
 | Phase 01-scaffolding P02 | 20 | 2 tasks | 1 files |
+| Phase 02 P01 | 1min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -68,6 +69,8 @@ Recent decisions affecting current work:
 - [Phase 01-scaffolding]: Separated build and deploy into two jobs — deploy job holds Pages permissions, keeps permissions scoped and matches GitHub-native recommended pattern
 - [Phase 01-scaffolding]: Used pnpm/action-setup@v4 in CI after project migrated from npm to pnpm — frozen-lockfile install for reproducibility
 - [Phase 01-scaffolding]: CI package manager must match local tooling — pnpm/action-setup@v4 + frozen-lockfile pattern established for CI
+- [Phase 02]: config.js non-developer edit guide block comment pattern established for single-source-of-truth data files
+- [Phase 02]: toLocaleString Nunjucks filter registered in Eleventy config for comma-formatted number display in templates
 
 ### Pending Todos
 
@@ -80,6 +83,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-20T14:13:38.277Z
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-data-and-controls/02-CONTEXT.md
+Last session: 2026-03-20T19:42:45.935Z
+Stopped at: Completed 02-01-PLAN.md
+Resume file: None
