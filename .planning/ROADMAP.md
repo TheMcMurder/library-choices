@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Scaffolding** - Eleventy + Tailwind + GitHub Pages pipeline verified with a deployed page (completed 2026-03-20)
 - [x] **Phase 2: Data and Controls** - Data schema locked, all form controls rendered from data, explanatory copy in place (completed 2026-03-20)
-- [ ] **Phase 3: Calculator and Accessibility** - Real-time tax calculation working with full WCAG 2.1 AA compliance
+- [x] **Phase 3: Calculator and Accessibility** - Real-time tax calculation working with full WCAG 2.1 AA compliance (completed 2026-03-20)
 - [ ] **Phase 4: Visual Polish and Shareability** - Production-quality design and shareable URL encoding complete
 
 ## Phase Details
@@ -57,7 +57,7 @@ Plans:
   3. The result region is announced by screen readers when it updates (aria-live)
   4. All controls are reachable and operable via keyboard alone with visible focus indicators
   5. All interactive controls meet the 44px minimum touch target requirement
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
 - [ ] 03-01-PLAN.md — Calculator logic, ARIA live region, touch targets, and focus indicators
 
@@ -81,5 +81,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Scaffolding | 2/2 | Complete   | 2026-03-20 |
 | 2. Data and Controls | 2/2 | Complete   | 2026-03-20 |
-| 3. Calculator and Accessibility | 0/1 | Not started | - |
+| 3. Calculator and Accessibility | 1/1 | Complete   | 2026-03-20 |
 | 4. Visual Polish and Shareability | 0/TBD | Not started | - |
