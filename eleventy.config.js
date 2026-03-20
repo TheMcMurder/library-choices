@@ -16,5 +16,6 @@ export default function (eleventyConfig) {
       output: "_site",
     },
     pathPrefix: "/library-choices/",
+    htmlTemplateEngine: "njk",
   };
 }

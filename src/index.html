@@ -6,8 +6,97 @@
     <title>{{ config.siteName }}</title>
     <link rel="stylesheet" href="/css/compiled.css" />
   </head>
-  <body class="bg-white text-gray-900 p-8">
-    <h1 class="text-2xl font-bold">{{ config.siteName }}</h1>
-    <p class="mt-2 text-gray-600">Pipeline verification — if you see styled text, the build works. PNPM build update</p>
+  <body class="bg-white text-gray-900">
+    <main class="max-w-2xl mx-auto px-8 py-12">
+
+      <h1 class="text-2xl font-semibold text-gray-900 mb-2">{{ config.siteName }}</h1>
+
+      <form id="configurator" class="space-y-8">
+
+        {# --- Staffing Level --- #}
+        <fieldset class="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
+          <legend class="text-xl font-semibold text-gray-900 px-1">Staffing Level</legend>
+          {% for level in config.staffingLevels %}
+            <div class="flex flex-col gap-2">
+              <div class="flex items-baseline gap-2">
+                <input
+                  type="radio"
+                  name="staffing"
+                  id="staffing-{{ level.id }}"
+                  value="{{ level.id }}"
+                  data-cost="{{ level.annualCost }}"
+                  class="accent-blue-600"
+                  {% if loop.first %}checked{% endif %}
+                />
+                <label for="staffing-{{ level.id }}" class="text-base font-semibold text-gray-900 cursor-pointer">
+                  {{ level.label }} &mdash; ${{ level.annualCost | toLocaleString }}/year
+                </label>
+              </div>
+              <p class="text-sm text-gray-600 leading-normal">{{ level.description }}</p>
+              <cite class="text-sm text-gray-500 not-italic">Source: {{ level.source }}</cite>
+            </div>
+          {% endfor %}
+        </fieldset>
+
+        {# --- Collections Budget --- #}
+        <fieldset class="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
+          <legend class="text-xl font-semibold text-gray-900 px-1">Collections Budget</legend>
+          <div class="flex flex-col gap-2">
+            <div class="flex items-baseline gap-2">
+              <input
+                type="checkbox"
+                id="collections"
+                name="collections"
+                data-cost="{{ config.collections.annualCost }}"
+                class="accent-blue-600"
+                checked
+              />
+              <label for="collections" class="text-base font-semibold text-gray-900 cursor-pointer">
+                Include collections (+${{ config.collections.annualCost | toLocaleString }}/year)
+              </label>
+            </div>
+            <p class="text-sm text-gray-600 leading-normal">{{ config.collections.description }}</p>
+            <cite class="text-sm text-gray-500 not-italic">Source: {{ config.collections.source }}</cite>
+          </div>
+        </fieldset>
+
+        {# --- Participating Cities --- #}
+        <fieldset class="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
+          <legend class="text-xl font-semibold text-gray-900 px-1">Participating Cities</legend>
+          {% for city in config.cities %}
+            <div class="flex flex-col gap-2">
+              <div class="flex items-baseline gap-2">
+                <input
+                  type="checkbox"
+                  name="cities"
+                  id="city-{{ city.id }}"
+                  value="{{ city.id }}"
+                  data-households="{{ city.households }}"
+                  class="accent-blue-600"
+                  checked
+                />
+                <label for="city-{{ city.id }}" class="text-base font-semibold text-gray-900 cursor-pointer">
+                  {{ city.label }} <span class="text-sm text-gray-500">({{ city.households | toLocaleString }} households)</span>
+                </label>
+              </div>
+              <cite class="text-sm text-gray-500 not-italic">Source: {{ city.source }}</cite>
+            </div>
+          {% endfor %}
+        </fieldset>
+
+      </form>
+
+      {# --- Result Placeholder --- #}
+      <div id="result" class="mt-8 p-6 bg-gray-50 border border-gray-200 rounded-lg">
+        <h2 class="text-xl font-semibold text-gray-900">Annual cost per household</h2>
+        <p class="text-sm text-gray-600 mt-2">Select options above to see the estimated cost.</p>
+      </div>
+
+    </main>
+
+    <script>
+      window.LIBRARY_DATA = {{ config | dump | safe }};
+    </script>
+    <script src="/js/calculator.js"></script>
   </body>
 </html>
