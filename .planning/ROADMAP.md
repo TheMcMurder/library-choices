@@ -13,7 +13,7 @@ Four phases deliver a working civic tax configurator: first the build pipeline i
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Scaffolding** - Eleventy + Tailwind + GitHub Pages pipeline verified with a deployed page (completed 2026-03-20)
-- [ ] **Phase 2: Data and Controls** - Data schema locked, all form controls rendered from data, explanatory copy in place
+- [x] **Phase 2: Data and Controls** - Data schema locked, all form controls rendered from data, explanatory copy in place (completed 2026-03-20)
 - [ ] **Phase 3: Calculator and Accessibility** - Real-time tax calculation working with full WCAG 2.1 AA compliance
 - [ ] **Phase 4: Visual Polish and Shareability** - Production-quality design and shareable URL encoding complete
 
@@ -42,7 +42,7 @@ Plans:
   3. Each control has plain-language explanatory copy describing what it means in practice
   4. Source citations for cost estimates and household counts are visible on the page
   5. Editing `_data/config.js` via GitHub's web UI is sufficient to update all numbers — no local dev environment required
-**Plans:** 2 plans
+**Plans:** 2/2 plans complete
 Plans:
 - [ ] 02-01-PLAN.md — Data schema expansion and Eleventy filter setup
 - [ ] 02-02-PLAN.md — Data-driven form controls template with styling and citations
@@ -78,6 +78,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Scaffolding | 2/2 | Complete   | 2026-03-20 |
-| 2. Data and Controls | 0/2 | Planned | - |
+| 2. Data and Controls | 2/2 | Complete   | 2026-03-20 |
 | 3. Calculator and Accessibility | 0/TBD | Not started | - |
 | 4. Visual Polish and Shareability | 0/TBD | Not started | - |

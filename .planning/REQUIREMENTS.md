@@ -7,9 +7,9 @@
 
 ### Configurator
 
-- [ ] **CONF-01**: User can select a staffing level (1 FTE / 1 FTE+1 PTE / 1 FTE+2 PTE) via radio buttons
-- [ ] **CONF-02**: User can toggle collections budget on/off independently of staffing
-- [ ] **CONF-03**: User can check/uncheck participating cities (Providence, Nibley, Millville, River Heights + data-driven for future additions)
+- [x] **CONF-01**: User can select a staffing level (1 FTE / 1 FTE+1 PTE / 1 FTE+2 PTE) via radio buttons
+- [x] **CONF-02**: User can toggle collections budget on/off independently of staffing
+- [x] **CONF-03**: User can check/uncheck participating cities (Providence, Nibley, Millville, River Heights + data-driven for future additions)
 - [ ] **CONF-04**: Tax impact result updates in real time as any selection changes
 - [ ] **CONF-05**: Zero-city guard — friendly explanatory message shown when no cities are selected (no NaN/error displayed)
 - [ ] **CONF-06**: Shareable URL — current selections encoded in query string so scenarios can be linked
@@ -22,8 +22,8 @@
 
 ### Trust & Accessibility
 
-- [ ] **TRST-01**: Source citations shown for cost estimates and household counts
-- [ ] **TRST-02**: Explanatory copy alongside each choice dimension (what does each staffing level mean in practice?)
+- [x] **TRST-01**: Source citations shown for cost estimates and household counts
+- [x] **TRST-02**: Explanatory copy alongside each choice dimension (what does each staffing level mean in practice?)
 - [ ] **TRST-03**: WCAG 2.1 AA — `aria-live` on result region, full keyboard navigation, 44px minimum touch targets
 
 ### Design & UX
@@ -66,11 +66,11 @@
 | DATA-01 | Phase 2 | Complete |
 | DATA-02 | Phase 2 | Complete |
 | DATA-03 | Phase 2 | Complete |
-| CONF-01 | Phase 2 | Pending |
-| CONF-02 | Phase 2 | Pending |
-| CONF-03 | Phase 2 | Pending |
-| TRST-01 | Phase 2 | Pending |
-| TRST-02 | Phase 2 | Pending |
+| CONF-01 | Phase 2 | Complete |
+| CONF-02 | Phase 2 | Complete |
+| CONF-03 | Phase 2 | Complete |
+| TRST-01 | Phase 2 | Complete |
+| TRST-02 | Phase 2 | Complete |
 | CONF-04 | Phase 3 | Pending |
 | CONF-05 | Phase 3 | Pending |
 | TRST-03 | Phase 3 | Pending |

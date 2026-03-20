@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 02-01-PLAN.md
-last_updated: "2026-03-20T19:42:45.937Z"
+stopped_at: "Checkpoint: human-verify Task 2 in 02-02-PLAN.md"
+last_updated: "2026-03-20T19:46:11.010Z"
 progress:
   total_phases: 4
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 4
-  completed_plans: 3
+  completed_plans: 4
 ---
 
 # Project State
@@ -49,6 +49,7 @@ Plan: 1 of 2
 | Phase 01-scaffolding P01 | 5 | 2 tasks | 8 files |
 | Phase 01-scaffolding P02 | 20 | 2 tasks | 1 files |
 | Phase 02 P01 | 1min | 2 tasks | 3 files |
+| Phase 02-data-and-controls P02 | 1min | 1 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -71,6 +72,8 @@ Recent decisions affecting current work:
 - [Phase 01-scaffolding]: CI package manager must match local tooling — pnpm/action-setup@v4 + frozen-lockfile pattern established for CI
 - [Phase 02]: config.js non-developer edit guide block comment pattern established for single-source-of-truth data files
 - [Phase 02]: toLocaleString Nunjucks filter registered in Eleventy config for comma-formatted number display in templates
+- [Phase Phase 02]: htmlTemplateEngine: 'njk' added to eleventy.config.js — Eleventy defaults to Liquid for .html files; Nunjucks is required for dump filter and loop.first patterns
+- [Phase Phase 02]: window.LIBRARY_DATA embedded via config | dump | safe pattern — Phase 3 calculator reads full config from this global at runtime
 
 ### Pending Todos
 
@@ -83,6 +86,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-20T19:42:45.935Z
-Stopped at: Completed 02-01-PLAN.md
+Last session: 2026-03-20T19:46:11.007Z
+Stopped at: Checkpoint: human-verify Task 2 in 02-02-PLAN.md
 Resume file: None
