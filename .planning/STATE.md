@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 01-scaffolding-01-01-PLAN.md
-last_updated: "2026-03-20T08:17:47.473Z"
+stopped_at: "Checkpoint: Task 2 human-verify — 01-02 awaiting deployment confirmation"
+last_updated: "2026-03-20T08:21:34.849Z"
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 2
-  completed_plans: 1
+  completed_plans: 2
 ---
 
 # Project State
@@ -63,6 +63,8 @@ Recent decisions affecting current work:
 - [Phase 01-scaffolding]: Updated engines to node>=20 — @tailwindcss/oxide native bindings require Node 20+
 - [Phase 01-scaffolding]: Added @tailwindcss/cli as explicit devDependency — Tailwind v4 ships CLI as separate package
 - [Phase 01-scaffolding]: Converted src/_data/config.js to ESM export default — required by type:module context
+- [Phase 01-scaffolding]: Used Node.js 22 in CI workflow — current LTS, satisfies >=20 requirement for @tailwindcss/oxide native bindings
+- [Phase 01-scaffolding]: Separated build and deploy into two jobs — deploy job holds Pages permissions, keeps permissions scoped and matches GitHub-native recommended pattern
 
 ### Pending Todos
 
@@ -75,6 +77,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-20T08:17:47.471Z
-Stopped at: Completed 01-scaffolding-01-01-PLAN.md
+Last session: 2026-03-20T08:21:30.630Z
+Stopped at: Checkpoint: Task 2 human-verify — 01-02 awaiting deployment confirmation
 Resume file: None

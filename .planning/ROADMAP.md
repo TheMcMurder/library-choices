@@ -12,7 +12,7 @@ Four phases deliver a working civic tax configurator: first the build pipeline i
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Scaffolding** - Eleventy + Tailwind + GitHub Pages pipeline verified with a deployed page
+- [x] **Phase 1: Scaffolding** - Eleventy + Tailwind + GitHub Pages pipeline verified with a deployed page (completed 2026-03-20)
 - [ ] **Phase 2: Data and Controls** - Data schema locked, all form controls rendered from data, explanatory copy in place
 - [ ] **Phase 3: Calculator and Accessibility** - Real-time tax calculation working with full WCAG 2.1 AA compliance
 - [ ] **Phase 4: Visual Polish and Shareability** - Production-quality design and shareable URL encoding complete
@@ -27,7 +27,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. Running `npm run build` produces a `_site/` directory with valid HTML, CSS, and JS
   2. GitHub Actions deploys on push to main and the deployed page loads at the GitHub Pages URL with no 404 errors on any asset
   3. `_site/` is absent from the git repository (gitignored) and never committed to main
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [ ] 01-01-PLAN.md — Eleventy v3 + Tailwind CSS v4 project scaffold with working local build
 - [ ] 01-02-PLAN.md — GitHub Actions deploy workflow and deployment verification
@@ -74,7 +74,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Scaffolding | 1/2 | In Progress|  |
+| 1. Scaffolding | 2/2 | Complete   | 2026-03-20 |
 | 2. Data and Controls | 0/TBD | Not started | - |
 | 3. Calculator and Accessibility | 0/TBD | Not started | - |
 | 4. Visual Polish and Shareability | 0/TBD | Not started | - |
