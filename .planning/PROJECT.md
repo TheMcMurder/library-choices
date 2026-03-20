@@ -12,19 +12,18 @@ Citizens can explore any combination of service and funding choices and immediat
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] Deploy to GitHub Pages — *Validated in Phase 1: scaffolding*
+- [x] All dollar amounts and household counts live in a single data file (not in templates) — *Validated in Phase 2: data-and-controls*
+- [x] Staffing level options: 1 FTE / 1 FTE + 1 PTE / 1 FTE + 2 PTE — *Validated in Phase 2: data-and-controls*
+- [x] City participation: checkboxes for each city (Providence, Nibley, Millville, River Heights) — *Validated in Phase 2: data-and-controls*
 
 ### Active
 
-- [ ] Live configurator with three independent choice dimensions: staffing level, collections toggle, participating cities
-- [ ] Staffing level options: 1 FTE / 1 FTE + 1 PTE / 1 FTE + 2 PTE (existing)
-- [ ] Collections budget toggle: independent yes/no choice with its own cost
-- [ ] City participation: checkboxes for each city (Providence, Nibley, Millville, River Heights + others TBD)
+- [ ] Live configurator with three independent choice dimensions: staffing level, collections budget, participating cities
+- [ ] Collections budget: dropdown $10k–$60k (current: $30k, minimum is a placeholder)
 - [ ] Tax calculation: total annual cost ÷ total participating households = cost per household per year
 - [ ] Single output number: one annual property tax cost per household regardless of which city they live in
-- [ ] All dollar amounts and household counts live in a single data file (not in templates)
 - [ ] Mobile-first responsive design using Tailwind CSS
-- [ ] Deploy to GitHub Pages
 - [ ] Clean, simple design language appropriate for a civic information site
 
 ### Out of Scope
@@ -57,4 +56,4 @@ The site owner (a city council member or civic tech advocate) needs to update nu
 | Data file for all numbers | Owner can update without touching templates | — Pending |
 
 ---
-*Last updated: 2026-03-20 after initialization*
+*Last updated: 2026-03-20 — Phase 2 complete: data schema and form controls*
