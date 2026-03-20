@@ -19,12 +19,15 @@ Citizens can explore any combination of service and funding choices and immediat
 
 ### Active
 
-- [ ] Live configurator with three independent choice dimensions: staffing level, collections budget, participating cities
-- [ ] Collections budget: dropdown $10k–$60k (current: $30k, minimum is a placeholder)
-- [ ] Tax calculation: total annual cost ÷ total participating households = cost per household per year
-- [ ] Single output number: one annual property tax cost per household regardless of which city they live in
 - [ ] Mobile-first responsive design using Tailwind CSS
 - [ ] Clean, simple design language appropriate for a civic information site
+
+### Validated
+
+- [x] Live configurator with three independent choice dimensions: staffing level, collections budget, participating cities — *Validated in Phase 3: calculator-and-accessibility*
+- [x] Collections budget: dropdown $10k–$60k (current: $30k, minimum is a placeholder) — *Validated in Phase 3: calculator-and-accessibility*
+- [x] Tax calculation: total annual cost ÷ total participating households = cost per household per year — *Validated in Phase 3: calculator-and-accessibility*
+- [x] Single output number: one annual property tax cost per household regardless of which city they live in — *Validated in Phase 3: calculator-and-accessibility*
 
 ### Out of Scope
 
@@ -56,4 +59,4 @@ The site owner (a city council member or civic tech advocate) needs to update nu
 | Data file for all numbers | Owner can update without touching templates | — Pending |
 
 ---
-*Last updated: 2026-03-20 — Phase 2 complete: data schema and form controls*
+*Last updated: 2026-03-20 — Phase 3 complete: real-time calculator and WCAG 2.1 AA accessibility*
