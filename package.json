@@ -1,0 +1,26 @@
+{
+  "name": "library-choices",
+  "version": "1.0.0",
+  "description": "Cache County Library Choices — interactive cost explorer",
+  "scripts": {
+    "start": "npm-run-all -p dev:*",
+    "build": "run-s build:css build:11ty",
+    "build:11ty": "eleventy",
+    "build:css": "tailwindcss -i src/css/style.css -o src/css/compiled.css",
+    "dev:11ty": "eleventy --serve",
+    "dev:css": "tailwindcss -i src/css/style.css -o src/css/compiled.css --watch"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5",
+    "@tailwindcss/postcss": "^4.2.2",
+    "npm-run-all2": "^7.0.2",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2"
+  }
+}

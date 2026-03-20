@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(wc -l /Users/mcmurdie/Development/personal/library-choices/.planning/codebase/*.md)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "WebSearch"
     ]
   }
 }
