@@ -36,17 +36,17 @@ Extends Phase 2 contract (source: `02-UI-SPEC.md`). All values are multiples of 
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| xs | 4px | Icon gaps; `mt-0.5` subtitle under header |
+| xs | 4px | Icon gaps; `mt-1` subtitle under header |
 | sm | 8px | Compact gaps within sticky bar; toggle button padding |
-| md | 16px | Horizontal padding on mobile (`px-4`) |
+| md | 16px | Horizontal padding on mobile (`px-4`); sticky bar vertical padding (`py-4`) |
 | lg | 24px | Internal fieldset padding (inherited from Phase 2) |
 | xl | 32px | Horizontal padding on sm+ screens (`px-8`) |
 | 2xl | 48px | — |
-| 3xl | 64px | Sticky bar height reference; `pb-24` (96px) bottom padding on `<main>` |
+| 3xl | 64px | Sticky bar height reference; `pb-16` (64px) bottom padding on `<main>` |
 
 **Exceptions:**
-- `padding-bottom` on `<main>`: 96px (`pb-24`) — provides clearance above the sticky bar (bar is ~64px; 32px breathing room). Source: 04-RESEARCH.md Pitfall 1.
-- Sticky bar internal padding: `px-4 py-3` (16px horizontal, 12px vertical).
+- `padding-bottom` on `<main>`: 64px (`pb-16`) — matches sticky bar height and satisfies RESEARCH.md Pitfall 1 guidance. Source: 04-RESEARCH.md Pitfall 1.
+- Sticky bar internal padding: `px-4 py-4` (16px horizontal, 16px vertical).
 - Header bar padding: `px-4 py-4 sm:px-8` — matches `<main>` breakpoint guard.
 - `<main>` horizontal padding corrected from Phase 2 `px-8` to `px-4 sm:px-8` to prevent horizontal scroll at 375px. Source: 04-RESEARCH.md Pitfall 2.
 
@@ -64,11 +64,11 @@ Extends Phase 2 contract (source: `02-UI-SPEC.md`). Phase 4 adds two new roles: 
 | Display (result amount in sticky bar) | 24px | 600 (semibold) | — (single line) | `text-2xl font-semibold` |
 
 **Constraints:**
-- Exactly 2 font weights: 400 (regular) and 600 (semibold). No bold (700) introduced.
+- Exactly 2 font weights: 400 (regular) and 600 (semibold). No bold (700) or black (900) introduced.
 - Font sizes in use: 14px, 16px, 20px, 24px — 4 sizes, within the 3–4 size limit.
 - Header subtitle: `text-sm text-blue-200` (14px regular, blue-200 for contrast on blue-800 bg).
 - Sticky bar zero-state message: `text-base text-blue-100` — body size, lighter tone, not semibold.
-- DRAFT overlay text: `text-[12vw] font-black uppercase tracking-widest` — viewport-relative, outside the 2-weight rule (decorative watermark, not content typography).
+- DRAFT overlay text: `text-[12vw] font-semibold uppercase tracking-widest` — viewport-relative, decorative watermark. Uses semibold (600) consistent with the 2-weight contract; the stamp aesthetic is achieved via `rotate-[-30deg] opacity-15 uppercase tracking-widest`, not via weight.
 
 ---
 
@@ -80,11 +80,11 @@ Extends and deepens Phase 2 contract (source: `02-UI-SPEC.md`, `04-CONTEXT.md De
 |------|-------|----------------|-------|
 | Dominant (60%) | #ffffff / #f9fafb | `bg-white` / `bg-gray-50` | Page background; fieldset backgrounds |
 | Secondary (30%) | #1e40af (blue-800) | `bg-blue-800` | Page header bar; sticky result bar |
-| Accent (10%) | #1d4ed8 (blue-700) | `text-blue-700` / `ring-blue-700` | Focus rings on form controls; `accent-blue-600` on radio/checkbox checked state |
+| Accent (10%) | #1d4ed8 (blue-700) | `text-blue-700` / `ring-blue-700` | Focus rings on form controls; hyperlink text (footer links); `accent-blue-600` on radio/checkbox checked state |
 | Destructive | not applicable | — | No destructive actions in Phase 4 |
 | DRAFT overlay | #dc2626 (red-600) | `text-red-600 opacity-15` | DRAFT watermark only |
 
-**Accent reserved for:** Focus rings on interactive form controls (`<input type="radio">`, `<input type="checkbox">`, `<select>`). NOT used for headings, body text, borders, or decorative elements. Source: 04-CONTEXT.md Decisions (civic visual design).
+**Accent reserved for:** Focus rings on interactive form controls (`<input type="radio">`, `<input type="checkbox">`, `<select>`) and hyperlink text (footer external links). NOT used for headings, body text, borders, or decorative elements. Source: 04-CONTEXT.md Decisions (civic visual design).
 
 **Text color assignments (full page):**
 - Header bar + sticky bar: `text-white`
@@ -97,7 +97,7 @@ Extends and deepens Phase 2 contract (source: `02-UI-SPEC.md`, `04-CONTEXT.md De
 - Fieldset borders: `border-gray-200` (inherited from Phase 2)
 - Breakdown tooltip background: `bg-blue-900 text-sm text-white`
 
-**Note on blue-700 vs blue-800:** CONTEXT.md specifies blue-700/blue-800 for the bars. Use `bg-blue-800` for the header bar and sticky result bar (dominant secondary surface), and `bg-blue-900` for the breakdown tooltip (one step darker to distinguish). `blue-700` (`text-blue-700`) is reserved for accent use (focus rings). Source: 04-CONTEXT.md Decisions.
+**Note on blue-700 vs blue-800:** CONTEXT.md specifies blue-700/blue-800 for the bars. Use `bg-blue-800` for the header bar and sticky result bar (dominant secondary surface), and `bg-blue-900` for the breakdown tooltip (one step darker to distinguish). `blue-700` (`text-blue-700`) is reserved for accent use (focus rings and footer hyperlinks). Source: 04-CONTEXT.md Decisions.
 
 ---
 
@@ -109,9 +109,9 @@ Phase 4 extends the Phase 2 component table with four new elements. No existing 
 |---------|------|-----------------|-------|
 | Page header bar | `<header>` | `bg-blue-800 text-white px-4 py-4 sm:px-8` | Replaces bare `<h1>` in `<main>`; full-width above `<main>` |
 | Header site name | `<h1>` inside header | `text-xl font-semibold` | Moved from `<main>` into `<header>` |
-| Header subtitle | `<p>` inside header | `text-sm text-blue-200 mt-0.5` | One-line civic context statement |
-| Page `<main>` | `<main>` | `max-w-2xl mx-auto px-4 sm:px-8 py-8 pb-24` | Corrected from `px-8 py-12` — mobile-safe padding + bottom clearance for sticky bar |
-| Sticky result bar | `<div id="result-bar">` | `fixed bottom-0 left-0 right-0 z-50 bg-blue-800 text-white flex items-center justify-between px-4 py-3 shadow-lg` | Replaces `#result` div; always visible |
+| Header subtitle | `<p>` inside header | `text-sm text-blue-200 mt-1` | One-line civic context statement |
+| Page `<main>` | `<main>` | `max-w-2xl mx-auto px-4 sm:px-8 py-8 pb-16` | Corrected from `px-8 py-12` — mobile-safe padding + bottom clearance for sticky bar |
+| Sticky result bar | `<div id="result-bar">` | `fixed bottom-0 left-0 right-0 z-50 bg-blue-800 text-white flex items-center justify-between px-4 py-4 shadow-lg` | Replaces `#result` div; always visible |
 | Result amount | `<span id="result-amount">` | `text-2xl font-semibold` | Shows `$47.23/household/year`; or zero-state message |
 | Breakdown toggle button | `<button id="breakdown-toggle">` | `p-2 rounded hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2` | Heroicons `?` icon; `aria-label="Show cost breakdown"` |
 | Heroicons SVG | `<svg>` | `size-5` | question-mark-circle, 20/solid; `aria-hidden="true" focusable="false"` |
@@ -123,7 +123,7 @@ Phase 4 extends the Phase 2 component table with four new elements. No existing 
 | Footer civic links heading | `<p>` or `<h2>` | `font-semibold text-gray-900 mb-2` | Constructive prompt to explore alternatives |
 | Footer external link | `<a>` | `text-blue-700 underline hover:text-blue-900` | One per `config.footerLinks[]` entry |
 | DRAFT overlay | `<div>` (Nunjucks conditional) | `fixed inset-0 z-40 pointer-events-none flex items-center justify-center overflow-hidden` | Renders only when `config.draft === true` |
-| DRAFT text | `<span>` inside overlay | `text-[12vw] font-black text-red-600 opacity-15 rotate-[-30deg] select-none tracking-widest uppercase` | Rubber-stamp aesthetic; viewport-scaled |
+| DRAFT text | `<span>` inside overlay | `text-[12vw] font-semibold text-red-600 opacity-15 rotate-[-30deg] select-none tracking-widest uppercase` | Rubber-stamp aesthetic; viewport-scaled; semibold (600) consistent with 2-weight contract |
 
 **Removed:** `<div id="result">` in `<main>` (the Phase 2/3 result placeholder/live region). The sticky bar `<div id="result-bar">` is the new `aria-live` region.
 
@@ -135,7 +135,7 @@ Extends Phase 2 single-column layout. Phase 4 adds a full-width header above `<m
 
 **Page document order:**
 1. `<header>` — full-width blue bar (site name + subtitle)
-2. `<main>` — centered `max-w-2xl`, `pb-24` bottom padding
+2. `<main>` — centered `max-w-2xl`, `pb-16` bottom padding
    - Staffing Level fieldset (unchanged)
    - Collections Budget fieldset (unchanged)
    - Participating Cities fieldset (unchanged)
