@@ -11,6 +11,7 @@
     "dev:11ty": "eleventy --serve",
     "dev:css": "tailwindcss -i src/css/style.css -o src/css/compiled.css --watch"
   },
+  "packageManager": "pnpm@8.6.0",
   "engines": {
     "node": ">=20"
   },
