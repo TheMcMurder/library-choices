@@ -27,7 +27,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. Running `npm run build` produces a `_site/` directory with valid HTML, CSS, and JS
   2. GitHub Actions deploys on push to main and the deployed page loads at the GitHub Pages URL with no 404 errors on any asset
   3. `_site/` is absent from the git repository (gitignored) and never committed to main
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
 - [ ] 01-01-PLAN.md — Eleventy v3 + Tailwind CSS v4 project scaffold with working local build
 - [ ] 01-02-PLAN.md — GitHub Actions deploy workflow and deployment verification
@@ -74,7 +74,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Scaffolding | 0/2 | Not started | - |
+| 1. Scaffolding | 1/2 | In Progress|  |
 | 2. Data and Controls | 0/TBD | Not started | - |
 | 3. Calculator and Accessibility | 0/TBD | Not started | - |
 | 4. Visual Polish and Shareability | 0/TBD | Not started | - |

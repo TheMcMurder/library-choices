@@ -1,3 +1,17 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: unknown
+stopped_at: Completed 01-scaffolding-01-01-PLAN.md
+last_updated: "2026-03-20T08:17:47.473Z"
+progress:
+  total_phases: 4
+  completed_phases: 0
+  total_plans: 2
+  completed_plans: 1
+---
+
 # Project State
 
 ## Project Reference
@@ -5,20 +19,17 @@
 See: .planning/PROJECT.md (updated 2026-03-20)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 1 — Scaffolding
+**Current focus:** Phase 01 — scaffolding
 
 ## Current Position
 
-Phase: 1 of 4 (Scaffolding)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-03-20 — Roadmap created
-
-Progress: [░░░░░░░░░░] 0%
+Phase: 01 (scaffolding) — EXECUTING
+Plan: 1 of 2
 
 ## Performance Metrics
 
 **Velocity:**
+
 - Total plans completed: 0
 - Average duration: -
 - Total execution time: 0 hours
@@ -30,10 +41,12 @@ Progress: [░░░░░░░░░░] 0%
 | - | - | - | - |
 
 **Recent Trend:**
+
 - Last 5 plans: none yet
 - Trend: -
 
 *Updated after each plan completion*
+| Phase 01-scaffolding P01 | 5 | 2 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -46,6 +59,10 @@ Recent decisions affecting current work:
 - Data: `_data/config.js` is single source of truth; embedded as `window.LIBRARY_DATA` at build time
 - Paths: Use relative asset paths or `pathPrefix` from day one to avoid GitHub Pages subdirectory 404s
 - Arithmetic: Store monetary values as integers in data file; format with `toFixed(2)` only at display
+- [Phase 01-scaffolding]: Added type:module to package.json — eleventy.config.js uses ESM import syntax
+- [Phase 01-scaffolding]: Updated engines to node>=20 — @tailwindcss/oxide native bindings require Node 20+
+- [Phase 01-scaffolding]: Added @tailwindcss/cli as explicit devDependency — Tailwind v4 ships CLI as separate package
+- [Phase 01-scaffolding]: Converted src/_data/config.js to ESM export default — required by type:module context
 
 ### Pending Todos
 
@@ -58,6 +75,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-20
-Stopped at: Roadmap created — ready to plan Phase 1
+Last session: 2026-03-20T08:17:47.471Z
+Stopped at: Completed 01-scaffolding-01-01-PLAN.md
 Resume file: None
