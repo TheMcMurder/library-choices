@@ -3,7 +3,9 @@
     "allow": [
       "Bash(wc -l /Users/mcmurdie/Development/personal/library-choices/.planning/codebase/*.md)",
       "Bash(node:*)",
-      "WebSearch"
+      "WebSearch",
+      "Skill(gsd:plan-phase)",
+      "Skill(gsd:ui-phase)"
     ]
   }
 }
