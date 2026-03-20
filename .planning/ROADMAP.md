@@ -29,8 +29,8 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. `_site/` is absent from the git repository (gitignored) and never committed to main
 **Plans:** 2/2 plans complete
 Plans:
-- [ ] 01-01-PLAN.md — Eleventy v3 + Tailwind CSS v4 project scaffold with working local build
-- [ ] 01-02-PLAN.md — GitHub Actions deploy workflow and deployment verification
+- [x] 01-01-PLAN.md — Eleventy v3 + Tailwind CSS v4 project scaffold with working local build
+- [x] 01-02-PLAN.md — GitHub Actions deploy workflow and deployment verification
 
 ### Phase 2: Data and Controls
 **Goal**: All form controls are rendered from the data file and a non-developer can update costs or city names by editing one file without touching any template
@@ -42,7 +42,10 @@ Plans:
   3. Each control has plain-language explanatory copy describing what it means in practice
   4. Source citations for cost estimates and household counts are visible on the page
   5. Editing `_data/config.js` via GitHub's web UI is sufficient to update all numbers — no local dev environment required
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 02-01-PLAN.md — Data schema expansion and Eleventy filter setup
+- [ ] 02-02-PLAN.md — Data-driven form controls template with styling and citations
 
 ### Phase 3: Calculator and Accessibility
 **Goal**: Selecting any combination of controls immediately shows the correct annual cost per household, with the result readable by screen readers and operable by keyboard
@@ -75,6 +78,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Scaffolding | 2/2 | Complete   | 2026-03-20 |
-| 2. Data and Controls | 0/TBD | Not started | - |
+| 2. Data and Controls | 0/2 | Planned | - |
 | 3. Calculator and Accessibility | 0/TBD | Not started | - |
 | 4. Visual Polish and Shareability | 0/TBD | Not started | - |
