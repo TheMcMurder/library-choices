@@ -57,7 +57,9 @@ Plans:
   3. The result region is announced by screen readers when it updates (aria-live)
   4. All controls are reachable and operable via keyboard alone with visible focus indicators
   5. All interactive controls meet the 44px minimum touch target requirement
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 03-01-PLAN.md — Calculator logic, ARIA live region, touch targets, and focus indicators
 
 ### Phase 4: Visual Polish and Shareability
 **Goal**: The site looks trustworthy and civic-appropriate on any device, and any scenario can be shared by copying the URL
@@ -79,5 +81,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Scaffolding | 2/2 | Complete   | 2026-03-20 |
 | 2. Data and Controls | 2/2 | Complete   | 2026-03-20 |
-| 3. Calculator and Accessibility | 0/TBD | Not started | - |
+| 3. Calculator and Accessibility | 0/1 | Not started | - |
 | 4. Visual Polish and Shareability | 0/TBD | Not started | - |
