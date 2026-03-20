@@ -6,6 +6,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addWatchTarget("src/css/");
 
+  eleventyConfig.addFilter("toLocaleString", (num) =>
+    Number(num).toLocaleString("en-US")
+  );
+
   return {
     dir: {
       input: "src",
