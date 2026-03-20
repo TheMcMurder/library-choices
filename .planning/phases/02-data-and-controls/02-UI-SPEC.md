@@ -61,7 +61,7 @@ Exceptions: none. Touch target minimum (44px) is not enforced in Phase 2 — tha
 
 ## Typography
 
-Source: `index.html` scaffold already uses `text-2xl font-bold` for `<h1>` and `text-gray-600` for body-secondary. These are honored as the established baseline.
+Source: `index.html` scaffold already uses `text-2xl` for `<h1>` and `text-gray-600` for body-secondary. These are honored as the established baseline. The `<h1>` weight is updated to `font-semibold` (600) to conform to the 2-weight rule.
 
 | Role | Size | Weight | Line Height | Tailwind class |
 |------|------|--------|-------------|----------------|
@@ -74,7 +74,7 @@ Source: `index.html` scaffold already uses `text-2xl font-bold` for `<h1>` and `
 - Exactly 2 font weights used: 400 (regular) and 600 (semibold).
 - Exactly 3 font sizes used: 14px (description/cite), 16px (body/label), 20px (section headings and fieldset legends).
 - `<cite>` elements use 14px regular, color `text-gray-500`, no italics override needed (browser default italic is acceptable for citations).
-- Page `<h1>` uses `text-2xl font-bold` (24px/700) as inherited from Phase 1 scaffold. This is the only exception to the 2-weight rule and is pre-existing — do not change it in Phase 2.
+- Page `<h1>` uses `text-2xl font-semibold` (24px/600). The Phase 1 scaffold used `font-bold` (700); this is corrected to `font-semibold` (600) to maintain exactly 2 font weights across the page.
 
 ---
 
@@ -106,7 +106,7 @@ Phase 2 uses only native HTML elements styled with Tailwind utilities. No custom
 | Element | HTML | Tailwind Classes | Notes |
 |---------|------|-----------------|-------|
 | Page wrapper | `<main>` | `max-w-2xl mx-auto px-8 py-12` | Centers content; 2xl max width ensures readability on wide screens |
-| Section heading | `<h1>` | `text-2xl font-bold text-gray-900 mb-2` | Inherited from Phase 1 — do not change |
+| Section heading | `<h1>` | `text-2xl font-semibold text-gray-900 mb-2` | Updated from Phase 1 `font-bold` to `font-semibold` to enforce 2-weight rule |
 | Fieldset | `<fieldset>` | `bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4` | Groups each control type visually |
 | Legend | `<legend>` | `text-xl font-semibold text-gray-900 px-1` | Section label for each fieldset |
 | Radio/checkbox wrapper | `<div>` | `flex flex-col gap-2` | Stacks label + description vertically |
