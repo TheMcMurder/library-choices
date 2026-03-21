@@ -2,11 +2,11 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: UX — Citizen-Meaningful Controls
-status: defining_requirements
+status: roadmap_ready
 stopped_at: ~
 last_updated: "2026-03-21T00:00:00.000Z"
 progress:
-  total_phases: 0
+  total_phases: 2
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -19,14 +19,18 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Defining requirements for v1.1
+**Current focus:** v1.1 — Phase 7: Collections Budget Slider
 
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Defining requirements
-Last activity: 2026-03-21 — Milestone v1.1 started
+Phase: 7 — Collections Budget Slider
+Plan: — (not yet planned)
+Status: Roadmap ready, awaiting plan-phase
+Last activity: 2026-03-21 — v1.1 roadmap created (Phases 7–8)
+
+```
+v1.1 Progress: [░░░░░░░░░░] 0% — 0/2 phases complete
+```
 
 ## Performance Metrics
 
@@ -97,6 +101,14 @@ Recent decisions affecting current work:
 - [Phase 06-tech-debt-and-browser-verification]: postcss.config.mjs deleted — build uses Tailwind CLI, not PostCSS pipeline
 - [Phase 06-tech-debt-and-browser-verification]: CONF-02 resolved as select-satisfies — the 6-level collections select satisfies independence requirement; no zero/off option added
 
+### v1.1 Research Flags
+
+- [Phase 7]: Slider CSS approach — use `accent-color` as baseline or full vendor pseudo-element styling in `@layer base`; research recommends `accent-color` fast path with full styling as P2 option
+- [Phase 7]: Slider live update requires `form.addEventListener('input', updateResult)` alongside existing `change` listener — one line, mobile critical
+- [Phase 7]: url.js `restoreFromUrl()` validation must switch from `Array.from(select.options)` to `LIBRARY_DATA.collections.options.map(...)` — preserves `collections=30000` encoding unchanged
+- [Phase 8]: Schedule time format must be decided before writing Nunjucks renderer and edit guide — research recommends 12-hour format (e.g. `9am`, `4pm`)
+- [Phase 8]: Staffing `id` values (`"1fte"`, `"1fte-1pte"`, `"1fte-2pte"`) are URL-immutable — only `label` and `description` are citizen-facing copy; mark in config.js
+
 ### Pending Todos
 
 None yet.
@@ -108,6 +120,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-21T02:15:25.244Z
-Stopped at: Completed 06-02-PLAN.md
-Resume file: None
+Last session: 2026-03-21T00:00:00.000Z
+Stopped at: v1.1 roadmap created — ready for plan-phase 7
+Resume file: .planning/ROADMAP.md

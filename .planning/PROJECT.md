@@ -10,7 +10,7 @@ Citizens can explore any combination of service and funding choices and immediat
 
 ## Current State (v1.0 — Shipped 2026-03-21)
 
-- **Live at:** https://mcmurdie.github.io/library-choices/
+- **Live at:** https://themcmurder.github.io/library-choices/
 - **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + 11ty Nunjucks templates
 - **Data file:** `src/_data/config.js` — all costs, city names, household counts, staffing levels
 - **Build:** `pnpm run build` → `_site/` | CI: GitHub Actions deploys on push to `main`

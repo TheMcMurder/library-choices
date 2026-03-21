@@ -100,26 +100,26 @@
 | DESG-01 | Phase 6 | Complete |
 | DESG-02 | Phase 6 | Complete |
 | DESG-03 | Phase 6 | Complete |
-| SLDR-01 | — | Pending |
-| SLDR-02 | — | Pending |
-| SLDR-03 | — | Pending |
-| SLDR-04 | — | Pending |
-| SLDR-05 | — | Pending |
-| SLDR-06 | — | Pending |
-| SLDR-07 | — | Pending |
-| SLDR-08 | — | Pending |
-| HOURS-01 | — | Pending |
-| HOURS-02 | — | Pending |
-| HOURS-03 | — | Pending |
-| HOURS-04 | — | Pending |
-| HOURS-05 | — | Pending |
+| SLDR-01 | Phase 7 | Pending |
+| SLDR-02 | Phase 7 | Pending |
+| SLDR-03 | Phase 7 | Pending |
+| SLDR-04 | Phase 7 | Pending |
+| SLDR-05 | Phase 7 | Pending |
+| SLDR-06 | Phase 7 | Pending |
+| SLDR-07 | Phase 7 | Pending |
+| SLDR-08 | Phase 7 | Pending |
+| HOURS-01 | Phase 8 | Pending |
+| HOURS-02 | Phase 8 | Pending |
+| HOURS-03 | Phase 8 | Pending |
+| HOURS-04 | Phase 8 | Pending |
+| HOURS-05 | Phase 8 | Pending |
 
 **Coverage:**
 - v1 requirements: 16 total — all Complete ✓
 - v1.1 requirements: 13 total
-- Mapped to phases: 0 (roadmap pending)
-- Unmapped: 13 ⚠️
+- Mapped to phases: 13 ✓
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-20*
-*Last updated: 2026-03-21 — v1.1 requirements added (SLDR, HOURS)*
+*Last updated: 2026-03-21 — v1.1 traceability added (SLDR → Phase 7, HOURS → Phase 8)*
