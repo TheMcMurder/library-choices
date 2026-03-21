@@ -100,7 +100,7 @@ Rename the staffing section heading to "Hours Open" and add each option's actual
 <deferred>
 ## Deferred Ideas
 
-- **Compact URL easter egg:** `pi`/`tau`/`phi` as alternative parameter names for staffing/collections/cities respectively, with positional index values (A=option 1, B=option 2, etc.). Full URL scheme redesign — own phase.
+- **Compact URL easter egg:** `pi`/`tau`/`phi` as alternative parameter names for staffing/collections/cities respectively, with positional index values (A=option 1, B=option 2, etc.). Full URL scheme redesign — Phase 9.
 
 </deferred>
 
