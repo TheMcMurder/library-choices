@@ -62,6 +62,10 @@ Plan: Not started
 
 ## Accumulated Context
 
+### Roadmap Evolution
+
+- Phase 9 added: Compact URL Encoding — pi/tau/phi easter egg param aliases with positional index values
+
 ### Decisions
 
 Decisions are logged in PROJECT.md Key Decisions table.

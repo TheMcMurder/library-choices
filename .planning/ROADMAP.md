@@ -68,3 +68,13 @@ Plans:
 | 6. Tech Debt Cleanup and Browser Verification | v1.0 | 2/2 | Complete | 2026-03-21 |
 | 7. Collections Budget Slider | v1.1 | 1/2 | Gap closure | - |
 | 8. Hours Open Schedule Display | v1.1 | 0/? | Not started | - |
+
+### Phase 9: Compact URL Encoding — pi/tau/phi easter egg param aliases with positional index values
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 8
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 9 to break down)
