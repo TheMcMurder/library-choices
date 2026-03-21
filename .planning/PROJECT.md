@@ -8,7 +8,7 @@ An interactive, mobile-first static website that helps Cache County citizens und
 
 Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
 
-## Current State (v1.0 — Shipped 2026-03-21)
+## Current State (v1.1 — Phase 9 complete 2026-03-21)
 
 - **Live at:** https://themcmurder.github.io/library-choices/
 - **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + 11ty Nunjucks templates
@@ -47,6 +47,7 @@ Citizens can explore any combination of service and funding choices and immediat
 
 - [x] Collections budget slider with nodes (replaces dropdown) — Validated in Phase 07: collections-budget-slider
 - [x] Per-node "Available books/digital" description; lowest node = digital only (Beehive/Libby) — Validated in Phase 07: collections-budget-slider
+- [x] Compact URL encoding: pi/tau/phi Greek letter aliases replace verbose params — *Validated in Phase 09*
 - [ ] Staffing section reframed as "Hours Open" with weekly schedule display
 - [ ] Structured schedule data in config.js (days + open/close times, rendered by site)
 
