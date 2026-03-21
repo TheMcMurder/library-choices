@@ -56,7 +56,7 @@ Plans:
   4. A shared URL using `?staffing=1fte-2pte` restores the correct radio selection after the "Hours Open" reframe
 **Plans:** 1 plan
 Plans:
-- [ ] 08-01-PLAN.md — Add schedule data + formatDays filter, rename heading to "Hours Open", render schedule tables inline, extend edit guide
+- [x] 08-01-PLAN.md — Add schedule data + formatDays filter, rename heading to "Hours Open", render schedule tables inline, extend edit guide
 
 ## Progress
 

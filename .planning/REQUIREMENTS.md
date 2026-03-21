@@ -53,11 +53,11 @@
 
 ### Hours Open (HOURS)
 
-- [ ] **HOURS-01**: Staffing section heading reads "Hours Open" (not "Staffing Level")
-- [ ] **HOURS-02**: Each staffing option displays its weekly schedule inline, always visible below the radio label (no JS toggle needed)
-- [ ] **HOURS-03**: Schedule data is structured in `config.js` as an array of `{days, open, close}` entries using 12-hour format (e.g. `9am`, `4pm`)
-- [ ] **HOURS-04**: Site owner can update schedules via GitHub web UI — NON-DEVELOPER EDIT GUIDE covers schedule format with a copy-pasteable example
-- [ ] **HOURS-05**: Existing URL encoding for staffing selections (`?staffing=1fte-2pte`) continues to work unchanged
+- [x] **HOURS-01**: Staffing section heading reads "Hours Open" (not "Staffing Level")
+- [x] **HOURS-02**: Each staffing option displays its weekly schedule inline, always visible below the radio label (no JS toggle needed)
+- [x] **HOURS-03**: Schedule data is structured in `config.js` as an array of `{days, open, close}` entries using 12-hour format (e.g. `9am`, `4pm`)
+- [x] **HOURS-04**: Site owner can update schedules via GitHub web UI — NON-DEVELOPER EDIT GUIDE covers schedule format with a copy-pasteable example
+- [x] **HOURS-05**: Existing URL encoding for staffing selections (`?staffing=1fte-2pte`) continues to work unchanged
 
 ## v2 Requirements
 
@@ -108,11 +108,11 @@
 | SLDR-06 | Phase 7 | Complete |
 | SLDR-07 | Phase 7 | Complete |
 | SLDR-08 | Phase 7 | Complete |
-| HOURS-01 | Phase 8 | Pending |
-| HOURS-02 | Phase 8 | Pending |
-| HOURS-03 | Phase 8 | Pending |
-| HOURS-04 | Phase 8 | Pending |
-| HOURS-05 | Phase 8 | Pending |
+| HOURS-01 | Phase 8 | Complete |
+| HOURS-02 | Phase 8 | Complete |
+| HOURS-03 | Phase 8 | Complete |
+| HOURS-04 | Phase 8 | Complete |
+| HOURS-05 | Phase 8 | Complete |
 
 **Coverage:**
 - v1 requirements: 16 total — all Complete ✓

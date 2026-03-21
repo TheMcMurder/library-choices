@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: UX — Citizen-Meaningful Controls
 status: unknown
-stopped_at: Phase 8 UI-SPEC approved
-last_updated: "2026-03-21T21:26:32.862Z"
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-03-21T21:51:55.195Z"
 progress:
   total_phases: 3
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
 ---
 
 # Project State
@@ -59,6 +59,7 @@ Plan: 1 of 1
 | Phase 06-tech-debt-and-browser-verification P02 | 30min | 3 tasks | 2 files |
 | Phase 07 P01 | 1 | 2 tasks | 5 files |
 | Phase 07-collections-budget-slider P02 | 1min | 1 tasks | 1 files |
+| Phase 08 P01 | 22min | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -104,6 +105,8 @@ Recent decisions affecting current work:
 - [Phase 07]: Dual event listener pattern: change listener handles URL encoding, input listener handles live slider UI updates
 - [Phase 07]: url.js validates collections param against LIBRARY_DATA.collections.options (not DOM select.options) — removes dependency on removed select element
 - [Phase 07-collections-budget-slider]: url.js dispatches both change and input events after restoreFromUrl() — change for updateResult() hook, input for updateSliderLabels() UI sync
+- [Phase 08]: formatDays filter uses 2024-01-01T12:00:00Z noon-UTC reference date and timeZone: UTC in Intl.DateTimeFormat to prevent CI/CD timezone drift in day name output
+- [Phase 08]: Staffing labels renamed to Basic/Extended/Current by site owner post-checkpoint; schedule hours tuned; docs committed to track changes
 
 ### v1.1 Research Flags
 
@@ -124,6 +127,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-21T20:57:11.688Z
-Stopped at: Phase 8 UI-SPEC approved
-Resume file: .planning/phases/08-hours-open-schedule-display/08-UI-SPEC.md
+Last session: 2026-03-21T21:51:55.193Z
+Stopped at: Completed 08-01-PLAN.md
+Resume file: None
