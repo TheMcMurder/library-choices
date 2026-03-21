@@ -61,11 +61,11 @@
 
 ### Compact URL Encoding (URL)
 
-- [ ] **URL-01**: After any form interaction, url.js writes compact params (pi, tau, phi) with 0-based positional index values — not verbose param names
-- [ ] **URL-02**: Opening a compact URL (e.g. `?pi=2&tau=2&phi=0,1`) in a new tab restores the correct staffing, collections, and city selections
-- [ ] **URL-03**: Legacy verbose URLs (`?staffing=1fte-2pte&collections=30000&cities=providence,nibley`) still restore correctly (backward compatibility)
-- [ ] **URL-04**: Out-of-bounds or NaN index values are silently ignored — default selections are used
-- [ ] **URL-05**: NON-DEVELOPER EDIT GUIDE warns that reordering config arrays breaks existing compact shared URLs
+- [x] **URL-01**: After any form interaction, url.js writes compact params (pi, tau, phi) with 0-based positional index values — not verbose param names
+- [x] **URL-02**: Opening a compact URL (e.g. `?pi=2&tau=2&phi=0,1`) in a new tab restores the correct staffing, collections, and city selections
+- [x] **URL-03**: Legacy verbose URLs (`?staffing=1fte-2pte&collections=30000&cities=providence,nibley`) still restore correctly (backward compatibility)
+- [x] **URL-04**: Out-of-bounds or NaN index values are silently ignored — default selections are used
+- [x] **URL-05**: NON-DEVELOPER EDIT GUIDE warns that reordering config arrays breaks existing compact shared URLs
 
 ## v2 Requirements
 
