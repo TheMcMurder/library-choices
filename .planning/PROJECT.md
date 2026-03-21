@@ -17,10 +17,10 @@ Citizens can explore any combination of service and funding choices and immediat
 - [x] Staffing level options: 1 FTE / 1 FTE + 1 PTE / 1 FTE + 2 PTE — *Validated in Phase 2: data-and-controls*
 - [x] City participation: checkboxes for each city (Providence, Nibley, Millville, River Heights) — *Validated in Phase 2: data-and-controls*
 
-### Active
+### Validated
 
-- [ ] Mobile-first responsive design using Tailwind CSS
-- [ ] Clean, simple design language appropriate for a civic information site
+- [x] Mobile-first responsive design using Tailwind CSS — *Validated in Phase 6: tech-debt-and-browser-verification*
+- [x] Clean, simple design language appropriate for a civic information site — *Validated in Phase 6: tech-debt-and-browser-verification*
 
 ### Validated
 
@@ -59,4 +59,4 @@ The site owner (a city council member or civic tech advocate) needs to update nu
 | Data file for all numbers | Owner can update without touching templates | — Pending |
 
 ---
-*Last updated: 2026-03-21 — Phase 5 complete: documentation traceability gaps closed (CONF-04, CONF-05, TRST-03 now tracked in REQUIREMENTS.md)*
+*Last updated: 2026-03-21 — Phase 6 complete: dead code removed (postcss.config.mjs, data-cost markup), city defaults config-driven, all 14 browser verification items passed, CONF-02 resolved (select-satisfies), 16/16 v1 requirements complete*
