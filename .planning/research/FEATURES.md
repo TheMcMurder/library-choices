@@ -1,115 +1,112 @@
 # Feature Research
 
-**Domain:** Civic interactive policy configurator / property tax impact calculator
-**Researched:** 2026-03-20
-**Confidence:** MEDIUM (training data; web search unavailable. Civic UX patterns are stable and well-documented — confidence in the categorizations is HIGH; specific competitor features are MEDIUM without live verification.)
+**Domain:** Civic tax calculator — citizen-facing UX controls
+**Researched:** 2026-03-21 (v1.1 update)
+**Confidence:** HIGH (slider/accessibility patterns verified against W3C WAI APG, USWDS, MDN; schedule display pattern verified against real library sites; implementation dependencies verified from codebase inspection)
 
 ---
 
-## Feature Landscape
+## v1.1 Scope
+
+This document focuses on the **two new features** in v1.1:
+1. Collections budget: replace `<select>` dropdown with a range slider with discrete nodes and per-node description text
+2. Staffing section: reframe as "Hours Open" with structured weekly schedule from config.js
+
+All v1.0 features (radio buttons, city checkboxes, live tax calculation, URL shareability) are shipped and validated. The v1.0 feature landscape is preserved at the bottom of this document for reference.
+
+---
+
+## Feature Landscape — v1.1
 
 ### Table Stakes (Users Expect These)
 
-Features users assume exist. Missing these = product feels incomplete or untrustworthy for a civic audience.
-
 | Feature | Why Expected | Complexity | Notes |
 |---------|--------------|------------|-------|
-| Real-time calculation display | Users expect instant feedback as they change inputs — any delay creates doubt about whether their selection registered | LOW | Pure JS math, no async needed; calculate on every input event |
-| Single authoritative output number prominently displayed | Citizens came for "what does this cost me" — if that answer is buried, the tool fails its mission | LOW | Large typographic treatment, above the fold on mobile |
-| Labeled controls with clear descriptive text | Civic audiences are not specialists; every control needs a plain-language label and a brief explanation of what that choice means | LOW | Label element wired to input; explanatory `<p>` beneath or in tooltip |
-| Mobile-responsive layout with adequate touch targets | Majority of civic web traffic is mobile; controls too small to tap = unusable | LOW-MEDIUM | Tailwind touch target utilities; min 44x44px per WCAG 2.5.5; already in-scope |
-| WCAG 2.1 AA accessibility | Government-adjacent sites face accessibility expectations; screen reader users and keyboard-only users must complete the full interaction | MEDIUM | Semantic HTML, ARIA labels on dynamic output region (`aria-live`), sufficient color contrast (4.5:1 text, 3:1 UI components) |
-| Source/methodology transparency | Citizens distrust numbers without provenance; a brief "how is this calculated?" section with source links prevents "who made this up?" reactions | LOW | Static copy block; link to city data or council documents |
-| Print-friendly rendering | Citizens share paper printouts at council meetings; a print stylesheet or print button is expected for public-decision tools | LOW | CSS `@media print` rules; hide controls, show full scenario summary |
-| Correct and consistent arithmetic | The calculation must be verifiably correct (total cost / total households) and match any official materials; errors destroy credibility | LOW | Unit-test the calculation function in isolation |
+| Slider snaps to discrete nodes only | Config has exactly 6 fixed values ($10k–$60k); arbitrary values break the cost model; users should explore defined options, not free-form numbers | LOW | Use `step` attribute matching fixed increment. With 6 options at $10k intervals: `min=10000 max=60000 step=10000`. Browser enforces snapping natively — no JS needed. |
+| Per-node description text updates live during drag | "$10,000" is meaningless. "Digital only — Beehive and Libby services" is meaningful. Users expect immediate context as they explore options | MEDIUM | Update a `<p>` element on the `input` event (fires during drag) not `change` (fires only on release). Descriptions defined in `config.js` per option. |
+| Slider announces human-readable value to screen readers | `aria-valuenow` alone announces a raw number. Screen reader users need the same descriptive context sighted users see. | LOW | Set `aria-valuetext` dynamically on every `input` event. Value: the node's short label (e.g., "Digital only" or "$30,000 — standard budget"). W3C WAI APG slider pattern requires this for non-numeric or contextually enriched values. |
+| Keyboard operability (arrow keys, Page Up/Down) | WCAG 2.1 AA requirement; `<input type="range">` has full native keyboard support | LOW | Native browser behavior for `<input type="range">`. Left/right arrow: step by 1 increment. Same `input` event fires for keyboard navigation — description and aria-valuetext update automatically. |
+| Dollar value of selected node is visible | Standard affordance — users need to see the dollar amount they're selecting | LOW | Display above or below slider track, updating on `input` event. Can be part of the description or a standalone label. |
+| URL encodes slider value and restores it | Existing URL shareability (url.js) must continue working without breaking shared links | MEDIUM | `url.js` reads `document.getElementById('collections').value`. `<input type="range">` has `.value` too — same string-integer API. URL param format unchanged (`collections=30000`). Only change: validation logic must replace `Array.from(select.options)` with config-data check. |
+| Tax calculator reads slider value correctly | `calculator.js` uses `parseInt(element.value, 10)` from the collections element | LOW | `<input type="range">` returns `.value` as a string integer, identical to `<select>`. `parseInt` works unchanged. Zero code changes to calculator.js if element `id="collections"` is preserved. |
+| "Hours Open" section heading | Users have no frame of reference for "1 FTE + 2 PTE". "Hours Open" is immediately meaningful to any citizen. | LOW | Template change only: update `<legend>` text. Internal config `id` and `annualCost` values are unchanged. |
+| Structured weekly schedule renders per staffing level | Users expect actual days and times, not internal staffing jargon or generic descriptions. Real library sites uniformly display "M–F 10–6, Sat 10–4" style. | MEDIUM | Add `schedule` array to each `staffingLevels` entry in `config.js`. Nunjucks template loops over the array and renders human-readable text. No new JS required. |
+| Schedule format matches civic convention | Livermore, Torrance, Chula Vista libraries all use abbreviated day ranges with 12-hour times. Deviating creates friction for general public. | LOW | "M–F 12–4pm & Sat 10am–2pm" format. Consistent with every U.S. civic library site observed. |
 
-### Differentiators (Competitive Advantage / Civic Trust Builders)
-
-Features that set this tool apart. Not universally expected, but build trust and shareability in civic contexts.
+### Differentiators (Competitive Advantage)
 
 | Feature | Value Proposition | Complexity | Notes |
 |---------|-------------------|------------|-------|
-| Shareable URL with full state encoded | Citizens email a link of their specific scenario to a neighbor or city council member; scenario survives browser refresh | LOW-MEDIUM | Encode selected staffing level, collections toggle, and city checkboxes in URL query params or hash; read on page load; pure client-side |
-| Scenario summary text (auto-generated) | Converts raw controls into a plain-English sentence: "With 1 FTE + 1 PTE, collections, and Providence + Nibley participating, your annual cost would be $X" — removes ambiguity about what the user configured | LOW | Template string from current state; update on every change |
-| Data-last-updated date visible on page | Numbers change as negotiations progress; displaying "data current as of [date]" from the data file prevents outdated scenarios from causing harm | LOW | Expose a `last_updated` field in the data file; render it in the footer or near the output |
-| Keyboard-navigable controls in logical order | Beyond base WCAG compliance, a tab order that mirrors the decision flow (staffing → collections → cities → result) makes the tool feel intentional and professional | LOW | HTML source order + no `tabindex` hacks |
-| Clear "no cities selected" / edge-case handling | If zero cities are checked, division by zero is possible; showing "Select at least one city to see your cost" rather than NaN or $Infinity signals thoughtful design | LOW | Guard clause in calculation; conditional display message |
-| Visible cost breakdown alongside total | Showing "Staffing: $X / Collections: $Y / Total: $Z" alongside the per-household number helps citizens understand where their money goes, increasing buy-in | LOW | Additional output section; same data already computed |
+| Lowest slider node = digital-only with named services | Makes the floor option concrete. Citizens recognize "Beehive" and "Libby" — not "$10k digital budget". Anchors the bottom of the range in reality. | LOW | Single config entry with `label: "Digital only"` and `description: "Beehive and Libby digital services — no physical collection."`. Template can conditionally style this node distinctly if desired. |
+| Description changes during drag, not on release | Real-time contextual feedback while exploring. If description only updated on `change` (release), keyboard users would still get it but mouse drag would lag. Consistent live feedback builds confidence. | LOW | `input` event fires during both drag and keyboard navigation. Use `input` for description + aria-valuetext updates. Calculator.js already uses `change`; add `input` listener on form OR rely on `input` event bubbling (it does bubble from range input through form). |
+| Schedule data entirely in config.js, non-developer editable | Site maintainer (city council member, civic tech advocate) can update hours as the library's operational plans evolve — no template edits needed. Consistent with existing NON-DEVELOPER EDIT GUIDE pattern. | LOW | Structured array with `{ days, open, close }` objects. Plain-language instructions added to EDIT GUIDE. |
 
-### Anti-Features (Things to Deliberately NOT Build)
+### Anti-Features (Commonly Requested, Often Problematic)
 
 | Feature | Why Requested | Why Problematic | Alternative |
 |---------|---------------|-----------------|-------------|
-| User accounts / saved scenarios | "So people can come back to their scenario" | Requires a backend, authentication, GDPR-adjacent data concerns, and ongoing maintenance — catastrophically out of scope for a static civic site | Shareable URL encoding covers 95% of this use case with zero infrastructure |
-| Per-city property tax rate display | "Citizens want to know their exact dollar amount based on assessed value" | Property tax rates vary by assessed value, exemptions, and taxing district overlaps — this requires per-parcel data the site won't have; displaying a per-rate number creates false precision and errors | Keep output as annual cost per household (a meaningful, verifiable average) with a note explaining the simplification |
-| Animated / transitioning number output | "Makes it feel more dynamic" | Animation introduces motion that can trigger vestibular disorders (WCAG 2.3.3); adds JS complexity; delays the number reaching the user; A11y cost is high relative to UX benefit | Instant update is faster and more trustworthy; use CSS `transition` only on non-numeric elements if desired |
-| Comparison mode / side-by-side scenarios | "Let users compare two configurations at once" | Doubles UI complexity; confuses single-question focus; shareable URLs already handle the "show someone else your scenario" need | Shareable URL is the comparison mechanism — send two different links |
-| Embedded comment section / feedback form | "Gather community input" | Requires spam management, moderation, or a third-party service (Disqus, etc.); shifts site from information tool to community platform | Link to the official public comment channel (city council meeting, email to clerk) |
-| Real-time data sync from external source | "Pull live numbers from a Google Sheet so updates are automatic" | Introduces a network dependency that breaks offline use, adds CORS complexity, and creates a runtime failure mode for a civic tool that must always work | Keep data in a local file; the site owner updates it manually — this is the documented maintenance path |
-| Dark mode toggle | "Accessibility" | Not an accessibility requirement; adds CSS complexity; for a single-purpose civic tool with a short session length, the benefit is negligible | Respect `prefers-color-scheme` media query passively if desired, but don't build a toggle |
+| Continuous (arbitrary-value) slider | "More flexible budget exploration" | 6 discrete values are the real budget options. Arbitrary values break the cost model — `annualCost` is defined per option, not interpolated. Free-form inputs also invite confusion about which values are "real choices". | `step` attribute forces discrete snapping. `datalist` can add visual tick marks if desired. |
+| Custom-styled slider track/thumb | Better visual polish | Cross-browser slider CSS requires vendor-prefixed pseudo-elements (`::-webkit-slider-thumb`, `::-moz-range-thumb`). High maintenance surface. Custom styles can break or visually confuse native accessibility affordances (focus ring, thumb size). | Use `accent-blue-600` (already in use for radio/checkbox) — applies to native range thumb in modern browsers with zero complexity. Keep native browser rendering. |
+| Debounce slider `input` event for URL updates | "Prevent URL thrash during drag" | With only 6 discrete nodes, slider fires at most 5 distinct `input` events during a full drag sweep. `history.replaceState` is cheap. Debouncing adds complexity for zero measurable benefit at this scale. | No debounce. Fire on every node change. |
+| Keep dropdown alongside slider as fallback | "Some users prefer the dropdown" | Doubles the UI surface. Removes the UX clarity goal of the milestone. The slider IS the intended UX — the dropdown was the placeholder. | Remove `<select>` entirely. The slider is more accessible for this use case (visible current position, keyboard increments, contextual labels). |
+| 24-hour time format in schedule ("16:00") | "Technically unambiguous" | No U.S. civic library website uses 24-hour format. General public audience — most citizens parse "4pm" faster than "16:00". Creates unnecessary friction. | 12-hour format. Omit am/pm for clearly daytime blocks where context is unambiguous (e.g., "10–4") or include consistently. Spell out noon/midnight for those boundary cases. |
+| Animated number or schedule transition on slide | "Feels more dynamic" | Motion can trigger vestibular disorders (WCAG 2.3.3). Delays the user reaching the correct information. Adds JS/CSS complexity for no comprehension benefit. | Instant DOM update. Already the pattern in v1.0 calculator. |
 
 ---
 
 ## Feature Dependencies
 
 ```
-[Shareable URL encoding]
-    └──requires──> [Stable control state model] (all inputs reflected in one state object)
-                       └──requires──> [Real-time calculation] (state must be the source of truth for display)
+Collections slider
+    └──replaces──> Collections <select id="collections"> (DOM element removed)
+    └──requires──> config.js options have per-node label + description fields
+    └──must preserve──> id="collections" on new <input type="range">
+    └──must preserve──> .value API (string integer) — used by url.js and calculator.js
+    └──requires (url.js change)──> replace Array.from(select.options) validation
+                                   with config-data-driven validation
+    └──requires (new listener)──> input event handler for description text + aria-valuetext
 
-[Scenario summary text]
-    └──requires──> [Stable control state model]
-
-[Print-friendly rendering]
-    └──enhances──> [Scenario summary text] (print version shows summary, not raw controls)
-
-[Data-last-updated date]
-    └──requires──> [last_updated field in data file]
-
-[Edge-case "no cities" handling]
-    └──requires──> [Real-time calculation] (the guard runs inside the calc function)
-
-[Cost breakdown display]
-    └──requires──> [Real-time calculation] (same computed values, more display surface)
+Hours Open schedule display
+    └──requires──> config.js staffingLevels entries gain schedule[] array
+    └──enhances──> Existing staffing radio buttons (radio inputs unchanged)
+    └──no conflict with──> URL encoding (staffing param reads radio name="staffing")
+    └──no conflict with──> Tax calculation (data-cost on radio inputs unchanged)
+    └──template-only change──> no new JS
 ```
 
 ### Dependency Notes
 
-- **Shareable URL requires stable state model:** The URL encoding step can only happen if all inputs are managed through a single state object (or equivalent). Ad-hoc per-element reads make encoding unreliable. Wire all controls to write a state object on change; encode state to URL from that object.
-- **Scenario summary text requires stable state model:** Same rationale — the template string reads from state, not from DOM.
-- **Print rendering enhances scenario summary:** The print stylesheet should suppress interactive controls and show the scenario summary text so a printed page reads like a document, not a form.
-- **Edge-case handling is inside the calculation:** The zero-household guard lives in the same function as the calculation, so it cannot be built independently.
+- **id="collections" must be preserved:** Both `url.js` (`document.getElementById('collections')`) and `calculator.js` (same) rely on this id. Keeping it on the new `<input type="range">` means zero changes to either script's element reference.
+- **`.value` API is identical:** `<input type="range">` returns `.value` as a string integer, same as `<select>`. `parseInt(element.value, 10)` in calculator.js works unchanged. `params.set('collections', element.value)` in url.js works unchanged.
+- **url.js validation is the one required change:** Current code iterates `select.options` to build a list of valid values. Replace with `data.collections.options.map(o => String(o.value))` using `window.LIBRARY_DATA` (already available). One line change.
+- **calculator.js needs input event coverage:** `calculator.js` listens for `change` on the form. For `<input type="range">`, `change` fires on release but not during drag. Add `form.addEventListener('input', updateResult)` to cover live drag. This is additive — existing radio/checkbox inputs only emit `change`, so no double-firing occurs.
+- **Schedule display has zero JS dependencies:** Adding `schedule[]` to config.js and rendering it in the Nunjucks template has no impact on calculator.js, url.js, or any event handling. Pure data + template change.
 
 ---
 
 ## MVP Definition
 
-### Launch With (v1)
+### Launch With (v1.1)
 
-Minimum viable product — what's needed for citizens to use this at a city council meeting.
-
-- [ ] Real-time calculation display — the entire purpose of the tool
-- [ ] Labeled controls: staffing radio buttons, collections checkbox, city checkboxes — the three configured dimensions from PROJECT.md
-- [ ] Single prominent output: annual cost per household — the one number citizens need
-- [ ] Source/methodology transparency block — without this, the tool has zero civic credibility
-- [ ] Mobile-responsive layout with 44px+ touch targets — majority of users will be on phones
-- [ ] WCAG 2.1 AA compliance — keyboard navigation, `aria-live` on result region, sufficient contrast
-- [ ] Edge-case handling: zero cities selected shows guidance message instead of NaN
-- [ ] Data-last-updated date — numbers are actively changing; users must know when data was current
-- [ ] Print stylesheet — council meeting use case requires paper output
+- [ ] Replace `<select id="collections">` with `<input type="range" id="collections" min step max>` — preserves id, preserves .value API
+- [ ] Per-node `label` and `description` fields added to `config.js` collections options
+- [ ] Description text `<p>` element updates on `input` event (via new inline script or additions to existing JS)
+- [ ] `aria-valuetext` updated dynamically on `input` event to match node label
+- [ ] Lowest node ($10k) description explicitly names Beehive and Libby services
+- [ ] `form.addEventListener('input', updateResult)` added to calculator.js (or equivalent) for live drag recalculation
+- [ ] url.js validation updated: replace `.options` iteration with `window.LIBRARY_DATA.collections.options` check
+- [ ] `schedule[]` array added to each `staffingLevels` entry in `config.js`
+- [ ] Nunjucks template renders schedule as human-readable text (no new JS)
+- [ ] Section heading changed from "Staffing Level" to "Hours Open"
 
 ### Add After Validation (v1.x)
 
-Features to add once core is confirmed working and being used.
-
-- [ ] Shareable URL encoding — add once city council members start asking "how do I send someone my scenario?"; straightforward to add without architectural change
-- [ ] Scenario summary auto-generated text — add once users express confusion about what their current configuration means
-- [ ] Cost breakdown display (staffing / collections subtotals) — add if users ask "where does the money go?"
+- [ ] Tick marks below slider (via `<datalist>` + `list` attribute + CSS labels) — adds visual node indicators; browser tick rendering is inconsistent across platforms so defer until core UX is validated
+- [ ] Dollar value prominently displayed above slider thumb as a separate element — description text already contextualizes the value, but an explicit "$30,000" label above the thumb is cleaner
 
 ### Future Consideration (v2+)
 
-- [ ] Multi-language support (Spanish) — defer until there is evidence of non-English-speaking users engaging with this specific decision
-- [ ] Embed mode (iframe-friendly) — defer unless a city website wants to embed the tool
+- [ ] Animated schedule transition when staffing level changes — not warranted for a static civic info tool; instant update is more accessible
 
 ---
 
@@ -117,54 +114,128 @@ Features to add once core is confirmed working and being used.
 
 | Feature | User Value | Implementation Cost | Priority |
 |---------|------------|---------------------|----------|
-| Real-time calculation display | HIGH | LOW | P1 |
-| Labeled controls with explanatory copy | HIGH | LOW | P1 |
-| Single prominent output number | HIGH | LOW | P1 |
-| Source / methodology transparency | HIGH | LOW | P1 |
-| Mobile-responsive + touch targets | HIGH | LOW | P1 |
-| WCAG 2.1 AA accessibility | HIGH | MEDIUM | P1 |
-| Edge-case (zero cities) handling | HIGH | LOW | P1 |
-| Data-last-updated date | HIGH | LOW | P1 |
-| Print stylesheet | MEDIUM | LOW | P1 |
-| Shareable URL encoding | HIGH | LOW-MEDIUM | P2 |
-| Scenario summary text | MEDIUM | LOW | P2 |
-| Cost breakdown display | MEDIUM | LOW | P2 |
-| Dark mode (passive `prefers-color-scheme`) | LOW | LOW | P3 |
-| Multi-language support | LOW (unvalidated) | HIGH | P3 |
+| Collections slider replacing dropdown | HIGH | LOW | P1 |
+| Per-node description text (live update) | HIGH | LOW | P1 |
+| aria-valuetext dynamic update | HIGH | LOW | P1 |
+| Lowest node = digital-only (Beehive/Libby) | HIGH | LOW | P1 |
+| "Hours Open" section heading | HIGH | LOW | P1 |
+| schedule[] in config.js + template render | HIGH | LOW | P1 |
+| url.js validation fix for slider | HIGH — breaks sharing if omitted | LOW | P1 |
+| calculator.js input event coverage | HIGH — live drag does not recalculate otherwise | LOW | P1 |
+| Tick marks / datalist labels | MEDIUM | MEDIUM | P2 |
+| Dollar amount label above thumb | MEDIUM | LOW | P2 |
 
 **Priority key:**
-- P1: Must have for launch
-- P2: Should have, add when possible
+- P1: Must have for v1.1 launch
+- P2: Should have, add when capacity allows
 - P3: Nice to have, future consideration
 
 ---
 
-## Competitor Feature Analysis
+## Implementation Reference
 
-Comparable tools in the civic interactive configurator space (training data; not live-verified):
+### Slider Event Strategy
 
-| Feature | Budget Simulator tools (e.g., Balancing Act, OpenGov) | Simple civic calculators (e.g., city budget pages) | This project's approach |
-|---------|------------------------------------------------------|------------------------------------------------------|-------------------------|
-| Real-time output | Yes | Usually yes | Yes — core requirement |
-| Shareable URLs | Yes (Balancing Act encodes state) | Rarely | P2 — add after v1 |
-| Print export | Yes | Sometimes | CSS print stylesheet — v1 |
-| WCAG compliance | Varies; often only partial | Often poor | Full AA target — v1 |
-| Source citations | Rarely prominent | Rarely | Explicit methodology block — v1 |
-| Mobile-first | Balancing Act is desktop-first | Rarely | Tailwind mobile-first — v1 |
-| Data file separation | No (admin UI) | No (hard-coded) | Yes — core architectural requirement |
-| User accounts | Yes | No | Explicitly out of scope |
+Use `input` event for:
+- Updating visible description `<p>` text
+- Updating `aria-valuetext`
+- Triggering tax recalculation (add `form.addEventListener('input', updateResult)` to calculator.js)
 
-**Key differentiation for this project:** The combination of (1) mobile-first, (2) visible source citations, (3) data-file-driven updatability without a CMS, and (4) dead-simple single-output focus positions this tool as more trustworthy and maintainable than typical civic budget tools, which are either heavyweight SaaS or abandoned hard-coded pages.
+`change` event continues to fire on keyboard commit and mouse release — keep existing `change` listener. `input` listener is additive and handles drag. Both bubble from `<input type="range">` through the form element.
+
+### url.js Validation: One-Line Change
+
+Current (select-specific):
+```js
+var validValues = Array.from(select.options).map(function (o) { return o.value; });
+```
+Replace with:
+```js
+var validValues = data.collections.options.map(function (o) { return String(o.value); });
+```
+`window.LIBRARY_DATA` (aliased to `data` in url.js) is already set before scripts run. No other changes to url.js needed.
+
+### config.js Collections Options Shape (Recommended)
+
+```js
+{ value: 10000, isDefault: false, label: "Digital only",       description: "Beehive and Libby digital services only — no physical collection." }
+{ value: 20000, isDefault: false, label: "Very limited",       description: "Roughly 200 new physical items per year." }
+{ value: 30000, isDefault: true,  label: "Standard",           description: "Current collections budget — about 300 new items per year." }
+{ value: 40000, isDefault: false, label: "Enhanced",           description: "About 400 new items plus expanded digital titles." }
+{ value: 50000, isDefault: false, label: "Robust",             description: "About 500 new items with strong digital and periodical coverage." }
+{ value: 60000, isDefault: false, label: "Full service",       description: "Maximum collections investment — about 600 new items per year." }
+```
+
+`label` feeds `aria-valuetext`. `description` feeds the visible paragraph. Both should be non-technical plain language — these are the citizen-facing texts.
+
+### config.js Schedule Shape (Recommended)
+
+Single-block example:
+```js
+schedule: [
+  { days: "M–F", open: "12pm", close: "4pm" }
+]
+```
+Multi-block example (non-contiguous days or different hours):
+```js
+schedule: [
+  { days: "M–F", open: "12pm", close: "4pm" },
+  { days: "Sat", open: "10am", close: "2pm" }
+]
+```
+Template renders as: "M–F 12–4pm & Sat 10am–2pm"
+
+Instructions for this shape must be added to the NON-DEVELOPER EDIT GUIDE in config.js.
 
 ---
 
 ## Sources
 
-- Training knowledge: WCAG 2.1/2.2 specification (W3C) — touch target minimum 44x44px (Success Criterion 2.5.5); `aria-live` regions for dynamic content; color contrast ratios (HIGH confidence — stable published standard)
-- Training knowledge: Civic technology UX patterns from Code for America, Sunlight Foundation, and similar open-government projects — shareable URLs, source transparency, plain-language labeling (MEDIUM confidence — patterns are well-established but not live-verified for 2026)
-- Training knowledge: Balancing Act (balancingact-usa.com) and OpenGov budget simulator feature sets — used as representative examples of heavyweight civic budget tools (MEDIUM confidence — feature sets may have evolved since training cutoff)
-- PROJECT.md (this repository) — definitive scope for anti-feature and MVP decisions (HIGH confidence)
+- [ARIA: aria-valuetext attribute — MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-valuetext) — HIGH confidence; canonical reference for screen reader value announcement
+- [Slider Pattern — W3C WAI ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/slider/) — HIGH confidence; official keyboard interaction and ARIA requirements
+- [Communicating Value and Limits for Range Widgets — W3C WAI APG](https://www.w3.org/WAI/ARIA/apg/practices/range-related-properties/) — HIGH confidence; guidance on aria-valuenow vs aria-valuetext
+- [Range Slider — U.S. Web Design System (USWDS)](https://designsystem.digital.gov/components/range-slider/) — HIGH confidence; federal civic design system, authoritative for government-adjacent UX
+- [onchange vs. oninput for Range Sliders — Impressive Webs](https://www.impressivewebs.com/onchange-vs-oninput-for-range-sliders/) — MEDIUM confidence; corroborated by MDN event model docs
+- [Designing The Perfect Slider UX — Smashing Magazine](https://www.smashingmagazine.com/2017/07/designing-perfect-slider/) — MEDIUM confidence; 2017 but UX fundamentals unchanged for discrete-value sliders
+- Real library hours display patterns observed: Livermore CA, Torrance CA, Chula Vista CA civic library sites — MEDIUM confidence; confirms civic convention for day/time format
+- Codebase inspection: `src/js/url.js`, `src/js/calculator.js`, `src/_data/config.js`, `src/index.html` — HIGH confidence; direct source of truth for dependency analysis
 
 ---
-*Feature research for: Civic interactive property tax configurator (Cache County Library Choices)*
-*Researched: 2026-03-20*
+
+## v1.0 Feature Landscape (Reference)
+
+*Original research from 2026-03-20. Preserved for historical context. All items below are validated and shipped.*
+
+### Table Stakes (v1.0)
+
+| Feature | Why Expected | Complexity | Notes |
+|---------|--------------|------------|-------|
+| Real-time calculation display | Instant feedback as inputs change | LOW | Pure JS math on every input event |
+| Single authoritative output number prominently displayed | Citizens came for "what does this cost me" | LOW | Large type, above fold on mobile |
+| Labeled controls with clear descriptive text | Civic audiences are not specialists | LOW | Label wired to input; explanatory `<p>` beneath |
+| Mobile-responsive layout with adequate touch targets | Majority of civic web traffic is mobile | LOW-MEDIUM | Tailwind; min 44x44px per WCAG 2.5.5 |
+| WCAG 2.1 AA accessibility | Government-adjacent; screen reader + keyboard users | MEDIUM | Semantic HTML, aria-live on result region |
+| Source/methodology transparency | Citizens distrust numbers without provenance | LOW | Static copy block with source links |
+| Correct and consistent arithmetic | Errors destroy civic credibility | LOW | total cost / total households |
+
+### Differentiators (v1.0)
+
+| Feature | Value Proposition | Complexity | Notes |
+|---------|-------------------|------------|-------|
+| Shareable URL with full state encoded | Citizens email their scenario to neighbors or council members | LOW-MEDIUM | URLSearchParams + history.replaceState |
+| Visible cost breakdown alongside total | Shows where money goes; increases buy-in | LOW | Staffing + collections subtotals displayed |
+| Clear "no cities selected" edge-case handling | Division by zero protection; signals thoughtful design | LOW | Guard clause in calculation |
+
+### Anti-Features (v1.0)
+
+| Feature | Why Avoided | Alternative |
+|---------|-------------|-------------|
+| User accounts / saved scenarios | Backend/auth out of scope for static site | Shareable URL covers this |
+| Per-city property tax rate display | False precision without parcel-level data | Annual cost per household (verified average) |
+| Animated number output | Motion disorders; adds delay | Instant update |
+| Real-time data sync | Network dependency; failure mode | Local config.js; manual update |
+
+---
+
+*Feature research for: Cache County Library Choices v1.1 — citizen-meaningful UX controls*
+*Researched: 2026-03-21*

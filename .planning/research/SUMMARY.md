@@ -1,202 +1,160 @@
 # Project Research Summary
 
-**Project:** Cache County Library Choices — civic property tax impact configurator
-**Domain:** Data-driven static site interactive configurator (civic / government-adjacent)
-**Researched:** 2026-03-20
-**Confidence:** MEDIUM-HIGH
+**Project:** Cache County Library Choices — v1.1 UX Improvements
+**Domain:** Civic interactive static site — range slider + schedule display on existing Eleventy v3 + Tailwind v4 + vanilla JS stack
+**Researched:** 2026-03-21
+**Confidence:** HIGH
 
 ## Executive Summary
 
-This project is a single-page civic configurator that lets residents of Cache County cities calculate their per-household annual property tax impact under different library staffing, collections, and city-participation scenarios. Experts build tools like this as static sites with data-embedded build-time rendering: a static site generator (Eleventy) consumes a single data file at build time, inlines the scenario numbers as JSON into the HTML, and a small vanilla JavaScript file handles all runtime calculation with zero network requests. The pattern is well-established, has no server requirements, deploys for free on GitHub Pages, and allows a non-developer site owner to update numbers by editing one file.
+This is a targeted v1.1 improvement to a shipped civic tax calculator. The two features are well-scoped: replace the collections budget `<select>` dropdown with a native `<input type="range">` with discrete nodes and live descriptions, and add structured weekly schedule data to the staffing section (reframed as "Hours Open"). Research confirms both features are fully achievable with zero new npm dependencies — everything needed is already in the browser, in the Eleventy/Tailwind stack, or in the existing JavaScript files. No `package.json` changes are expected.
 
-The recommended stack is Eleventy v3 + Tailwind CSS v4 + vanilla JavaScript. Eleventy's `_data/` convention makes the data file the single source of truth for both the rendered HTML controls and the runtime calculation data. Tailwind v4's CSS-native configuration (no `tailwind.config.js`) simplifies the build pipeline. The entire calculator is approximately 50 lines of arithmetic and DOM manipulation — no component framework is warranted. Alpine.js is available as an upgrade path if shareable URL state encoding (a v1.x feature) creates complex state management needs, but is not required for the MVP.
+The recommended approach is additive and conservative. The collections slider preserves the existing element id (`id="collections"`) and `.value` API so that `calculator.js` and `url.js` require minimal changes — only `url.js`'s `restoreFromUrl()` validation logic needs a one-line fix to replace `select.options` iteration with a `LIBRARY_DATA` lookup. The schedule display is pure Nunjucks server-side rendering with zero JavaScript footprint. Both features extend `config.js` with new fields (`description`/`label` on collections options; `schedule[]` on staffing levels) and require NON-DEVELOPER EDIT GUIDE updates so the non-technical product owner can maintain the site.
 
-The three most important risks to mitigate are: (1) GitHub Pages subdirectory path breaking all asset references if root-relative paths are used — fix this at project scaffolding time, not after; (2) Tailwind v4's JIT scanner dropping dynamic class names built from string interpolation — use explicit literal class strings or a lookup object; and (3) floating-point arithmetic producing display errors in the tax calculation — store monetary values as integers and format at display time only. A fourth risk specific to this domain: presenting estimated city data with the same authority as confirmed figures undermines civic credibility — the data schema must include a `status` field and `as_of_date` from day one.
+The two primary risks are URL backward compatibility and accessibility. Shared links already exist containing `collections=30000` — any change to encoding format silently breaks them. The slider must also update `aria-valuetext` dynamically or screen reader users will hear meaningless integers instead of citizen-meaningful labels. Both risks have well-defined, low-effort prevention strategies confirmed by official sources. A natural two-phase structure keeps the riskier slider work (which touches four files) isolated from the lower-risk schedule reframe (config + template only).
 
 ## Key Findings
 
 ### Recommended Stack
 
-Eleventy v3 is the right SSG for this project. Its `_data/` filename convention provides the data-embedding pipeline without any configuration: `_data/config.js` is automatically available to all Nunjucks templates as the variable `config`. The `{{ config | dump | safe }}` template expression then inlines the full data object as JSON into a `<script>` tag, making the data synchronously available to `calculator.js` at runtime with no fetch calls. Tailwind v4 (confirmed stable as of April 2025) replaces `tailwind.config.js` with a CSS-native `@theme` block inside `src/css/input.css` and uses `@tailwindcss/postcss` as the PostCSS integration — ARCHITECTURE.md's reference to `tailwind.config.js` reflects a v3 pattern and should not be created.
+No additions to the existing stack are required. The project already has Eleventy v3.1.5, Tailwind v4.2.2 (standalone CLI), and vanilla JS IIFEs. Native `<input type="range">` is Baseline Widely Available since 2017 across all modern browsers. Range slider npm packages (noUiSlider, ion.rangeSlider) and schedule display libraries are explicitly ruled out — both add bundle weight and maintenance burden for problems the native platform solves directly.
+
+The one cross-browser complication is slider styling: vendor pseudo-elements (`::-webkit-slider-thumb`, `::-moz-range-thumb`, etc.) must be written in `@layer base` in `style.css`. Firefox also does not render `<datalist>` tick marks (Bugzilla #841942, open since 2013), so visual node labels must be a CSS-positioned `<span>` row, not a datalist. `accent-color` provides a zero-complexity baseline styling option if custom thumb/track CSS is deferred.
 
 **Core technologies:**
-- Eleventy v3: static site generator — purpose-built for data-driven HTML generation with zero client-side framework cost
-- Tailwind CSS v4.1 + `@tailwindcss/postcss`: utility-first CSS — CSS-native config, mobile-first by default, auto content detection
-- Vanilla JavaScript (ES2020+): runtime calculator — ~50 lines of arithmetic and DOM mutation, no framework or bundler needed
-- Nunjucks v3.2: templating — supports the `| dump | safe` pattern required to embed the data object
-- GitHub Actions + `actions/deploy-pages@v4`: CI/CD — reproducible builds, `_site/` never committed to `main`
-
-Alpine.js v3 is the recommended upgrade path (not v1 MVP requirement) if shareable URL state encoding grows complex. Node.js 18+ is required for Eleventy v3.
+- `<input type="range">` (browser-native): discrete 6-node slider — no polyfill, no library needed
+- `aria-valuetext` (browser-native ARIA): screen-reader-meaningful label, updated dynamically on `input` event
+- Nunjucks `{% for %}` loop (Eleventy-bundled): renders slider labels, schedule rows, and all config-driven UI
+- Vanilla JS `input` event (browser-native): live description updates during drag; additive to existing `change` listener
+- `@layer base` in `style.css` (Tailwind v4): cleanest location for vendor-prefixed slider pseudo-element CSS
 
 ### Expected Features
 
-The research identifies 9 must-have features for the v1 launch (what's needed for a city council meeting), 3 should-have features for v1.x (add after validation), and 2 deferred to v2+.
+All v1.1 features are P1 (must-have for launch) or P2 (should-have, add when capacity allows). The MVP is small and tightly scoped.
 
 **Must have (table stakes):**
-- Real-time calculation display — the entire purpose of the tool; update on every input event
-- Single prominent output number (annual cost per household) — large typographic treatment, above fold on mobile
-- Labeled controls with plain-language explanatory copy — civic audiences are not specialists
-- Source/methodology transparency block — citizens distrust numbers without provenance
-- Mobile-responsive layout with 44px+ touch targets — majority of civic web traffic is mobile
-- WCAG 2.1 AA accessibility — keyboard navigation, `aria-live` on result region, 4.5:1 contrast
-- Edge-case handling: zero cities selected shows guidance message, not NaN or $Infinity
-- Data-last-updated date — numbers are actively changing; users must see when data was current
-- Print stylesheet (`@media print`) — council meeting use case requires paper output
+- Collections slider snaps to exactly 6 discrete values — `step` attribute derived from config at template render time
+- Per-node description text updates live during drag via `input` event
+- `aria-valuetext` updated dynamically — WCAG 2.1 AA requirement; screen readers need label text, not raw integer
+- URL backward compatibility preserved — `collections=30000` encoding unchanged; only `restoreFromUrl()` validation changes
+- Live recalculation during drag — `form.addEventListener('input', updateResult)` added alongside existing `change` listener
+- "Hours Open" section heading — legend text change; internal ids and cost data unchanged
+- Structured weekly schedule per staffing level — `schedule[]` array in config.js; Nunjucks `<ul>` render, no JS
+- NON-DEVELOPER EDIT GUIDE updated to cover schedule format with copy-pasteable examples
 
-**Should have (v1.x differentiators):**
-- Shareable URL encoding — encode staffing/collections/city state in URL query params for sharing scenarios
-- Scenario summary auto-generated text — plain-English sentence of current configuration removes ambiguity
-- Cost breakdown display (staffing / collections subtotals) — helps citizens understand where money goes
+**Should have (differentiators):**
+- Tick marks / node labels — `<datalist>` for Chrome/Safari; CSS `<span>` row for cross-browser visual nodes
+- Dollar amount label above thumb — explicit `$30,000` above slider in addition to contextual description
 
 **Defer (v2+):**
-- Multi-language support (Spanish) — defer until non-English-speaker engagement is confirmed
-- Embed/iframe mode — defer unless a city website explicitly requests it
-
-**Explicitly out of scope (anti-features):** User accounts, per-parcel property tax rate display, animated number output, comparison mode, embedded comment section, real-time external data sync.
+- Animated schedule transition on staffing change — motion disorder risk; instant update is more accessible
 
 ### Architecture Approach
 
-The architecture is a clean three-layer pipeline: build-time data embedding, static HTML output, and pure-runtime calculation. `_data/config.js` is the single source of truth — it feeds both the Nunjucks template (which renders form controls from the data arrays at build time) and the runtime calculator (via the embedded `window.LIBRARY_DATA` JSON object). Calculator logic lives in a separate `src/js/calculator.js` file that Eleventy passthrough-copies to `_site/`, keeping logic independently testable. The build pipeline is `npm run build` → Eleventy renders templates + PostCSS transforms CSS; no bundler is needed because `calculator.js` has no npm imports. GitHub Actions deploys `_site/` to GitHub Pages; `_site/` is gitignored on `main`.
+The existing architecture is a clean three-layer static site: `config.js` is the single source of truth, Eleventy/Nunjucks renders it into HTML with `window.LIBRARY_DATA` embedded as a JSON literal, and two IIFEs (`calculator.js`, `url.js`) handle all runtime behavior. V1.1 extends this pattern without introducing new components. The slider's description update logic (~8 lines) belongs in `calculator.js` where all form interaction logic already lives — creating a new `slider.js` would add a third IIFE and load-order concerns for trivial code.
 
-**Major components:**
-1. `_data/config.js` — single source of truth for all costs, household counts, city names, status flags, and `as_of_date`
-2. `src/index.njk` — Nunjucks template that renders HTML controls from data arrays and embeds data as JSON; build-time only
-3. `src/js/calculator.js` — runtime calculator: reads `window.LIBRARY_DATA`, attaches change listeners, updates DOM result on every input event
-4. `src/css/input.css` — Tailwind v4 entry point (`@import "tailwindcss"` + `@theme` block)
-5. `.eleventy.js` — Eleventy config: input/output dirs, passthrough copies, PostCSS plugin wire-up
-6. `.github/workflows/deploy.yml` — GitHub Actions: `npm ci && npm run build` → `actions/upload-pages-artifact` → `actions/deploy-pages`
+Script load order must be preserved: `window.LIBRARY_DATA` inline script → `calculator.js` → `url.js`. `url.js` depends on `calculator.js` having already bound its `change` listener before url.js dispatches a `change` event to trigger recalculation after URL restore.
+
+**Major components and v1.1 changes:**
+1. `_data/config.js` — gains `description`/`label` on each collections option; gains `schedule[]` on each staffing level
+2. `src/index.html` (Nunjucks template) — replaces `<select>` with `<input type="range">`; adds schedule `<ul>` inside staffing loop; renames legend to "Hours Open"
+3. `src/js/calculator.js` — gains `input` event listener for description + `aria-valuetext` updates (~8 lines additive); gains `form.addEventListener('input', updateResult)`
+4. `src/js/url.js` — one block replaced in `restoreFromUrl()`: `Array.from(select.options)` → `LIBRARY_DATA.collections.options.map(...)` validation
 
 ### Critical Pitfalls
 
-1. **GitHub Pages subdirectory path (asset 404s)** — Use relative asset paths (`./css/main.css` not `/css/main.css`) or configure Eleventy's `pathPrefix` to `/repo-name/` from day one. Verify the deployed URL explicitly as a done-criterion for the initial deploy phase.
+1. **URL backward compatibility broken by encoding format change** — Keep encoding collections as the dollar-amount string (`collections=30000`). Slider `.value` returns the same string integer as `select.value`. Only `restoreFromUrl()`'s validation needs updating; encoding logic is unchanged. Verify with a pre-v1.1 URL in acceptance criteria.
 
-2. **Tailwind JIT drops dynamically assembled class names** — Never build class strings via concatenation or template literals. Use explicit literal strings or a lookup object (`{ low: 'text-green-700', high: 'text-red-700' }`). Run a production build and inspect the output CSS for all conditional classes before shipping.
+2. **Calculator produces wrong tax figure when step/min/max are hardcoded** — Derive `min`, `max`, `step` from `config.collections.options` at template render time. Never hardcode — config is owner-editable. The current config has uniform $10k spacing; document this assumption.
 
-3. **Floating-point arithmetic in tax calculation** — Store all monetary values in the data file as integers (dollars or cents). Format with `toFixed(2)` only at the final display step, never on intermediate values. Unit-test the calculation function with edge-case values before wiring to UI.
+3. **Live result bar frozen during mobile drag** — `change` fires only on touchend; `input` fires continuously. Add `form.addEventListener('input', updateResult)` in `calculator.js`. One line. Required for any mobile user.
 
-4. **Partial/estimated data presented as authoritative** — The data file schema must include a `status` field (`"confirmed"` vs `"estimated"`) and an `as_of_date` field from the start. Template must render caveats for estimated figures. Retrofitting this after launch when civic trust is damaged is costly.
+4. **Screen reader announces raw integer instead of citizen-meaningful label** — `aria-valuetext` must be set dynamically on every `input` event. Omitting this fails WCAG 2.1 AA. Include VoiceOver/NVDA manual test in acceptance criteria.
 
-5. **Non-developer data file update workflow breaks** — Use a flat, readable data file format (JSON or the JS module with comments). Validate the data file in CI on every push. Explicitly test the non-developer update flow (simulate a GitHub web editor edit) before launch.
+5. **Staffing `id` values renamed during "Hours Open" reframe — breaks URL contract** — The `id` field in `staffingLevels` (`"1fte"`, `"1fte-1pte"`, `"1fte-2pte"`) is the URL-encoded identifier. Only `label` and `description` are citizen-facing copy; `id` is immutable once deployed. Mark this in `config.js` with a comment.
 
 ## Implications for Roadmap
 
-Based on research, the natural phase structure follows the data dependency chain: infrastructure first, then data schema, then UI components, then calculation logic, then polish and accessibility hardening.
+The research points to a natural two-phase structure. The slider is the more architecturally significant change (touches four files and carries all accessibility and URL-contract risk) and should be isolated as Phase 1. The staffing reframe is additive and low-risk (config schema extension + Nunjucks template only) but carries its own URL-contract risk that requires separate verification.
 
-### Phase 1: Project Scaffolding and Initial Deploy
+### Phase 1: Collections Budget Slider
 
-**Rationale:** The GitHub Pages subdirectory path pitfall (Pitfall 1) must be resolved before any asset references are written. Establishing the Eleventy + Tailwind + PostCSS pipeline and verifying a deployed "Hello World" page eliminates the most catastrophic failure mode before any real work is done. Cache key strategy for GitHub Actions must also be set correctly here.
+**Rationale:** Highest-complexity change in v1.1. Touches four files (`config.js`, `index.html`, `calculator.js`, `url.js`) and carries five of the seven identified pitfalls. Must be implemented atomically — a partial slider leaves `url.js`'s `restoreFromUrl()` broken. Completing this first validates the event model (input vs. change) and confirms URL backward compatibility before any further changes.
 
-**Delivers:** Working build pipeline, verified GitHub Pages deployment with correct asset paths, CI/CD workflow, `_site/` gitignored, Node 18 pinned.
+**Delivers:** Native `<input type="range">` replacing the dropdown; live description and `aria-valuetext` updates during drag; backward-compatible URL encoding; live drag recalculation on mobile; cross-browser node labels via CSS label row.
 
-**Addresses:** Foundation for all subsequent phases; no features yet.
+**Addresses:** All P1 slider features from FEATURES.md — discrete snap, description text, `aria-valuetext`, URL compatibility, mobile drag recalculation.
 
-**Avoids:** Pitfall 1 (GitHub Pages subdirectory path), Pitfall 7 (stale CI cache).
+**Avoids:** Pitfall 1 (URL encoding format change), Pitfall 2 (hardcoded step/min/max), Pitfall 3 (frozen mobile drag), Pitfall 4 (screen reader raw integer), Pitfall 5 (datalist-only tick marks).
 
-**Research flag:** Standard patterns, well-documented. No additional research needed.
+**Acceptance criteria must include:** URL round-trip test with pre-v1.1 `?collections=30000` link; mobile drag result update; VoiceOver/NVDA `aria-valuetext` verification; Firefox + Safari visual test for node labels.
 
-### Phase 2: Data File Schema and Nunjucks Template Shell
+### Phase 2: Hours Open Schedule Display
 
-**Rationale:** The data file schema must be locked before templates are written against it — retrofitting a `status`/`as_of_date` field after templates and calc logic are complete is painful. This phase also establishes the non-developer update workflow (format choice, CI validation, documentation) before the owner has any reason to touch the file under time pressure.
+**Rationale:** Zero JavaScript changes — verifiable entirely at build time by inspecting generated HTML. The only risks are the staffing `id` URL contract (Pitfall 6) and the NON-DEVELOPER EDIT GUIDE gap (Pitfall 7), both of which are documentation and review concerns rather than implementation risks. Deferring to Phase 2 keeps Phase 1 focused.
 
-**Delivers:** `_data/config.js` with finalized schema (staffing options, cities with household counts, `status`, `as_of_date`, collections cost); `src/index.njk` rendering all controls from data arrays; data embedded as `window.LIBRARY_DATA` in `<script>` tag; labeled controls with plain-language copy; data-last-updated date in footer; print stylesheet skeleton.
+**Delivers:** `schedule[]` arrays in config.js for all three staffing levels; Nunjucks `<ul>` rendering inside staffing radio loop; "Hours Open" legend rename; updated NON-DEVELOPER EDIT GUIDE with schedule format examples and time format decision documented.
 
-**Addresses:** Source/methodology transparency, data-last-updated date, labeled controls (all table-stakes features), Pitfall 4 (estimated data), Pitfall 6 (fragile update workflow).
+**Addresses:** "Hours Open" heading (P1), structured schedule display (P1), citizen-editable schedule data (P1), edit guide update (P1).
 
-**Avoids:** Anti-pattern of hardcoded numbers in templates; anti-pattern of fetching data at runtime.
+**Avoids:** Pitfall 6 (staffing id URL contract broken by rename); Pitfall 7 (edit guide missing for schedule format).
 
-**Research flag:** Standard patterns. No additional research needed. Verify `{{ config | dump | safe }}` output in actual Eleventy v3 build.
-
-### Phase 3: Calculator Logic and Accessibility
-
-**Rationale:** Calculation logic is independent of UI styling and should be written and unit-tested before the visual layer is polished. Accessibility controls (native `<input>` elements, `aria-live`, touch targets) are cheapest to implement correctly from the start — retrofitting after custom `<div>` controls are styled is painful. Floating-point arithmetic correctness is validated in this phase before the output is trusted.
-
-**Delivers:** `src/js/calculator.js` with all arithmetic (staffing cost + optional collections cost, divided by total participating-city households), `aria-live` result region, edge-case zero-cities guard, integer arithmetic with `toFixed(2)` display formatting, unit tests for the calculation function, keyboard navigation verified, 44px touch targets on all controls, real-time update on every input event.
-
-**Addresses:** Real-time calculation display, single prominent output, WCAG 2.1 AA, edge-case handling, mobile touch targets (all table-stakes P1 features).
-
-**Avoids:** Pitfall 3 (floating-point errors), Pitfall 5 (custom div checkboxes breaking accessibility), anti-pattern of one giant script block in template.
-
-**Research flag:** Standard patterns for vanilla JS DOM manipulation and ARIA. No additional research needed. Run `axe` or Lighthouse accessibility audit as done-criterion.
-
-### Phase 4: Styling and Mobile Polish
-
-**Rationale:** With working structure and logic, Tailwind utility classes can be applied confidently. This is where Pitfall 2 (dynamic class name purging) surfaces — establishing the lookup-object pattern for conditional classes here prevents styling regressions in production builds.
-
-**Delivers:** Full Tailwind responsive layout (mobile-first), prominent output number typography, source/methodology block styled, print stylesheet complete (`@media print` hides controls, shows scenario summary), production build verified with all conditional CSS classes present in output.
-
-**Addresses:** Mobile-responsive layout, print-friendly rendering (completing all table-stakes P1 features).
-
-**Avoids:** Pitfall 2 (Tailwind JIT dropping dynamic classes).
-
-**Research flag:** Standard patterns. Tailwind v4 `@theme` block and peer/sibling selector patterns for custom-styled native inputs are well-documented. No additional research needed.
-
-### Phase 5: v1.x Enhancements (Post-Validation)
-
-**Rationale:** These features are valuable but not required for the initial council meeting use case. Adding them after v1 validation ensures they respond to real observed needs rather than anticipated ones.
-
-**Delivers:** Shareable URL encoding (all form state in `URLSearchParams`), auto-generated scenario summary text, cost breakdown display (staffing / collections subtotals). Optionally: Alpine.js if URL state management complexity warrants the upgrade.
-
-**Addresses:** Shareable URL (P2), scenario summary (P2), cost breakdown (P2).
-
-**Research flag:** Shareable URL encoding with `URLSearchParams` is standard. If Alpine.js is introduced, its `x-data` / `$store` patterns for state serialization will benefit from a focused research spike — but this is unlikely to be needed.
+**Acceptance criteria must include:** Shared URL `?staffing=1fte-2pte` restores correctly after reframe; all three staffing level schedules render; config.js NON-DEVELOPER EDIT GUIDE covers schedule format with a copy-pasteable example.
 
 ### Phase Ordering Rationale
 
-- Infrastructure before content: Deploying a broken page from day one (wrong paths) is demoralizing and wastes all subsequent effort.
-- Data schema before templates: Templates cannot be written correctly until the data shape is stable; and schema changes after templates exist require coordinated changes across multiple files.
-- Logic before styling: A correctly calculated number in unstyled HTML is more valuable than a beautifully styled calculator that produces wrong output.
-- Styling before v1.x features: Polish the core experience before adding shareable URL complexity.
-- This order also naturally stages the pitfall mitigations: infrastructure pitfalls in Phase 1, data pitfalls in Phase 2, calculation and accessibility pitfalls in Phase 3, styling pitfalls in Phase 4.
+- Phase 1 first because it is the only change with breaking-change risk to existing JavaScript files. Isolating it makes the QA surface clear and keeps the broken-state window (when `url.js` validation is temporarily inconsistent) as short as possible.
+- Phase 2 second because it has zero JavaScript changes and zero dependency on Phase 1 changes. It could theoretically be done in any order, but sequencing it after Phase 1 means the slider is validated before the template is further modified.
+- Both phases are small enough to complete in a single working session each. There is no case for further subdivision.
+- CSS slider styling (thumb/track vendor pseudo-elements) belongs in Phase 1. If it proves time-consuming, `accent-color` provides a functional WCAG 2.1 AA baseline while custom styling is deferred to a P2 follow-up.
 
 ### Research Flags
 
-Phases with standard patterns (skip research-phase):
-- **Phase 1:** GitHub Pages + GitHub Actions deployment is thoroughly documented and stable.
-- **Phase 2:** Eleventy `_data/` convention and Nunjucks `| dump | safe` pattern are well-established.
-- **Phase 3:** Vanilla JS DOM manipulation, ARIA live regions, and WCAG touch target requirements are well-documented stable standards.
-- **Phase 4:** Tailwind v4 utility classes and peer selector patterns for native input styling are documented.
+Phases with standard patterns (no additional research needed):
+- **Phase 1 (slider):** All patterns are well-documented in MDN, W3C WAI APG, and USWDS. Exact code blocks for every required change are provided in ARCHITECTURE.md. No research phase needed.
+- **Phase 2 (schedule):** Pure config extension and Nunjucks loop. Zero ambiguity. No research phase needed.
 
-Phases that may benefit from a research spike:
-- **Phase 5 (if Alpine.js is introduced):** Alpine v3 `x-data` + `URLSearchParams` integration pattern is moderately documented but the specific state serialization for URL encoding merits a focused spike before implementation.
+Neither phase requires `/gsd:research-phase` during planning. Research is complete and actionable at the implementation level.
 
 ## Confidence Assessment
 
 | Area | Confidence | Notes |
 |------|------------|-------|
-| Stack | MEDIUM-HIGH | Tailwind v4 versions confirmed from official sources (HIGH). Eleventy v3 and Alpine.js v3 from training data through August 2025 (MEDIUM — current patch versions unverified but major version and APIs are stable). |
-| Features | MEDIUM | WCAG standards are stable and HIGH confidence. Civic UX patterns (shareable URLs, source transparency) are well-established community practice (MEDIUM). Competitor feature sets unverified live. |
-| Architecture | HIGH | Eleventy data cascade and GitHub Pages Actions deployment are well-established, stable patterns. Data embedding pattern is industry-standard for this class of tool. |
-| Pitfalls | HIGH | GitHub Pages path behavior, Tailwind JIT scanner behavior, IEEE 754 floating-point, and WCAG touch targets are all verified against official documentation or stable specifications. Civic data credibility pattern is domain knowledge (MEDIUM). |
+| Stack | HIGH | Verified from `package.json` (direct inspection), MDN official docs, Bugzilla official tracker. No ambiguity about what exists and what to add. |
+| Features | HIGH | W3C WAI APG, USWDS, and direct codebase inspection. All feature decisions traced to authoritative sources or observed civic site patterns. |
+| Architecture | HIGH | All analysis based on direct codebase inspection (calculator.js, url.js, config.js, index.html). Component change matrix is exact, not inferred. |
+| Pitfalls | HIGH | Grounded in direct codebase inspection and official bug trackers (Bugzilla #841942, Chromium #40771904). Recovery costs and prevention steps are specific. |
 
-**Overall confidence:** MEDIUM-HIGH
+**Overall confidence:** HIGH
 
 ### Gaps to Address
 
-- **Eleventy v3 current patch version:** Training data is reliable for the v3 API but the exact current patch release is unverified. Run `npm info @11ty/eleventy version` at project setup and pin to the current release in `package.json`.
-- **Alpine.js state serialization pattern:** If Alpine is introduced in Phase 5, validate the `x-data` + `URLSearchParams` round-trip pattern against the current Alpine v3 docs before implementing — this is the one area where training data confidence is lower.
-- **Actual household count and cost figures:** The data file schema is designed, but the real numbers (household counts per city, confirmed vs. estimated staffing costs) must be sourced from Cache County records or city council documents before launch. This is a content gap, not a technical one.
-- **Non-developer edit simulation:** The PITFALLS research recommends explicitly testing a non-developer edit of `_data/config.js` via GitHub's web editor before launch. This test must be performed by or with the actual site owner, not just assumed to work.
+- **Schedule time format decision:** PITFALLS.md flags that the time format (`"9:00 AM"` vs. `"9am"` vs. `"09:00"`) must be decided before writing the Nunjucks template renderer and the edit guide. The format choice must appear in config, template, and EDIT GUIDE consistently. Decide this as the first step of Phase 2 planning.
+
+- **Slider CSS scope decision:** Whether to implement full custom thumb/track styling (vendor pseudo-elements in `@layer base`) or use `accent-color` as a baseline should be decided before Phase 1 starts. Research recommends `accent-color` as a fast path — full custom styling is a P2 option if design requires it.
+
+- **Schedule visibility approach:** STACK.md documents two options: always-visible schedules inline below each radio (Option 1, no JS) vs. show-on-selection (Option 2, JS toggle). Research recommends Option 1 for v1.1. Confirm in requirements before Phase 2 template work begins.
 
 ## Sources
 
 ### Primary (HIGH confidence)
-- Tailwind CSS official blog — v4.0 stable (January 22, 2025), v4.1 release (April 3, 2025): https://tailwindcss.com/blog/tailwindcss-v4 and https://tailwindcss.com/blog/tailwindcss-v4-1
-- Tailwind CSS installation docs — v4.2 current, PostCSS integration: https://tailwindcss.com/docs/installation
-- Tailwind CSS content configuration — JIT scanner behavior, dynamic class names: https://tailwindcss.com/docs/content-configuration
-- MDN Web Docs — ARIA checkbox role, native input best practices: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/checkbox_role
-- WCAG 2.5.5 — Touch target minimum 44x44px: https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
-- GitHub Pages Actions deployment pattern — `actions/deploy-pages` (established since 2022)
+- MDN Web Docs — `<input type="range">` spec, `aria-valuetext`, `input` vs. `change` event model, vendor pseudo-elements
+- W3C WAI ARIA Authoring Practices Guide — slider pattern keyboard interaction, `aria-valuetext` requirements, range-related properties
+- U.S. Web Design System (USWDS) — range slider component, civic UX conventions
+- Mozilla Bugzilla #841942 — Firefox `datalist`+`range` tick marks (open since 2013, unresolved 2026)
+- Chromium Issue #40771904 — Chrome hides `<datalist>` option labels on range inputs
+- Direct codebase inspection: `src/js/calculator.js`, `src/js/url.js`, `src/_data/config.js`, `src/index.html`, `package.json`
 
 ### Secondary (MEDIUM confidence)
-- Eleventy v3 global data files and data cascade — training data through August 2025: https://www.11ty.dev/docs/data-global/
-- Alpine.js v3 bundle size (~15KB), reactive model — training data
-- Civic technology UX patterns — Code for America, Sunlight Foundation community practice: shareable URLs, source transparency, plain-language labeling
-- Astro v5.0 (December 2024) — comparison point for alternatives
+- Tailwind CSS v4 GitHub discussion #8748 — range input styling patterns in Tailwind v4
+- CSS-Tricks "Styling Cross-Browser Compatible Range Inputs with CSS" — vendor pseudo-element pattern
+- CSS-Tricks "A Sliding Nightmare — Understanding the Range Input" — cross-browser tick mark inconsistencies
+- Impressive Webs "onchange vs. oninput for Range Sliders" — `change` fires on commit only; `input` needed for live drag
+- Real library hours display: Livermore CA, Torrance CA, Chula Vista CA civic sites — schedule format convention confirmed
 
-### Tertiary (LOW confidence / needs live validation)
-- Competitor civic tool feature sets (Balancing Act, OpenGov) — training data, may have evolved
-- Civic tech "estimated vs. confirmed" data distinction pattern — domain knowledge, post-mortem inference
+### Tertiary (LOW confidence)
+- caniuse.com datalist browser support — WebSearch result, could not WebFetch directly; findings corroborated by Bugzilla official tracker
 
 ---
-*Research completed: 2026-03-20*
+*Research completed: 2026-03-21*
 *Ready for roadmap: yes*

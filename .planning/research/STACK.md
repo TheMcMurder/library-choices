@@ -1,192 +1,228 @@
 # Stack Research
 
-**Domain:** Data-driven civic interactive configurator — static site with JavaScript calculator
-**Researched:** 2026-03-20
-**Confidence:** MEDIUM-HIGH (Tailwind v4 confirmed from official docs; Eleventy v3 and Alpine.js from training data through August 2025; Astro version from training data)
+**Domain:** Civic interactive static site — adding accessible range slider and weekly schedule display to existing Eleventy v3 + Tailwind v4 + vanilla JS stack
+**Researched:** 2026-03-21
+**Confidence:** HIGH (slider behavior from MDN; Tailwind v4 patterns from official docs + community; browser support from caniuse and MDN)
 
 ---
 
-## Recommended Stack
+## Summary: No New Dependencies
+
+Both v1.1 features are implementable with zero new npm packages. Everything needed is either already in the browser or already in the existing stack.
+
+---
+
+## Recommended Stack Additions
 
 ### Core Technologies
 
-| Technology | Version | Purpose | Why Recommended |
-|------------|---------|---------|-----------------|
-| Eleventy (11ty) | `^3.0` | Static site generator — renders Nunjucks templates with data from `_data/` files | Purpose-built for data-driven static HTML generation; zero-opinion output; the `_data/` convention gives non-developer-editable data files for free; no client-side JS bundle from the framework itself; fits the architecture already established in ARCHITECTURE.md |
-| Tailwind CSS | `^4.1` | Utility-first CSS — mobile-first responsive styling | v4.1 stable (April 2025); v4.x is the current generation; CSS-first config with `@theme` block replaces `tailwind.config.js`; automatic content detection eliminates manual `content` array config; mobile-first by default |
-| `@tailwindcss/postcss` | `^4.1` | PostCSS plugin — integrates Tailwind into Eleventy's build pipeline | Eleventy is not a Vite project; it uses PostCSS for CSS transforms. The `@tailwindcss/postcss` package is the correct Tailwind v4 integration path for PostCSS-based workflows |
-| Vanilla JavaScript (ES2020+) | Browser-native | Runtime calculator — reads embedded data, responds to form events, updates DOM | The calculator is ~50 lines of arithmetic and DOM manipulation. Vanilla JS is sufficient; no framework overhead; no dependencies to maintain; works without a bundler or transpile step |
-| Nunjucks | `^3.2` | HTML templating language for Eleventy | Eleventy's most feature-complete template engine; supports loops, filters, and the `| dump | safe` pattern needed to embed `_data/config.js` as JSON into a `<script>` tag (see ARCHITECTURE.md Pattern 1) |
+No additions. The existing stack handles both features:
+
+| Technology | Version | Already Present | Why No Addition Needed |
+|------------|---------|-----------------|------------------------|
+| `<input type="range">` | Browser-native | Yes (HTML5) | Baseline Widely Available since March 2017 across all modern browsers; no polyfill needed |
+| `aria-valuetext` | Browser-native ARIA | Yes | Standard ARIA attribute on `<input type="range">` to give screen readers a formatted string ("$30,000/year") instead of raw integer |
+| Nunjucks `{% for %}` loop | Bundled with Eleventy | Yes | Renders both the slider node labels and the schedule table from config.js data |
+| Vanilla JS `input` event | Browser-native | Yes | Updates `aria-valuetext` and the per-node description text on slider move |
+| Tailwind v4 CSS | `^4.2.2` (installed) | Yes | `@layer base` handles vendor pseudo-elements for track/thumb styling |
 
 ### Supporting Libraries
 
-| Library | Version | Purpose | When to Use |
-|---------|---------|---------|-------------|
-| Alpine.js | `^3.x` | Lightweight reactive UI framework (~15 KB min+gz) | Use if the shareable-URL state encoding feature (v1.x) requires managing complex form state across multiple controls. Alpine's `x-data` / `x-model` declarative bindings are cleaner than manual `document.querySelector` chains for state serialization. **Not required for v1 MVP** — vanilla JS is sufficient for the initial calculator. Upgrade path: add Alpine when state complexity grows. |
-| PostCSS | `^8.x` | CSS post-processor | Required as the runtime for `@tailwindcss/postcss`. Eleventy does not include PostCSS by default; it must be wired in via an Eleventy plugin or a separate build step |
-| `@11ty/eleventy-plugin-postcss` | latest | Bridges PostCSS into Eleventy's asset pipeline | Allows Eleventy to transform `src/css/input.css` through PostCSS/Tailwind during the same `eleventy` build command, keeping one build step |
+None required. Specific justifications:
 
-### Development Tools
-
-| Tool | Purpose | Notes |
-|------|---------|-------|
-| `npm` scripts | Build orchestration | `"build": "eleventy"` is sufficient; Tailwind runs as a PostCSS plugin inside Eleventy, so no separate `tailwindcss --watch` process is needed. `"start": "eleventy --serve"` for local dev |
-| Eleventy Dev Server | Local development with hot-reload | Bundled with Eleventy v3 (`@11ty/eleventy-dev-server`); no separate server needed; serves `_site/` locally |
-| GitHub Actions | CI/CD deployment to GitHub Pages | `actions/checkout@v4`, `actions/setup-node@v4`, `actions/upload-pages-artifact@v3`, `actions/deploy-pages@v4` — full pattern in ARCHITECTURE.md |
-| Node.js | Build runtime | `>=18.0.0` required for Eleventy v3 (uses modern ESM). Use `engines` field in `package.json` to document this requirement |
+| Library Considered | Decision | Rationale |
+|--------------------|----------|-----------|
+| range-slider npm packages (e.g., `ion.rangeSlider`, `noUiSlider`) | Do NOT add | Overkill for 6 discrete integer values; adds JS bundle; creates new dependency to maintain; native `<input type="range">` with `step` is fully keyboard accessible and WCAG 2.1 AA compliant |
+| `flatpickr` or schedule display libraries | Do NOT add | Weekly schedule is static display-only data; a Nunjucks loop over config.js into a `<dl>` or styled `<div>` grid is sufficient; no interactivity needed |
+| Polyfills for range input | Do NOT add | IE11 is irrelevant to this project; all browsers supporting GitHub Pages have had range input since 2017 |
 
 ---
 
-## Installation
+## Integration Points With Existing Stack
 
-```bash
-# Core build dependencies
-npm install --save-dev @11ty/eleventy nunjucks
+### 1. Range Slider (Collections Budget)
 
-# Tailwind CSS v4 with PostCSS integration
-npm install --save-dev tailwindcss @tailwindcss/postcss postcss
+**HTML (`src/index.html`):**
 
-# Eleventy PostCSS plugin (wires PostCSS into Eleventy asset pipeline)
-npm install --save-dev @11ty/eleventy-plugin-postcss
+Replace `<select id="collections">` with `<input type="range">`. Key attributes:
 
-# Alpine.js (add only when state complexity warrants it — NOT needed for v1 MVP)
-# If using via CDN (recommended for this scale):
-#   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-# If using via npm:
-npm install alpinejs
+- `min="10000"` / `max="60000"` / `step="10000"` — maps exactly to the 6 existing config options
+- `value="{{ defaultValue }}"` — rendered by Nunjucks from config.js `isDefault` flag
+- `aria-valuetext="$30,000/year"` — set initially by Nunjucks; updated dynamically by JS on `input` event
+- `list="collections-ticks"` paired with a `<datalist>` — tick marks in Chrome/Safari/Edge; Firefox silently ignores (acceptable degradation — the step constraint still works)
+
+**Node labels (dollar amounts + descriptions below slider):**
+
+Build a positioned label row in Nunjucks alongside the slider:
+
+```html
+<div class="relative flex justify-between mt-2">
+  {% for opt in config.collections.options %}
+    <span class="text-xs text-gray-500">{{ opt.value | toCurrency }}</span>
+  {% endfor %}
+</div>
 ```
 
----
+These are pure CSS/HTML — no JS required for positioning (flexbox `justify-between` on 6 evenly-spaced items maps to the 6 step nodes).
 
-## Tailwind v4 Configuration (Important: No tailwind.config.js)
+**Per-node description text:**
 
-Tailwind v4 replaces `tailwind.config.js` with CSS-native configuration. The **ARCHITECTURE.md reference to `tailwind.config.js` is a Tailwind v3 pattern and should not be created for a v4 project.**
+Embed all descriptions as `data-` attributes on the slider or in a parallel JSON blob (via `window.LIBRARY_DATA`, already present). On `input` event in calculator.js, read the current slider value and update a description `<p>` element — same pattern as the existing `getCollectionsCost()` function.
+
+**`calculator.js` change:**
+
+Replace `getCollectionsCost()` body: change from `parseInt(collectionsSelect.value, 10)` on a `<select>` to the same read from `rangeInput.value` — identical semantics, one-line change.
+
+**URL state (`url.js`):**
+
+The existing `URLSearchParams` serialization reads control values; `rangeInput.value` returns a string integer just like `selectElement.value`. No URL encoding logic change needed.
+
+**CSS (`src/css/style.css` via `@layer base`):**
+
+Vendor pseudo-elements for cross-browser thumb/track styling must be written in `@layer base` (not Tailwind utility classes) because the pseudo-elements require `appearance: none` and duplicate declarations for webkit vs. moz:
 
 ```css
-/* src/css/input.css */
-@import "tailwindcss";
-
-/* Custom theme extensions (v4 CSS-first config) */
-@theme {
-  /* Example: Add only if you need custom tokens */
-  /* --color-civic-blue: oklch(0.45 0.15 240); */
+@layer base {
+  input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    /* size, color, border-radius */
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    /* height, border-radius, background */
+  }
+  input[type="range"]::-moz-range-thumb { /* Firefox */ }
+  input[type="range"]::-moz-range-track { /* Firefox */ }
 }
 ```
 
-Tailwind v4 auto-detects source files from the filesystem (respecting `.gitignore`). No manual `content` array configuration is needed.
+Tailwind arbitrary variant syntax (`[&::-webkit-slider-thumb]:bg-blue-600`) works in HTML class attributes but is verbose for multi-property pseudo-elements. `@layer base` in `style.css` is cleaner for this use case.
 
-PostCSS config:
+**Progress fill (filled track behind thumb):**
 
-```javascript
-// postcss.config.js
-module.exports = {
-  plugins: {
-    "@tailwindcss/postcss": {},
-  },
-};
+`::-moz-range-progress` exists only in Firefox. Chrome/Safari have no equivalent CSS pseudo-element. For a purely decorative filled track, use a JS `input` listener that updates a CSS custom property:
+
+```js
+slider.addEventListener('input', function() {
+  var pct = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+  slider.style.setProperty('--slider-pct', pct + '%');
+});
 ```
 
----
+Then in CSS: `background: linear-gradient(to right, blue var(--slider-pct), gray var(--slider-pct))` on the track. This is a ~5-line addition to `calculator.js`.
 
-## Alternatives Considered
+**If progress fill is skipped:** A flat-color track with a visually distinct thumb is fully WCAG 2.1 AA compliant. Progress fill is purely decorative and can be omitted to keep the JS minimal.
 
-| Recommended | Alternative | When to Use Alternative |
-|-------------|-------------|-------------------------|
-| Eleventy | Astro | Use Astro instead if the project needs: (1) React/Vue/Svelte components with islands architecture, (2) Content Collections with TypeScript schema validation, (3) MDX-based content. Astro v5 (released Dec 2024) is excellent for content-heavy sites but its component model and build pipeline are heavier than needed for a single-page calculator. Eleventy produces simpler output with less tooling. |
-| Eleventy | Hugo | Use Hugo if build speed at scale matters (Hugo is ~100x faster), the team is comfortable with Go templating, or the project will have hundreds of pages. For a single-page site, Hugo's speed advantage is irrelevant and its templating is less approachable for maintainers. |
-| Eleventy | Jekyll | Do not use Jekyll. It is the legacy GitHub Pages default (no longer recommended). Ruby-based build chain adds friction; active development has slowed; Tailwind integration is more complex. |
-| Vanilla JS | Alpine.js | Use Alpine.js if the interactive state grows beyond ~3 form controls with interdependencies, or if shareable URL encoding requires synchronizing state across many elements. Alpine adds ~15 KB but eliminates manual DOM querying boilerplate for complex state. |
-| Vanilla JS | React / Vue / Svelte | Do not use a SPA framework for this project. A tax calculator with three input dimensions and one output number does not justify a component framework's build pipeline, bundle size, hydration complexity, or maintenance surface. |
-| `@tailwindcss/postcss` (v4) | `tailwindcss` PostCSS plugin (v3) | If for any reason the team is locked to Tailwind v3 (e.g., an existing project), use `tailwindcss` as a PostCSS plugin with `tailwind.config.js`. For a greenfield project in 2025, start with v4. |
-| PostCSS via Eleventy plugin | Vite | Use Vite if Astro or a Vite-native framework is chosen as the SSG. Vite's Tailwind plugin (`@tailwindcss/vite`) is the most seamless v4 integration — but Vite is not compatible with Eleventy's build model. Don't use both. |
-| npm scripts | Parcel / Webpack | Do not add a bundler. The calculator JS has no imports and no dependencies — bundling provides zero benefit and adds configuration complexity. Eleventy passthrough-copies the JS file as-is. |
+### 2. Weekly Schedule Display (Staffing / Hours Open)
 
----
+**`config.js` data structure addition:**
 
-## What NOT to Use
+Add a `schedule` array to each staffing level object. Recommended structure:
 
-| Avoid | Why | Use Instead |
-|-------|-----|-------------|
-| `tailwind.config.js` | This is a Tailwind v3 configuration file. Tailwind v4 uses CSS-native `@theme` blocks in your CSS entry file. Creating a `tailwind.config.js` on a v4 project will be ignored or cause confusion | CSS `@theme` block in `src/css/input.css` |
-| `@tailwind base; @tailwind components; @tailwind utilities;` directives | These are v3 directives. Tailwind v4 uses a single `@import "tailwindcss";` in CSS | `@import "tailwindcss";` |
-| Jekyll | Ruby-based, legacy GitHub Pages default. Active development has slowed. No native JS data pipeline. Tailwind integration requires workarounds | Eleventy |
-| React / Vue / Svelte / SolidJS | Component frameworks designed for complex application UIs. This is a single-page calculator — the framework cost (bundle, hydration, build complexity) vastly exceeds the interactivity requirements | Vanilla JS or Alpine.js |
-| `fetch()` for config data at runtime | Introduces async complexity, loading states, error handling, and CORS concerns for a static site. Fails on `file://` protocol during local testing | Embed data as inline JSON via Eleventy template (`{{ config | dump | safe }}`) |
-| Webpack / Rollup / Parcel | Module bundlers add significant configuration overhead for a project with no npm imports in its client JS | No bundler — Eleventy passthrough-copy for JS files |
-| Tailwind v3 on a greenfield project | v3 reached end-of-life when v4 shipped in January 2025. v4 is stable, faster, and uses a simpler CSS-based configuration | Tailwind v4.x (`tailwindcss@latest`) |
-| Committing `_site/` to `main` | Pollutes git history, creates merge conflicts, breaks reproducible builds | GitHub Actions CI/CD to deploy `_site/` — keep it in `.gitignore` |
-
----
-
-## Stack Patterns by Variant
-
-**If the data file will be updated by a non-developer via GitHub's web editor:**
-- Use `_data/config.json` (JSON) instead of `_data/config.js` (JS module)
-- JSON has stricter syntax (no comments, no trailing commas, no computed values) but GitHub's web editor validates JSON inline
-- Add a comment at the top of the file in a companion `_data/config.README.md` explaining each field
-- Downside: loss of inline comments explaining what each number means; mitigate with clear key names and the README
-
-**If Alpine.js is added for v1.x shareable URL feature:**
-- Load Alpine via CDN defer script tag (no bundler needed, ~15KB, stays off critical path)
-- Replace manual `document.querySelector` chains in `calculator.js` with `x-data` state object
-- URL encoding: serialize `$store` or `x-data` object to `URLSearchParams` on every `x-on:change`
-- Read URL params on `Alpine.store` initialization
-
-**If the project grows to multiple pages (About, FAQ, Methodology):**
-- Add Eleventy layouts (`src/_layouts/base.njk`) and partials (`src/_includes/`)
-- Data file structure does not change — `_data/config.js` remains the single source of truth
-- Add `src/about.njk`, `src/methodology.njk` as additional pages
-
----
-
-## Version Compatibility
-
-| Package | Compatible With | Notes |
-|---------|-----------------|-------|
-| `@11ty/eleventy@^3.0` | Node.js `>=18.0.0` | Eleventy v3 dropped support for Node 14/16; uses ESM-compatible internals. Verify Node version on CI runner matches local |
-| `tailwindcss@^4.1` | `@tailwindcss/postcss@^4.1` | Must use the matching `@tailwindcss/postcss` version — not the legacy `tailwindcss` PostCSS plugin from v3. Both packages should be on the same major version |
-| `tailwindcss@^4.1` | `postcss@^8.x` | Tailwind v4 requires PostCSS 8. PostCSS 7 is incompatible |
-| `nunjucks@^3.2` | `@11ty/eleventy@^3.0` | Eleventy v3 bundles Nunjucks support; no separate configuration needed. The `nunjucks` package itself is a transitive dependency |
-| Alpine.js `@^3.x` | Vanilla JS calculator | Alpine can coexist with vanilla JS. If Alpine is added, ensure no naming conflicts between Alpine's `x-data` scope and `window.LIBRARY_DATA` |
-| `actions/deploy-pages@v4` | GitHub Actions | Requires Pages source set to "GitHub Actions" in repo settings (not branch-based deployment). This is a one-time manual setting change in the GitHub repo UI |
-
----
-
-## Key Tailwind v4 Migration Note for Architecture.md
-
-The current ARCHITECTURE.md references `tailwind.config.js` in the recommended project structure. This file does not exist in Tailwind v4. The correct v4 project structure omits it:
-
-```
-library-choices/
-├── _data/
-│   └── config.js          # ALL scenario numbers
-├── src/
-│   ├── index.njk          # Single page template
-│   ├── css/
-│   │   └── input.css      # @import "tailwindcss"; + @theme block
-│   └── js/
-│       └── calculator.js  # Runtime calculation logic
-├── _site/                 # Build output (gitignored)
-├── .eleventy.js           # Eleventy config
-├── postcss.config.js      # @tailwindcss/postcss plugin config
-└── package.json           # Build scripts + dependencies
+```js
+{
+  id: "1fte",
+  label: "1 Full-Time Librarian",
+  annualCost: 150000,
+  description: "...",
+  schedule: [
+    { day: "Monday",    open: "9:00 AM", close: "6:00 PM" },
+    { day: "Tuesday",   open: "9:00 AM", close: "6:00 PM" },
+    { day: "Wednesday", open: "9:00 AM", close: "6:00 PM" },
+    { day: "Thursday",  open: "9:00 AM", close: "8:00 PM" },
+    { day: "Friday",    open: "9:00 AM", close: "5:00 PM" },
+    { day: "Saturday",  open: "10:00 AM", close: "2:00 PM" },
+    { day: "Sunday",    open: null,       close: null }
+  ]
+}
 ```
 
-`tailwind.config.js` → removed (v4 does not use it)
-`postcss.config.js` → added (configures `@tailwindcss/postcss`)
+Using `null` for closed days is cleaner than an empty string — Nunjucks `{% if day.open %}` handles the conditional naturally.
+
+**Nunjucks rendering:**
+
+A `<dl>` (definition list) is semantically correct for day → hours pairs and is accessible without ARIA additions:
+
+```html
+{% for day in level.schedule %}
+  <div class="flex justify-between">
+    <dt class="text-sm font-medium text-gray-700">{{ day.day }}</dt>
+    <dd class="text-sm text-gray-600">
+      {% if day.open %}{{ day.open }} – {{ day.close }}{% else %}Closed{% endif %}
+    </dd>
+  </div>
+{% endfor %}
+```
+
+No JavaScript needed — this is build-time template rendering.
+
+**Showing schedule per radio selection:**
+
+The three staffing levels already render as separate radio options with descriptions. Two approaches:
+
+1. **Always-visible per-option:** Render each level's schedule inline below its radio button description (like the existing `<p class="text-sm text-gray-600">{{ level.description }}</p>`). Simple, no JS.
+2. **Show on selection:** Use `hidden` attribute on schedule `<div>`s; add a small JS listener on the `staffing` radio group `change` event to toggle visibility. Consistent with the existing delegated `form.addEventListener('change', updateResult)` pattern.
+
+Option 1 is recommended for v1.1 — no additional JS, zero accessibility risk, consistent with the existing design pattern of showing all option details inline.
+
+---
+
+## What NOT to Add
+
+| Avoid | Why | Instead |
+|-------|-----|---------|
+| noUiSlider / ion.rangeSlider / any slider npm package | Adds JS bundle weight (25–80 KB), external CSS, and a new dependency to maintain. Native `<input type="range">` covers all required functionality. | Native `<input type="range">` with `step`, `aria-valuetext`, vanilla JS for description update |
+| `datalist` as the sole tick-mark strategy | Firefox (as of early 2026) has an open bug since 2013 and does not render tick marks from `<datalist>` on range inputs. The `list` attribute still works for snap-to-step behavior in Firefox. | Use `datalist` for Chrome/Safari tick rendering; supplement with CSS-positioned label row for cross-browser visual nodes |
+| CSS scroll-driven animations for progress fill | Experimental in 2025–2026; limited browser support; adds complexity without meaningful UX benefit for a 6-step slider | JS `--slider-pct` custom property approach, or skip progress fill entirely |
+| A schedule/calendar display library | Static day→hours display is 7 rows of data. Any library is more complexity than the problem warrants. | Nunjucks `{% for %}` loop into a `<dl>` or `<div>` grid |
+| Separating schedule data into a new file | Breaks the single-source-of-truth pattern. Non-developer needs one file to edit. | Add `schedule` array directly to each staffing level object in `config.js` |
+| PostCSS pipeline change | The project already uses `@tailwindcss/cli` standalone (confirmed from `package.json` — `build:css` script). No PostCSS change needed. | Keep existing `tailwindcss -i ... -o ...` CLI command |
+
+---
+
+## Browser Compatibility Notes
+
+| Feature | Chrome | Firefox | Safari | Notes |
+|---------|--------|---------|--------|-------|
+| `<input type="range">` | Full | Full | Full | Baseline Widely Available |
+| `step` attribute discrete snapping | Full | Full | Full | All modern browsers |
+| `datalist` tick marks on range | Yes | No (open bug #841942) | Yes | Visual degradation only; step behavior unaffected in Firefox |
+| `aria-valuetext` | Full | Full | Full | Standard ARIA, universally supported |
+| `::-webkit-slider-thumb` | Yes | No | Yes | Use `::-moz-range-thumb` for Firefox |
+| `::-moz-range-progress` (filled track) | No | Yes | No | Filled-track CSS is Firefox-only; use JS custom property for cross-browser |
+| `accent-color` for quick theming | Full | Full | Full | Works without `appearance: none`; gives basic blue thumb/track matching Tailwind `blue-600` |
+
+**Bottom line on Firefox tick marks:** Firefox users see a working slider that snaps to the 6 correct values; they just don't see visual tick marks. The CSS label row below the slider compensates — all 6 dollar values are visible as text regardless of browser.
+
+---
+
+## No Version Compatibility Changes
+
+All v1.1 work uses:
+
+- HTML attributes already supported in the installed browser targets
+- Tailwind v4.2.2 (already installed) — no upgrade needed
+- Eleventy v3.1.5 (already installed) — no upgrade needed
+- Vanilla JS patterns already present in `calculator.js`
+
+No `package.json` changes are expected for v1.1.
 
 ---
 
 ## Sources
 
-- Tailwind CSS official blog, https://tailwindcss.com/blog/tailwindcss-v4 — v4.0 stable confirmed January 22, 2025 (HIGH confidence — fetched from official source)
-- Tailwind CSS official blog, https://tailwindcss.com/blog/tailwindcss-v4-1 — v4.1 release confirmed April 3, 2025 (HIGH confidence — fetched from official source)
-- Tailwind CSS installation docs, https://tailwindcss.com/docs/installation — v4.2 shown as current docs version; PostCSS and Vite plugin both valid (HIGH confidence — fetched from official source)
-- Eleventy v3.0 release — ESM support, Node 18+ requirement, Nunjucks support (MEDIUM confidence — training data through August 2025; WebFetch unavailable to verify current patch version)
-- Alpine.js v3.x bundle size (~15KB) and reactive model — (MEDIUM confidence — training data; WebFetch unavailable)
-- Astro v5.0 release (December 2024) — used as comparison point for alternatives (MEDIUM confidence — training data)
-- ARCHITECTURE.md (this repository) — authoritative for Eleventy choice, data embedding pattern, and GitHub Actions deployment workflow (HIGH confidence)
+- MDN Web Docs, https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range — range input spec, `step`, `list`, `aria-valuetext` behavior (HIGH confidence — official spec)
+- MDN Web Docs, https://developer.mozilla.org/en-US/docs/Web/CSS/::-moz-range-track — Firefox pseudo-element reference (HIGH confidence — official spec)
+- Mozilla Bugzilla #841942, https://bugzilla.mozilla.org/show_bug.cgi?id=841942 — Firefox datalist tick mark support (open since 2013, unresolved as of 2026) (HIGH confidence — official bug tracker)
+- caniuse.com, https://caniuse.com/datalist — datalist browser support table (MEDIUM confidence — WebSearch, could not WebFetch directly)
+- Tailwind CSS v4 GitHub discussion #8748, https://github.com/tailwindlabs/tailwindcss/discussions/8748 — range input styling in Tailwind v4 (MEDIUM confidence — community discussion, consistent with Tailwind v4 docs)
+- `package.json` (this repo) — confirmed `@tailwindcss/cli@^4.2.2` standalone CLI, no PostCSS pipeline (HIGH confidence — direct file inspection)
+- CSS-Tricks, https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/ — vendor pseudo-element pattern for cross-browser styling (MEDIUM confidence — WebSearch, established reference)
 
 ---
-*Stack research for: Civic interactive property tax configurator (Cache County Library Choices)*
-*Researched: 2026-03-20*
+*Stack research for: v1.1 UX — Collections budget slider + weekly schedule display on Eleventy v3 + Tailwind v4 + vanilla JS static site*
+*Researched: 2026-03-21*
