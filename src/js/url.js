@@ -16,7 +16,7 @@
       params.set('staffing', staffing.value);
     }
 
-    // Collections — select value
+    // Collections — slider value
     var collections = document.getElementById('collections');
     if (collections) {
       params.set('collections', collections.value);
@@ -54,10 +54,10 @@
     // Restore collections
     var collectionsParam = params.get('collections');
     if (collectionsParam) {
-      var select = document.getElementById('collections');
-      var validValues = Array.from(select.options).map(function (o) { return o.value; });
+      var slider = document.getElementById('collections');
+      var validValues = data.collections.options.map(function (o) { return String(o.value); });
       if (validValues.indexOf(collectionsParam) !== -1) {
-        select.value = collectionsParam;
+        slider.value = collectionsParam;
       }
       // Invalid collections value — silently use default
     }

@@ -43,6 +43,20 @@
     breakdownDetail.textContent = '$' + totalCost.toLocaleString('en-US') + ' total \u00f7 ' + totalHouseholds.toLocaleString('en-US') + ' households';
   }
 
+  function updateSliderLabels() {
+    var slider = document.getElementById('collections');
+    var value = parseInt(slider.value, 10);
+    var options = window.LIBRARY_DATA.collections.options;
+    var node = null;
+    for (var i = 0; i < options.length; i++) {
+      if (options[i].value === value) { node = options[i]; break; }
+    }
+    if (!node) return;
+    document.getElementById('collections-amount').textContent = '$' + value.toLocaleString('en-US');
+    document.getElementById('collections-description').textContent = node.description;
+    slider.setAttribute('aria-valuetext', (value / 1000).toLocaleString('en-US') + ',000 dollars \u2014 ' + node.description);
+  }
+
   var toggleBtn = document.getElementById('breakdown-toggle');
   var breakdownDetail = document.getElementById('breakdown-detail');
 
@@ -63,7 +77,14 @@
   // Single delegated listener covers all three control types
   form.addEventListener('change', updateResult);
 
+  // Input event fires on every slider move (including during drag) — ensures live updates
+  form.addEventListener('input', function () {
+    updateResult();
+    updateSliderLabels();
+  });
+
   // Run immediately to show result for initial (default) state
   // Safe to call here — script is at end of <body>, DOM is ready
   updateResult();
+  updateSliderLabels();
 }());
