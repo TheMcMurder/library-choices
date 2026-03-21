@@ -43,6 +43,34 @@
  *                               "defaultChecked: false" (no quotes
  *                               around true/false).
  *
+ *   - To change open/close
+ *     hours:                  Find the staffing level and change
+ *                             the text next to "open" or "close".
+ *                             Use 12-hour format with no space:
+ *                             "9am", "4pm", "12pm". Keep the quotes.
+ *
+ *   - To add a schedule row
+ *     (e.g., Saturday hours): Copy this example and add it after
+ *                             the last } in the schedule array:
+ *
+ *                               { days: "6", open: "9am", close: "5pm" },
+ *
+ *                             Day numbers: 1=Monday, 2=Tuesday,
+ *                             3=Wednesday, 4=Thursday, 5=Friday,
+ *                             6=Saturday, 7=Sunday.
+ *                             Use "1-5" for Monday through Friday.
+ *
+ *   - To remove a schedule
+ *     row:                    Delete the entire { days: ... }, line.
+ *                             Keep at least one row per staffing level.
+ *
+ *   - Copy-pasteable two-row schedule example:
+ *
+ *       schedule: [
+ *         { days: "1-5", open: "9am", close: "8pm" },
+ *         { days: "6",   open: "9am", close: "5pm" },
+ *       ],
+ *
  * IMPORTANT: Do NOT change property names (the words before
  * the colons) or remove any curly braces { }.
  * ============================================================
@@ -66,25 +94,37 @@ export default {
 
   staffingLevels: [
     {
-      id: "1fte",
+      id: "1fte",  // URL-IMMUTABLE — do not rename
       label: "1 Full-Time Librarian",
       annualCost: 150000, // PLACEHOLDER
+      schedule: [
+        { days: "1-5", open: "9am", close: "5pm" },
+      ],
       description:
         "Basic reference service and public hours, 40 hours per week on a standard holiday schedule.",
       source: "Cache County HR salary schedule FY2025",
     },
     {
-      id: "1fte-1pte",
+      id: "1fte-1pte",  // URL-IMMUTABLE — do not rename
       label: "1 Full-Time + 1 Part-Time",
       annualCost: 190000, // PLACEHOLDER
+      schedule: [
+        { days: "1-5", open: "9am", close: "8pm" },
+        { days: "6",   open: "9am", close: "5pm" },
+      ],
       description:
         "Extended evening and weekend hours with one additional part-time staff member.",
       source: "Cache County HR salary schedule FY2025",
     },
     {
-      id: "1fte-2pte",
+      id: "1fte-2pte",  // URL-IMMUTABLE — do not rename
       label: "1 Full-Time + 2 Part-Time",
       annualCost: 230000, // PLACEHOLDER
+      schedule: [
+        { days: "1-5", open: "9am", close: "8pm" },
+        { days: "6",   open: "9am", close: "5pm" },
+        { days: "7",   open: "12pm", close: "5pm" },
+      ],
       description:
         "Full-week coverage including Saturdays with two part-time staff members.",
       source: "Cache County HR salary schedule FY2025",
