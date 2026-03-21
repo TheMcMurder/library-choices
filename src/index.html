@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="/css/compiled.css" />
   </head>
   <body class="bg-white text-gray-900">
-    <main class="max-w-2xl mx-auto px-8 py-12">
 
-      <h1 class="text-2xl font-semibold text-gray-900 mb-2">{{ config.siteName }}</h1>
+    <header class="bg-blue-800 text-white px-4 py-4 sm:px-8">
+      <h1 class="text-xl font-semibold">{{ config.siteName }}</h1>
+      <p class="text-sm text-blue-200 mt-1">Explore library funding options for our community</p>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4 sm:px-8 py-8 pb-16">
 
       <form id="configurator" class="space-y-8">
 
@@ -84,13 +88,39 @@
 
       </form>
 
-      {# --- Result Placeholder --- #}
-      <div id="result" class="mt-8 p-6 bg-gray-50 border border-gray-200 rounded-lg" aria-live="polite" aria-atomic="true">
-        <h2 class="text-xl font-semibold text-gray-900">Annual cost per household</h2>
-        <p class="text-sm text-gray-600 mt-2">Select options above to see the estimated cost.</p>
-      </div>
-
     </main>
+
+    <footer class="bg-gray-50 border-t border-gray-200 px-4 py-8 sm:px-8 mt-8 text-sm text-gray-600">
+      <div class="max-w-2xl mx-auto">
+        <p class="text-gray-500">Data: Cache County records. Built by [builder name].</p>
+        {% if config.footerLinks and config.footerLinks.length %}
+        <div class="mt-4">
+          <p class="font-semibold text-gray-900 mb-2">Not happy with these choices?</p>
+          <p class="mb-2">Explore other options for your community:</p>
+          {% for link in config.footerLinks %}
+            <a href="{{ link.url }}" class="text-blue-700 underline hover:text-blue-900 block mb-1" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </footer>
+
+    {% if config.draft %}
+    <div class="fixed inset-0 z-40 pointer-events-none flex items-center justify-center overflow-hidden" aria-hidden="true">
+      <span class="text-[12vw] font-semibold text-red-600 opacity-15 rotate-[-30deg] select-none tracking-widest uppercase">DRAFT</span>
+    </div>
+    {% endif %}
+
+    <div id="result-bar" class="fixed bottom-0 left-0 right-0 z-50 bg-blue-800 text-white flex items-center justify-between px-4 py-4 shadow-lg relative" aria-live="polite" aria-atomic="true">
+      <span id="result-amount" class="text-2xl font-semibold">Select options above</span>
+      <button id="breakdown-toggle" type="button" aria-label="Show cost breakdown" class="p-2 rounded hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5" aria-hidden="true" focusable="false">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0ZM8.94 6.94a.75.75 0 1 1-1.061-1.061 3 3 0 1 1 2.871 5.026v.345a.75.75 0 0 1-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 1 0 8.94 6.94ZM10 15a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" />
+        </svg>
+      </button>
+      <div id="breakdown-detail" hidden class="absolute bottom-full left-0 right-0 bg-blue-900 text-sm text-white px-4 py-2">
+      </div>
+    </div>
 
     <script>
       window.LIBRARY_DATA = {{ config | dump | safe }};

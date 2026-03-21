@@ -25,6 +25,11 @@
  *                             "label", and "households".
  *                             No other file changes needed.
  *
+ *   - To remove the DRAFT
+ *     watermark:              Change "draft: true" to
+ *                             "draft: false" (no quotes around
+ *                             true/false).
+ *
  * IMPORTANT: Do NOT change property names (the words before
  * the colons) or remove any curly braces { }.
  * ============================================================
@@ -32,6 +37,19 @@
 
 export default {
   siteName: "Cache County Library Service Choices",
+
+  draft: true, // Set to false when real numbers are finalized
+
+  footerLinks: [
+    {
+      label: "County-wide ballot initiative",
+      url: "https://example.com/ballot" // Site owner will supply real URL
+    },
+    {
+      label: "Friends of the Library",
+      url: "https://example.com/friends" // Site owner will supply real URL
+    }
+  ],
 
   staffingLevels: [
     {
