@@ -59,6 +59,14 @@
 - [x] **HOURS-04**: Site owner can update schedules via GitHub web UI — NON-DEVELOPER EDIT GUIDE covers schedule format with a copy-pasteable example
 - [x] **HOURS-05**: Existing URL encoding for staffing selections (`?staffing=1fte-2pte`) continues to work unchanged
 
+### Compact URL Encoding (URL)
+
+- [ ] **URL-01**: After any form interaction, url.js writes compact params (pi, tau, phi) with 0-based positional index values — not verbose param names
+- [ ] **URL-02**: Opening a compact URL (e.g. `?pi=2&tau=2&phi=0,1`) in a new tab restores the correct staffing, collections, and city selections
+- [ ] **URL-03**: Legacy verbose URLs (`?staffing=1fte-2pte&collections=30000&cities=providence,nibley`) still restore correctly (backward compatibility)
+- [ ] **URL-04**: Out-of-bounds or NaN index values are silently ignored — default selections are used
+- [ ] **URL-05**: NON-DEVELOPER EDIT GUIDE warns that reordering config arrays breaks existing compact shared URLs
+
 ## v2 Requirements
 
 ### Enhancements
@@ -113,13 +121,18 @@
 | HOURS-03 | Phase 8 | Complete |
 | HOURS-04 | Phase 8 | Complete |
 | HOURS-05 | Phase 8 | Complete |
+| URL-01 | Phase 9 | Planned |
+| URL-02 | Phase 9 | Planned |
+| URL-03 | Phase 9 | Planned |
+| URL-04 | Phase 9 | Planned |
+| URL-05 | Phase 9 | Planned |
 
 **Coverage:**
-- v1 requirements: 16 total — all Complete ✓
-- v1.1 requirements: 13 total
-- Mapped to phases: 13 ✓
-- Unmapped: 0 ✓
+- v1 requirements: 16 total — all Complete
+- v1.1 requirements: 18 total (SLDR: 8, HOURS: 5, URL: 5)
+- Mapped to phases: 18
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-20*
-*Last updated: 2026-03-21 — v1.1 traceability added (SLDR → Phase 7, HOURS → Phase 8)*
+*Last updated: 2026-03-21 — URL requirements added for Phase 9 compact URL encoding*
