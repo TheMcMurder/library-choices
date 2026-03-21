@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Calculator and Accessibility** - Real-time tax calculation working with full WCAG 2.1 AA compliance (completed 2026-03-20)
 - [x] **Phase 4: Visual Polish and Shareability** - Production-quality design and shareable URL encoding complete (completed 2026-03-21)
 - [x] **Phase 5: Documentation Gap Fixes** - Traceability frontmatter corrected for Phase 3 summary (completed 2026-03-21)
-- [ ] **Phase 6: Tech Debt Cleanup and Browser Verification** - Dead code removed, city defaults made config-driven, all browser QA completed, and CONF-02 product decision resolved
+- [x] **Phase 6: Tech Debt Cleanup and Browser Verification** - Dead code removed, city defaults made config-driven, all browser QA completed, and CONF-02 product decision resolved (completed 2026-03-21)
 
 ## Phase Details
 
@@ -101,10 +101,10 @@ Plans:
   4. All 9 Phase 04 browser items verified and documented (civic design, sticky bar, tooltip, URL round-trip, fallback, back button, mobile 375px, DRAFT overlay)
   5. Phase 02 and Phase 03 browser items verified (collections layout, `window.LIBRARY_DATA`, screen reader, keyboard focus rings, touch targets)
   6. CONF-02 product decision documented — product owner confirms select satisfies "toggle on/off" or zero/off option implemented
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [x] 06-01-PLAN.md — Tech debt cleanup: remove dead config/markup, make city defaults config-driven
-- [ ] 06-02-PLAN.md — Browser verification checklist and CONF-02 product decision
+- [x] 06-02-PLAN.md — Browser verification checklist and CONF-02 product decision
 
 ## Progress
 
@@ -118,4 +118,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 3. Calculator and Accessibility | 1/1 | Complete   | 2026-03-20 |
 | 4. Visual Polish and Shareability | 2/2 | Complete   | 2026-03-21 |
 | 5. Documentation Gap Fixes | 1/1 | Complete   | 2026-03-21 |
-| 6. Tech Debt Cleanup and Browser Verification | 1/2 | In Progress|  |
+| 6. Tech Debt Cleanup and Browser Verification | 2/2 | Complete   | 2026-03-21 |
