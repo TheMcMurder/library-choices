@@ -45,8 +45,8 @@ Citizens can explore any combination of service and funding choices and immediat
 
 ### Active (v1.1)
 
-- [ ] Collections budget slider with nodes (replaces dropdown)
-- [ ] Per-node "Available books/digital" description; lowest node = digital only (Beehive/Libby)
+- [x] Collections budget slider with nodes (replaces dropdown) — Validated in Phase 07: collections-budget-slider
+- [x] Per-node "Available books/digital" description; lowest node = digital only (Beehive/Libby) — Validated in Phase 07: collections-budget-slider
 - [ ] Staffing section reframed as "Hours Open" with weekly schedule display
 - [ ] Structured schedule data in config.js (days + open/close times, rendered by site)
 
@@ -100,4 +100,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-21 — Milestone v1.1 started. UX improvements: collections slider + hours open reframe.*
+*Last updated: 2026-03-21 — Phase 07 complete. Collections budget slider shipped with URL restoration.*
