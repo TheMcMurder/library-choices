@@ -67,6 +67,7 @@ Plan: Not started
 ### Roadmap Evolution
 
 - Phase 9 added: Compact URL Encoding — pi/tau/phi easter egg param aliases with positional index values
+- Phase 10 added: custom staffing selector UI and clickable slider interval nodes
 
 ### Decisions
 

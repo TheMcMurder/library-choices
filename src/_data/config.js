@@ -159,30 +159,34 @@ export default {
     {
       id: "providence",
       label: "Providence",
-      households: 2100, // PLACEHOLDER
+      households: 2823,
       defaultChecked: true,
-      source: "Cache County Assessor 2024",
+      source: "Census.gov",
+      sourceLink: "https://www.census.gov/quickfacts/fact/table/nibleycityutah,providencecityutah/HSD410224"
     },
     {
       id: "nibley",
       label: "Nibley",
-      households: 1800, // PLACEHOLDER
+      households: 2193,
       defaultChecked: true,
-      source: "Cache County Assessor 2024",
+      source: "Census.gov[1]",
+      sourceLink: "https://www.census.gov/quickfacts/fact/table/nibleycityutah,providencecityutah/HSD410224"
     },
     {
       id: "millville",
       label: "Millville",
-      households: 950, // PLACEHOLDER
+      households: 606,
       defaultChecked: true,
-      source: "Cache County Assessor 2024",
+      source: "Census Reporter",
+      sourceLink: "https://censusreporter.org/profiles/16000US4950370-millville-ut/"
     },
     {
       id: "river-heights",
       label: "River Heights",
-      households: 620, // PLACEHOLDER
+      households: 692,
       defaultChecked: true,
-      source: "Cache County Assessor 2024",
+      source: "Census Reporter",
+      sourceLink: "https://censusreporter.org/profiles/16000US4964120-river-heights-ut/"
     },
   ],
 };

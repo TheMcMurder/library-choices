@@ -85,3 +85,13 @@ Plans:
 | 7. Collections Budget Slider | v1.1 | 1/2 | Gap closure | - |
 | 8. Hours Open Schedule Display | v1.1 | 0/1 | Planned | - |
 | 9. Compact URL Encoding | v1.1 | 1/1 | Complete   | 2026-03-21 |
+
+### Phase 10: custom staffing selector UI and clickable slider interval nodes
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 9
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 10 to break down)
