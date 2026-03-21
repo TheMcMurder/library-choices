@@ -50,7 +50,6 @@
             <select
               id="collections"
               name="collections"
-              data-cost="{% for opt in config.collections.options %}{% if opt.isDefault %}{{ opt.value }}{% endif %}{% endfor %}"
               class="border border-gray-300 rounded px-3 py-2 text-base text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
             >
               {% for opt in config.collections.options %}
