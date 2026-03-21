@@ -12,7 +12,7 @@
 - [x] **CONF-03**: User can check/uncheck participating cities (Providence, Nibley, Millville, River Heights + data-driven for future additions)
 - [x] **CONF-04**: Tax impact result updates in real time as any selection changes
 - [x] **CONF-05**: Zero-city guard — friendly explanatory message shown when no cities are selected (no NaN/error displayed)
-- [ ] **CONF-06**: Shareable URL — current selections encoded in query string so scenarios can be linked
+- [x] **CONF-06**: Shareable URL — current selections encoded in query string so scenarios can be linked
 
 ### Data & Updatability
 
@@ -74,7 +74,7 @@
 | CONF-04 | Phase 3 | Complete |
 | CONF-05 | Phase 3 | Complete |
 | TRST-03 | Phase 3 | Complete |
-| CONF-06 | Phase 4 | Pending |
+| CONF-06 | Phase 4 | Complete |
 | DESG-01 | Phase 4 | Complete |
 | DESG-02 | Phase 4 | Complete |
 | DESG-03 | Phase 4 | Complete |
