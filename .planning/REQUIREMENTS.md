@@ -30,7 +30,7 @@
 
 - [ ] **DESG-01**: Polished, trustworthy visual design appropriate for civic engagement (not a prototype aesthetic)
 - [ ] **DESG-02**: Mobile-first responsive layout — full functionality on a phone without zooming
-- [ ] **DESG-03**: Clean, simple design language using Tailwind CSS v4
+- [x] **DESG-03**: Clean, simple design language using Tailwind CSS v4
 
 ### Infrastructure
 
@@ -77,7 +77,7 @@
 | CONF-06 | Phase 6 | Pending |
 | DESG-01 | Phase 6 | Pending |
 | DESG-02 | Phase 6 | Pending |
-| DESG-03 | Phase 6 | Pending |
+| DESG-03 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 16 total
