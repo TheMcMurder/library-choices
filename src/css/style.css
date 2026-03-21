@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+@layer base {
+  input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+  }
+  input[type='range']::-webkit-slider-runnable-track {
+    background-color: theme(--color-blue-200);
+    border-radius: 0.5rem;
+    height: 0.5rem;
+  }
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: theme(--color-blue-800);
+    border-radius: 50%;
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-top: -0.375rem;
+  }
+  input[type='range']::-moz-range-track {
+    background-color: theme(--color-blue-200);
+    border-radius: 0.5rem;
+    height: 0.5rem;
+  }
+  input[type='range']::-moz-range-thumb {
+    background-color: theme(--color-blue-800);
+    border: none;
+    border-radius: 50%;
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+  input[type='range']:focus-visible {
+    outline: 2px solid theme(--color-blue-600);
+    outline-offset: 2px;
+  }
+}

@@ -45,18 +45,28 @@
         {# --- Collections Budget --- #}
         <fieldset class="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
           <legend class="text-xl font-semibold text-gray-900 px-1">Collections Budget</legend>
-          <div class="flex flex-col gap-2">
-            <label for="collections" class="text-base font-semibold text-gray-900">Annual collections budget</label>
-            <select
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+              <label for="collections" class="text-base font-semibold text-gray-900">Annual collections budget</label>
+              <span id="collections-amount" class="text-base font-semibold text-blue-800">$30,000</span>
+            </div>
+            <input
+              type="range"
               id="collections"
               name="collections"
-              class="border border-gray-300 rounded px-3 py-2 text-base text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
-            >
+              min="10000"
+              max="60000"
+              step="10000"
+              value="30000"
+              aria-valuetext="30,000 dollars \u2014 Print collection + digital"
+              class="w-full cursor-pointer"
+            />
+            <div class="flex justify-between text-xs text-gray-500 px-0" aria-hidden="true">
               {% for opt in config.collections.options %}
-                <option value="{{ opt.value }}" {% if opt.isDefault %}selected{% endif %}>${{ opt.value | toLocaleString }}/year</option>
+                <span>${{ (opt.value / 1000) | int }}k</span>
               {% endfor %}
-            </select>
-            <p class="text-sm text-gray-600 leading-normal">{{ config.collections.description }}</p>
+            </div>
+            <p id="collections-description" class="text-sm text-gray-600 leading-normal"></p>
             <cite class="text-sm text-gray-500 not-italic">Source: {{ config.collections.source }}</cite>
           </div>
         </fieldset>

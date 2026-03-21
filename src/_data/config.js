@@ -30,6 +30,13 @@
  *                             "draft: false" (no quotes around
  *                             true/false).
  *
+ *   - To change a collections
+ *     description:              Find the option in "collections"
+ *                               and change the text next to
+ *                               "description". Keep the quotes.
+ *                               Use a plain dash — not special
+ *                               characters.
+ *
  *   - To change which cities
  *     start checked:            Find the city and change
  *                               "defaultChecked: true" to
@@ -89,12 +96,12 @@ export default {
       "New books, periodicals, and digital media added to the collection each year.",
     source: "Cache County Library Services budget proposal FY2025",
     options: [
-      { value: 10000, isDefault: false }, // PLACEHOLDER — update with real minimum
-      { value: 20000, isDefault: false },
-      { value: 30000, isDefault: true }, // current budget
-      { value: 40000, isDefault: false },
-      { value: 50000, isDefault: false },
-      { value: 60000, isDefault: false },
+      { value: 10000, isDefault: false, description: "Digital-only access via Beehive and Libby \u2014 no physical print collection" },
+      { value: 20000, isDefault: false, description: "Small rotating print collection + digital" },
+      { value: 30000, isDefault: true,  description: "Print collection + digital" },
+      { value: 40000, isDefault: false, description: "Expanded print + digital + periodicals" },
+      { value: 50000, isDefault: false, description: "Full print + digital + periodicals + AV materials" },
+      { value: 60000, isDefault: false, description: "Full collection + digital + periodicals + AV + special programs" },
     ],
   },
 

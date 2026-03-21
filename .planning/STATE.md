@@ -2,9 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: UX — Citizen-Meaningful Controls
-status: roadmap_ready
-stopped_at: ~
-last_updated: "2026-03-21T00:00:00.000Z"
+status: Roadmap ready, awaiting plan-phase
+stopped_at: Phase 7 UI-SPEC approved
+last_updated: "2026-03-21T17:37:04.785Z"
+last_activity: 2026-03-21 — v1.1 roadmap created (Phases 7–8)
 progress:
   total_phases: 2
   completed_phases: 0
@@ -120,6 +121,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-21T00:00:00.000Z
-Stopped at: v1.1 roadmap created — ready for plan-phase 7
-Resume file: .planning/ROADMAP.md
+Last session: 2026-03-21T17:37:04.782Z
+Stopped at: Phase 7 UI-SPEC approved
+Resume file: .planning/phases/07-collections-budget-slider/07-UI-SPEC.md
