@@ -3,7 +3,7 @@
 **Defined:** 2026-03-20
 **Core Value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
 
-## v1 Requirements
+## v1 Requirements (Complete — v1.0)
 
 ### Configurator
 
@@ -38,6 +38,27 @@
 - [x] **INFR-02**: GitHub Actions deploy to GitHub Pages
 - [x] **INFR-03**: No runtime server dependencies — fully static output
 
+## v1.1 Requirements
+
+### Collections Budget Slider (SLDR)
+
+- [ ] **SLDR-01**: User can adjust the collections budget via a range slider (replaces the dropdown)
+- [ ] **SLDR-02**: Slider snaps to 6 discrete nodes matching existing dollar amounts ($10k–$60k in $10k steps)
+- [ ] **SLDR-03**: Each node displays an "Available books/digital" description; the lowest node describes digital-only access (Beehive/Libby)
+- [ ] **SLDR-04**: Description text and the tax result update live during drag and keyboard navigation — not only on release
+- [ ] **SLDR-05**: Screen reader users hear a citizen-meaningful label via dynamically updated `aria-valuetext` (not the raw integer)
+- [ ] **SLDR-06**: Dollar amount labels are visible below the slider on all browsers (CSS label row, not datalist-only, due to Firefox bug)
+- [ ] **SLDR-07**: Slider thumb and track are custom styled to match the site's civic design (blue-800)
+- [ ] **SLDR-08**: Previously shared URLs containing `?collections=30000` restore the correct slider node
+
+### Hours Open (HOURS)
+
+- [ ] **HOURS-01**: Staffing section heading reads "Hours Open" (not "Staffing Level")
+- [ ] **HOURS-02**: Each staffing option displays its weekly schedule inline, always visible below the radio label (no JS toggle needed)
+- [ ] **HOURS-03**: Schedule data is structured in `config.js` as an array of `{days, open, close}` entries using 12-hour format (e.g. `9am`, `4pm`)
+- [ ] **HOURS-04**: Site owner can update schedules via GitHub web UI — NON-DEVELOPER EDIT GUIDE covers schedule format with a copy-pasteable example
+- [ ] **HOURS-05**: Existing URL encoding for staffing selections (`?staffing=1fte-2pte`) continues to work unchanged
+
 ## v2 Requirements
 
 ### Enhancements
@@ -55,6 +76,7 @@
 | Per-city tax rates | Uniform per-household split is the agreed model |
 | Real-time data sync | Tool must work offline; data updates via data file |
 | Logan, Hyrum, other self-library cities | They have their own libraries and are not participants |
+| Animated schedule transitions | Motion disorder risk; instant update is more accessible |
 
 ## Traceability
 
@@ -78,13 +100,26 @@
 | DESG-01 | Phase 6 | Complete |
 | DESG-02 | Phase 6 | Complete |
 | DESG-03 | Phase 6 | Complete |
+| SLDR-01 | — | Pending |
+| SLDR-02 | — | Pending |
+| SLDR-03 | — | Pending |
+| SLDR-04 | — | Pending |
+| SLDR-05 | — | Pending |
+| SLDR-06 | — | Pending |
+| SLDR-07 | — | Pending |
+| SLDR-08 | — | Pending |
+| HOURS-01 | — | Pending |
+| HOURS-02 | — | Pending |
+| HOURS-03 | — | Pending |
+| HOURS-04 | — | Pending |
+| HOURS-05 | — | Pending |
 
 **Coverage:**
-- v1 requirements: 16 total
-- Mapped to phases: 16
-- Complete: 16 | Pending: 0
-- Unmapped: 0 ✓
+- v1 requirements: 16 total — all Complete ✓
+- v1.1 requirements: 13 total
+- Mapped to phases: 0 (roadmap pending)
+- Unmapped: 13 ⚠️
 
 ---
 *Requirements defined: 2026-03-20*
-*Last updated: 2026-03-20 after Phase 6 browser verification — all 16 v1 requirements Complete*
+*Last updated: 2026-03-21 — v1.1 requirements added (SLDR, HOURS)*
