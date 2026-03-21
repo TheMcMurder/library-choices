@@ -71,6 +71,18 @@
  *         { days: "6",   open: "9am", close: "5pm" },
  *       ],
  *
+ *   - IMPORTANT — compact URLs
+ *     and array order:          Shared links use compact URL
+ *                               encoding (pi/tau/phi) based on
+ *                               array position. If you reorder
+ *                               or insert items in the middle of
+ *                               staffingLevels, collections options,
+ *                               or cities arrays, existing shared
+ *                               links will point to wrong items.
+ *                               Always ADD new items at the END
+ *                               of an array — never insert at the
+ *                               beginning or middle.
+ *
  * IMPORTANT: Do NOT change property names (the words before
  * the colons) or remove any curly braces { }.
  * ============================================================
