@@ -59,4 +59,4 @@ The site owner (a city council member or civic tech advocate) needs to update nu
 | Data file for all numbers | Owner can update without touching templates | — Pending |
 
 ---
-*Last updated: 2026-03-20 — Phase 3 complete: real-time calculator and WCAG 2.1 AA accessibility*
+*Last updated: 2026-03-21 — Phase 5 complete: documentation traceability gaps closed (CONF-04, CONF-05, TRST-03 now tracked in REQUIREMENTS.md)*
