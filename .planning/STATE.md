@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: UX — Citizen-Meaningful Controls
 status: unknown
-stopped_at: Completed 08-01-PLAN.md
-last_updated: "2026-03-21T22:21:24.249Z"
+stopped_at: Completed 09-01-PLAN.md
+last_updated: "2026-03-21T22:56:44.822Z"
 progress:
   total_phases: 3
-  completed_phases: 2
-  total_plans: 3
-  completed_plans: 3
+  completed_phases: 3
+  total_plans: 4
+  completed_plans: 4
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 08 — hours-open-schedule-display
+**Current focus:** Phase 09 — compact-url-encoding-pi-tau-phi-easter-egg-param-aliases-with-positional-index-values
 
 ## Current Position
 
-Phase: 09
-Plan: Not started
+Phase: 09 (compact-url-encoding-pi-tau-phi-easter-egg-param-aliases-with-positional-index-values) — EXECUTING
+Plan: 1 of 1
 
 ## Performance Metrics
 
@@ -60,6 +60,7 @@ Plan: Not started
 | Phase 07 P01 | 1 | 2 tasks | 5 files |
 | Phase 07-collections-budget-slider P02 | 1min | 1 tasks | 1 files |
 | Phase 08 P01 | 22min | 3 tasks | 3 files |
+| Phase 09 P01 | 1min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -107,6 +108,9 @@ Recent decisions affecting current work:
 - [Phase 07-collections-budget-slider]: url.js dispatches both change and input events after restoreFromUrl() — change for updateResult() hook, input for updateSliderLabels() UI sync
 - [Phase 08]: formatDays filter uses 2024-01-01T12:00:00Z noon-UTC reference date and timeZone: UTC in Intl.DateTimeFormat to prevent CI/CD timezone drift in day name output
 - [Phase 08]: Staffing labels renamed to Basic/Extended/Current by site owner post-checkpoint; schedule hours tuned; docs committed to track changes
+- [Phase 09]: Compact params (pi/tau/phi) are write-canonical; verbose params (staffing/collections/cities) retained as backward-compatible decode fallback
+- [Phase 09]: 0-based positional indices for pi/tau/phi — direct JS array access, no offset arithmetic
+- [Phase 09]: Compact detection: params.has(pi) || params.has(tau) || params.has(phi) — compact path wins entirely if any compact key present
 
 ### v1.1 Research Flags
 
@@ -127,6 +131,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-21T21:51:55.193Z
-Stopped at: Completed 08-01-PLAN.md
+Last session: 2026-03-21T22:56:44.819Z
+Stopped at: Completed 09-01-PLAN.md
 Resume file: None

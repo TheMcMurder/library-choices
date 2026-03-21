@@ -68,9 +68,9 @@ Plans:
   3. Opening a legacy verbose URL like `?staffing=1fte-2pte&collections=30000&cities=providence,nibley` in a new tab still restores correctly (backward compat)
   4. An out-of-bounds index (e.g. `?pi=99`) is silently ignored — the default selection is used
   5. The NON-DEVELOPER EDIT GUIDE warns that array reordering breaks compact URLs
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 09-01-PLAN.md — Rewrite url.js with compact encode/decode, add edit guide array ordering warning
+- [x] 09-01-PLAN.md — Rewrite url.js with compact encode/decode, add edit guide array ordering warning
 
 ## Progress
 
@@ -84,4 +84,4 @@ Plans:
 | 6. Tech Debt Cleanup and Browser Verification | v1.0 | 2/2 | Complete | 2026-03-21 |
 | 7. Collections Budget Slider | v1.1 | 1/2 | Gap closure | - |
 | 8. Hours Open Schedule Display | v1.1 | 0/1 | Planned | - |
-| 9. Compact URL Encoding | v1.1 | 0/1 | Planned | - |
+| 9. Compact URL Encoding | v1.1 | 1/1 | Complete   | 2026-03-21 |
