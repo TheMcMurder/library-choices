@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Phase 4 context complete
-last_updated: "2026-03-20T22:48:59.307Z"
+stopped_at: "Completed 04-01-PLAN.md"
+last_updated: "2026-03-21T00:27:28Z"
 progress:
   total_phases: 4
   completed_phases: 3
-  total_plans: 5
-  completed_plans: 5
+  total_plans: 7
+  completed_plans: 6
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-20)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 03 — calculator-and-accessibility
+**Current focus:** Phase 04 — visual-polish-and-shareability
 
 ## Current Position
 
-Phase: 03 (calculator-and-accessibility) — EXECUTING
-Plan: 1 of 1
+Phase: 04 (visual-polish-and-shareability) — EXECUTING
+Plan: 2 of 2
 
 ## Performance Metrics
 
@@ -80,6 +80,9 @@ Recent decisions affecting current work:
 - [Phase 02-data-and-controls]: isDefault flag on options array drives pre-selected state in Nunjucks select loops; select data-cost set at build time, Phase 3 must update on change events
 - [Phase 03]: Collections cost reads select.value (live property), not select.dataset.cost (frozen build-time attribute)
 - [Phase 03]: IIFE + 'use strict' wrapping for calculator module encapsulation without bundler
+- [Phase 04]: Sticky bar #result-bar uses relative positioning so #breakdown-detail can use absolute bottom-full within the z-50 stacking context
+- [Phase 04]: DRAFT overlay z-40, sticky bar z-50 — sticky bar always above overlay
+- [Phase 04]: config.draft boolean and config.footerLinks array are non-developer editable fields in config.js; site owner toggles draft and supplies real footerLinks URLs via GitHub UI
 
 ### Pending Todos
 
@@ -92,6 +95,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-20T22:48:59.303Z
-Stopped at: Phase 4 context complete
-Resume file: .planning/phases/04-visual-polish-and-shareability/04-CONTEXT.md
+Last session: 2026-03-21T00:27:28Z
+Stopped at: Completed 04-01-PLAN.md
+Resume file: .planning/phases/04-visual-polish-and-shareability/04-01-SUMMARY.md
