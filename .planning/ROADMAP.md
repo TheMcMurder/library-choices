@@ -54,7 +54,9 @@ Plans:
   2. Each radio option shows its weekly schedule (days and times) directly below the label, always visible without any click or toggle
   3. A non-technical site owner can update a schedule entirely through the GitHub web UI using the NON-DEVELOPER EDIT GUIDE, which includes a copy-pasteable example
   4. A shared URL using `?staffing=1fte-2pte` restores the correct radio selection after the "Hours Open" reframe
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 08-01-PLAN.md — Add schedule data + formatDays filter, rename heading to "Hours Open", render schedule tables inline, extend edit guide
 
 ## Progress
 
@@ -67,7 +69,7 @@ Plans:
 | 5. Documentation Gap Fixes | v1.0 | 1/1 | Complete | 2026-03-21 |
 | 6. Tech Debt Cleanup and Browser Verification | v1.0 | 2/2 | Complete | 2026-03-21 |
 | 7. Collections Budget Slider | v1.1 | 1/2 | Gap closure | - |
-| 8. Hours Open Schedule Display | v1.1 | 0/? | Not started | - |
+| 8. Hours Open Schedule Display | v1.1 | 0/1 | Planned | - |
 
 ### Phase 9: Compact URL Encoding — pi/tau/phi easter egg param aliases with positional index values
 

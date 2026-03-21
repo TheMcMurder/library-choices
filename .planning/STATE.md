@@ -3,10 +3,10 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: UX — Citizen-Meaningful Controls
 status: unknown
-stopped_at: Completed 07-02-PLAN.md
-last_updated: "2026-03-21T20:30:11.790Z"
+stopped_at: Phase 8 UI-SPEC approved
+last_updated: "2026-03-21T20:57:11.691Z"
 progress:
-  total_phases: 2
+  total_phases: 3
   completed_phases: 1
   total_plans: 2
   completed_plans: 2
@@ -124,6 +124,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-21T20:27:56.846Z
-Stopped at: Completed 07-02-PLAN.md
-Resume file: None
+Last session: 2026-03-21T20:57:11.688Z
+Stopped at: Phase 8 UI-SPEC approved
+Resume file: .planning/phases/08-hours-open-schedule-display/08-UI-SPEC.md
