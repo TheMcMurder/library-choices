@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Data and Controls** - Data schema locked, all form controls rendered from data, explanatory copy in place (completed 2026-03-20)
 - [x] **Phase 3: Calculator and Accessibility** - Real-time tax calculation working with full WCAG 2.1 AA compliance (completed 2026-03-20)
 - [x] **Phase 4: Visual Polish and Shareability** - Production-quality design and shareable URL encoding complete (completed 2026-03-21)
-- [ ] **Phase 5: Documentation Gap Fixes** - Traceability frontmatter corrected for Phase 3 summary
+- [x] **Phase 5: Documentation Gap Fixes** - Traceability frontmatter corrected for Phase 3 summary (completed 2026-03-21)
 - [ ] **Phase 6: Tech Debt Cleanup and Browser Verification** - Dead code removed, city defaults made config-driven, all browser QA completed, and CONF-02 product decision resolved
 
 ## Phase Details
@@ -85,7 +85,7 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. `03-01-SUMMARY.md` frontmatter contains `requirements-completed: [CONF-04, CONF-05, TRST-03]`
   2. Traceability table in REQUIREMENTS.md reflects these as Complete
-**Plans:** 0/1 plans complete
+**Plans:** 1/1 plans complete
 Plans:
 - [ ] 05-01-PLAN.md — Add requirements-completed frontmatter to 03-01-SUMMARY.md
 
@@ -117,5 +117,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 2. Data and Controls | 2/2 | Complete   | 2026-03-20 |
 | 3. Calculator and Accessibility | 1/1 | Complete   | 2026-03-20 |
 | 4. Visual Polish and Shareability | 2/2 | Complete   | 2026-03-21 |
-| 5. Documentation Gap Fixes | 0/1 | Pending    | — |
+| 5. Documentation Gap Fixes | 1/1 | Complete   | 2026-03-21 |
 | 6. Tech Debt Cleanup and Browser Verification | 0/2 | Pending    | — |
