@@ -19,7 +19,7 @@
 
         {# --- Staffing Level --- #}
         <fieldset class="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
-          <legend class="text-xl font-semibold text-gray-900 px-1">Staffing Level</legend>
+          <legend class="text-xl font-semibold text-gray-900 px-1">Hours Open</legend>
           {% for level in config.staffingLevels %}
             <div class="flex flex-col gap-2">
               <div class="flex items-center gap-2 min-h-[44px]">
@@ -36,8 +36,23 @@
                   {{ level.label }} &mdash; ${{ level.annualCost | toLocaleString }}/year
                 </label>
               </div>
-              <p class="text-sm text-gray-600 leading-normal">{{ level.description }}</p>
-              <cite class="text-sm text-gray-500 not-italic">Source: {{ level.source }}</cite>
+              <table class="text-sm border-collapse mt-2">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-left text-sm font-semibold text-gray-800 pb-1 pr-4">Days</th>
+                    <th scope="col" class="text-left text-sm font-semibold text-gray-800 pb-1">Hours</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in level.schedule %}
+                  <tr>
+                    <td class="text-sm text-gray-600 py-1 pr-4">{{ row.days | formatDays }}</td>
+                    <td class="text-sm text-gray-600 py-1"><time>{{ row.open }}</time>&ndash;<time>{{ row.close }}</time></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <p class="text-sm text-gray-600 leading-normal mt-2">{{ level.description }}</p>
             </div>
           {% endfor %}
         </fieldset>
