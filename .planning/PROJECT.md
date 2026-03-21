@@ -35,10 +35,20 @@ Citizens can explore any combination of service and funding choices and immediat
 - [x] WCAG 2.1 AA: screen reader aria-live, keyboard focus rings, 44px touch targets — *Validated Phase 3*
 - [x] Collections select satisfies independent toggle (CONF-02: select-satisfies decision) — *Validated Phase 6*
 
-### Active (v1.1 candidates)
+## Current Milestone: v1.1 UX — Citizen-Meaningful Controls
 
-- [ ] Replace placeholder cost/household values with real data from product owner
-- [ ] DRAFT overlay removed / site marked as public when data is final
+**Goal:** Replace internal-terminology controls with citizen-meaningful UX — a collections budget slider with per-level context and a staffing section reframed as "hours open."
+
+**Target features:**
+- Collections budget: dropdown → slider with nodes + "Available books/digital" description per level (lowest = digital only / Beehive+Libby)
+- Staffing levels: rename/reframe as "Hours Open" with structured weekly schedule (days + times in config.js, rendered by site)
+
+### Active (v1.1)
+
+- [ ] Collections budget slider with nodes (replaces dropdown)
+- [ ] Per-node "Available books/digital" description; lowest node = digital only (Beehive/Libby)
+- [ ] Staffing section reframed as "Hours Open" with weekly schedule display
+- [ ] Structured schedule data in config.js (days + open/close times, rendered by site)
 
 ### Out of Scope
 
@@ -72,5 +82,22 @@ The site owner (a city council member or civic tech advocate) needs to update nu
 | CONF-02: select-satisfies (no zero/off option) | Collections select is independent of staffing; "toggle" means independent adjustment | ✓ Decided Phase 6 — product owner confirmed |
 | URL encoding via URLSearchParams + history.replaceState | Stateless sharing without server; degrades gracefully on invalid params | ✓ Good — all edge cases verified in Phase 6 browser QA |
 
+## Evolution
+
+This document evolves at phase transitions and milestone boundaries.
+
+**After each phase transition** (via `/gsd:transition`):
+1. Requirements invalidated? → Move to Out of Scope with reason
+2. Requirements validated? → Move to Validated with phase reference
+3. New requirements emerged? → Add to Active
+4. Decisions to log? → Add to Key Decisions
+5. "What This Is" still accurate? → Update if drifted
+
+**After each milestone** (via `/gsd:complete-milestone`):
+1. Full review of all sections
+2. Core Value check — still the right priority?
+3. Audit Out of Scope — reasons still valid?
+4. Update Context with current state
+
 ---
-*Last updated: 2026-03-21 — v1.0 MVP shipped. 6 phases, 10 plans, 16/16 requirements complete. Awaiting real cost/household data before public launch.*
+*Last updated: 2026-03-21 — Milestone v1.1 started. UX improvements: collections slider + hours open reframe.*
