@@ -7,7 +7,7 @@
 
 ### Configurator
 
-- [x] **CONF-01**: User can select a staffing level (1 FTE / 1 FTE+1 PTE / 1 FTE+2 PTE) via radio buttons
+- [x] **CONF-01**: User can select a staffing level (Basic / Extended / Current) via radio buttons
 - [x] **CONF-02**: User can toggle collections budget on/off independently of staffing
 - [x] **CONF-03**: User can check/uncheck participating cities (Providence, Nibley, Millville, River Heights + data-driven for future additions)
 - [x] **CONF-04**: Tax impact result updates in real time as any selection changes
