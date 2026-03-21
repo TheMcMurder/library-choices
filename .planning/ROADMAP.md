@@ -43,7 +43,7 @@ Full phase details: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 **Plans:** 2 plans (1 complete + 1 gap closure)
 Plans:
 - [x] 07-01-PLAN.md — Replace select dropdown with range slider, add descriptions and CSS styling, update JS for live interaction and URL restoration
-- [ ] 07-02-PLAN.md — Gap closure: dispatch input event after URL restoration so slider labels sync on shared URLs
+- [x] 07-02-PLAN.md — Gap closure: dispatch input event after URL restoration so slider labels sync on shared URLs
 
 ### Phase 8: Hours Open Schedule Display
 **Goal**: Citizens see each staffing option's actual weekly schedule inline, making the tradeoff between service levels tangible without requiring any JavaScript
