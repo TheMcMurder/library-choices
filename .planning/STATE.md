@@ -4,11 +4,11 @@ milestone: v1.1
 milestone_name: UX — Citizen-Meaningful Controls
 status: unknown
 stopped_at: Phase 8 UI-SPEC approved
-last_updated: "2026-03-21T20:57:11.691Z"
+last_updated: "2026-03-21T21:26:32.862Z"
 progress:
   total_phases: 3
   completed_phases: 1
-  total_plans: 2
+  total_plans: 3
   completed_plans: 2
 ---
 
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 07 — collections-budget-slider
+**Current focus:** Phase 08 — hours-open-schedule-display
 
 ## Current Position
 
-Phase: 8
-Plan: Not started
+Phase: 08 (hours-open-schedule-display) — EXECUTING
+Plan: 1 of 1
 
 ## Performance Metrics
 

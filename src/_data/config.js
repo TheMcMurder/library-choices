@@ -95,22 +95,21 @@ export default {
   staffingLevels: [
     {
       id: "1fte",  // URL-IMMUTABLE — do not rename
-      label: "1 Full-Time Librarian",
+      label: "Basic",
       annualCost: 150000, // PLACEHOLDER
       schedule: [
-        { days: "1-5", open: "9am", close: "5pm" },
+        { days: "1-5", open: "11am", close: "4pm" },
       ],
       description:
-        "Basic reference service and public hours, 40 hours per week on a standard holiday schedule.",
+        "One full-time staff member. Basic reference service and public hours, 40 hours per week on a standard holiday schedule.",
       source: "Cache County HR salary schedule FY2025",
     },
     {
       id: "1fte-1pte",  // URL-IMMUTABLE — do not rename
-      label: "1 Full-Time + 1 Part-Time",
+      label: "Extended",
       annualCost: 190000, // PLACEHOLDER
       schedule: [
-        { days: "1-5", open: "9am", close: "8pm" },
-        { days: "6",   open: "9am", close: "5pm" },
+        { days: "1-5", open: "10am", close: "5pm" },
       ],
       description:
         "Extended evening and weekend hours with one additional part-time staff member.",
@@ -118,15 +117,14 @@ export default {
     },
     {
       id: "1fte-2pte",  // URL-IMMUTABLE — do not rename
-      label: "1 Full-Time + 2 Part-Time",
+      label: "Current",
       annualCost: 230000, // PLACEHOLDER
       schedule: [
-        { days: "1-5", open: "9am", close: "8pm" },
-        { days: "6",   open: "9am", close: "5pm" },
-        { days: "7",   open: "12pm", close: "5pm" },
+        { days: "1-5", open: "10am", close: "6pm" },
+        { days: "6",   open: "10am", close: "2pm" },
       ],
       description:
-        "Full-week coverage including Saturdays with two part-time staff members.",
+        "Full-week coverage including Saturdays with one full-time staff and up to three part-time staff members.",
       source: "Cache County HR salary schedule FY2025",
     },
   ],
