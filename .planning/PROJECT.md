@@ -100,4 +100,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-21 — Phase 07 complete. Collections budget slider shipped with URL restoration.*
+*Last updated: 2026-03-21 — Phase 08 complete. Hours Open schedule display shipped — staffing options now show inline weekly tables (Basic/Extended/Current) driven by config.js data.*
