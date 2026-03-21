@@ -8,11 +8,11 @@
 ### Configurator
 
 - [x] **CONF-01**: User can select a staffing level (1 FTE / 1 FTE+1 PTE / 1 FTE+2 PTE) via radio buttons
-- [x] **CONF-02**: User can toggle collections budget on/off independently of staffing
+- [ ] **CONF-02**: User can toggle collections budget on/off independently of staffing
 - [x] **CONF-03**: User can check/uncheck participating cities (Providence, Nibley, Millville, River Heights + data-driven for future additions)
-- [x] **CONF-04**: Tax impact result updates in real time as any selection changes
-- [x] **CONF-05**: Zero-city guard — friendly explanatory message shown when no cities are selected (no NaN/error displayed)
-- [x] **CONF-06**: Shareable URL — current selections encoded in query string so scenarios can be linked
+- [ ] **CONF-04**: Tax impact result updates in real time as any selection changes
+- [ ] **CONF-05**: Zero-city guard — friendly explanatory message shown when no cities are selected (no NaN/error displayed)
+- [ ] **CONF-06**: Shareable URL — current selections encoded in query string so scenarios can be linked
 
 ### Data & Updatability
 
@@ -24,13 +24,13 @@
 
 - [x] **TRST-01**: Source citations shown for cost estimates and household counts
 - [x] **TRST-02**: Explanatory copy alongside each choice dimension (what does each staffing level mean in practice?)
-- [x] **TRST-03**: WCAG 2.1 AA — `aria-live` on result region, full keyboard navigation, 44px minimum touch targets
+- [ ] **TRST-03**: WCAG 2.1 AA — `aria-live` on result region, full keyboard navigation, 44px minimum touch targets
 
 ### Design & UX
 
-- [x] **DESG-01**: Polished, trustworthy visual design appropriate for civic engagement (not a prototype aesthetic)
-- [x] **DESG-02**: Mobile-first responsive layout — full functionality on a phone without zooming
-- [x] **DESG-03**: Clean, simple design language using Tailwind CSS v4
+- [ ] **DESG-01**: Polished, trustworthy visual design appropriate for civic engagement (not a prototype aesthetic)
+- [ ] **DESG-02**: Mobile-first responsive layout — full functionality on a phone without zooming
+- [ ] **DESG-03**: Clean, simple design language using Tailwind CSS v4
 
 ### Infrastructure
 
@@ -67,21 +67,22 @@
 | DATA-02 | Phase 2 | Complete |
 | DATA-03 | Phase 2 | Complete |
 | CONF-01 | Phase 2 | Complete |
-| CONF-02 | Phase 2 | Complete |
+| CONF-02 | Phase 6 | Pending |
 | CONF-03 | Phase 2 | Complete |
 | TRST-01 | Phase 2 | Complete |
 | TRST-02 | Phase 2 | Complete |
-| CONF-04 | Phase 3 | Complete |
-| CONF-05 | Phase 3 | Complete |
-| TRST-03 | Phase 3 | Complete |
-| CONF-06 | Phase 4 | Complete |
-| DESG-01 | Phase 4 | Complete |
-| DESG-02 | Phase 4 | Complete |
-| DESG-03 | Phase 4 | Complete |
+| CONF-04 | Phase 5 | Pending |
+| CONF-05 | Phase 5 | Pending |
+| TRST-03 | Phase 5 | Pending |
+| CONF-06 | Phase 6 | Pending |
+| DESG-01 | Phase 6 | Pending |
+| DESG-02 | Phase 6 | Pending |
+| DESG-03 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 16 total
 - Mapped to phases: 16
+- Complete: 9 | Pending: 7
 - Unmapped: 0 ✓
 
 ---
