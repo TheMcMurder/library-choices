@@ -42,14 +42,14 @@
 
 ### Collections Budget Slider (SLDR)
 
-- [ ] **SLDR-01**: User can adjust the collections budget via a range slider (replaces the dropdown)
-- [ ] **SLDR-02**: Slider snaps to 6 discrete nodes matching existing dollar amounts ($10k–$60k in $10k steps)
-- [ ] **SLDR-03**: Each node displays an "Available books/digital" description; the lowest node describes digital-only access (Beehive/Libby)
-- [ ] **SLDR-04**: Description text and the tax result update live during drag and keyboard navigation — not only on release
-- [ ] **SLDR-05**: Screen reader users hear a citizen-meaningful label via dynamically updated `aria-valuetext` (not the raw integer)
-- [ ] **SLDR-06**: Dollar amount labels are visible below the slider on all browsers (CSS label row, not datalist-only, due to Firefox bug)
-- [ ] **SLDR-07**: Slider thumb and track are custom styled to match the site's civic design (blue-800)
-- [ ] **SLDR-08**: Previously shared URLs containing `?collections=30000` restore the correct slider node
+- [x] **SLDR-01**: User can adjust the collections budget via a range slider (replaces the dropdown)
+- [x] **SLDR-02**: Slider snaps to 6 discrete nodes matching existing dollar amounts ($10k–$60k in $10k steps)
+- [x] **SLDR-03**: Each node displays an "Available books/digital" description; the lowest node describes digital-only access (Beehive/Libby)
+- [x] **SLDR-04**: Description text and the tax result update live during drag and keyboard navigation — not only on release
+- [x] **SLDR-05**: Screen reader users hear a citizen-meaningful label via dynamically updated `aria-valuetext` (not the raw integer)
+- [x] **SLDR-06**: Dollar amount labels are visible below the slider on all browsers (CSS label row, not datalist-only, due to Firefox bug)
+- [x] **SLDR-07**: Slider thumb and track are custom styled to match the site's civic design (blue-800)
+- [x] **SLDR-08**: Previously shared URLs containing `?collections=30000` restore the correct slider node
 
 ### Hours Open (HOURS)
 
@@ -100,14 +100,14 @@
 | DESG-01 | Phase 6 | Complete |
 | DESG-02 | Phase 6 | Complete |
 | DESG-03 | Phase 6 | Complete |
-| SLDR-01 | Phase 7 | Pending |
-| SLDR-02 | Phase 7 | Pending |
-| SLDR-03 | Phase 7 | Pending |
-| SLDR-04 | Phase 7 | Pending |
-| SLDR-05 | Phase 7 | Pending |
-| SLDR-06 | Phase 7 | Pending |
-| SLDR-07 | Phase 7 | Pending |
-| SLDR-08 | Phase 7 | Pending |
+| SLDR-01 | Phase 7 | Complete |
+| SLDR-02 | Phase 7 | Complete |
+| SLDR-03 | Phase 7 | Complete |
+| SLDR-04 | Phase 7 | Complete |
+| SLDR-05 | Phase 7 | Complete |
+| SLDR-06 | Phase 7 | Complete |
+| SLDR-07 | Phase 7 | Complete |
+| SLDR-08 | Phase 7 | Complete |
 | HOURS-01 | Phase 8 | Pending |
 | HOURS-02 | Phase 8 | Pending |
 | HOURS-03 | Phase 8 | Pending |
