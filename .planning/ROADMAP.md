@@ -40,7 +40,9 @@ Full phase details: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
   3. Dollar amount labels are visible below the slider in Firefox, Safari, and Chrome (CSS label row, not datalist-only)
   4. A screen reader user hears a meaningful label (e.g., "30,000 dollars — Print collection + digital") on every slider change, not a raw integer
   5. A previously shared URL containing `?collections=30000` restores the slider to the correct node when opened in a new browser tab
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 07-01-PLAN.md — Replace select dropdown with range slider, add descriptions and CSS styling, update JS for live interaction and URL restoration
 
 ### Phase 8: Hours Open Schedule Display
 **Goal**: Citizens see each staffing option's actual weekly schedule inline, making the tradeoff between service levels tangible without requiring any JavaScript
@@ -63,5 +65,5 @@ Full phase details: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 | 4. Visual Polish and Shareability | v1.0 | 2/2 | Complete | 2026-03-21 |
 | 5. Documentation Gap Fixes | v1.0 | 1/1 | Complete | 2026-03-21 |
 | 6. Tech Debt Cleanup and Browser Verification | v1.0 | 2/2 | Complete | 2026-03-21 |
-| 7. Collections Budget Slider | v1.1 | 0/? | Not started | - |
+| 7. Collections Budget Slider | v1.1 | 0/1 | Not started | - |
 | 8. Hours Open Schedule Display | v1.1 | 0/? | Not started | - |
