@@ -5,7 +5,9 @@
       "Bash(node:*)",
       "WebSearch",
       "Skill(gsd:plan-phase)",
-      "Skill(gsd:ui-phase)"
+      "Skill(gsd:ui-phase)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
