@@ -5,44 +5,60 @@
 (function () {
   'use strict';
 
-  const form = document.getElementById('configurator');
-  const resultEl = document.getElementById('result');
+  var form = document.getElementById('configurator');
 
   function getStaffingCost() {
-    const checked = form.querySelector('input[name="staffing"]:checked');
+    var checked = form.querySelector('input[name="staffing"]:checked');
     return parseInt(checked.dataset.cost, 10);
   }
 
   function getCollectionsCost() {
     // Must read .value, not .dataset.cost — data-cost is frozen at build-time default
-    const collectionsSelect = document.getElementById('collections');
+    var collectionsSelect = document.getElementById('collections');
     return parseInt(collectionsSelect.value, 10);
   }
 
   function getTotalHouseholds() {
     return Array.from(form.querySelectorAll('input[name="cities"]:checked'))
-      .reduce((sum, cb) => sum + parseInt(cb.dataset.households, 10), 0);
+      .reduce(function (sum, cb) { return sum + parseInt(cb.dataset.households, 10); }, 0);
   }
 
   function updateResult() {
-    const totalHouseholds = getTotalHouseholds();
+    var totalHouseholds = getTotalHouseholds();
+    var resultAmount = document.getElementById('result-amount');
+    var breakdownDetail = document.getElementById('breakdown-detail');
 
     if (totalHouseholds === 0) {
-      resultEl.innerHTML =
-        '<h2 class="text-xl font-semibold text-gray-900">Annual cost per household</h2>' +
-        '<p class="text-sm text-gray-600 mt-2">Select at least one participating city to calculate the estimated cost per household.</p>';
+      resultAmount.textContent = 'Select at least one city';
+      resultAmount.className = 'text-base text-blue-100';
+      breakdownDetail.textContent = '';
       return;
     }
 
-    const totalCost = getStaffingCost() + getCollectionsCost();
-    const perHousehold = totalCost / totalHouseholds;
+    var totalCost = getStaffingCost() + getCollectionsCost();
+    var perHousehold = totalCost / totalHouseholds;
 
-    resultEl.innerHTML =
-      '<h2 class="text-xl font-semibold text-gray-900">Annual cost per household</h2>' +
-      '<p class="text-3xl font-semibold text-blue-700 mt-2">$' + perHousehold.toFixed(2) + '</p>' +
-      '<p class="text-sm text-gray-500 mt-1">$' + totalCost.toLocaleString('en-US') +
-      ' total \u00f7 ' + totalHouseholds.toLocaleString('en-US') + ' households</p>';
+    resultAmount.textContent = '$' + perHousehold.toFixed(2) + '/household/year';
+    resultAmount.className = 'text-2xl font-semibold';
+    breakdownDetail.textContent = '$' + totalCost.toLocaleString('en-US') + ' total \u00f7 ' + totalHouseholds.toLocaleString('en-US') + ' households';
   }
+
+  var toggleBtn = document.getElementById('breakdown-toggle');
+  var breakdownDetail = document.getElementById('breakdown-detail');
+
+  toggleBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var isHidden = breakdownDetail.hidden;
+    breakdownDetail.hidden = !isHidden;
+    toggleBtn.setAttribute('aria-label', isHidden ? 'Hide cost breakdown' : 'Show cost breakdown');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!breakdownDetail.contains(e.target) && e.target !== toggleBtn && !toggleBtn.contains(e.target)) {
+      breakdownDetail.hidden = true;
+      toggleBtn.setAttribute('aria-label', 'Show cost breakdown');
+    }
+  });
 
   // Single delegated listener covers all three control types
   form.addEventListener('change', updateResult);
