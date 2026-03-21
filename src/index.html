@@ -74,7 +74,7 @@
                   value="{{ city.id }}"
                   data-households="{{ city.households }}"
                   class="accent-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
-                  checked
+                  {% if city.defaultChecked %}checked{% endif %}
                 />
                 <label for="city-{{ city.id }}" class="text-base font-semibold text-gray-900 cursor-pointer">
                   {{ city.label }} <span class="text-sm text-gray-500">({{ city.households | toLocaleString }} households)</span>

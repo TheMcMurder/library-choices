@@ -30,6 +30,12 @@
  *                             "draft: false" (no quotes around
  *                             true/false).
  *
+ *   - To change which cities
+ *     start checked:            Find the city and change
+ *                               "defaultChecked: true" to
+ *                               "defaultChecked: false" (no quotes
+ *                               around true/false).
+ *
  * IMPORTANT: Do NOT change property names (the words before
  * the colons) or remove any curly braces { }.
  * ============================================================
@@ -97,24 +103,28 @@ export default {
       id: "providence",
       label: "Providence",
       households: 2100, // PLACEHOLDER
+      defaultChecked: true,
       source: "Cache County Assessor 2024",
     },
     {
       id: "nibley",
       label: "Nibley",
       households: 1800, // PLACEHOLDER
+      defaultChecked: true,
       source: "Cache County Assessor 2024",
     },
     {
       id: "millville",
       label: "Millville",
       households: 950, // PLACEHOLDER
+      defaultChecked: true,
       source: "Cache County Assessor 2024",
     },
     {
       id: "river-heights",
       label: "River Heights",
       households: 620, // PLACEHOLDER
+      defaultChecked: true,
       source: "Cache County Assessor 2024",
     },
   ],
