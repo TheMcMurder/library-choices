@@ -8,11 +8,11 @@
 ### Configurator
 
 - [x] **CONF-01**: User can select a staffing level (1 FTE / 1 FTE+1 PTE / 1 FTE+2 PTE) via radio buttons
-- [ ] **CONF-02**: User can toggle collections budget on/off independently of staffing
+- [x] **CONF-02**: User can toggle collections budget on/off independently of staffing
 - [x] **CONF-03**: User can check/uncheck participating cities (Providence, Nibley, Millville, River Heights + data-driven for future additions)
 - [x] **CONF-04**: Tax impact result updates in real time as any selection changes
 - [x] **CONF-05**: Zero-city guard — friendly explanatory message shown when no cities are selected (no NaN/error displayed)
-- [ ] **CONF-06**: Shareable URL — current selections encoded in query string so scenarios can be linked
+- [x] **CONF-06**: Shareable URL — current selections encoded in query string so scenarios can be linked
 
 ### Data & Updatability
 
@@ -28,8 +28,8 @@
 
 ### Design & UX
 
-- [ ] **DESG-01**: Polished, trustworthy visual design appropriate for civic engagement (not a prototype aesthetic)
-- [ ] **DESG-02**: Mobile-first responsive layout — full functionality on a phone without zooming
+- [x] **DESG-01**: Polished, trustworthy visual design appropriate for civic engagement (not a prototype aesthetic)
+- [x] **DESG-02**: Mobile-first responsive layout — full functionality on a phone without zooming
 - [x] **DESG-03**: Clean, simple design language using Tailwind CSS v4
 
 ### Infrastructure
@@ -67,24 +67,24 @@
 | DATA-02 | Phase 2 | Complete |
 | DATA-03 | Phase 2 | Complete |
 | CONF-01 | Phase 2 | Complete |
-| CONF-02 | Phase 6 | Pending |
+| CONF-02 | Phase 6 | Complete |
 | CONF-03 | Phase 2 | Complete |
 | TRST-01 | Phase 2 | Complete |
 | TRST-02 | Phase 2 | Complete |
 | CONF-04 | Phase 3 | Complete |
 | CONF-05 | Phase 3 | Complete |
 | TRST-03 | Phase 3 | Complete |
-| CONF-06 | Phase 6 | Pending |
-| DESG-01 | Phase 6 | Pending |
-| DESG-02 | Phase 6 | Pending |
+| CONF-06 | Phase 6 | Complete |
+| DESG-01 | Phase 6 | Complete |
+| DESG-02 | Phase 6 | Complete |
 | DESG-03 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 16 total
 - Mapped to phases: 16
-- Complete: 12 | Pending: 4
+- Complete: 16 | Pending: 0
 - Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-20*
-*Last updated: 2026-03-20 after roadmap creation*
+*Last updated: 2026-03-20 after Phase 6 browser verification — all 16 v1 requirements Complete*
