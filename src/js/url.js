@@ -80,5 +80,6 @@
 
   restoreFromUrl();
   form.dispatchEvent(new Event('change'));
+  form.dispatchEvent(new Event('input'));
   form.addEventListener('change', encodeUrl);
 }());
