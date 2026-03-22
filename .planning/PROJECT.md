@@ -18,7 +18,7 @@ Citizens can explore any combination of service and funding choices and immediat
 - Indicator persists across all selection states (selected, unselected)
 - Driven by config.js data — no hardcoding of which option is "current"
 
-## Current State (v1.1 — shipped 2026-03-22)
+## Current State (v1.2 — shipped 2026-03-22)
 
 - **Live at:** https://mcmurdie.github.io/library-choices/
 - **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + Nunjucks templates
@@ -57,11 +57,13 @@ Citizens can explore any combination of service and funding choices and immediat
 - ✓ City options as full-width clickable card elements with name, household count, citation — v1.1
 - ✓ Keyboard focus indicators use outline-offset so focus ring appears outside selection ring — v1.1
 
-### Active (v1.2)
+### Validated (v1.2)
 
-- [ ] Persistent "current service level" indicator on staffing cards (CURR-01)
-- [ ] Persistent "current service level" indicator on collections slider tick (CURR-02)
-- [ ] Indicator driven by `isCurrentServiceLevel` flag in config.js — not hardcoded (CURR-03)
+- ✓ Persistent "current service level" indicator on staffing cards (CURR-01) — Validated in Phase 13
+- ✓ Persistent "current service level" indicator on collections slider tick (CURR-02) — Validated in Phase 13
+- ✓ Indicator driven by `isCurrentServiceLevel` flag in config.js — not hardcoded (CURR-03) — Validated in Phase 13
+- ✓ Amber ring and "Current level" badge on current staffing card; persists alongside blue selection ring (CURR-04) — Validated in Phase 13
+- ✓ Amber tick styling preserved by JS guard as slider moves; returns to amber when step deselected (CURR-05) — Validated in Phase 13
 
 ### Deferred (post-v1.2)
 
@@ -131,4 +133,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-21 after v1.2 milestone started — current service level indicator feature scoped.*
+*Last updated: 2026-03-22 after Phase 13 complete — v1.2 milestone shipped with current service level indicators.*
