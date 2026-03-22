@@ -2,54 +2,57 @@
 
 ## What This Is
 
-An interactive, mobile-first static website that helps Cache County citizens understand the fiscal choices around keeping their county library open. Users configure their own scenario — staffing level, collections funding, and which cities participate — and instantly see the resulting property tax impact per household. The site is built as a static site (Eleventy + Tailwind) with a separate data file so numbers can be updated without touching templates.
+An interactive, mobile-first static website that helps Cache County citizens understand the fiscal choices around keeping their county library open. Users configure their own scenario — staffing level ("Hours Open"), collections funding, and which cities participate — and instantly see the resulting property tax impact per household. All controls are citizen-meaningful: a slider with per-level descriptions, inline weekly schedules for each hours option, and city cards showing name and household count. The site is built as a static site (Eleventy + Tailwind) with a separate data file so numbers can be updated without touching templates.
 
 ## Core Value
 
 Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
 
-## Current State (v1.1 — Phase 10 complete 2026-03-22)
+## Current State (v1.1 — shipped 2026-03-22)
 
-- **Live at:** https://themcmurder.github.io/library-choices/
-- **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + 11ty Nunjucks templates
-- **Data file:** `src/_data/config.js` — all costs, city names, household counts, staffing levels
+- **Live at:** https://mcmurdie.github.io/library-choices/
+- **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + Nunjucks templates
+- **Data file:** `src/_data/config.js` — all costs, city names, household counts, staffing levels, schedules
 - **Build:** `pnpm run build` → `_site/` | CI: GitHub Actions deploys on push to `main`
-- **Codebase:** ~1,350 LOC across src/ (HTML, Nunjucks, JS, CSS)
+- **Codebase:** ~1,400 LOC across src/ (HTML, Nunjucks, JS, CSS)
+- **URL sharing:** Compact pi/tau/phi params (~20 chars) with backward-compatible verbose decode
 - **Known placeholder:** All cost/household values in `config.js` are marked `// PLACEHOLDER` — awaiting real data from product owner before public launch
 
 ## Requirements
 
 ### Validated (v1.0)
 
-- [x] Deploy to GitHub Pages — *Validated Phase 1*
-- [x] All dollar amounts and household counts live in a single data file — *Validated Phase 2*
-- [x] Staffing level options: 1 FTE / 1 FTE + 1 PTE / 1 FTE + 2 PTE — *Validated Phase 2*
-- [x] City participation: checkboxes for Providence, Nibley, Millville, River Heights — *Validated Phase 2*
-- [x] Live configurator with three independent choice dimensions — *Validated Phase 3*
-- [x] Collections budget: dropdown $10k–$60k ($30k default) — *Validated Phase 3*
-- [x] Tax calculation: total annual cost ÷ total participating households — *Validated Phase 3*
-- [x] Single per-household output number (uniform across cities) — *Validated Phase 3*
-- [x] Mobile-first responsive design (375px+) — *Validated Phase 4 + Phase 6 browser QA*
-- [x] Civic-appropriate visual design (blue-800 header, sticky result bar) — *Validated Phase 4 + Phase 6 browser QA*
-- [x] URL shareability — copy URL restores exact selections — *Validated Phase 4*
-- [x] WCAG 2.1 AA: screen reader aria-live, keyboard focus rings, 44px touch targets — *Validated Phase 3*
-- [x] Collections select satisfies independent toggle (CONF-02: select-satisfies decision) — *Validated Phase 6*
+- ✓ Deploy to GitHub Pages — v1.0
+- ✓ All dollar amounts and household counts live in a single data file — v1.0
+- ✓ Staffing level options with radio buttons — v1.0
+- ✓ City participation checkboxes (Providence, Nibley, Millville, River Heights) — v1.0
+- ✓ Live configurator with three independent choice dimensions — v1.0
+- ✓ Tax calculation: total annual cost ÷ total participating households — v1.0
+- ✓ Mobile-first responsive design (375px+) — v1.0
+- ✓ Civic-appropriate visual design (blue-800 header, sticky result bar) — v1.0
+- ✓ URL shareability — copy URL restores exact selections — v1.0
+- ✓ WCAG 2.1 AA: screen reader aria-live, keyboard focus rings, 44px touch targets — v1.0
+- ✓ Collections select satisfies independent toggle — v1.0
 
-## Current Milestone: v1.1 UX — Citizen-Meaningful Controls
+### Validated (v1.1)
 
-**Goal:** Replace internal-terminology controls with citizen-meaningful UX — a collections budget slider with per-level context and a staffing section reframed as "hours open."
+- ✓ Collections budget slider with 6 citizen-meaningful description nodes — v1.1
+- ✓ Live drag and keyboard updates; URL restoration syncs slider labels — v1.1
+- ✓ Screen reader aria-valuetext with citizen-meaningful label on every change — v1.1
+- ✓ Staffing section reframed as "Hours Open" with inline weekly schedules — v1.1
+- ✓ Schedule data in config.js; NON-DEVELOPER EDIT GUIDE covers schedule editing — v1.1
+- ✓ Compact pi/tau/phi URL params (~72% shorter); backward-compatible verbose decode — v1.1
+- ✓ Staffing options as full-width clickable card elements (CSS-only via has-[:checked]) — v1.1
+- ✓ Slider tick labels as clickable buttons that snap slider to value — v1.1
+- ✓ City options as full-width clickable card elements with name, household count, citation — v1.1
+- ✓ Keyboard focus indicators use outline-offset so focus ring appears outside selection ring — v1.1
 
-**Target features:**
-- Collections budget: dropdown → slider with nodes + "Available books/digital" description per level (lowest = digital only / Beehive+Libby)
-- Staffing levels: rename/reframe as "Hours Open" with structured weekly schedule (days + times in config.js, rendered by site)
+### Active (v1.2 candidates)
 
-### Active (v1.1)
-
-- [x] Collections budget slider with nodes (replaces dropdown) — Validated in Phase 07: collections-budget-slider
-- [x] Per-node "Available books/digital" description; lowest node = digital only (Beehive/Libby) — Validated in Phase 07: collections-budget-slider
-- [x] Compact URL encoding: pi/tau/phi Greek letter aliases replace verbose params — *Validated in Phase 09*
-- [ ] Staffing section reframed as "Hours Open" with weekly schedule display
-- [ ] Structured schedule data in config.js (days + open/close times, rendered by site)
+- [ ] Scenario summary text — human-readable sentence describing the selected combination (ENH-01)
+- [ ] Print stylesheet — printable version of the configured scenario (ENH-02)
+- [ ] Real household counts and cost figures sourced from Cache County records (content gap)
+- [ ] Non-developer edit workflow tested with site owner via GitHub web UI
 
 ### Out of Scope
 
@@ -57,6 +60,8 @@ Citizens can explore any combination of service and funding choices and immediat
 - Logan, Hyrum, and cities that have already built their own libraries
 - Backend / server-side logic — fully static
 - User accounts or saved scenarios
+- Per-city tax rates — uniform per-household split is the agreed model
+- Animated schedule transitions — motion disorder risk; instant update is more accessible
 
 ## Context
 
@@ -78,10 +83,19 @@ The site owner (a city council member or civic tech advocate) needs to update nu
 | Eleventy v3 ESM over plain HTML | Separates data from presentation; template-driven city/staffing loops | ✓ Good — `config.js` edit workflow validated |
 | Tailwind CSS v4 standalone CLI | Owner preference; avoids PostCSS pipeline complexity | ✓ Good — `postcss.config.mjs` was dead code, removed in Phase 6 |
 | Single tax number (not per-city) | Cost per household is uniform across participating cities | ✓ Good — formula confirmed correct |
-| All numbers in one data file | Owner can update without touching templates | ✓ Good — NON-DEVELOPER EDIT GUIDE added |
+| All numbers in one data file | Owner can update without touching templates | ✓ Good — NON-DEVELOPER EDIT GUIDE added and extended through v1.1 |
 | City defaults via `defaultChecked` flag | Config-driven checked state instead of hardcoded `checked` attr | ✓ Good — added Phase 6, consistent with data-driven pattern |
 | CONF-02: select-satisfies (no zero/off option) | Collections select is independent of staffing; "toggle" means independent adjustment | ✓ Decided Phase 6 — product owner confirmed |
 | URL encoding via URLSearchParams + history.replaceState | Stateless sharing without server; degrades gracefully on invalid params | ✓ Good — all edge cases verified in Phase 6 browser QA |
+| Range slider replacing collections dropdown | Citizens benefit from seeing where their choice sits on a spectrum with descriptions | ✓ Good — slider + descriptions substantially more informative than dropdown |
+| Dual event listener (change + input) on slider | change for URL encoding, input for live label updates — mobile critical | ✓ Good — input event gap found and closed in Phase 7-02 |
+| url.js validates against LIBRARY_DATA not DOM | Removes dependency on removed select element; works post-slider migration | ✓ Good — collections=30000 URLs continue to restore correctly |
+| formatDays filter uses noon-UTC reference date | Prevents CI/CD timezone drift in day name output | ✓ Good — stable across environments |
+| Compact pi/tau/phi URL aliases (Phase 9) | ~72% URL reduction; pi/tau/phi as easter egg for math-savvy users | ✓ Good — verbose fallback retains full backward compat |
+| 0-based positional indices for compact params | Direct JS array access; no offset arithmetic | ✓ Good — straightforward decode logic |
+| has-[:checked] CSS-only selection state for cards | No JavaScript selection state management needed for staffing + city cards | ✓ Good — clean, accessible, easy to extend |
+| sr-only on radio/checkbox inputs inside cards | Preserves keyboard/screen-reader access vs type=hidden | ✓ Good — Tab/Space/arrow navigation preserved |
+| outline-offset-4 for focus indicators on cards | focus ring appears visibly outside selected-state ring-2 ring-blue-600 | ✓ Good — focus and selection rings are now visually distinct |
 
 ## Evolution
 
@@ -101,4 +115,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-22 — Phase 10 complete. Staffing radio buttons converted to clickable card elements (CSS-only via has-[:checked]); slider tick labels converted to buttons that snap the slider to their value.*
+*Last updated: 2026-03-22 after v1.1 milestone — all citizen-meaningful controls shipped: slider with descriptions, hours open schedule display, compact URL encoding, card-based selectors for staffing and cities, accessible focus rings.*

@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: UX — Citizen-Meaningful Controls
-status: unknown
-stopped_at: Completed 11-01-PLAN.md
-last_updated: "2026-03-22T05:22:32.835Z"
+status: complete
+stopped_at: Milestone v1.1 shipped
+last_updated: "2026-03-22T00:00:00.000Z"
 progress:
   total_phases: 6
   completed_phases: 6
@@ -19,7 +19,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 12 — fix-focus-ring-visibility-on-custom-hours-and-cities-selectors-expand-outline-offset-so-it-appears-outside-the-selected-state-blue-ring
+**Current focus:** v1.1 shipped — planning next milestone
 
 ## Current Position
 

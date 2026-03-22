@@ -3,7 +3,7 @@
 ## Milestones
 
 - ✅ **v1.0 MVP** — Phases 1–6 (shipped 2026-03-21) — [archive](milestones/v1.0-ROADMAP.md)
-- 🚧 **v1.1 UX — Citizen-Meaningful Controls** — Phases 7–8 (in progress)
+- ✅ **v1.1 UX — Citizen-Meaningful Controls** — Phases 7–12 (shipped 2026-03-22) — [archive](milestones/v1.1-ROADMAP.md)
 
 ## Phases
 
@@ -21,97 +21,19 @@ Full phase details: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 
 </details>
 
-### 🚧 v1.1 UX — Citizen-Meaningful Controls (In Progress)
+<details>
+<summary>✅ v1.1 UX — Citizen-Meaningful Controls (Phases 7–12) — SHIPPED 2026-03-22</summary>
 
-**Milestone Goal:** Replace internal-terminology controls with citizen-meaningful UX — a collections budget slider with per-level context and a staffing section reframed as "Hours Open."
+- [x] Phase 7: Collections Budget Slider (2/2 plans) — completed 2026-03-21
+- [x] Phase 8: Hours Open Schedule Display (1/1 plan) — completed 2026-03-21
+- [x] Phase 9: Compact URL Encoding (1/1 plan) — completed 2026-03-21
+- [x] Phase 10: Custom Staffing Selector + Clickable Nodes (1/1 plan) — completed 2026-03-22
+- [x] Phase 11: Custom City Card Multi-Select (1/1 plan) — completed 2026-03-22
+- [x] Phase 12: Fix Focus Ring Visibility (1/1 plan) — completed 2026-03-22
 
-- [ ] **Phase 7: Collections Budget Slider** - Replace the dropdown with a native range slider that snaps to 6 nodes, shows citizen-meaningful descriptions, updates live, and preserves backward-compatible URL encoding
-- [ ] **Phase 8: Hours Open Schedule Display** - Reframe the staffing section as "Hours Open," add structured weekly schedule data to config.js, and render schedules inline from Nunjucks templates
+Full phase details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 
-## Phase Details
-
-### Phase 7: Collections Budget Slider
-**Goal**: Citizens can explore collections budget options through a slider that shows what each level means in accessible, citizen-meaningful terms
-**Depends on**: Phase 6 (v1.0 complete)
-**Requirements**: SLDR-01, SLDR-02, SLDR-03, SLDR-04, SLDR-05, SLDR-06, SLDR-07, SLDR-08
-**Success Criteria** (what must be TRUE):
-  1. User can drag or keyboard-navigate the slider to any of 6 discrete dollar amounts ($10k–$60k) and the tax result updates live during the interaction — not only on release
-  2. Each slider position shows a citizen-meaningful description of what that funding level provides; the lowest position explicitly describes digital-only access (Beehive/Libby)
-  3. Dollar amount labels are visible below the slider in Firefox, Safari, and Chrome (CSS label row, not datalist-only)
-  4. A screen reader user hears a meaningful label (e.g., "30,000 dollars — Print collection + digital") on every slider change, not a raw integer
-  5. A previously shared URL containing `?collections=30000` restores the slider to the correct node when opened in a new browser tab
-**Plans:** 2 plans (1 complete + 1 gap closure)
-Plans:
-- [x] 07-01-PLAN.md — Replace select dropdown with range slider, add descriptions and CSS styling, update JS for live interaction and URL restoration
-- [x] 07-02-PLAN.md — Gap closure: dispatch input event after URL restoration so slider labels sync on shared URLs
-
-### Phase 8: Hours Open Schedule Display
-**Goal**: Citizens see each staffing option's actual weekly schedule inline, making the tradeoff between service levels tangible without requiring any JavaScript
-**Depends on**: Phase 7
-**Requirements**: HOURS-01, HOURS-02, HOURS-03, HOURS-04, HOURS-05
-**Success Criteria** (what must be TRUE):
-  1. The staffing section heading reads "Hours Open" — no reference to "Staffing Level" visible anywhere on the page
-  2. Each radio option shows its weekly schedule (days and times) directly below the label, always visible without any click or toggle
-  3. A non-technical site owner can update a schedule entirely through the GitHub web UI using the NON-DEVELOPER EDIT GUIDE, which includes a copy-pasteable example
-  4. A shared URL using `?staffing=1fte-2pte` restores the correct radio selection after the "Hours Open" reframe
-**Plans:** 1 plan
-Plans:
-- [x] 08-01-PLAN.md — Add schedule data + formatDays filter, rename heading to "Hours Open", render schedule tables inline, extend edit guide
-
-### Phase 9: Compact URL Encoding — pi/tau/phi easter egg param aliases with positional index values
-**Goal:** Shared URLs use compact Greek-letter param aliases (pi/tau/phi) with 0-based positional indices, reducing query strings by ~72% while preserving backward compatibility with existing verbose URLs
-**Depends on:** Phase 8
-**Requirements**: URL-01, URL-02, URL-03, URL-04, URL-05
-**Success Criteria** (what must be TRUE):
-  1. After any form interaction, the URL bar shows compact params (pi, tau, phi) with 0-based index values — not verbose param names
-  2. Opening a compact URL like `?pi=2&tau=2&phi=0,1` in a new tab restores the correct staffing, collections, and city selections
-  3. Opening a legacy verbose URL like `?staffing=1fte-2pte&collections=30000&cities=providence,nibley` in a new tab still restores correctly (backward compat)
-  4. An out-of-bounds index (e.g. `?pi=99`) is silently ignored — the default selection is used
-  5. The NON-DEVELOPER EDIT GUIDE warns that array reordering breaks compact URLs
-**Plans:** 1/1 plans complete
-Plans:
-- [x] 09-01-PLAN.md — Rewrite url.js with compact encode/decode, add edit guide array ordering warning
-
-### Phase 10: Custom Staffing Selector UI and Clickable Slider Interval Nodes
-**Goal:** Staffing options are presented as clickable full-width card elements with CSS-only selection state, and slider tick labels are clickable buttons that snap the slider to their value — making both controls more visually substantial and interactive
-**Depends on:** Phase 9
-**Requirements**: CARD-01, CARD-02, CARD-03, NODE-01, NODE-02
-**Success Criteria** (what must be TRUE):
-  1. Clicking any staffing card selects its radio and updates the tax result — the entire card surface is the click target
-  2. Selected card shows blue ring and white background; unselected cards show gray — driven by CSS `has-[:checked]` with no JavaScript
-  3. Tab and arrow key navigation works across staffing cards with visible focus ring on the card wrapper
-  4. Clicking a slider tick label ($10k-$60k) snaps the slider to that value and updates the result identically to dragging
-  5. Active slider node label is bold blue; inactive nodes are gray — synced on every slider change including URL restore
-  6. calculator.js and url.js integration contracts are preserved — url.js is not modified
-**Plans:** 1/1 plans complete
-Plans:
-- [x] 10-01-PLAN.md — Convert staffing radio list to card elements, convert slider tick labels to clickable buttons, add node button click handlers and active state sync to calculator.js
-
-### Phase 11: Custom City Card Multi-Select
-**Goal:** City selections are presented as clickable full-width card elements matching the Phase 10 staffing card design, each showing city name, household count, and source citation — making city selection visually consistent with the rest of the configurator
-**Depends on:** Phase 10
-**Requirements**: CITY-01, CITY-02, CITY-03, CITY-04, CITY-05
-**Success Criteria** (what must be TRUE):
-  1. Each city displays as a full-width clickable card with city name, household count, and source citation
-  2. Clicking anywhere on a city card toggles its checkbox — the entire card surface is the click target
-  3. Selected city cards show blue ring and blue-50 background; unselected cards show gray — CSS-only via `has-[:checked]`
-  4. Tab and Space keyboard navigation works across city cards with visible focus ring on card wrapper
-  5. calculator.js and url.js integration contracts are preserved — no JS files modified
-**Plans:** 1/1 plans complete
-Plans:
-- [x] 11-01-PLAN.md — Replace inline checkbox city pattern with full-width card elements matching staffing card design
-
-### Phase 12: Fix Focus Ring Visibility
-**Goal:** Keyboard focus indicators on staffing and city card selectors use outline with outline-offset instead of ring, so the focus ring appears visibly outside the selected-state blue ring
-**Depends on:** Phase 11
-**Requirements**: FOCUS-01, FOCUS-02
-**Success Criteria** (what must be TRUE):
-  1. When a staffing card is both selected and focused, the focus indicator is visually distinct from the selection ring
-  2. When a city card is both selected and focused, the focus indicator is visually distinct from the selection ring
-  3. Focus ring appears outside the blue selection ring with clear separation
-**Plans:** 1/1 plans complete
-Plans:
-- [ ] 12-01-PLAN.md — Replace has-[:focus-visible]:ring classes with has-[:focus-visible]:outline + outline-offset-4 on staffing and city card labels
+</details>
 
 ## Progress
 
@@ -123,9 +45,9 @@ Plans:
 | 4. Visual Polish and Shareability | v1.0 | 2/2 | Complete | 2026-03-21 |
 | 5. Documentation Gap Fixes | v1.0 | 1/1 | Complete | 2026-03-21 |
 | 6. Tech Debt Cleanup and Browser Verification | v1.0 | 2/2 | Complete | 2026-03-21 |
-| 7. Collections Budget Slider | v1.1 | 1/2 | Gap closure | - |
-| 8. Hours Open Schedule Display | v1.1 | 0/1 | Planned | - |
-| 9. Compact URL Encoding | v1.1 | 1/1 | Complete   | 2026-03-21 |
-| 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 1/1 | Complete    | 2026-03-22 |
-| 11. Custom City Card Multi-Select | v1.1 | 1/1 | Complete    | 2026-03-22 |
-| 12. Fix Focus Ring Visibility | v1.1 | 0/1 | Complete    | 2026-03-22 |
+| 7. Collections Budget Slider | v1.1 | 2/2 | Complete | 2026-03-21 |
+| 8. Hours Open Schedule Display | v1.1 | 1/1 | Complete | 2026-03-21 |
+| 9. Compact URL Encoding | v1.1 | 1/1 | Complete | 2026-03-21 |
+| 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 1/1 | Complete | 2026-03-22 |
+| 11. Custom City Card Multi-Select | v1.1 | 1/1 | Complete | 2026-03-22 |
+| 12. Fix Focus Ring Visibility | v1.1 | 1/1 | Complete | 2026-03-22 |

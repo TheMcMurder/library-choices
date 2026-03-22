@@ -1,5 +1,20 @@
 # Milestones
 
+## v1.1 UX — Citizen-Meaningful Controls (Shipped: 2026-03-22)
+
+**Phases completed:** 6 phases, 7 plans, 12 tasks
+
+**Key accomplishments:**
+
+- Native range slider replacing the collections dropdown, with 6 citizen-meaningful description nodes, live drag updates, and backward-compatible URL encoding via LIBRARY_DATA validation
+- One-line input event dispatch after restoreFromUrl() closes SLDR-05/SLDR-08: slider description, dollar amount, and aria-valuetext now sync from shared URL on page load
+- Staffing section reframed as "Hours Open" with inline semantic schedule tables driven by {days, open, close} config arrays and a locale-aware formatDays Nunjucks filter
+- Compact pi/tau/phi Greek letter URL params replace verbose staffing/collections/cities strings, reducing shared URLs from ~70 to ~20 chars while retaining full backward-compatible verbose decode
+- Staffing radio buttons converted to full-width clickable card labels with has-[:checked] CSS selection state; collections slider tick labels converted to button elements that snap the slider via bubbling event dispatch
+- CSS-only city selection cards with name, household count, and source citation matching the Phase 10 staffing card design pattern
+
+---
+
 ## v1.0 MVP (Shipped: 2026-03-21)
 
 **Phases completed:** 6 phases, 10 plans, 17 tasks

@@ -51,6 +51,54 @@
 
 ---
 
+## Milestone: v1.1 — UX — Citizen-Meaningful Controls
+
+**Shipped:** 2026-03-22
+**Phases:** 6 (7–12) | **Plans:** 7 | **Tasks:** 12
+
+### What Was Built
+
+- Collections budget range slider replacing the dropdown — 6 nodes with citizen-meaningful descriptions, live drag updates, aria-valuetext for screen readers, backward-compatible URL restoration
+- Staffing section reframed as "Hours Open" with inline weekly schedule tables driven by structured config.js data; NON-DEVELOPER EDIT GUIDE extended with schedule editing section
+- Compact pi/tau/phi URL param aliases (~72% shorter shared URLs) with full backward-compatible verbose decode fallback; edit guide warns about array reordering risk
+- Staffing options and city options converted to full-width clickable card elements with CSS-only `has-[:checked]` selection state — no JavaScript added or modified
+- Slider tick labels converted to `<button>` elements that snap the slider via bubbling event dispatch
+- Keyboard focus ring refactored from `ring` to `outline-offset-4` so focus indicator appears visibly outside the selected-state blue ring
+
+### What Worked
+
+- **has-[:checked] CSS-only pattern**: Discovered in Phase 10 for staffing cards, immediately reused identically in Phase 11 for city cards — zero JavaScript added across both phases. CSS-only selection state is the right pattern for this kind of UI.
+- **Event contract preservation discipline**: Each phase's success criteria explicitly required that url.js and calculator.js integration contracts be preserved unchanged. This prevented scope creep and kept phases truly independent.
+- **Gap closure as a named phase type**: Phase 7-02 explicitly closed the SLDR-05/SLDR-08 input event gap found after Phase 7-01 shipped. Naming it a "gap closure" plan rather than an amendment kept the execution record clean.
+- **Phase 12 was a one-file, one-commit fix**: Because the card pattern was already CSS-class-based and consistent across both card types, the focus ring fix was two-line substitutions in `src/index.html`. Small, scoped phases work.
+
+### What Was Inefficient
+
+- **ROADMAP.md milestone heading wasn't updated as phases 9–12 were added**: The milestone heading still showed "Phases 7–8 (in progress)" when phases 9–12 were added ad hoc. Phase additions should update the milestone heading immediately.
+- **FOCUS-01 and FOCUS-02 weren't checked off after Phase 12 executed**: Minor documentation gap, but it required a pre-flight fix step during milestone completion. Executor should check off requirements in REQUIREMENTS.md as part of plan completion.
+- **Progress table accumulated stale rows**: Phase 7 showed `1/2 — Gap closure` and Phase 8 showed `0/1 — Planned` well after both completed. Progress table maintenance should happen at phase transition, not milestone completion.
+
+### Patterns Established
+
+- **`has-[:checked]` CSS-only card pattern**: Label element wraps sr-only input; `has-[:checked]` drives ring + background; `has-[:focus-visible]` drives focus outline with `outline-offset-4`. Reusable for any card-style radio/checkbox group.
+- **`outline-offset-4` over `ring` for focus on selection-ringed cards**: When an element already uses `ring-2` for selected state, use `outline` + `outline-offset-4` for focus so the two indicators are visually distinct.
+- **Compact URL param aliases (pi/tau/phi) with positional index encoding**: Write compact, decode compact-first then verbose fallback. Array ordering is URL-immutable — warn in edit guide.
+- **formatDays filter with noon-UTC reference date**: Prevents timezone drift in day name output across CI/CD environments.
+
+### Key Lessons
+
+1. **CSS-only state via `has-[:checked]` scales across card types** — once the pattern exists for one control (staffing), applying it to another (cities) is a template copy with zero JS changes.
+2. **Requirements and progress table need maintenance at plan completion, not milestone completion** — defer maintenance and you create pre-flight fix debt.
+3. **Scope additions (Phases 9–12) during a milestone work well when each phase is independent and small** — no phase needed to modify another phase's primary output files.
+
+### Cost Observations
+
+- Model mix: planner = Opus, researcher/executor/verifier = Sonnet
+- Sessions: single-day milestone (2026-03-21 to 2026-03-22)
+- Notable: Phases 10 and 11 reused the exact same CSS pattern — planner could have combined them; instead they were clean independent phases with no rework
+
+---
+
 ## Cross-Milestone Trends
 
 ### Process Evolution
@@ -59,7 +107,15 @@
 |-----------|--------|-------|------------|
 | v1.0 | 6 | 10 | First milestone — baseline established |
 
+### Process Evolution
+
+| Milestone | Phases | Plans | Key Change |
+|-----------|--------|-------|------------|
+| v1.0 | 6 | 10 | First milestone — baseline established |
+| v1.1 | 6 | 7 | Ad hoc phase additions mid-milestone; CSS-only card pattern discovered |
+
 ### Top Lessons (Verified Across Milestones)
 
 1. Data-driven UI from day one reduces rework in later phases — don't hardcode values that need to change.
 2. Batch human verification into a dedicated late phase rather than blocking execution phases.
+3. CSS-only state via `has-[:checked]` is the right pattern for card-style radio/checkbox groups — no JavaScript needed, keyboard/screen-reader accessible by default.
