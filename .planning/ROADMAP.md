@@ -75,4 +75,4 @@ Plans:
 | 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 11. Custom City Card Multi-Select | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 12. Fix Focus Ring Visibility | v1.1 | 1/1 | Complete | 2026-03-22 |
-| 13. Current Service Level Indicators | v1.2 | 1/1 | Complete   | 2026-03-22 |
+| 13. Current Service Level Indicators | v1.2 | 1/1 | Complete    | 2026-03-22 |
