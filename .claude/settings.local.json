@@ -15,7 +15,12 @@
       "Bash(git -C /Users/mcmurdie/Development/personal/library-choices show 5c45b11 --stat)",
       "Bash(git -C /Users/mcmurdie/Development/personal/library-choices log --oneline src/js/calculator.js)",
       "Bash(npx @11ty/eleventy --input=src --output=_site)",
-      "Bash(ls /Users/mcmurdie/Development/personal/library-choices/.planning/phases/12-fix-focus-ring-visibility-on-custom-hours-and-cities-selectors-expand-outline-offset-so-it-appears-outside-the-selected-state-blue-ring/*-VERIFICATION.md)"
+      "Bash(ls /Users/mcmurdie/Development/personal/library-choices/.planning/phases/12-fix-focus-ring-visibility-on-custom-hours-and-cities-selectors-expand-outline-offset-so-it-appears-outside-the-selected-state-blue-ring/*-VERIFICATION.md)",
+      "Bash(ls -d /Users/mcmurdie/Development/personal/library-choices/.planning/milestones/v*-phases)",
+      "Bash(ls:*)",
+      "Bash(sed 's/\"\"\"\"one_liner\"\"\"\":\"\"\"\"//;s/\"\"\"\"$//')",
+      "Bash(done)",
+      "Bash(git tag:*)"
     ]
   }
 }

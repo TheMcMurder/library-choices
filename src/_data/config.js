@@ -138,6 +138,7 @@ export default {
       description:
         "Full-week coverage including Saturdays with one full-time staff and up to three part-time staff members.",
       source: "Cache County HR salary schedule FY2025",
+      isCurrentServiceLevel: true,
     },
   ],
 
@@ -148,7 +149,9 @@ export default {
     options: [
       { value: 10000, isDefault: false, description: "Digital-only access via Beehive and Libby \u2014 no physical print collection" },
       { value: 20000, isDefault: false, description: "Small rotating print collection + digital" },
-      { value: 30000, isDefault: true,  description: "Print collection + digital" },
+      { value: 30000, isDefault: true,  description: "Print collection + digital",
+        isCurrentServiceLevel: true,
+      },
       { value: 40000, isDefault: false, description: "Expanded print + digital + periodicals" },
       { value: 50000, isDefault: false, description: "Full print + digital + periodicals + AV materials" },
       { value: 60000, isDefault: false, description: "Full collection + digital + periodicals + AV + special programs" },
