@@ -78,6 +78,14 @@
 - [x] **NODE-01**: Slider tick labels ($10k-$60k) are clickable `<button type="button">` elements that snap the slider to their `data-value` and dispatch bubbling `input` + `change` events
 - [x] **NODE-02**: Active node button shows `text-blue-800 font-semibold`; inactive nodes show `text-gray-500 font-normal` — synced in `updateSliderLabels()` on every slider change
 
+### City Card Multi-Select (CITY)
+
+- [ ] **CITY-01**: City options displayed as clickable full-width card elements wrapping hidden `sr-only` checkbox inputs — entire card surface is the click target
+- [ ] **CITY-02**: Each city card shows city name (`text-base font-semibold`), household count (`text-sm text-gray-500`), and source citation with link
+- [ ] **CITY-03**: Selected city card shows `ring-2 ring-blue-600` + `bg-blue-50`; unselected cards show `bg-gray-50` + `border-gray-200` — CSS-only via `has-[:checked]`, no JavaScript
+- [ ] **CITY-04**: Tab and Space keyboard navigation works across city cards; focus-visible ring on card wrapper via `has-[:focus-visible]`
+- [ ] **CITY-05**: Existing calculator.js and url.js integration contracts preserved — `name="cities"`, `value="{city.id}"`, `data-households` attributes unchanged
+
 ## v2 Requirements
 
 ### Enhancements
@@ -142,13 +150,18 @@
 | CARD-03 | Phase 10 | Planned |
 | NODE-01 | Phase 10 | Planned |
 | NODE-02 | Phase 10 | Planned |
+| CITY-01 | Phase 11 | Planned |
+| CITY-02 | Phase 11 | Planned |
+| CITY-03 | Phase 11 | Planned |
+| CITY-04 | Phase 11 | Planned |
+| CITY-05 | Phase 11 | Planned |
 
 **Coverage:**
 - v1 requirements: 16 total — all Complete
-- v1.1 requirements: 23 total (SLDR: 8, HOURS: 5, URL: 5, CARD: 3, NODE: 2)
-- Mapped to phases: 23
+- v1.1 requirements: 28 total (SLDR: 8, HOURS: 5, URL: 5, CARD: 3, NODE: 2, CITY: 5)
+- Mapped to phases: 28
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-20*
-*Last updated: 2026-03-21 — CARD and NODE requirements added for Phase 10 custom staffing selector and clickable slider nodes*
+*Last updated: 2026-03-22 — CITY requirements added for Phase 11 custom city card multi-select*

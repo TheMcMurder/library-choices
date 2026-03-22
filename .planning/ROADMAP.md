@@ -87,6 +87,20 @@ Plans:
 Plans:
 - [x] 10-01-PLAN.md — Convert staffing radio list to card elements, convert slider tick labels to clickable buttons, add node button click handlers and active state sync to calculator.js
 
+### Phase 11: Custom City Card Multi-Select
+**Goal:** City selections are presented as clickable full-width card elements matching the Phase 10 staffing card design, each showing city name, household count, and source citation — making city selection visually consistent with the rest of the configurator
+**Depends on:** Phase 10
+**Requirements**: CITY-01, CITY-02, CITY-03, CITY-04, CITY-05
+**Success Criteria** (what must be TRUE):
+  1. Each city displays as a full-width clickable card with city name, household count, and source citation
+  2. Clicking anywhere on a city card toggles its checkbox — the entire card surface is the click target
+  3. Selected city cards show blue ring and blue-50 background; unselected cards show gray — CSS-only via `has-[:checked]`
+  4. Tab and Space keyboard navigation works across city cards with visible focus ring on card wrapper
+  5. calculator.js and url.js integration contracts are preserved — no JS files modified
+**Plans:** 1 plan
+Plans:
+- [ ] 11-01-PLAN.md — Replace inline checkbox city pattern with full-width card elements matching staffing card design
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -101,3 +115,4 @@ Plans:
 | 8. Hours Open Schedule Display | v1.1 | 0/1 | Planned | - |
 | 9. Compact URL Encoding | v1.1 | 1/1 | Complete   | 2026-03-21 |
 | 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 1/1 | Complete    | 2026-03-22 |
+| 11. Custom City Card Multi-Select | v1.1 | 0/1 | Planned | - |
