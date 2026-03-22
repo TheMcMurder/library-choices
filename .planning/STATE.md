@@ -3,10 +3,10 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: UX — Citizen-Meaningful Controls
 status: unknown
-stopped_at: Completed 10-01-PLAN.md
-last_updated: "2026-03-22T00:36:55.246Z"
+stopped_at: Phase 11 UI-SPEC approved
+last_updated: "2026-03-22T00:48:01.330Z"
 progress:
-  total_phases: 4
+  total_phases: 5
   completed_phases: 4
   total_plans: 5
   completed_plans: 5
@@ -69,6 +69,7 @@ Plan: Not started
 
 - Phase 9 added: Compact URL Encoding — pi/tau/phi easter egg param aliases with positional index values
 - Phase 10 added: custom staffing selector UI and clickable slider interval nodes
+- Phase 11 added: Custom multi-select for participating cities. I'd like to have a custom multi-select for the particpating cities. Each city should have a box containing the city name, and population. Leverage the same general design from the "hours open" area.
 
 ### Decisions
 
@@ -136,6 +137,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-22T00:34:31.352Z
-Stopped at: Completed 10-01-PLAN.md
-Resume file: None
+Last session: 2026-03-22T00:48:01.327Z
+Stopped at: Phase 11 UI-SPEC approved
+Resume file: .planning/phases/11-custom-multi-select-for-participating-cities-i-d-like-to-have-a-custom-multi-select-for-the-particpating-cities-each-city-should-have-a-box-containing-the-city-name-and-population-leverage-the-same-general-design-from-the-hours-open-area/11-UI-SPEC.md
