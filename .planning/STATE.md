@@ -4,12 +4,12 @@ milestone: v1.1
 milestone_name: UX — Citizen-Meaningful Controls
 status: unknown
 stopped_at: Completed 11-01-PLAN.md
-last_updated: "2026-03-22T02:48:57.312Z"
+last_updated: "2026-03-22T05:22:32.835Z"
 progress:
-  total_phases: 5
-  completed_phases: 5
-  total_plans: 6
-  completed_plans: 6
+  total_phases: 6
+  completed_phases: 6
+  total_plans: 7
+  completed_plans: 7
 ---
 
 # Project State
@@ -19,11 +19,11 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 11 — custom-multi-select-for-participating-cities-i-d-like-to-have-a-custom-multi-select-for-the-particpating-cities-each-city-should-have-a-box-containing-the-city-name-and-population-leverage-the-same-general-design-from-the-hours-open-area
+**Current focus:** Phase 12 — fix-focus-ring-visibility-on-custom-hours-and-cities-selectors-expand-outline-offset-so-it-appears-outside-the-selected-state-blue-ring
 
 ## Current Position
 
-Phase: 11
+Phase: 12
 Plan: Not started
 
 ## Performance Metrics
@@ -70,6 +70,7 @@ Plan: Not started
 - Phase 9 added: Compact URL Encoding — pi/tau/phi easter egg param aliases with positional index values
 - Phase 10 added: custom staffing selector UI and clickable slider interval nodes
 - Phase 11 added: Custom multi-select for participating cities. I'd like to have a custom multi-select for the particpating cities. Each city should have a box containing the city name, and population. Leverage the same general design from the "hours open" area.
+- Phase 12 added: Fix focus ring visibility on custom hours and cities selectors — expand outline offset so it appears outside the selected-state blue ring
 
 ### Decisions
 
