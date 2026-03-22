@@ -1,15 +1,15 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.1
-milestone_name: UX — Citizen-Meaningful Controls
-status: complete
-stopped_at: Milestone v1.1 shipped
-last_updated: "2026-03-22T00:00:00.000Z"
+milestone: v1.2
+milestone_name: Current Service Level Indicators
+status: defining_requirements
+stopped_at: Defining requirements
+last_updated: "2026-03-21T00:00:00.000Z"
 progress:
-  total_phases: 6
-  completed_phases: 6
-  total_plans: 7
-  completed_plans: 7
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
 ---
 
 # Project State
@@ -23,8 +23,10 @@ See: .planning/PROJECT.md (updated 2026-03-21)
 
 ## Current Position
 
-Phase: 12
-Plan: Not started
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-03-21 — Milestone v1.2 started
 
 ## Performance Metrics
 

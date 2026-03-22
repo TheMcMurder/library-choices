@@ -8,6 +8,16 @@ An interactive, mobile-first static website that helps Cache County citizens und
 
 Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
 
+## Current Milestone: v1.2 — Current Service Level Indicators
+
+**Goal:** Visually distinguish any staffing or collections option marked `isCurrentServiceLevel: true` so citizens can always see the current service baseline regardless of their selection.
+
+**Target features:**
+- Persistent "current" color indicator on staffing cards with `isCurrentServiceLevel: true`
+- Persistent "current" color indicator on collections slider tick with `isCurrentServiceLevel: true`
+- Indicator persists across all selection states (selected, unselected)
+- Driven by config.js data — no hardcoding of which option is "current"
+
 ## Current State (v1.1 — shipped 2026-03-22)
 
 - **Live at:** https://mcmurdie.github.io/library-choices/
@@ -47,12 +57,18 @@ Citizens can explore any combination of service and funding choices and immediat
 - ✓ City options as full-width clickable card elements with name, household count, citation — v1.1
 - ✓ Keyboard focus indicators use outline-offset so focus ring appears outside selection ring — v1.1
 
-### Active (v1.2 candidates)
+### Active (v1.2)
 
-- [ ] Scenario summary text — human-readable sentence describing the selected combination (ENH-01)
-- [ ] Print stylesheet — printable version of the configured scenario (ENH-02)
-- [ ] Real household counts and cost figures sourced from Cache County records (content gap)
-- [ ] Non-developer edit workflow tested with site owner via GitHub web UI
+- [ ] Persistent "current service level" indicator on staffing cards (CURR-01)
+- [ ] Persistent "current service level" indicator on collections slider tick (CURR-02)
+- [ ] Indicator driven by `isCurrentServiceLevel` flag in config.js — not hardcoded (CURR-03)
+
+### Deferred (post-v1.2)
+
+- Scenario summary text — human-readable sentence describing the selected combination (ENH-01)
+- Print stylesheet — printable version of the configured scenario (ENH-02)
+- Real household counts and cost figures sourced from Cache County records (content gap)
+- Non-developer edit workflow tested with site owner via GitHub web UI
 
 ### Out of Scope
 
@@ -115,4 +131,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-22 after v1.1 milestone — all citizen-meaningful controls shipped: slider with descriptions, hours open schedule display, compact URL encoding, card-based selectors for staffing and cities, accessible focus rings.*
+*Last updated: 2026-03-21 after v1.2 milestone started — current service level indicator feature scoped.*
