@@ -21,22 +21,25 @@
         <fieldset class="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
           <legend class="text-xl font-semibold text-gray-900 px-1">Hours Open</legend>
           {% for level in config.staffingLevels %}
-            <div class="flex flex-col gap-2">
-              <div class="flex items-center gap-2 min-h-[44px]">
-                <input
-                  type="radio"
-                  name="staffing"
-                  id="staffing-{{ level.id }}"
-                  value="{{ level.id }}"
-                  data-cost="{{ level.annualCost }}"
-                  class="accent-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
-                  {% if loop.first %}checked{% endif %}
-                />
-                <label for="staffing-{{ level.id }}" class="text-base font-semibold text-gray-900 cursor-pointer">
-                  {{ level.label }} &mdash; ${{ level.annualCost | toLocaleString }}/year
-                </label>
-              </div>
-              <table class="text-sm border-collapse mt-2">
+            <label
+              for="staffing-{{ level.id }}"
+              class="block cursor-pointer rounded-lg border p-6 transition-colors
+                     has-[:checked]:bg-white has-[:checked]:ring-2 has-[:checked]:ring-blue-600
+                     bg-gray-50 border-gray-200
+                     has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-blue-600
+                     min-h-[44px]"
+            >
+              <input
+                type="radio"
+                name="staffing"
+                id="staffing-{{ level.id }}"
+                value="{{ level.id }}"
+                data-cost="{{ level.annualCost }}"
+                class="sr-only"
+                {% if loop.first %}checked{% endif %}
+              />
+              <span class="text-base font-semibold text-gray-900">{{ level.label }} &mdash; ${{ level.annualCost | toLocaleString }}/year</span>
+              <table class="text-sm border-collapse mt-2 w-full">
                 <thead>
                   <tr>
                     <th scope="col" class="text-left text-sm font-semibold text-gray-800 pb-1 pr-4">Days</th>
@@ -53,7 +56,7 @@
                 </tbody>
               </table>
               <p class="text-sm text-gray-600 leading-normal mt-2">{{ level.description }}</p>
-            </div>
+            </label>
           {% endfor %}
         </fieldset>
 
@@ -76,9 +79,13 @@
               aria-valuetext="30,000 dollars \u2014 Print collection + digital"
               class="w-full cursor-pointer"
             />
-            <div class="flex justify-between text-xs text-gray-500 px-0" aria-hidden="true">
+            <div class="flex justify-between px-0" aria-hidden="true">
               {% for opt in config.collections.options %}
-                <span>${{ (opt.value / 1000) | int }}k</span>
+                <button
+                  type="button"
+                  data-value="{{ opt.value }}"
+                  class="text-xs text-gray-500 font-normal px-1 py-1 cursor-pointer hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
+                >${{ (opt.value / 1000) | int }}k</button>
               {% endfor %}
             </div>
             <p id="collections-description" class="text-sm text-gray-600 leading-normal"></p>
