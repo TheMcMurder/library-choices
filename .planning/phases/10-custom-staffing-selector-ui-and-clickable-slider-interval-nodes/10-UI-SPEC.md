@@ -74,8 +74,9 @@ Source: Phase 7 UI-SPEC typography table; Phase 8 UI-SPEC typography table; CONT
 
 | Role | Value | Tailwind Token | Usage |
 |------|-------|---------------|-------|
-| Dominant (60%) | `#ffffff` | `white` | Page background (`bg-white`); selected card background (`bg-white`) |
+| Dominant (60%) | `#ffffff` | `white` | Page background (`bg-white`) |
 | Secondary (30%) | `#f9fafb` / `#e5e7eb` | `gray-50` / `gray-200` | Fieldset backgrounds; unselected card background (`bg-gray-50`); unselected card border (`border-gray-200`) |
+| Selected card bg | `#eff6ff` | `blue-50` | Selected card background (`has-[:checked]:bg-blue-50`) — complements the blue-600 ring |
 | Accent (10%) | `#1e40af` | `blue-800` | Reserved list below |
 | Focus ring | `#2563eb` | `blue-600` | Focus-visible ring on card wrapper and node buttons — used only for focus state, not fill |
 | Selected ring | `#2563eb` | `blue-600` | Selected card `ring-2 ring-blue-600` border |
@@ -91,7 +92,7 @@ Accent (`blue-800`) reserved for:
 
 `blue-600` is used exclusively for focus rings and the selected card ring — it is not an accent fill. This matches the Phase 7 precedent.
 
-Source: CONTEXT.md D-04 (selected card `ring-2 ring-blue-600`), D-05 (`bg-white` selected / `bg-gray-50` unselected), D-13 (active node `text-blue-800`); Phase 7 UI-SPEC color table.
+Source: CONTEXT.md D-04 (selected card `ring-2 ring-blue-600`), D-05 (`bg-blue-50` selected / `bg-gray-50` unselected), D-13 (active node `text-blue-800`); Phase 7 UI-SPEC color table.
 
 ---
 
@@ -111,7 +112,7 @@ This phase modifies two existing markup regions: the staffing fieldset and the s
 <label
   for="staffing-{{ level.id }}"
   class="block cursor-pointer rounded-lg border p-6 transition-colors
-         [has-checked_&]:bg-white [has-checked_&]:ring-2 [has-checked_&]:ring-blue-600
+         [has-checked_&]:bg-blue-50 [has-checked_&]:ring-2 [has-checked_&]:ring-blue-600
          bg-gray-50 border-gray-200
          has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-blue-600
          min-h-[44px]"
@@ -214,7 +215,7 @@ Source: CONTEXT.md D-10 through D-15.
 
 | Interaction | Expected Behavior |
 |-------------|-------------------|
-| Click anywhere on card | Radio input `checked` is set; `has-[:checked]` CSS switches card to selected state (`bg-white ring-2 ring-blue-600`); `change` event on the hidden radio fires; `updateResult()` in calculator.js re-calculates; `encodeUrl()` in url.js updates query string |
+| Click anywhere on card | Radio input `checked` is set; `has-[:checked]` CSS switches card to selected state (`bg-blue-50 ring-2 ring-blue-600`); `change` event on the hidden radio fires; `updateResult()` in calculator.js re-calculates; `encodeUrl()` in url.js updates query string |
 | Keyboard focus (Tab) | Focus moves to the hidden radio input; `has-[:focus-visible]` CSS applies `ring-2 ring-blue-600` ring to the card wrapper |
 | Arrow keys (when focused on any radio in group) | Browser cycles through radio group; selection and visual state update identically to click |
 | Page load (no URL param) | First card (`loop.first`) pre-checked; first card shows selected visual state |
