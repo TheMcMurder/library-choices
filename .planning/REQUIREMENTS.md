@@ -35,17 +35,17 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CURR-01 | — | Pending |
-| CURR-02 | — | Pending |
-| CURR-03 | — | Pending |
-| CURR-04 | — | Pending |
-| CURR-05 | — | Pending |
+| CURR-01 | Phase 13 | Pending |
+| CURR-02 | Phase 13 | Pending |
+| CURR-03 | Phase 13 | Pending |
+| CURR-04 | Phase 13 | Pending |
+| CURR-05 | Phase 13 | Pending |
 
 **Coverage:**
 - v1.2 requirements: 5 total
-- Mapped to phases: 0
-- Unmapped: 5 ⚠️
+- Mapped to phases: 5
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-21*
-*Last updated: 2026-03-21 after initial definition*
+*Last updated: 2026-03-21 — traceability updated after roadmap creation*
