@@ -97,23 +97,33 @@
         <fieldset class="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
           <legend class="text-xl font-semibold text-gray-900 px-1">Participating Cities</legend>
           {% for city in config.cities %}
-            <div class="flex flex-col gap-2">
-              <div class="flex items-center gap-2 min-h-[44px]">
-                <input
-                  type="checkbox"
-                  name="cities"
-                  id="city-{{ city.id }}"
-                  value="{{ city.id }}"
-                  data-households="{{ city.households }}"
-                  class="accent-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
-                  {% if city.defaultChecked %}checked{% endif %}
-                />
-                <label for="city-{{ city.id }}" class="text-base font-semibold text-gray-900 cursor-pointer">
-                  {{ city.label }} <span class="text-sm text-gray-500">({{ city.households | toLocaleString }} households)</span>
-                </label>
-              </div>
-              <cite class="text-sm text-gray-500 not-italic">Source: {{ city.source }}</cite>
-            </div>
+            <label
+              for="city-{{ city.id }}"
+              class="block cursor-pointer rounded-lg border p-6 transition-colors
+                     has-[:checked]:bg-blue-50 has-[:checked]:ring-2 has-[:checked]:ring-blue-600
+                     bg-gray-50 border-gray-200
+                     has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-blue-600
+                     min-h-[44px]"
+            >
+              <input
+                type="checkbox"
+                name="cities"
+                id="city-{{ city.id }}"
+                value="{{ city.id }}"
+                data-households="{{ city.households }}"
+                class="sr-only"
+                {% if city.defaultChecked %}checked{% endif %}
+              />
+              <span class="text-base font-semibold text-gray-900">{{ city.label }}</span>
+              <p class="text-sm text-gray-500 mt-1">{{ city.households | toLocaleString }} households</p>
+              <cite class="text-sm text-gray-500 not-italic mt-1 block">
+                {%- if city.sourceLink -%}
+                  Source: <a href="{{ city.sourceLink }}" class="underline hover:text-gray-700" target="_blank" rel="noopener noreferrer">{{ city.source }}</a>
+                {%- else -%}
+                  Source: {{ city.source }}
+                {%- endif -%}
+              </cite>
+            </label>
           {% endfor %}
         </fieldset>
 
