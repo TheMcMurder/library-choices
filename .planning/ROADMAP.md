@@ -101,6 +101,18 @@ Plans:
 Plans:
 - [x] 11-01-PLAN.md — Replace inline checkbox city pattern with full-width card elements matching staffing card design
 
+### Phase 12: Fix Focus Ring Visibility
+**Goal:** Keyboard focus indicators on staffing and city card selectors use outline with outline-offset instead of ring, so the focus ring appears visibly outside the selected-state blue ring
+**Depends on:** Phase 11
+**Requirements**: FOCUS-01, FOCUS-02
+**Success Criteria** (what must be TRUE):
+  1. When a staffing card is both selected and focused, the focus indicator is visually distinct from the selection ring
+  2. When a city card is both selected and focused, the focus indicator is visually distinct from the selection ring
+  3. Focus ring appears outside the blue selection ring with clear separation
+**Plans:** 1 plan
+Plans:
+- [ ] 12-01-PLAN.md — Replace has-[:focus-visible]:ring classes with has-[:focus-visible]:outline + outline-offset-4 on staffing and city card labels
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -116,3 +128,4 @@ Plans:
 | 9. Compact URL Encoding | v1.1 | 1/1 | Complete   | 2026-03-21 |
 | 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 1/1 | Complete    | 2026-03-22 |
 | 11. Custom City Card Multi-Select | v1.1 | 1/1 | Complete    | 2026-03-22 |
+| 12. Fix Focus Ring Visibility | v1.1 | 0/1 | Planned | - |

@@ -43,7 +43,7 @@
 ### Collections Budget Slider (SLDR)
 
 - [x] **SLDR-01**: User can adjust the collections budget via a range slider (replaces the dropdown)
-- [x] **SLDR-02**: Slider snaps to 6 discrete nodes matching existing dollar amounts ($10k–$60k in $10k steps)
+- [x] **SLDR-02**: Slider snaps to 6 discrete nodes matching existing dollar amounts ($10k-$60k in $10k steps)
 - [x] **SLDR-03**: Each node displays an "Available books/digital" description; the lowest node describes digital-only access (Beehive/Libby)
 - [x] **SLDR-04**: Description text and the tax result update live during drag and keyboard navigation — not only on release
 - [x] **SLDR-05**: Screen reader users hear a citizen-meaningful label via dynamically updated `aria-valuetext` (not the raw integer)
@@ -85,6 +85,11 @@
 - [x] **CITY-03**: Selected city card shows `ring-2 ring-blue-600` + `bg-blue-50`; unselected cards show `bg-gray-50` + `border-gray-200` — CSS-only via `has-[:checked]`, no JavaScript
 - [x] **CITY-04**: Tab and Space keyboard navigation works across city cards; focus-visible ring on card wrapper via `has-[:focus-visible]`
 - [x] **CITY-05**: Existing calculator.js and url.js integration contracts preserved — `name="cities"`, `value="{city.id}"`, `data-households` attributes unchanged
+
+### Focus Ring Visibility (FOCUS)
+
+- [ ] **FOCUS-01**: Staffing card focus indicator uses `outline` with `outline-offset` instead of `ring` — visible outside the selected-state `ring-2 ring-blue-600` border
+- [ ] **FOCUS-02**: City card focus indicator uses `outline` with `outline-offset` instead of `ring` — visible outside the selected-state `ring-2 ring-blue-600` border
 
 ## v2 Requirements
 
@@ -155,13 +160,15 @@
 | CITY-03 | Phase 11 | Planned |
 | CITY-04 | Phase 11 | Planned |
 | CITY-05 | Phase 11 | Planned |
+| FOCUS-01 | Phase 12 | Planned |
+| FOCUS-02 | Phase 12 | Planned |
 
 **Coverage:**
 - v1 requirements: 16 total — all Complete
-- v1.1 requirements: 28 total (SLDR: 8, HOURS: 5, URL: 5, CARD: 3, NODE: 2, CITY: 5)
-- Mapped to phases: 28
+- v1.1 requirements: 30 total (SLDR: 8, HOURS: 5, URL: 5, CARD: 3, NODE: 2, CITY: 5, FOCUS: 2)
+- Mapped to phases: 30
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-20*
-*Last updated: 2026-03-22 — CITY requirements added for Phase 11 custom city card multi-select*
+*Last updated: 2026-03-22 — FOCUS requirements added for Phase 12 focus ring visibility fix*
