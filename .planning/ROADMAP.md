@@ -54,7 +54,10 @@ Full phase details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
   3. The collections slider tick for the option marked `isCurrentServiceLevel: true` is styled amber and remains amber regardless of where the slider is positioned
   4. Selecting a different staffing card or moving the slider does not remove or hide the current-level indicators on the baseline option
   5. A screen reader announces "Current level" for the badge — the indicator is not conveyed by color alone
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 13-01-PLAN.md — Amber ring, badge, and slider tick indicators with JS guard
 
 ## Progress
 
@@ -72,4 +75,4 @@ Full phase details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 | 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 11. Custom City Card Multi-Select | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 12. Fix Focus Ring Visibility | v1.1 | 1/1 | Complete | 2026-03-22 |
-| 13. Current Service Level Indicators | v1.2 | 0/? | Not started | - |
+| 13. Current Service Level Indicators | v1.2 | 0/1 | Not started | - |
