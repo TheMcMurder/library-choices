@@ -100,4 +100,4 @@ Plans:
 | 7. Collections Budget Slider | v1.1 | 1/2 | Gap closure | - |
 | 8. Hours Open Schedule Display | v1.1 | 0/1 | Planned | - |
 | 9. Compact URL Encoding | v1.1 | 1/1 | Complete   | 2026-03-21 |
-| 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 1/1 | Complete   | 2026-03-22 |
+| 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 1/1 | Complete    | 2026-03-22 |
