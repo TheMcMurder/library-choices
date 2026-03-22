@@ -45,7 +45,7 @@ Declared values (must be multiples of 4):
 
 Exceptions:
 - Touch target minimum: 44px (min-h-[44px] on card labels — existing pattern from Phase 10, preserve)
-- Badge padding: px-2 py-0.5 (8px × 2px) — tight label affordance for "Current level" badge
+- Badge padding: px-2 py-1 (8px × 4px) — smallest scale value (4px), tight label affordance for "Current level" badge
 
 **Source:** codebase scan — existing Tailwind classes in `src/index.html`
 
@@ -58,10 +58,10 @@ Exceptions:
 | Body | 14px (text-sm) | 400 (normal) | 1.5 |
 | Label | 16px (text-base) | 600 (semibold) | 1.5 |
 | Heading | 20px (text-xl) | 600 (semibold) | 1.2 |
-| Badge | 12px (text-xs) | 500 (medium) | 1.2 |
+| Badge | 12px (text-xs) | 600 (semibold) | 1.2 |
 
 Notes:
-- Badge uses text-xs at medium weight to remain legible at compact size without competing with card label
+- Badge uses text-xs at semibold weight to remain legible at compact size without competing with card label
 - No new type styles introduced — badge is the only addition; it maps to the existing text-xs scale already used for slider tick labels
 
 **Source:** codebase scan — Tailwind text-size classes in `src/index.html`
@@ -88,6 +88,8 @@ Coexistence rule (CURR-01): The amber border is rendered as a second ring at a l
 - Focus outline: `has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-blue-600 has-[:focus-visible]:outline-offset-4` — outermost, already established in Phase 12
 
 Ring layering order (outermost to innermost): focus outline (offset-4) → amber current-level ring (offset-2) → blue selection ring (no offset) → card border.
+
+**Primary visual anchor:** the amber ring and "Current level" badge on the current-service-level staffing card. This is the focal point the user's eye lands on first when scanning the staffing options.
 
 **Source:** codebase scan `src/index.html`, `src/css/style.css`; amber color new for this phase, defaulting to Tailwind amber-500.
 
@@ -119,9 +121,9 @@ New visual elements introduced in this phase:
 | Component | Element type | Tailwind classes | Notes |
 |-----------|-------------|-----------------|-------|
 | Current-level card ring | Static ring on `<label>` | `ring-2 ring-amber-500 ring-offset-2` | Applied when loop item has `isCurrentServiceLevel: true`; coexists with blue checked ring |
-| Current-level badge | `<span>` inside `<label>`, top-right | `absolute top-2 right-2 inline-flex items-center rounded-full bg-amber-500 px-2 py-0.5 text-xs font-medium text-white` | Requires `relative` on parent `<label>` |
+| Current-level badge | `<span>` inside `<label>`, top-right | `absolute top-2 right-2 inline-flex items-center rounded-full bg-amber-500 px-2 py-1 text-xs font-semibold text-white` | Requires `relative` on parent `<label>` |
 | Screen reader badge text | Inner `<span>` or badge element text | `sr-only` if visually hidden, or plain text inside badge | "Current level" text |
-| Amber slider tick | Existing `<button>` tick element | Add `text-amber-600 font-medium` when tick value matches current-level option value | Amber-600 for better contrast on white background vs amber-500 |
+| Amber slider tick | Existing `<button>` tick element | Add `text-amber-600 font-semibold` when tick value matches current-level option value | Amber-600 for better contrast on white background vs amber-500 |
 
 Label positioning note: The card `<label>` must gain `relative` positioning to allow `absolute` badge placement. Existing label classes do not include `relative` — this must be added conditionally or universally on all staffing labels.
 
