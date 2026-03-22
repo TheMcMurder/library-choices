@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: UX — Citizen-Meaningful Controls
 status: unknown
-stopped_at: Phase 11 UI-SPEC approved
-last_updated: "2026-03-22T00:48:01.330Z"
+stopped_at: "Checkpoint: Task 2 human-verify — city card UI awaiting browser QA"
+last_updated: "2026-03-22T02:35:21.526Z"
 progress:
   total_phases: 5
-  completed_phases: 4
-  total_plans: 5
-  completed_plans: 5
+  completed_phases: 5
+  total_plans: 6
+  completed_plans: 6
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 10 — custom-staffing-selector-ui-and-clickable-slider-interval-nodes
+**Current focus:** Phase 11 — custom-multi-select-for-participating-cities-i-d-like-to-have-a-custom-multi-select-for-the-particpating-cities-each-city-should-have-a-box-containing-the-city-name-and-population-leverage-the-same-general-design-from-the-hours-open-area
 
 ## Current Position
 
-Phase: 10
-Plan: Not started
+Phase: 11 (custom-multi-select-for-participating-cities-i-d-like-to-have-a-custom-multi-select-for-the-particpating-cities-each-city-should-have-a-box-containing-the-city-name-and-population-leverage-the-same-general-design-from-the-hours-open-area) — EXECUTING
+Plan: 1 of 1
 
 ## Performance Metrics
 
@@ -117,6 +117,7 @@ Recent decisions affecting current work:
 - [Phase Phase 10]: has-[:checked] CSS (standard Tailwind v4 bracket-colon syntax) drives card selection state without JavaScript
 - [Phase Phase 10]: sr-only on radio inputs inside cards preserves keyboard/screen-reader access vs type=hidden
 - [Phase Phase 10]: Node button clicks dispatch bubbling input+change events on #collections slider to reach form-level delegation in calculator.js
+- [Phase 11]: City cards use same has-[:checked] CSS-only pattern as staffing cards (Phase 10) — no JavaScript added or modified
 
 ### v1.1 Research Flags
 
@@ -137,6 +138,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-22T00:48:01.327Z
-Stopped at: Phase 11 UI-SPEC approved
-Resume file: .planning/phases/11-custom-multi-select-for-participating-cities-i-d-like-to-have-a-custom-multi-select-for-the-particpating-cities-each-city-should-have-a-box-containing-the-city-name-and-population-leverage-the-same-general-design-from-the-hours-open-area/11-UI-SPEC.md
+Last session: 2026-03-22T02:35:18.557Z
+Stopped at: Checkpoint: Task 2 human-verify — city card UI awaiting browser QA
+Resume file: None

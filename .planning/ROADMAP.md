@@ -97,9 +97,9 @@ Plans:
   3. Selected city cards show blue ring and blue-50 background; unselected cards show gray — CSS-only via `has-[:checked]`
   4. Tab and Space keyboard navigation works across city cards with visible focus ring on card wrapper
   5. calculator.js and url.js integration contracts are preserved — no JS files modified
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 11-01-PLAN.md — Replace inline checkbox city pattern with full-width card elements matching staffing card design
+- [x] 11-01-PLAN.md — Replace inline checkbox city pattern with full-width card elements matching staffing card design
 
 ## Progress
 
@@ -115,4 +115,4 @@ Plans:
 | 8. Hours Open Schedule Display | v1.1 | 0/1 | Planned | - |
 | 9. Compact URL Encoding | v1.1 | 1/1 | Complete   | 2026-03-21 |
 | 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 1/1 | Complete    | 2026-03-22 |
-| 11. Custom City Card Multi-Select | v1.1 | 0/1 | Planned | - |
+| 11. Custom City Card Multi-Select | v1.1 | 1/1 | Complete   | 2026-03-22 |
