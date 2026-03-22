@@ -67,6 +67,17 @@
 - [x] **URL-04**: Out-of-bounds or NaN index values are silently ignored — default selections are used
 - [x] **URL-05**: NON-DEVELOPER EDIT GUIDE warns that reordering config arrays breaks existing compact shared URLs
 
+### Staffing Card Selector (CARD)
+
+- [ ] **CARD-01**: Staffing options displayed as clickable card elements wrapping hidden `sr-only` radio inputs — entire card surface is the click target
+- [ ] **CARD-02**: Selected card shows `ring-2 ring-blue-600` + `bg-white`; unselected cards show `bg-gray-50` + `border-gray-200` — CSS-only via `has-[:checked]`, no JavaScript
+- [ ] **CARD-03**: Tab and arrow key navigation works across staffing cards; focus-visible ring transfers to card wrapper via `has-[:focus-visible]`
+
+### Clickable Slider Nodes (NODE)
+
+- [ ] **NODE-01**: Slider tick labels ($10k-$60k) are clickable `<button type="button">` elements that snap the slider to their `data-value` and dispatch bubbling `input` + `change` events
+- [ ] **NODE-02**: Active node button shows `text-blue-800 font-semibold`; inactive nodes show `text-gray-500 font-normal` — synced in `updateSliderLabels()` on every slider change
+
 ## v2 Requirements
 
 ### Enhancements
@@ -126,13 +137,18 @@
 | URL-03 | Phase 9 | Planned |
 | URL-04 | Phase 9 | Planned |
 | URL-05 | Phase 9 | Planned |
+| CARD-01 | Phase 10 | Planned |
+| CARD-02 | Phase 10 | Planned |
+| CARD-03 | Phase 10 | Planned |
+| NODE-01 | Phase 10 | Planned |
+| NODE-02 | Phase 10 | Planned |
 
 **Coverage:**
 - v1 requirements: 16 total — all Complete
-- v1.1 requirements: 18 total (SLDR: 8, HOURS: 5, URL: 5)
-- Mapped to phases: 18
+- v1.1 requirements: 23 total (SLDR: 8, HOURS: 5, URL: 5, CARD: 3, NODE: 2)
+- Mapped to phases: 23
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-20*
-*Last updated: 2026-03-21 — URL requirements added for Phase 9 compact URL encoding*
+*Last updated: 2026-03-21 — CARD and NODE requirements added for Phase 10 custom staffing selector and clickable slider nodes*

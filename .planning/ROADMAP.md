@@ -72,6 +72,21 @@ Plans:
 Plans:
 - [x] 09-01-PLAN.md — Rewrite url.js with compact encode/decode, add edit guide array ordering warning
 
+### Phase 10: Custom Staffing Selector UI and Clickable Slider Interval Nodes
+**Goal:** Staffing options are presented as clickable full-width card elements with CSS-only selection state, and slider tick labels are clickable buttons that snap the slider to their value — making both controls more visually substantial and interactive
+**Depends on:** Phase 9
+**Requirements**: CARD-01, CARD-02, CARD-03, NODE-01, NODE-02
+**Success Criteria** (what must be TRUE):
+  1. Clicking any staffing card selects its radio and updates the tax result — the entire card surface is the click target
+  2. Selected card shows blue ring and white background; unselected cards show gray — driven by CSS `has-[:checked]` with no JavaScript
+  3. Tab and arrow key navigation works across staffing cards with visible focus ring on the card wrapper
+  4. Clicking a slider tick label ($10k-$60k) snaps the slider to that value and updates the result identically to dragging
+  5. Active slider node label is bold blue; inactive nodes are gray — synced on every slider change including URL restore
+  6. calculator.js and url.js integration contracts are preserved — url.js is not modified
+**Plans:** 1 plan
+Plans:
+- [ ] 10-01-PLAN.md — Convert staffing radio list to card elements, convert slider tick labels to clickable buttons, add node button click handlers and active state sync to calculator.js
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -85,13 +100,4 @@ Plans:
 | 7. Collections Budget Slider | v1.1 | 1/2 | Gap closure | - |
 | 8. Hours Open Schedule Display | v1.1 | 0/1 | Planned | - |
 | 9. Compact URL Encoding | v1.1 | 1/1 | Complete   | 2026-03-21 |
-
-### Phase 10: custom staffing selector UI and clickable slider interval nodes
-
-**Goal:** [To be planned]
-**Requirements**: TBD
-**Depends on:** Phase 9
-**Plans:** 0 plans
-
-Plans:
-- [ ] TBD (run /gsd:plan-phase 10 to break down)
+| 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 0/1 | Planned | - |
