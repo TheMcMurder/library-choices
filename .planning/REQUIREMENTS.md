@@ -69,14 +69,14 @@
 
 ### Staffing Card Selector (CARD)
 
-- [ ] **CARD-01**: Staffing options displayed as clickable card elements wrapping hidden `sr-only` radio inputs — entire card surface is the click target
-- [ ] **CARD-02**: Selected card shows `ring-2 ring-blue-600` + `bg-white`; unselected cards show `bg-gray-50` + `border-gray-200` — CSS-only via `has-[:checked]`, no JavaScript
-- [ ] **CARD-03**: Tab and arrow key navigation works across staffing cards; focus-visible ring transfers to card wrapper via `has-[:focus-visible]`
+- [x] **CARD-01**: Staffing options displayed as clickable card elements wrapping hidden `sr-only` radio inputs — entire card surface is the click target
+- [x] **CARD-02**: Selected card shows `ring-2 ring-blue-600` + `bg-white`; unselected cards show `bg-gray-50` + `border-gray-200` — CSS-only via `has-[:checked]`, no JavaScript
+- [x] **CARD-03**: Tab and arrow key navigation works across staffing cards; focus-visible ring transfers to card wrapper via `has-[:focus-visible]`
 
 ### Clickable Slider Nodes (NODE)
 
-- [ ] **NODE-01**: Slider tick labels ($10k-$60k) are clickable `<button type="button">` elements that snap the slider to their `data-value` and dispatch bubbling `input` + `change` events
-- [ ] **NODE-02**: Active node button shows `text-blue-800 font-semibold`; inactive nodes show `text-gray-500 font-normal` — synced in `updateSliderLabels()` on every slider change
+- [x] **NODE-01**: Slider tick labels ($10k-$60k) are clickable `<button type="button">` elements that snap the slider to their `data-value` and dispatch bubbling `input` + `change` events
+- [x] **NODE-02**: Active node button shows `text-blue-800 font-semibold`; inactive nodes show `text-gray-500 font-normal` — synced in `updateSliderLabels()` on every slider change
 
 ## v2 Requirements
 

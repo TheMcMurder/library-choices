@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: UX — Citizen-Meaningful Controls
 status: unknown
-stopped_at: Phase 10 UI-SPEC approved
-last_updated: "2026-03-22T00:18:34.997Z"
+stopped_at: Completed 10-01-PLAN.md
+last_updated: "2026-03-22T00:34:31.354Z"
 progress:
   total_phases: 4
-  completed_phases: 3
-  total_plans: 4
-  completed_plans: 4
+  completed_phases: 4
+  total_plans: 5
+  completed_plans: 5
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 09 — compact-url-encoding-pi-tau-phi-easter-egg-param-aliases-with-positional-index-values
+**Current focus:** Phase 10 — custom-staffing-selector-ui-and-clickable-slider-interval-nodes
 
 ## Current Position
 
-Phase: 09
-Plan: Not started
+Phase: 10 (custom-staffing-selector-ui-and-clickable-slider-interval-nodes) — EXECUTING
+Plan: 1 of 1
 
 ## Performance Metrics
 
@@ -61,6 +61,7 @@ Plan: Not started
 | Phase 07-collections-budget-slider P02 | 1min | 1 tasks | 1 files |
 | Phase 08 P01 | 22min | 3 tasks | 3 files |
 | Phase 09 P01 | 1min | 2 tasks | 2 files |
+| Phase 10-custom-staffing-selector-ui-and-clickable-slider-interval-nodes P01 | 2min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -112,6 +113,9 @@ Recent decisions affecting current work:
 - [Phase 09]: Compact params (pi/tau/phi) are write-canonical; verbose params (staffing/collections/cities) retained as backward-compatible decode fallback
 - [Phase 09]: 0-based positional indices for pi/tau/phi — direct JS array access, no offset arithmetic
 - [Phase 09]: Compact detection: params.has(pi) || params.has(tau) || params.has(phi) — compact path wins entirely if any compact key present
+- [Phase Phase 10]: has-[:checked] CSS (standard Tailwind v4 bracket-colon syntax) drives card selection state without JavaScript
+- [Phase Phase 10]: sr-only on radio inputs inside cards preserves keyboard/screen-reader access vs type=hidden
+- [Phase Phase 10]: Node button clicks dispatch bubbling input+change events on #collections slider to reach form-level delegation in calculator.js
 
 ### v1.1 Research Flags
 
@@ -132,6 +136,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-22T00:18:34.995Z
-Stopped at: Phase 10 UI-SPEC approved
-Resume file: .planning/phases/10-custom-staffing-selector-ui-and-clickable-slider-interval-nodes/10-UI-SPEC.md
+Last session: 2026-03-22T00:34:31.352Z
+Stopped at: Completed 10-01-PLAN.md
+Resume file: None

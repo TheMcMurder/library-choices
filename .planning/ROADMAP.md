@@ -83,9 +83,9 @@ Plans:
   4. Clicking a slider tick label ($10k-$60k) snaps the slider to that value and updates the result identically to dragging
   5. Active slider node label is bold blue; inactive nodes are gray — synced on every slider change including URL restore
   6. calculator.js and url.js integration contracts are preserved — url.js is not modified
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 10-01-PLAN.md — Convert staffing radio list to card elements, convert slider tick labels to clickable buttons, add node button click handlers and active state sync to calculator.js
+- [x] 10-01-PLAN.md — Convert staffing radio list to card elements, convert slider tick labels to clickable buttons, add node button click handlers and active state sync to calculator.js
 
 ## Progress
 
@@ -100,4 +100,4 @@ Plans:
 | 7. Collections Budget Slider | v1.1 | 1/2 | Gap closure | - |
 | 8. Hours Open Schedule Display | v1.1 | 0/1 | Planned | - |
 | 9. Compact URL Encoding | v1.1 | 1/1 | Complete   | 2026-03-21 |
-| 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 0/1 | Planned | - |
+| 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 1/1 | Complete   | 2026-03-22 |
