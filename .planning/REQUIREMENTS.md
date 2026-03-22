@@ -9,11 +9,11 @@ Requirements for the current service level indicator milestone.
 
 ### Current Service Indicators
 
-- [ ] **CURR-01**: Staffing card marked `isCurrentServiceLevel: true` displays an amber border that is visible in both selected and unselected states — the blue selection ring remains fully intact and coexists with the amber border
-- [ ] **CURR-02**: Staffing card marked `isCurrentServiceLevel: true` displays a small amber "Current level" badge in the top-right corner, visible in both selected and unselected states
-- [ ] **CURR-03**: Collections slider tick for the option marked `isCurrentServiceLevel: true` is styled amber and persists regardless of slider position — the tick's active/inactive visual state is otherwise unchanged
-- [ ] **CURR-04**: All indicators are template-driven from the `isCurrentServiceLevel` config flag — no option IDs or values hardcoded in templates
-- [ ] **CURR-05**: Screen reader text communicates "Current level" for the badge (color alone is not the only signal)
+- [x] **CURR-01**: Staffing card marked `isCurrentServiceLevel: true` displays an amber border that is visible in both selected and unselected states — the blue selection ring remains fully intact and coexists with the amber border
+- [x] **CURR-02**: Staffing card marked `isCurrentServiceLevel: true` displays a small amber "Current level" badge in the top-right corner, visible in both selected and unselected states
+- [x] **CURR-03**: Collections slider tick for the option marked `isCurrentServiceLevel: true` is styled amber and persists regardless of slider position — the tick's active/inactive visual state is otherwise unchanged
+- [x] **CURR-04**: All indicators are template-driven from the `isCurrentServiceLevel` config flag — no option IDs or values hardcoded in templates
+- [x] **CURR-05**: Screen reader text communicates "Current level" for the badge (color alone is not the only signal)
 
 ## Future Requirements
 
@@ -35,11 +35,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CURR-01 | Phase 13 | Pending |
-| CURR-02 | Phase 13 | Pending |
-| CURR-03 | Phase 13 | Pending |
-| CURR-04 | Phase 13 | Pending |
-| CURR-05 | Phase 13 | Pending |
+| CURR-01 | Phase 13 | Complete |
+| CURR-02 | Phase 13 | Complete |
+| CURR-03 | Phase 13 | Complete |
+| CURR-04 | Phase 13 | Complete |
+| CURR-05 | Phase 13 | Complete |
 
 **Coverage:**
 - v1.2 requirements: 5 total

@@ -40,7 +40,7 @@ Full phase details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 
 **Milestone Goal:** Visually distinguish the staffing card and collections slider tick marked `isCurrentServiceLevel: true` so citizens always see the current service baseline regardless of their active selection.
 
-- [ ] **Phase 13: Current Service Level Indicators** — Amber border, badge, and slider tick that persist across all selection states; driven by config flag; screen reader accessible
+- [x] **Phase 13: Current Service Level Indicators** — Amber border, badge, and slider tick that persist across all selection states; driven by config flag; screen reader accessible (completed 2026-03-22)
 
 ## Phase Details
 
@@ -57,7 +57,7 @@ Full phase details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 **Plans**: 1 plan
 
 Plans:
-- [ ] 13-01-PLAN.md — Amber ring, badge, and slider tick indicators with JS guard
+- [x] 13-01-PLAN.md — Amber ring, badge, and slider tick indicators with JS guard
 
 ## Progress
 
@@ -75,4 +75,4 @@ Plans:
 | 10. Custom Staffing Selector + Clickable Nodes | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 11. Custom City Card Multi-Select | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 12. Fix Focus Ring Visibility | v1.1 | 1/1 | Complete | 2026-03-22 |
-| 13. Current Service Level Indicators | v1.2 | 0/1 | Not started | - |
+| 13. Current Service Level Indicators | v1.2 | 1/1 | Complete   | 2026-03-22 |
