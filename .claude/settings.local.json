@@ -10,7 +10,12 @@
       "Bash(git commit:*)",
       "Bash(git -C /Users/mcmurdie/Development/personal/library-choices log --oneline --all)",
       "Bash(echo \"MISSING\" git log --oneline --grep=\"08-01\" --since=\"2 hours ago\")",
-      "Bash(cat /Users/mcmurdie/Development/personal/library-choices/.planning/phases/08-hours-open-schedule-display/*-VERIFICATION.md)"
+      "Bash(cat /Users/mcmurdie/Development/personal/library-choices/.planning/phases/08-hours-open-schedule-display/*-VERIFICATION.md)",
+      "Bash(git -C /Users/mcmurdie/Development/personal/library-choices log --oneline --follow src/js/calculator.js src/js/url.js)",
+      "Bash(git -C /Users/mcmurdie/Development/personal/library-choices show 5c45b11 --stat)",
+      "Bash(git -C /Users/mcmurdie/Development/personal/library-choices log --oneline src/js/calculator.js)",
+      "Bash(npx @11ty/eleventy --input=src --output=_site)",
+      "Bash(ls /Users/mcmurdie/Development/personal/library-choices/.planning/phases/12-fix-focus-ring-visibility-on-custom-hours-and-cities-selectors-expand-outline-offset-so-it-appears-outside-the-selected-state-blue-ring/*-VERIFICATION.md)"
     ]
   }
 }
