@@ -8,7 +8,7 @@ An interactive, mobile-first static website that helps Cache County citizens und
 
 Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
 
-## Current State (v1.1 — Phase 9 complete 2026-03-21)
+## Current State (v1.1 — Phase 10 complete 2026-03-22)
 
 - **Live at:** https://themcmurder.github.io/library-choices/
 - **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + 11ty Nunjucks templates
@@ -101,4 +101,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-21 — Phase 08 complete. Hours Open schedule display shipped — staffing options now show inline weekly tables (Basic/Extended/Current) driven by config.js data.*
+*Last updated: 2026-03-22 — Phase 10 complete. Staffing radio buttons converted to clickable card elements (CSS-only via has-[:checked]); slider tick labels converted to buttons that snap the slider to their value.*
