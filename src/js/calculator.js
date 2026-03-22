@@ -55,6 +55,14 @@
     document.getElementById('collections-amount').textContent = '$' + value.toLocaleString('en-US');
     document.getElementById('collections-description').textContent = node.description;
     slider.setAttribute('aria-valuetext', (value / 1000).toLocaleString('en-US') + ',000 dollars \u2014 ' + node.description);
+    var nodeButtons = document.querySelectorAll('[data-value]');
+    nodeButtons.forEach(function (btn) {
+      var isActive = btn.dataset.value === String(slider.value);
+      btn.classList.toggle('text-blue-800', isActive);
+      btn.classList.toggle('font-semibold', isActive);
+      btn.classList.toggle('text-gray-500', !isActive);
+      btn.classList.toggle('font-normal', !isActive);
+    });
   }
 
   var toggleBtn = document.getElementById('breakdown-toggle');
@@ -87,4 +95,14 @@
   // Safe to call here — script is at end of <body>, DOM is ready
   updateResult();
   updateSliderLabels();
+
+  // Node button click handlers — snap slider to clicked value
+  document.querySelectorAll('[data-value]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var slider = document.getElementById('collections');
+      slider.value = btn.dataset.value;
+      slider.dispatchEvent(new Event('input', { bubbles: true }));
+      slider.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  });
 }());
