@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: UX — Citizen-Meaningful Controls
 status: unknown
-stopped_at: "Checkpoint: Task 2 human-verify — city card UI awaiting browser QA"
-last_updated: "2026-03-22T02:35:21.526Z"
+stopped_at: Completed 11-01-PLAN.md
+last_updated: "2026-03-22T02:44:20.555Z"
 progress:
   total_phases: 5
   completed_phases: 5
@@ -118,6 +118,8 @@ Recent decisions affecting current work:
 - [Phase Phase 10]: sr-only on radio inputs inside cards preserves keyboard/screen-reader access vs type=hidden
 - [Phase Phase 10]: Node button clicks dispatch bubbling input+change events on #collections slider to reach form-level delegation in calculator.js
 - [Phase 11]: City cards use same has-[:checked] CSS-only pattern as staffing cards (Phase 10) — no JavaScript added or modified
+- [Phase 11]: City cards use same has-[:checked] CSS-only pattern as staffing cards (Phase 10) — no JavaScript added or modified
+- [Phase Phase 11]: sr-only on city checkboxes matches staffing radio pattern from Phase 10 — no accent-blue-600 needed
 
 ### v1.1 Research Flags
 
@@ -138,6 +140,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-22T02:35:18.557Z
-Stopped at: Checkpoint: Task 2 human-verify — city card UI awaiting browser QA
+Last session: 2026-03-22T02:44:15.983Z
+Stopped at: Completed 11-01-PLAN.md
 Resume file: None

@@ -57,7 +57,7 @@ completed: 2026-03-21
 - **Duration:** ~1 min
 - **Started:** 2026-03-21T06:33:59Z
 - **Completed:** 2026-03-21T06:34:38Z
-- **Tasks:** 1 of 2 (Task 2 is human-verify checkpoint)
+- **Tasks:** 2 of 2
 - **Files modified:** 1
 
 ## Accomplishments
@@ -71,8 +71,7 @@ completed: 2026-03-21
 ## Task Commits
 
 1. **Task 1: Replace city checkbox pattern with card elements** - `5c45b11` (feat)
-
-**Plan metadata:** (pending final docs commit)
+2. **Task 2: Verify city card UI in browser** - approved by user (human-verify checkpoint)
 
 ## Files Created/Modified
 
@@ -98,7 +97,7 @@ None. All four cities render from `config.cities` data via Nunjucks loop. `sourc
 
 ## Next Phase Readiness
 
-- City card UI is complete and ready for browser verification (Task 2 checkpoint)
+- City card UI is complete and browser-verified by user
 - calculator.js and url.js untouched — all existing functionality preserved
 - Design is consistent with staffing cards — Participating Cities section now matches Hours Open visual quality
 

@@ -80,11 +80,11 @@
 
 ### City Card Multi-Select (CITY)
 
-- [ ] **CITY-01**: City options displayed as clickable full-width card elements wrapping hidden `sr-only` checkbox inputs — entire card surface is the click target
-- [ ] **CITY-02**: Each city card shows city name (`text-base font-semibold`), household count (`text-sm text-gray-500`), and source citation with link
-- [ ] **CITY-03**: Selected city card shows `ring-2 ring-blue-600` + `bg-blue-50`; unselected cards show `bg-gray-50` + `border-gray-200` — CSS-only via `has-[:checked]`, no JavaScript
-- [ ] **CITY-04**: Tab and Space keyboard navigation works across city cards; focus-visible ring on card wrapper via `has-[:focus-visible]`
-- [ ] **CITY-05**: Existing calculator.js and url.js integration contracts preserved — `name="cities"`, `value="{city.id}"`, `data-households` attributes unchanged
+- [x] **CITY-01**: City options displayed as clickable full-width card elements wrapping hidden `sr-only` checkbox inputs — entire card surface is the click target
+- [x] **CITY-02**: Each city card shows city name (`text-base font-semibold`), household count (`text-sm text-gray-500`), and source citation with link
+- [x] **CITY-03**: Selected city card shows `ring-2 ring-blue-600` + `bg-blue-50`; unselected cards show `bg-gray-50` + `border-gray-200` — CSS-only via `has-[:checked]`, no JavaScript
+- [x] **CITY-04**: Tab and Space keyboard navigation works across city cards; focus-visible ring on card wrapper via `has-[:focus-visible]`
+- [x] **CITY-05**: Existing calculator.js and url.js integration contracts preserved — `name="cities"`, `value="{city.id}"`, `data-households` attributes unchanged
 
 ## v2 Requirements
 
