@@ -58,10 +58,12 @@
     var nodeButtons = document.querySelectorAll('[data-value]');
     nodeButtons.forEach(function (btn) {
       var isActive = btn.dataset.value === String(slider.value);
+      var isCurrentLevel = btn.dataset.currentLevel === 'true';
       btn.classList.toggle('text-blue-800', isActive);
-      btn.classList.toggle('font-semibold', isActive);
-      btn.classList.toggle('text-gray-500', !isActive);
-      btn.classList.toggle('font-normal', !isActive);
+      btn.classList.toggle('font-semibold', isActive || isCurrentLevel);
+      btn.classList.toggle('text-gray-500', !isActive && !isCurrentLevel);
+      btn.classList.toggle('font-normal', !isActive && !isCurrentLevel);
+      btn.classList.toggle('text-amber-600', !isActive && isCurrentLevel);
     });
   }
 
