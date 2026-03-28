@@ -1,15 +1,15 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.2
-milestone_name: — Current Service Level Indicators
+milestone: v1.3
+milestone_name: — Separate Digital and Physical Collections
 status: unknown
-stopped_at: Phase 14 UI-SPEC approved
-last_updated: "2026-03-28T19:56:54.798Z"
+stopped_at: Completed 14-01-PLAN.md
+last_updated: "2026-03-28T20:14:54.858Z"
 progress:
   total_phases: 4
-  completed_phases: 1
-  total_plans: 1
-  completed_plans: 1
+  completed_phases: 2
+  total_plans: 2
+  completed_plans: 2
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 13 — current-service-level-indicators
+**Current focus:** Phase 14 — separate-digital-and-physical-collections
 
 ## Current Position
 
-Phase: 13
-Plan: Not started
+Phase: 14 (separate-digital-and-physical-collections) — EXECUTING
+Plan: 1 of 1
 
 ## Performance Metrics
 
@@ -49,6 +49,7 @@ Plan: Not started
 
 *Updated after each plan completion*
 | Phase 13-current-service-level-indicators P01 | 25min | 3 tasks | 2 files |
+| Phase 14-separate-digital-and-physical-collections P01 | 4min | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -64,6 +65,8 @@ Recent decisions affecting current work:
 - [Phase 13-current-service-level-indicators]: data-current-level attribute bridges Nunjucks isCurrentServiceLevel flag to JS guard — no hardcoded values in JS (CURR-04)
 - [Phase 13-current-service-level-indicators]: text-amber-600 used for slider tick (not amber-500) for WCAG AA contrast on white background
 - [Phase 13-current-service-level-indicators]: ring-offset layering: blue selection ring (no offset) / amber current ring (offset-2) / focus outline (offset-4)
+- [Phase 14-separate-digital-and-physical-collections]: Reused tau param for physical collections index; delta is new param for digital
+- [Phase 14-separate-digital-and-physical-collections]: Verbose backward-compat URL branch removed — referenced data.collections which no longer exists
 
 ### Roadmap Evolution
 
@@ -82,6 +85,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-28T19:56:54.795Z
-Stopped at: Phase 14 UI-SPEC approved
-Resume file: .planning/phases/14-separate-digital-and-physical-collections/14-UI-SPEC.md
+Last session: 2026-03-28T20:14:54.856Z
+Stopped at: Completed 14-01-PLAN.md
+Resume file: None

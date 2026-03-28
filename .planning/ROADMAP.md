@@ -74,14 +74,14 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 14-01-PLAN.md — Config restructure, Nunjucks slider macro, calculator and URL refactor
+- [x] 14-01-PLAN.md — Config restructure, Nunjucks slider macro, calculator and URL refactor
 
 ### Phase 15: Hours Update
 
 **Goal:** [To be planned]
 **Requirements**: TBD
 **Depends on:** Phase 14
-**Plans:** 0 plans
+**Plans:** 1/1 plans complete
 
 Plans:
 - [ ] TBD (run /gsd:plan-phase 15 to break down)
@@ -113,4 +113,4 @@ Plans:
 | 11. Custom City Card Multi-Select | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 12. Fix Focus Ring Visibility | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 13. Current Service Level Indicators | v1.2 | 1/1 | Complete    | 2026-03-22 |
-| 14. Separate Digital and Physical Collections | v1.3 | 0/1 | In Progress | — |
+| 14. Separate Digital and Physical Collections | v1.3 | 1/1 | Complete   | 2026-03-28 |

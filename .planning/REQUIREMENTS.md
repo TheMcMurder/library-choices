@@ -21,13 +21,13 @@ Requirements for separating digital and physical collections.
 
 ### Separate Collections
 
-- [ ] **COLL-01**: `collections` config key replaced with `collectionsDigital` and `collectionsPhysical` top-level keys, each with independent tier options — old blended key removed entirely
-- [ ] **COLL-02**: Reusable Nunjucks macro (`collectionSlider`) renders both sliders from the same template with different parameters
-- [ ] **COLL-03**: Two stacked sliders inside the Collections Budget fieldset — digital on top, physical below, each with own description and source citation
-- [ ] **COLL-04**: Total tax = staffing cost + digital budget + physical budget (additive, no floor/ceiling)
-- [ ] **COLL-05**: URL encoding uses `tau` for physical collections index and `delta` for digital collections index — old tau values out of range for new physical tiers silently fall to default
-- [ ] **COLL-06**: Both sliders display Phase 13 amber current-level tick independently via `isCurrentServiceLevel` flag and `data-current-level` attribute
-- [ ] **COLL-07**: NON-DEVELOPER EDIT GUIDE in config.js updated to document both `collectionsDigital` and `collectionsPhysical` keys
+- [x] **COLL-01**: `collections` config key replaced with `collectionsDigital` and `collectionsPhysical` top-level keys, each with independent tier options — old blended key removed entirely
+- [x] **COLL-02**: Reusable Nunjucks macro (`collectionSlider`) renders both sliders from the same template with different parameters
+- [x] **COLL-03**: Two stacked sliders inside the Collections Budget fieldset — digital on top, physical below, each with own description and source citation
+- [x] **COLL-04**: Total tax = staffing cost + digital budget + physical budget (additive, no floor/ceiling)
+- [x] **COLL-05**: URL encoding uses `tau` for physical collections index and `delta` for digital collections index — old tau values out of range for new physical tiers silently fall to default
+- [x] **COLL-06**: Both sliders display Phase 13 amber current-level tick independently via `isCurrentServiceLevel` flag and `data-current-level` attribute
+- [x] **COLL-07**: NON-DEVELOPER EDIT GUIDE in config.js updated to document both `collectionsDigital` and `collectionsPhysical` keys
 
 ## Future Requirements
 
@@ -54,13 +54,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CURR-03 | Phase 13 | Complete |
 | CURR-04 | Phase 13 | Complete |
 | CURR-05 | Phase 13 | Complete |
-| COLL-01 | Phase 14 | Pending |
-| COLL-02 | Phase 14 | Pending |
-| COLL-03 | Phase 14 | Pending |
-| COLL-04 | Phase 14 | Pending |
-| COLL-05 | Phase 14 | Pending |
-| COLL-06 | Phase 14 | Pending |
-| COLL-07 | Phase 14 | Pending |
+| COLL-01 | Phase 14 | Complete |
+| COLL-02 | Phase 14 | Complete |
+| COLL-03 | Phase 14 | Complete |
+| COLL-04 | Phase 14 | Complete |
+| COLL-05 | Phase 14 | Complete |
+| COLL-06 | Phase 14 | Complete |
+| COLL-07 | Phase 14 | Complete |
 
 **Coverage:**
 - v1.2 requirements: 5 total, 5 complete
