@@ -61,7 +61,7 @@ Source: Direct inspection of `src/index.html` and `src/css/style.css`. No change
 | Result bar amount | 24px (`text-2xl`) | 600 semibold (`font-semibold`) | 1.25 (inherits) |
 
 Additional type elements in this phase:
-- Slider tick labels: 12px (`text-xs`), weight toggles between 400 (`font-normal`, inactive) and 600 (`font-semibold`, active or current-level), no explicit line-height set.
+- Slider tick labels: 14px (`text-sm`), weight toggles between 400 (`font-normal`, inactive) and 600 (`font-semibold`, active or current-level), no explicit line-height set.
 - Source citations: 14px (`text-sm`), weight 400, `not-italic` override (existing pattern).
 
 Source: Direct inspection of `src/index.html` — these sizes and weights are already established and must be matched exactly by the new macro output.
@@ -84,6 +84,8 @@ Accent reserved for:
 3. `blue-200`: slider track background
 4. `amber-500`: current-level card border ring, current-level badge background
 5. `amber-600`: current-level tick button text (contrast-safe on white)
+
+Primary focal point: result bar (`bg-blue-800`, `text-2xl` amount figure) — highest contrast element on the page.
 
 Phase 14 does not introduce any new colors. Both new sliders use the same blue/amber/gray pattern as the existing slider. The `data-current-level="true"` + JS guard preserves `text-amber-600` on current-level ticks across both new sliders.
 
@@ -119,7 +121,7 @@ div.flex.flex-col.gap-4
   input[type=range]#{id} .w-full.cursor-pointer
   div.flex.justify-between.px-0[aria-hidden=true]
     button[data-slider={id}][data-value={opt.value}][data-current-level=true (if isCurrentServiceLevel)]
-      .text-xs.px-1.py-1 — inactive: .text-gray-500.font-normal
+      .text-sm.px-1.py-1 — inactive: .text-gray-500.font-normal
                          — active:   .text-blue-800.font-semibold
                          — current:  .text-amber-600.font-semibold (preserved by JS guard)
   p#{descriptionId} .text-sm.text-gray-600.leading-normal
