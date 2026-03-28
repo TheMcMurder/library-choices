@@ -3,10 +3,10 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: — Current Service Level Indicators
 status: unknown
-stopped_at: Completed 13-01-PLAN.md
-last_updated: "2026-03-22T21:04:41.657Z"
+stopped_at: Phase 14 UI-SPEC approved
+last_updated: "2026-03-28T19:56:54.798Z"
 progress:
-  total_phases: 1
+  total_phases: 4
   completed_phases: 1
   total_plans: 1
   completed_plans: 1
@@ -65,6 +65,12 @@ Recent decisions affecting current work:
 - [Phase 13-current-service-level-indicators]: text-amber-600 used for slider tick (not amber-500) for WCAG AA contrast on white background
 - [Phase 13-current-service-level-indicators]: ring-offset layering: blue selection ring (no offset) / amber current ring (offset-2) / focus outline (offset-4)
 
+### Roadmap Evolution
+
+- Phase 14 added: separate digital and physical collections
+- Phase 15 added: Hours Update
+- Phase 16 added: unit tests
+
 ### Pending Todos
 
 None.
@@ -76,6 +82,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-22T20:53:10.622Z
-Stopped at: Completed 13-01-PLAN.md
-Resume file: None
+Last session: 2026-03-28T19:56:54.795Z
+Stopped at: Phase 14 UI-SPEC approved
+Resume file: .planning/phases/14-separate-digital-and-physical-collections/14-UI-SPEC.md
