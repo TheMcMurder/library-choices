@@ -8,17 +8,18 @@ An interactive, mobile-first static website that helps Cache County citizens und
 
 Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
 
-## Current Milestone: v1.2 — Current Service Level Indicators
+## Current Milestone: v1.3 — Separate Digital and Physical Collections
 
-**Goal:** Visually distinguish any staffing or collections option marked `isCurrentServiceLevel: true` so citizens can always see the current service baseline regardless of their selection.
+**Goal:** Replace the single blended collections budget slider with two independently-controlled sliders (digital and physical), each with its own cost and current service level indicator.
 
 **Target features:**
-- Persistent "current" color indicator on staffing cards with `isCurrentServiceLevel: true`
-- Persistent "current" color indicator on collections slider tick with `isCurrentServiceLevel: true`
-- Indicator persists across all selection states (selected, unselected)
-- Driven by config.js data — no hardcoding of which option is "current"
+- Digital collections budget slider ($5k–$20k, 5 options)
+- Physical print collections budget slider ($0–$20k, 5 options)
+- Both rendered by shared Nunjucks macro
+- Additive in tax calculation (staffing + digital + physical)
+- URL encoding: `delta` for digital index, `tau` for physical index
 
-## Current State (v1.2 — shipped 2026-03-22)
+## Current State (v1.3 — Phase 14 complete 2026-03-28)
 
 - **Live at:** https://mcmurdie.github.io/library-choices/
 - **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + Nunjucks templates
@@ -65,7 +66,15 @@ Citizens can explore any combination of service and funding choices and immediat
 - ✓ Amber ring and "Current level" badge on current staffing card; persists alongside blue selection ring (CURR-04) — Validated in Phase 13
 - ✓ Amber tick styling preserved by JS guard as slider moves; returns to amber when step deselected (CURR-05) — Validated in Phase 13
 
-### Deferred (post-v1.2)
+### Validated (v1.3)
+
+- ✓ Digital collections budget slider (5 options, $5k–$20k, independent) — Validated in Phase 14
+- ✓ Physical print collections budget slider (5 options, $0–$20k, independent) — Validated in Phase 14
+- ✓ Both sliders rendered by shared Nunjucks macro; additive in tax calculation — Validated in Phase 14
+- ✓ URL encodes digital as `delta` (index), physical reuses `tau` (index) — Validated in Phase 14
+- ✓ `isCurrentServiceLevel` amber tick on both sliders — Validated in Phase 14
+
+### Deferred (post-v1.3)
 
 - Scenario summary text — human-readable sentence describing the selected combination (ENH-01)
 - Print stylesheet — printable version of the configured scenario (ENH-02)
@@ -133,4 +142,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-22 after Phase 13 complete — v1.2 milestone shipped with current service level indicators.*
+*Last updated: 2026-03-28 after Phase 14 complete — v1.3 separate digital and physical collections sliders.*
