@@ -1,0 +1,32 @@
+{% macro collectionSlider(id, name, label, options, source, amountId, descriptionId) %}
+<div class="flex flex-col gap-4">
+  <div class="flex items-center justify-between">
+    <label for="{{ id }}" class="text-base font-semibold text-gray-900">{{ label }}</label>
+    <span id="{{ amountId }}" class="text-base font-semibold text-blue-800"></span>
+  </div>
+  <input
+    type="range"
+    id="{{ id }}"
+    name="{{ name }}"
+    min="{{ options[0].value }}"
+    max="{{ options[options | length - 1].value }}"
+    step="{{ options[1].value - options[0].value }}"
+    value="{% for opt in options %}{% if opt.isDefault %}{{ opt.value }}{% endif %}{% endfor %}"
+    class="w-full cursor-pointer"
+  />
+  <div class="flex justify-between px-0" aria-hidden="true">
+    {% for opt in options %}
+      <button
+        type="button"
+        data-slider="{{ id }}"
+        data-value="{{ opt.value }}"
+        {% if opt.isCurrentServiceLevel %}data-current-level="true"{% endif %}
+        class="text-sm px-1 py-1 cursor-pointer hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2
+               {% if opt.isCurrentServiceLevel %}text-amber-600 font-semibold{% else %}text-gray-500 font-normal{% endif %}"
+      >${{ (opt.value / 1000) | int }}k</button>
+    {% endfor %}
+  </div>
+  <p id="{{ descriptionId }}" class="text-sm text-gray-600 leading-normal"></p>
+  <cite class="text-sm text-gray-500 not-italic">Source: {{ source }}</cite>
+</div>
+{% endmacro %}

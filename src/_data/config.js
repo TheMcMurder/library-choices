@@ -30,12 +30,19 @@
  *                             "draft: false" (no quotes around
  *                             true/false).
  *
- *   - To change a collections
- *     description:              Find the option in "collections"
- *                               and change the text next to
- *                               "description". Keep the quotes.
- *                               Use a plain dash — not special
- *                               characters.
+ *   - To change a digital
+ *     collections description:    Find the option in "collectionsDigital"
+ *                                 and change the text next to
+ *                                 "description". Keep the quotes.
+ *                                 Use a plain dash — not special
+ *                                 characters.
+ *
+ *   - To change a physical
+ *     collections description:    Find the option in "collectionsPhysical"
+ *                                 and change the text next to
+ *                                 "description". Keep the quotes.
+ *                                 Use a plain dash — not special
+ *                                 characters.
  *
  *   - To change which cities
  *     start checked:            Find the city and change
@@ -73,10 +80,11 @@
  *
  *   - IMPORTANT — compact URLs
  *     and array order:          Shared links use compact URL
- *                               encoding (pi/tau/phi) based on
+ *                               encoding (pi/tau/delta/phi) based on
  *                               array position. If you reorder
  *                               or insert items in the middle of
- *                               staffingLevels, collections options,
+ *                               staffingLevels, collectionsDigital options,
+ *                               collectionsPhysical options,
  *                               or cities arrays, existing shared
  *                               links will point to wrong items.
  *                               Always ADD new items at the END
@@ -142,19 +150,30 @@ export default {
     },
   ],
 
-  collections: {
-    description:
-      "New books, periodicals, and digital media added to the collection each year.",
+  collectionsDigital: {
+    description: "Digital materials added to the collection each year.",
     source: "Cache County Library Services budget proposal FY2025",
     options: [
-      { value: 10000, isDefault: false, description: "Digital-only access via Beehive and Libby \u2014 no physical print collection" },
-      { value: 20000, isDefault: false, description: "Small rotating print collection + digital" },
-      { value: 30000, isDefault: true,  description: "Print collection + digital",
+      { value: 5000,  isDefault: false, description: "Beehive and Libby access only \u2014 statewide digital lending" },
+      { value: 10000, isDefault: false, description: "Beehive, Libby, and supplemental e-book subscriptions" },
+      { value: 15000, isDefault: true,  description: "Full digital suite \u2014 e-books, audiobooks, streaming media",
         isCurrentServiceLevel: true,
       },
-      { value: 40000, isDefault: false, description: "Expanded print + digital + periodicals" },
-      { value: 50000, isDefault: false, description: "Full print + digital + periodicals + AV materials" },
-      { value: 60000, isDefault: false, description: "Full collection + digital + periodicals + AV + special programs" },
+      { value: 20000, isDefault: false, description: "Expanded digital \u2014 all formats plus online learning platforms" },
+    ],
+  },
+
+  collectionsPhysical: {
+    description: "Physical print and media materials added each year.",
+    source: "Cache County Library Services budget proposal FY2025",
+    options: [
+      { value: 0,     isDefault: false, description: "No physical print collection \u2014 digital only" },
+      { value: 5000,  isDefault: false, description: "Small rotating print collection" },
+      { value: 10000, isDefault: false, description: "Core print collection \u2014 new titles and replacements",
+        isCurrentServiceLevel: true,
+      },
+      { value: 15000, isDefault: true,  description: "Expanded print \u2014 adult, children, and young adult sections" },
+      { value: 20000, isDefault: false, description: "Full print + AV materials + periodicals" },
     ],
   },
 
