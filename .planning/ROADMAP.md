@@ -4,7 +4,8 @@
 
 - ✅ **v1.0 MVP** — Phases 1–6 (shipped 2026-03-21) — [archive](milestones/v1.0-ROADMAP.md)
 - ✅ **v1.1 UX — Citizen-Meaningful Controls** — Phases 7–12 (shipped 2026-03-22) — [archive](milestones/v1.1-ROADMAP.md)
-- 🚧 **v1.2 — Current Service Level Indicators** — Phase 13 (in progress)
+- ✅ **v1.2 — Current Service Level Indicators** — Phase 13 (shipped 2026-03-22)
+- 🚧 **v1.3 — Separate Digital and Physical Collections** — Phase 14 (in progress)
 
 ## Phases
 
@@ -36,7 +37,7 @@ Full phase details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 
 </details>
 
-### v1.2 — Current Service Level Indicators (In Progress)
+### v1.2 — Current Service Level Indicators (Complete)
 
 **Milestone Goal:** Visually distinguish the staffing card and collections slider tick marked `isCurrentServiceLevel: true` so citizens always see the current service baseline regardless of their active selection.
 
@@ -59,6 +60,42 @@ Full phase details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 Plans:
 - [x] 13-01-PLAN.md — Amber ring, badge, and slider tick indicators with JS guard
 
+### Phase 14: Separate Digital and Physical Collections
+**Goal**: Replace the single blended collections slider with two independently-controlled sliders (digital and physical) rendered by a shared Nunjucks macro, with additive tax calculation and extended URL encoding
+**Depends on**: Phase 13
+**Requirements**: COLL-01, COLL-02, COLL-03, COLL-04, COLL-05, COLL-06, COLL-07
+**Success Criteria** (what must be TRUE):
+  1. Two independent sliders (digital and physical) appear inside the Collections Budget fieldset, each with own description and source
+  2. Moving one slider does not affect the other slider's value or display
+  3. Total cost in the result bar equals staffing cost + digital budget + physical budget
+  4. Shared URL encodes both slider positions (delta for digital, tau for physical) and restores them correctly on page load
+  5. Amber current-level tick appears on the correct tick for each slider independently
+  6. NON-DEVELOPER EDIT GUIDE documents both new config keys
+**Plans**: 1 plan
+
+Plans:
+- [ ] 14-01-PLAN.md — Config restructure, Nunjucks slider macro, calculator and URL refactor
+
+### Phase 15: Hours Update
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 14
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 15 to break down)
+
+### Phase 16: unit tests
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 15
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 16 to break down)
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -76,3 +113,4 @@ Plans:
 | 11. Custom City Card Multi-Select | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 12. Fix Focus Ring Visibility | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 13. Current Service Level Indicators | v1.2 | 1/1 | Complete    | 2026-03-22 |
+| 14. Separate Digital and Physical Collections | v1.3 | 0/1 | In Progress | — |
