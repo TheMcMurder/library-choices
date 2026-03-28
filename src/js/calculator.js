@@ -12,10 +12,14 @@
     return parseInt(checked.dataset.cost, 10);
   }
 
-  function getCollectionsCost() {
-    // Must read .value, not .dataset.cost — data-cost is frozen at build-time default
-    var collectionsSelect = document.getElementById('collections');
-    return parseInt(collectionsSelect.value, 10);
+  function getDigitalCost() {
+    var el = document.getElementById('collections-digital');
+    return parseInt(el.value, 10);
+  }
+
+  function getPhysicalCost() {
+    var el = document.getElementById('collections-physical');
+    return parseInt(el.value, 10);
   }
 
   function getTotalHouseholds() {
@@ -35,7 +39,7 @@
       return;
     }
 
-    var totalCost = getStaffingCost() + getCollectionsCost();
+    var totalCost = getStaffingCost() + getDigitalCost() + getPhysicalCost();
     var perHousehold = totalCost / totalHouseholds;
 
     resultAmount.textContent = '$' + perHousehold.toFixed(2) + '/household/year';
@@ -43,20 +47,19 @@
     breakdownDetail.textContent = '$' + totalCost.toLocaleString('en-US') + ' total \u00f7 ' + totalHouseholds.toLocaleString('en-US') + ' households';
   }
 
-  function updateSliderLabels() {
-    var slider = document.getElementById('collections');
+  function updateSliderLabels(sliderId, dataKey, amountId, descriptionId) {
+    var slider = document.getElementById(sliderId);
     var value = parseInt(slider.value, 10);
-    var options = window.LIBRARY_DATA.collections.options;
+    var options = window.LIBRARY_DATA[dataKey].options;
     var node = null;
     for (var i = 0; i < options.length; i++) {
       if (options[i].value === value) { node = options[i]; break; }
     }
     if (!node) return;
-    document.getElementById('collections-amount').textContent = '$' + value.toLocaleString('en-US');
-    document.getElementById('collections-description').textContent = node.description;
-    slider.setAttribute('aria-valuetext', (value / 1000).toLocaleString('en-US') + ',000 dollars \u2014 ' + node.description);
-    var nodeButtons = document.querySelectorAll('[data-value]');
-    nodeButtons.forEach(function (btn) {
+    document.getElementById(amountId).textContent = '$' + value.toLocaleString('en-US');
+    document.getElementById(descriptionId).textContent = node.description;
+    slider.setAttribute('aria-valuetext', value.toLocaleString('en-US') + ' dollars \u2014 ' + node.description);
+    document.querySelectorAll('[data-slider="' + sliderId + '"]').forEach(function (btn) {
       var isActive = btn.dataset.value === String(slider.value);
       var isCurrentLevel = btn.dataset.currentLevel === 'true';
       btn.classList.toggle('text-blue-800', isActive);
@@ -65,6 +68,11 @@
       btn.classList.toggle('font-normal', !isActive && !isCurrentLevel);
       btn.classList.toggle('text-amber-600', !isActive && isCurrentLevel);
     });
+  }
+
+  function updateAllSliderLabels() {
+    updateSliderLabels('collections-digital', 'collectionsDigital', 'collections-digital-amount', 'collections-digital-description');
+    updateSliderLabels('collections-physical', 'collectionsPhysical', 'collections-physical-amount', 'collections-physical-description');
   }
 
   var toggleBtn = document.getElementById('breakdown-toggle');
@@ -90,18 +98,20 @@
   // Input event fires on every slider move (including during drag) — ensures live updates
   form.addEventListener('input', function () {
     updateResult();
-    updateSliderLabels();
+    updateAllSliderLabels();
   });
 
   // Run immediately to show result for initial (default) state
   // Safe to call here — script is at end of <body>, DOM is ready
   updateResult();
-  updateSliderLabels();
+  updateAllSliderLabels();
 
   // Node button click handlers — snap slider to clicked value
-  document.querySelectorAll('[data-value]').forEach(function (btn) {
+  // Scoped via data-slider to prevent cross-slider interference
+  document.querySelectorAll('[data-slider]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var slider = document.getElementById('collections');
+      var sliderId = btn.dataset.slider;
+      var slider = document.getElementById(sliderId);
       slider.value = btn.dataset.value;
       slider.dispatchEvent(new Event('input', { bubbles: true }));
       slider.dispatchEvent(new Event('change', { bubbles: true }));

@@ -1,3 +1,4 @@
+{% from "macros/slider.njk" import collectionSlider %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -69,36 +70,25 @@
         {# --- Collections Budget --- #}
         <fieldset class="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
           <legend class="text-xl font-semibold text-gray-900 px-1">Collections Budget</legend>
-          <div class="flex flex-col gap-4">
-            <div class="flex items-center justify-between">
-              <label for="collections" class="text-base font-semibold text-gray-900">Annual collections budget</label>
-              <span id="collections-amount" class="text-base font-semibold text-blue-800">$30,000</span>
-            </div>
-            <input
-              type="range"
-              id="collections"
-              name="collections"
-              min="10000"
-              max="60000"
-              step="10000"
-              value="30000"
-              aria-valuetext="30,000 dollars \u2014 Print collection + digital"
-              class="w-full cursor-pointer"
-            />
-            <div class="flex justify-between px-0" aria-hidden="true">
-              {% for opt in config.collections.options %}
-                <button
-                  type="button"
-                  data-value="{{ opt.value }}"
-                  {% if opt.isCurrentServiceLevel %}data-current-level="true"{% endif %}
-                  class="text-xs px-1 py-1 cursor-pointer hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2
-                         {% if opt.isCurrentServiceLevel %}text-amber-600 font-semibold{% else %}text-gray-500 font-normal{% endif %}"
-                >${{ (opt.value / 1000) | int }}k</button>
-              {% endfor %}
-            </div>
-            <p id="collections-description" class="text-sm text-gray-600 leading-normal"></p>
-            <cite class="text-sm text-gray-500 not-italic">Source: {{ config.collections.source }}</cite>
-          </div>
+          {{ collectionSlider(
+            "collections-digital",
+            "collections-digital",
+            "Digital collections budget",
+            config.collectionsDigital.options,
+            config.collectionsDigital.source,
+            "collections-digital-amount",
+            "collections-digital-description"
+          ) }}
+          <hr class="border-gray-200" />
+          {{ collectionSlider(
+            "collections-physical",
+            "collections-physical",
+            "Physical print collections budget",
+            config.collectionsPhysical.options,
+            config.collectionsPhysical.source,
+            "collections-physical-amount",
+            "collections-physical-description"
+          ) }}
         </fieldset>
 
         {# --- Participating Cities --- #}
