@@ -29,6 +29,20 @@ Requirements for separating digital and physical collections.
 - [x] **COLL-06**: Both sliders display Phase 13 amber current-level tick independently via `isCurrentServiceLevel` flag and `data-current-level` attribute
 - [x] **COLL-07**: NON-DEVELOPER EDIT GUIDE in config.js updated to document both `collectionsDigital` and `collectionsPhysical` keys
 
+## v1.4 Requirements
+
+Requirements for the unit test suite.
+
+### Unit Tests
+
+- [ ] **TEST-01**: Vitest installed as devDependency with `vitest.config.js` at project root and `"test": "vitest run"` script in package.json — `pnpm test` runs successfully
+- [ ] **TEST-02**: `calculatePerHousehold(staffingCost, digitalCost, physicalCost, households)` extracted as a pure ESM export in `src/js/lib/calculator-helpers.js` — returns per-household cost or null for zero households
+- [ ] **TEST-03**: `encodeIndices` and `decodeIndices` extracted as pure ESM exports in `src/js/lib/url-helpers.js` — encode selections to URLSearchParams and decode with bounds checking
+- [ ] **TEST-04**: Config structure validation tests verify `config.js` exports staffingLevels, collectionsDigital, collectionsPhysical, cities arrays with correct shape (ids, costs, household counts, isCurrentServiceLevel flags)
+- [ ] **TEST-05**: Calculator math tests cover happy path, zero-households edge case, all-zeros case, and single-city scenario
+- [ ] **TEST-06**: URL encode/decode tests cover round-trip, out-of-bounds fallback to null, empty params, and non-numeric values
+- [ ] **TEST-07**: Non-blocking `test.yml` GitHub Actions workflow runs `pnpm test` on push to main and pull requests — does not block `deploy.yml`
+
 ## Future Requirements
 
 - Scenario summary text — human-readable sentence describing the selected combination (ENH-01)
@@ -42,6 +56,7 @@ Requirements for separating digital and physical collections.
 |---------|--------|
 | City "current" indicators | All four cities currently participate — no city has `isCurrentServiceLevel`; not needed |
 | Animated transition between indicator states | Motion disorder risk; instant update is more accessible |
+| DOM/UI behavior tests | Slider label updates, breakdown toggle, DOM event wiring — out of scope per D-07 |
 
 ## Traceability
 
@@ -61,12 +76,20 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COLL-05 | Phase 14 | Complete |
 | COLL-06 | Phase 14 | Complete |
 | COLL-07 | Phase 14 | Complete |
+| TEST-01 | Phase 16 | Planned |
+| TEST-02 | Phase 16 | Planned |
+| TEST-03 | Phase 16 | Planned |
+| TEST-04 | Phase 16 | Planned |
+| TEST-05 | Phase 16 | Planned |
+| TEST-06 | Phase 16 | Planned |
+| TEST-07 | Phase 16 | Planned |
 
 **Coverage:**
 - v1.2 requirements: 5 total, 5 complete
-- v1.3 requirements: 7 total, 0 complete
+- v1.3 requirements: 7 total, 7 complete
+- v1.4 requirements: 7 total, 0 complete
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-21*
-*Last updated: 2026-03-28 — Phase 14 requirements added*
+*Last updated: 2026-03-28 — Phase 16 requirements added*

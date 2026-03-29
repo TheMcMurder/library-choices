@@ -86,15 +86,23 @@ Plans:
 Plans:
 - [ ] TBD (run /gsd:plan-phase 15 to break down)
 
-### Phase 16: unit tests
+### Phase 16: Unit Tests
 
-**Goal:** [To be planned]
-**Requirements**: TBD
+**Goal:** Add a unit test suite covering JavaScript business logic (tax calculation math, URL encode/decode round-trip, config data structure integrity) with non-blocking CI
 **Depends on:** Phase 15
-**Plans:** 0 plans
+**Requirements**: TEST-01, TEST-02, TEST-03, TEST-04, TEST-05, TEST-06, TEST-07
+**Success Criteria** (what must be TRUE):
+  1. `pnpm test` runs Vitest and exits 0 with all tests passing
+  2. `calculatePerHousehold` is extracted as a pure ESM function and tested for happy path, zero-households, and all-zeros
+  3. `encodeIndices` and `decodeIndices` are extracted as pure ESM functions and round-trip correctly with bounds checking
+  4. Config structure tests validate shape of staffingLevels, collectionsDigital, collectionsPhysical, and cities
+  5. Non-blocking `test.yml` CI workflow runs on push to main without blocking deploy.yml
+  6. Original IIFE files (calculator.js, url.js) are unchanged
+**Plans**: 2 plans
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 16 to break down)
+- [ ] 16-01-PLAN.md — Setup Vitest, extract pure functions, write unit tests
+- [ ] 16-02-PLAN.md — Non-blocking CI workflow
 
 ## Progress
 
@@ -114,3 +122,4 @@ Plans:
 | 12. Fix Focus Ring Visibility | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 13. Current Service Level Indicators | v1.2 | 1/1 | Complete    | 2026-03-22 |
 | 14. Separate Digital and Physical Collections | v1.3 | 1/1 | Complete    | 2026-03-28 |
+| 16. Unit Tests | v1.4 | 0/2 | Planned | — |
