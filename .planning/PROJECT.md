@@ -19,13 +19,14 @@ Citizens can explore any combination of service and funding choices and immediat
 - Additive in tax calculation (staffing + digital + physical)
 - URL encoding: `delta` for digital index, `tau` for physical index
 
-## Current State (v1.3 — Phase 14 complete 2026-03-28)
+## Current State (v1.3 — Phase 16 complete 2026-03-29)
 
 - **Live at:** https://mcmurdie.github.io/library-choices/
 - **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + Nunjucks templates
 - **Data file:** `src/_data/config.js` — all costs, city names, household counts, staffing levels, schedules
 - **Build:** `pnpm run build` → `_site/` | CI: GitHub Actions deploys on push to `main`
-- **Codebase:** ~1,400 LOC across src/ (HTML, Nunjucks, JS, CSS)
+- **Tests:** Vitest 2.x — 21 tests across 3 files (`test/config.test.js`, `test/calculator.test.js`, `test/url.test.js`); non-blocking CI via `.github/workflows/test.yml`
+- **Codebase:** ~1,400 LOC across src/ (HTML, Nunjucks, JS, CSS) + pure helper ESM modules in `src/js/lib/`
 - **URL sharing:** Compact pi/tau/phi params (~20 chars) with backward-compatible verbose decode
 - **Known placeholder:** All cost/household values in `config.js` are marked `// PLACEHOLDER` — awaiting real data from product owner before public launch
 
@@ -73,6 +74,9 @@ Citizens can explore any combination of service and funding choices and immediat
 - ✓ Both sliders rendered by shared Nunjucks macro; additive in tax calculation — Validated in Phase 14
 - ✓ URL encodes digital as `delta` (index), physical reuses `tau` (index) — Validated in Phase 14
 - ✓ `isCurrentServiceLevel` amber tick on both sliders — Validated in Phase 14
+- ✓ Vitest 2.x with 21 tests: config structure, calculator math, URL encode/decode (TEST-01 to TEST-05) — Validated in Phase 16
+- ✓ Pure helper ESM modules extracted from calculator.js and url.js IIFEs (TEST-06) — Validated in Phase 16
+- ✓ Non-blocking GitHub Actions CI workflow running pnpm test on push/PR (TEST-07) — Validated in Phase 16
 
 ### Deferred (post-v1.3)
 
@@ -142,4 +146,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-28 after Phase 14 complete — v1.3 separate digital and physical collections sliders.*
+*Last updated: 2026-03-29 after Phase 16 complete — unit test suite (Vitest, 21 tests) and non-blocking CI workflow.*
