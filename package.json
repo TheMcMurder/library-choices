@@ -9,7 +9,8 @@
     "build:11ty": "eleventy",
     "build:css": "tailwindcss -i src/css/style.css -o src/css/compiled.css",
     "dev:11ty": "eleventy --serve",
-    "dev:css": "tailwindcss -i src/css/style.css -o src/css/compiled.css --watch"
+    "dev:css": "tailwindcss -i src/css/style.css -o src/css/compiled.css --watch",
+    "test": "vitest run"
   },
   "packageManager": "pnpm@8.6.0",
   "engines": {
@@ -22,8 +23,10 @@
     "@11ty/eleventy": "^3.1.5",
     "@tailwindcss/cli": "^4.2.2",
     "@tailwindcss/postcss": "^4.2.2",
+    "jsdom": "26.1.0",
     "npm-run-all2": "^7.0.2",
     "postcss": "^8.5.8",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.2",
+    "vitest": "^2.1.9"
   }
 }
