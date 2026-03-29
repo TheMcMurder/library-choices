@@ -101,7 +101,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 16-01-PLAN.md — Setup Vitest, extract pure functions, write unit tests
+- [x] 16-01-PLAN.md — Setup Vitest, extract pure functions, write unit tests
 - [ ] 16-02-PLAN.md — Non-blocking CI workflow
 
 ## Progress
@@ -122,4 +122,4 @@ Plans:
 | 12. Fix Focus Ring Visibility | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 13. Current Service Level Indicators | v1.2 | 1/1 | Complete    | 2026-03-22 |
 | 14. Separate Digital and Physical Collections | v1.3 | 1/1 | Complete    | 2026-03-28 |
-| 16. Unit Tests | v1.4 | 0/2 | Planned | — |
+| 16. Unit Tests | v1.4 | 1/2 | In Progress|  |

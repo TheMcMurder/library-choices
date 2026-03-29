@@ -35,12 +35,12 @@ Requirements for the unit test suite.
 
 ### Unit Tests
 
-- [ ] **TEST-01**: Vitest installed as devDependency with `vitest.config.js` at project root and `"test": "vitest run"` script in package.json — `pnpm test` runs successfully
-- [ ] **TEST-02**: `calculatePerHousehold(staffingCost, digitalCost, physicalCost, households)` extracted as a pure ESM export in `src/js/lib/calculator-helpers.js` — returns per-household cost or null for zero households
-- [ ] **TEST-03**: `encodeIndices` and `decodeIndices` extracted as pure ESM exports in `src/js/lib/url-helpers.js` — encode selections to URLSearchParams and decode with bounds checking
-- [ ] **TEST-04**: Config structure validation tests verify `config.js` exports staffingLevels, collectionsDigital, collectionsPhysical, cities arrays with correct shape (ids, costs, household counts, isCurrentServiceLevel flags)
-- [ ] **TEST-05**: Calculator math tests cover happy path, zero-households edge case, all-zeros case, and single-city scenario
-- [ ] **TEST-06**: URL encode/decode tests cover round-trip, out-of-bounds fallback to null, empty params, and non-numeric values
+- [x] **TEST-01**: Vitest installed as devDependency with `vitest.config.js` at project root and `"test": "vitest run"` script in package.json — `pnpm test` runs successfully
+- [x] **TEST-02**: `calculatePerHousehold(staffingCost, digitalCost, physicalCost, households)` extracted as a pure ESM export in `src/js/lib/calculator-helpers.js` — returns per-household cost or null for zero households
+- [x] **TEST-03**: `encodeIndices` and `decodeIndices` extracted as pure ESM exports in `src/js/lib/url-helpers.js` — encode selections to URLSearchParams and decode with bounds checking
+- [x] **TEST-04**: Config structure validation tests verify `config.js` exports staffingLevels, collectionsDigital, collectionsPhysical, cities arrays with correct shape (ids, costs, household counts, isCurrentServiceLevel flags)
+- [x] **TEST-05**: Calculator math tests cover happy path, zero-households edge case, all-zeros case, and single-city scenario
+- [x] **TEST-06**: URL encode/decode tests cover round-trip, out-of-bounds fallback to null, empty params, and non-numeric values
 - [ ] **TEST-07**: Non-blocking `test.yml` GitHub Actions workflow runs `pnpm test` on push to main and pull requests — does not block `deploy.yml`
 
 ## Future Requirements

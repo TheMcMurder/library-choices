@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: — Separate Digital and Physical Collections
-status: Ready to plan
-stopped_at: Completed 14-01-PLAN.md
-last_updated: "2026-03-28T20:32:49.039Z"
+status: unknown
+stopped_at: Completed 16-01-PLAN.md
+last_updated: "2026-03-29T19:17:03.006Z"
 progress:
   total_phases: 4
   completed_phases: 2
-  total_plans: 2
-  completed_plans: 2
+  total_plans: 4
+  completed_plans: 3
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 14 — separate-digital-and-physical-collections
+**Current focus:** Phase 16 — unit-tests
 
 ## Current Position
 
-Phase: 15
-Plan: Not started
+Phase: 16 (unit-tests) — EXECUTING
+Plan: 2 of 2
 
 ## Performance Metrics
 
@@ -50,6 +50,7 @@ Plan: Not started
 *Updated after each plan completion*
 | Phase 13-current-service-level-indicators P01 | 25min | 3 tasks | 2 files |
 | Phase 14-separate-digital-and-physical-collections P01 | 4min | 3 tasks | 5 files |
+| Phase 16-unit-tests P01 | 3min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -67,6 +68,8 @@ Recent decisions affecting current work:
 - [Phase 13-current-service-level-indicators]: ring-offset layering: blue selection ring (no offset) / amber current ring (offset-2) / focus outline (offset-4)
 - [Phase 14-separate-digital-and-physical-collections]: Reused tau param for physical collections index; delta is new param for digital
 - [Phase 14-separate-digital-and-physical-collections]: Verbose backward-compat URL branch removed — referenced data.collections which no longer exists
+- [Phase 16-unit-tests]: Vitest downgraded from 4.x to 2.x for Node 18 compatibility (node:util styleText missing in Node 18)
+- [Phase 16-unit-tests]: IIFEs in calculator.js and url.js left unchanged; pure helpers extracted as separate ESM modules in src/js/lib/
 
 ### Roadmap Evolution
 
@@ -85,6 +88,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-28T20:14:54.856Z
-Stopped at: Completed 14-01-PLAN.md
+Last session: 2026-03-29T19:17:03.004Z
+Stopped at: Completed 16-01-PLAN.md
 Resume file: None
