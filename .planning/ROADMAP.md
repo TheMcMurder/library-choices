@@ -102,7 +102,25 @@ Plans:
 
 Plans:
 - [x] 16-01-PLAN.md — Setup Vitest, extract pure functions, write unit tests
-- [ ] 16-02-PLAN.md — Non-blocking CI workflow
+- [x] 16-02-PLAN.md — Non-blocking CI workflow
+
+### Phase 17: Migrate to Calculator Helpers and Testable Code Structure
+
+**Goal:** Convert calculator.js and url.js from IIFEs to ES modules that import the Phase 16 extracted helpers, eliminating logic duplication between browser scripts and tested helper functions
+**Depends on:** Phase 16
+**Requirements**: CALC-01, CALC-02, CALC-03, CALC-04, CALC-05, CALC-06, CALC-07
+**Success Criteria** (what must be TRUE):
+  1. calculator.js imports and calls calculatePerHousehold from calculator-helpers.js instead of inline math
+  2. url.js imports and calls encodeIndices/decodeIndices from url-helpers.js instead of inline encode/decode logic
+  3. Both script tags in index.html have type="module"
+  4. No IIFE wrappers remain in either file
+  5. url.js follows four-stage model: pull DOM state, encode via helper, pull URL params, decode+restore via helper
+  6. DOM-reading getters have defensive fallbacks for missing elements
+  7. All existing tests pass unchanged and build succeeds
+**Plans**: 1 plan
+
+Plans:
+- [ ] 17-01-PLAN.md — Refactor calculator.js and url.js to ES modules importing helpers, update script tags
 
 ## Progress
 
@@ -122,4 +140,5 @@ Plans:
 | 12. Fix Focus Ring Visibility | v1.1 | 1/1 | Complete | 2026-03-22 |
 | 13. Current Service Level Indicators | v1.2 | 1/1 | Complete    | 2026-03-22 |
 | 14. Separate Digital and Physical Collections | v1.3 | 1/1 | Complete    | 2026-03-28 |
-| 16. Unit Tests | v1.4 | 1/2 | Complete    | 2026-03-29 |
+| 16. Unit Tests | v1.4 | 2/2 | Complete    | 2026-03-29 |
+| 17. Calculator Helpers Migration | v1.5 | 0/1 | Planned    | — |
