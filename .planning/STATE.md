@@ -78,6 +78,7 @@ Recent decisions affecting current work:
 - Phase 14 added: separate digital and physical collections
 - Phase 15 added: Hours Update
 - Phase 16 added: unit tests
+- Phase 17 added: migrate to calculator helpers and more easily testable code structure.
 
 ### Pending Todos
 
