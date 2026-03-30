@@ -1,5 +1,21 @@
 # Milestones
 
+## v1.7 Fix Slider Non-Linear Options (Shipped: 2026-03-30)
+
+**Phases completed:** 7 phases, 7 plans, 12 tasks
+
+**Key accomplishments:**
+
+- Amber ring, badge, and amber slider tick added to mark the current service baseline, all driven by the isCurrentServiceLevel config flag with no hardcoded IDs
+- One-liner:
+- Vitest 2.x test suite with 21 passing tests covering config schema validation, calculatePerHousehold math, and URL encode/decode round-trip via extracted pure ESM helpers
+- Non-blocking GitHub Actions test.yml that runs Vitest on push to main and pull requests, independent of deploy.yml
+- calculator.js and url.js converted from IIFEs to flat ES modules importing pure helper functions extracted in Phase 16, eliminating logic duplication between browser scripts and unit tests
+- Real librarian data replaces all placeholder collection values: 5-tier digital slider ($5k-$65k, $55k current), physical current-level moved to $15k, staffing descriptions updated with accessibility-focused operational language
+- Index-based range inputs (min=0/max=N-1/step=1) replacing dollar-value domain, eliminating phantom positions on non-linearly-spaced digital collections slider
+
+---
+
 ## v1.1 UX — Citizen-Meaningful Controls (Shipped: 2026-03-22)
 
 **Phases completed:** 6 phases, 7 plans, 12 tasks

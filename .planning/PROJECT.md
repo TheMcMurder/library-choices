@@ -8,20 +8,19 @@ An interactive, mobile-first static website that helps Cache County citizens und
 
 Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
 
-## Current Milestone: v1.7 — Fix Slider Non-Linear Options
+## Current State (v1.7 shipped 2026-03-30)
 
-**Goal:** Fix the collectionSlider Nunjucks macro and associated JavaScript so sliders use 0-based index values instead of dollar amounts, eliminating phantom positions on non-linearly-spaced options.
-
-## Current State (v1.7 — Phase 19 complete 2026-03-30)
+All milestones shipped. The configurator is live with real librarian data, correct non-linear slider behavior, and a full unit test suite.
 
 - **Live at:** https://mcmurdie.github.io/library-choices/
 - **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + Nunjucks templates
 - **Data file:** `src/_data/config.js` — all costs, city names, household counts, staffing levels, schedules
 - **Build:** `pnpm run build` → `_site/` | CI: GitHub Actions deploys on push to `main`
-- **Tests:** Vitest 2.x — 21 tests across 3 files (`test/config.test.js`, `test/calculator.test.js`, `test/url.test.js`); non-blocking CI via `.github/workflows/test.yml`
+- **Tests:** Vitest 2.x — 48 tests across 3 files (`test/config.test.js`, `test/calculator.test.js`, `test/url.test.js`); non-blocking CI via `.github/workflows/test.yml`
 - **Codebase:** ~1,400 LOC across src/ (HTML, Nunjucks, JS, CSS) + pure helper ESM modules in `src/js/lib/`
 - **URL sharing:** Compact pi/tau/phi params (~20 chars) with backward-compatible verbose decode
-- **Real data loaded:** Digital collections ($5k–$65k, 5 tiers, $55k current), physical collections ($10k–$15k, $15k current), staffing descriptions updated, programming cost comment added — all sourced from librarian's NOTES.md
+- **Sliders:** Both collection sliders use 0-based index domain (not dollar amounts); calculator resolves index → dollar at read time via `options[idx].value`
+- **Real data:** Digital collections ($5k/$15k/$30k/$55k/$65k, $55k current), physical ($15k current), all sourced from librarian's NOTES.md
 
 ## Requirements
 
@@ -134,6 +133,7 @@ The site owner (a city council member or civic tech advocate) needs to update nu
 | has-[:checked] CSS-only selection state for cards | No JavaScript selection state management needed for staffing + city cards | ✓ Good — clean, accessible, easy to extend |
 | sr-only on radio/checkbox inputs inside cards | Preserves keyboard/screen-reader access vs type=hidden | ✓ Good — Tab/Space/arrow navigation preserved |
 | outline-offset-4 for focus indicators on cards | focus ring appears visibly outside selected-state ring-2 ring-blue-600 | ✓ Good — focus and selection rings are now visually distinct |
+| Slider value domain = 0-based index (not dollar amount) | Non-linear digital tiers ($5k/$15k/$30k/$55k/$65k) produced phantom positions when slider value was dollar amount — index domain gives exactly N valid positions with no phantoms | ✓ Good — eliminates phantom positions; calculator resolves index→dollar at read time |
 
 ## Evolution
 
@@ -153,4 +153,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-30 after Phase 18 complete — real librarian cost data loaded into config.js; all placeholder values replaced with actual tier costs and current service level markers.*
+*Last updated: 2026-03-30 after v1.7 milestone complete — sliders converted to index-based value domain, eliminating phantom positions on non-linearly-spaced digital collection tiers.*
