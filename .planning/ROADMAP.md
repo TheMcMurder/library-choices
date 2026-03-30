@@ -2,15 +2,19 @@
 
 ## Milestones
 
-- ✅ **v1.0 MVP** — Phases 1–6 (shipped 2026-03-21) — [archive](milestones/v1.0-ROADMAP.md)
-- ✅ **v1.1 UX — Citizen-Meaningful Controls** — Phases 7–12 (shipped 2026-03-22) — [archive](milestones/v1.1-ROADMAP.md)
+- ✅ **v1.0 MVP** — Phases 1-6 (shipped 2026-03-21) — [archive](milestones/v1.0-ROADMAP.md)
+- ✅ **v1.1 UX — Citizen-Meaningful Controls** — Phases 7-12 (shipped 2026-03-22) — [archive](milestones/v1.1-ROADMAP.md)
 - ✅ **v1.2 — Current Service Level Indicators** — Phase 13 (shipped 2026-03-22)
-- 🚧 **v1.3 — Separate Digital and Physical Collections** — Phase 14 (in progress)
+- ✅ **v1.3 — Separate Digital and Physical Collections** — Phase 14 (complete)
+- ✅ **v1.4 — Unit Tests** — Phase 16 (complete)
+- ✅ **v1.5 — Calculator Helpers Migration** — Phase 17 (complete)
+- ✅ **v1.6 — Incorporate Feedback from Library Notes** — Phase 18 (complete)
+- 🚧 **v1.7 — Fix Slider Non-Linear Options** — Phase 19 (in progress)
 
 ## Phases
 
 <details>
-<summary>✅ v1.0 MVP (Phases 1–6) — SHIPPED 2026-03-21</summary>
+<summary>✅ v1.0 MVP (Phases 1-6) — SHIPPED 2026-03-21</summary>
 
 - [x] Phase 1: Scaffolding (2/2 plans) — completed 2026-03-20
 - [x] Phase 2: Data and Controls (2/2 plans) — completed 2026-03-20
@@ -24,7 +28,7 @@ Full phase details: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 </details>
 
 <details>
-<summary>✅ v1.1 UX — Citizen-Meaningful Controls (Phases 7–12) — SHIPPED 2026-03-22</summary>
+<summary>✅ v1.1 UX — Citizen-Meaningful Controls (Phases 7-12) — SHIPPED 2026-03-22</summary>
 
 - [x] Phase 7: Collections Budget Slider (2/2 plans) — completed 2026-03-21
 - [x] Phase 8: Hours Open Schedule Display (1/1 plan) — completed 2026-03-21
@@ -139,6 +143,24 @@ Plans:
 Plans:
 - [x] 18-01-PLAN.md — Update config.js with real librarian data and add config structure tests
 
+### Phase 19: Fix Slider Issue — Allow for Non-Linear Options
+
+**Goal:** Fix the collectionSlider Nunjucks macro and associated JavaScript so sliders with non-linearly-spaced options work correctly by switching from dollar-amount values to 0-based index values
+**Depends on:** Phase 18
+**Requirements**: SLIDER-01, SLIDER-02, SLIDER-03, SLIDER-04, SLIDER-05, SLIDER-06, SLIDER-07
+**Success Criteria** (what must be TRUE):
+  1. Both collection sliders use `min=0`, `max=N-1`, `step=1` — slider value is a 0-based index, not a dollar amount
+  2. Digital slider has exactly 5 positions (0-4) with no phantom intermediate positions
+  3. Calculator reads slider index and looks up dollar value from config options array
+  4. URL encode/decode passes indices directly (no dollar-to-index findIndex conversion)
+  5. Tick click-to-snap, active-state highlighting, and amber current-level styling all work correctly with index values
+  6. All existing tests pass (url tests updated to pass indices instead of dollar values)
+  7. Build succeeds with no errors
+**Plans**: 1 plan
+
+Plans:
+- [ ] 19-01-PLAN.md — Convert sliders to index-based values, update calculator and URL layers
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -160,3 +182,4 @@ Plans:
 | 16. Unit Tests | v1.4 | 2/2 | Complete    | 2026-03-29 |
 | 17. Calculator Helpers Migration | v1.5 | 1/1 | Complete    | 2026-03-30 |
 | 18. Incorporate Feedback from Library Notes | v1.6 | 1/1 | Complete    | 2026-03-30 |
+| 19. Fix Slider Non-Linear Options | v1.7 | 0/1 | In Progress | |

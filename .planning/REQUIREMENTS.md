@@ -70,6 +70,20 @@ Requirements for incorporating librarian feedback into config data.
 - [x] **DATA-05**: Source attribution on `collectionsDigital` and `collectionsPhysical` updated to reference librarian notes instead of old FY2025 budget proposal
 - [x] **DATA-06**: `draft: true` remains unchanged — staffing costs still PLACEHOLDER pending Cache County HR data
 
+## v1.7 Requirements
+
+Requirements for fixing the non-linear slider bug.
+
+### Slider Index Fix
+
+- [ ] **SLIDER-01**: `slider.njk` range input uses `min="0"`, `max="{{ options | length - 1 }}"`, `step="1"` — slider value is a 0-based index into the options array, not a dollar amount
+- [ ] **SLIDER-02**: `slider.njk` initial value attribute uses `loop.index0` of the option with `isDefault: true` — slider starts at the correct index position
+- [ ] **SLIDER-03**: Tick buttons use `data-value="{{ loop.index0 }}"` (index, not dollar amount) — click-to-snap writes an index to slider.value
+- [ ] **SLIDER-04**: `calculator.js` `getDigitalCost()` and `getPhysicalCost()` read the slider index and look up the dollar value via `window.LIBRARY_DATA[key].options[idx].value` — with bounds checking
+- [ ] **SLIDER-05**: `calculator.js` `updateSliderLabels()` looks up the option by index directly (`options[idx]`) instead of searching by value in a for-loop — display still shows dollar amounts
+- [ ] **SLIDER-06**: `url-helpers.js` `encodeIndices` accepts `digitalIdx` and `physicalIdx` (0-based indices) instead of dollar values — removes `findIndex` lookups for digital and physical parameters
+- [ ] **SLIDER-07**: `url.js` reads slider value as index in `getCurrentSelections()`, passes indices to `encodeIndices`, and writes indices (not dollar amounts) in `applySelections()` — `test/url.test.js` updated to pass indices
+
 ## Future Requirements
 
 - Scenario summary text — human-readable sentence describing the selected combination (ENH-01)
@@ -125,6 +139,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DATA-04 | Phase 18 | Planned |
 | DATA-05 | Phase 18 | Planned |
 | DATA-06 | Phase 18 | Planned |
+| SLIDER-01 | Phase 19 | Planned |
+| SLIDER-02 | Phase 19 | Planned |
+| SLIDER-03 | Phase 19 | Planned |
+| SLIDER-04 | Phase 19 | Planned |
+| SLIDER-05 | Phase 19 | Planned |
+| SLIDER-06 | Phase 19 | Planned |
+| SLIDER-07 | Phase 19 | Planned |
 
 **Coverage:**
 - v1.2 requirements: 5 total, 5 complete
@@ -132,8 +153,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 - v1.4 requirements: 7 total, 7 complete
 - v1.5 requirements: 7 total, 0 complete
 - v1.6 requirements: 6 total, 0 planned
+- v1.7 requirements: 7 total, 0 planned
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-21*
-*Last updated: 2026-03-29 — Phase 18 requirements added*
+*Last updated: 2026-03-30 — Phase 19 slider fix requirements added*
