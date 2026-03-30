@@ -13,12 +13,20 @@ function getStaffingCost() {
 
 function getDigitalCost() {
   var el = document.getElementById('collections-digital');
-  return el ? parseInt(el.value, 10) : 0;
+  if (!el) return 0;
+  var idx = parseInt(el.value, 10);
+  var opts = window.LIBRARY_DATA.collectionsDigital.options;
+  if (idx < 0 || idx >= opts.length) return 0;
+  return opts[idx].value;
 }
 
 function getPhysicalCost() {
   var el = document.getElementById('collections-physical');
-  return el ? parseInt(el.value, 10) : 0;
+  if (!el) return 0;
+  var idx = parseInt(el.value, 10);
+  var opts = window.LIBRARY_DATA.collectionsPhysical.options;
+  if (idx < 0 || idx >= opts.length) return 0;
+  return opts[idx].value;
 }
 
 function getTotalHouseholds() {
@@ -51,16 +59,13 @@ function updateResult() {
 
 function updateSliderLabels(sliderId, dataKey, amountId, descriptionId) {
   var slider = document.getElementById(sliderId);
-  var value = parseInt(slider.value, 10);
+  var idx = parseInt(slider.value, 10);
   var options = window.LIBRARY_DATA[dataKey].options;
-  var node = null;
-  for (var i = 0; i < options.length; i++) {
-    if (options[i].value === value) { node = options[i]; break; }
-  }
+  var node = options[idx];
   if (!node) return;
-  document.getElementById(amountId).textContent = '$' + value.toLocaleString('en-US');
+  document.getElementById(amountId).textContent = '$' + node.value.toLocaleString('en-US');
   document.getElementById(descriptionId).textContent = node.description;
-  slider.setAttribute('aria-valuetext', value.toLocaleString('en-US') + ' dollars \u2014 ' + node.description);
+  slider.setAttribute('aria-valuetext', node.value.toLocaleString('en-US') + ' dollars \u2014 ' + node.description);
   document.querySelectorAll('[data-slider="' + sliderId + '"]').forEach(function (btn) {
     var isActive = btn.dataset.value === String(slider.value);
     var isCurrentLevel = btn.dataset.currentLevel === 'true';

@@ -8,10 +8,10 @@
     type="range"
     id="{{ id }}"
     name="{{ name }}"
-    min="{{ options[0].value }}"
-    max="{{ options[options | length - 1].value }}"
-    step="{{ options[1].value - options[0].value }}"
-    value="{% for opt in options %}{% if opt.isDefault %}{{ opt.value }}{% endif %}{% endfor %}"
+    min="0"
+    max="{{ options | length - 1 }}"
+    step="1"
+    value="{% for opt in options %}{% if opt.isDefault %}{{ loop.index0 }}{% endif %}{% endfor %}"
     class="w-full cursor-pointer"
   />
   <div class="flex justify-between px-0" aria-hidden="true">
@@ -19,7 +19,7 @@
       <button
         type="button"
         data-slider="{{ id }}"
-        data-value="{{ opt.value }}"
+        data-value="{{ loop.index0 }}"
         {% if opt.isCurrentServiceLevel %}data-current-level="true"{% endif %}
         class="text-sm px-1 py-1 cursor-pointer hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2
                {% if opt.isCurrentServiceLevel %}text-amber-600 font-semibold{% else %}text-gray-500 font-normal{% endif %}"
