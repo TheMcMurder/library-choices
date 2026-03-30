@@ -121,7 +121,7 @@ export default {
         { days: "1-5", open: "11am", close: "4pm" },
       ],
       description:
-        "One full-time staff member. Basic reference service and public hours, 40 hours per week on a standard holiday schedule.",
+        "One full-time staff member covering all open hours. Reduced hours limit accessibility \u2014 no evening or weekend access for working citizens.",
       source: "Cache County HR salary schedule FY2025",
     },
     {
@@ -132,7 +132,7 @@ export default {
         { days: "1-5", open: "10am", close: "5pm" },
       ],
       description:
-        "Extended evening and weekend hours with one additional part-time staff member.",
+        "One full-time and one part-time staff member. Some hours outside 9\u20135 for working citizens, but limited evening and no weekend coverage.",
       source: "Cache County HR salary schedule FY2025",
     },
     {
@@ -144,7 +144,7 @@ export default {
         { days: "6",   open: "10am", close: "2pm" },
       ],
       description:
-        "Full-week coverage including Saturdays with one full-time staff and up to three part-time staff members.",
+        "Two staff working at a time Mon\u2013Fri, open 44 hrs/week with 10 hours outside normal 9\u20135. Enables working citizens to access the library evenings and Saturdays.",
       source: "Cache County HR salary schedule FY2025",
       isCurrentServiceLevel: true,
     },
@@ -152,30 +152,39 @@ export default {
 
   collectionsDigital: {
     description: "Digital materials added to the collection each year.",
-    source: "Cache County Library Services budget proposal FY2025",
+    source: "Librarian cost data (NOTES.md)",
     options: [
-      { value: 5000,  isDefault: false, description: "Beehive and Libby access only \u2014 statewide digital lending" },
-      { value: 10000, isDefault: false, description: "Beehive, Libby, and supplemental e-book subscriptions" },
-      { value: 15000, isDefault: true,  description: "Full digital suite \u2014 e-books, audiobooks, streaming media",
+      { value: 5000,  isDefault: false, description: "Beehive only \u2014 substantially longer wait times for digital titles, shared with the entire state library system" },
+      { value: 15000, isDefault: false, description: "Beehive + our own digital titles \u2014 longer wait times for most titles with a few select accelerated titles that we purchase" },
+      { value: 30000, isDefault: false, description: "Beehive + expanded \u2014 longer wait times for most titles with some titles reduced via purchases" },
+      { value: 55000, isDefault: true,  description: "Current service level (own Libby: $6k software + ~$28k new content + ~$20k repurchases annually)",
         isCurrentServiceLevel: true,
       },
-      { value: 20000, isDefault: false, description: "Expanded digital \u2014 all formats plus online learning platforms" },
+      { value: 65000, isDefault: false, description: "Beehive + expanded \u2014 shorter wait times for most popular books" },
     ],
   },
 
   collectionsPhysical: {
     description: "Physical print and media materials added each year.",
-    source: "Cache County Library Services budget proposal FY2025",
+    source: "Librarian cost data (NOTES.md)",
     options: [
       { value: 0,     isDefault: false, description: "No physical print collection \u2014 digital only" },
       { value: 5000,  isDefault: false, description: "Small rotating print collection" },
-      { value: 10000, isDefault: false, description: "Core print collection \u2014 new titles and replacements",
+      { value: 10000, isDefault: false, description: "Reduced core collection \u2014 books and DVDs, limited specialty items" },
+      { value: 15000, isDefault: true,  description: "Current collection \u2014 books, DVDs, exploration kits, and equipment (telescopes, audiobook players)",
         isCurrentServiceLevel: true,
       },
-      { value: 15000, isDefault: true,  description: "Expanded print \u2014 adult, children, and young adult sections" },
       { value: 20000, isDefault: false, description: "Full print + AV materials + periodicals" },
     ],
   },
+
+  /*
+   * Programming costs (from librarian notes — not yet modeled as a slider):
+   *   Summer reading: ~$1,000-$1,500/year
+   *   Storytime: ~$300/year
+   *   Other programs: ~$1,000-$2,000/year
+   *   Total estimate: ~$2,300-$4,800/year
+   */
 
   cities: [
     {
