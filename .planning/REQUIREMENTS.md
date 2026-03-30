@@ -63,12 +63,12 @@ Requirements for incorporating librarian feedback into config data.
 
 ### Librarian Data Updates
 
-- [ ] **DATA-01**: `collectionsDigital.options` has exactly 5 tiers with values $5k/$15k/$30k/$55k/$65k — `isCurrentServiceLevel: true` and `isDefault: true` on the $55k option — descriptions reflect Beehive consortium trade-offs from librarian notes
-- [ ] **DATA-02**: `collectionsPhysical` options: `isCurrentServiceLevel: true` moved from $10k to $15k option — $15k description includes books, DVDs, exploration kits, and equipment — $10k description reflects reduced core collection
-- [ ] **DATA-03**: Staffing level descriptions updated to reflect librarian's operational context — hours outside 9-5 enabling working citizens, staff coverage patterns, accessibility impact of reduced hours
-- [ ] **DATA-04**: Programming cost data (~$2,300-$4,800/year breakdown) documented as comment block in config.js for future reference — not modeled as a slider
-- [ ] **DATA-05**: Source attribution on `collectionsDigital` and `collectionsPhysical` updated to reference librarian notes instead of old FY2025 budget proposal
-- [ ] **DATA-06**: `draft: true` remains unchanged — staffing costs still PLACEHOLDER pending Cache County HR data
+- [x] **DATA-01**: `collectionsDigital.options` has exactly 5 tiers with values $5k/$15k/$30k/$55k/$65k — `isCurrentServiceLevel: true` and `isDefault: true` on the $55k option — descriptions reflect Beehive consortium trade-offs from librarian notes
+- [x] **DATA-02**: `collectionsPhysical` options: `isCurrentServiceLevel: true` moved from $10k to $15k option — $15k description includes books, DVDs, exploration kits, and equipment — $10k description reflects reduced core collection
+- [x] **DATA-03**: Staffing level descriptions updated to reflect librarian's operational context — hours outside 9-5 enabling working citizens, staff coverage patterns, accessibility impact of reduced hours
+- [x] **DATA-04**: Programming cost data (~$2,300-$4,800/year breakdown) documented as comment block in config.js for future reference — not modeled as a slider
+- [x] **DATA-05**: Source attribution on `collectionsDigital` and `collectionsPhysical` updated to reference librarian notes instead of old FY2025 budget proposal
+- [x] **DATA-06**: `draft: true` remains unchanged — staffing costs still PLACEHOLDER pending Cache County HR data
 
 ## Future Requirements
 

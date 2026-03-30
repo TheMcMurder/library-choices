@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: — Separate Digital and Physical Collections
-status: Milestone complete
-stopped_at: Completed 17-01-PLAN.md
-last_updated: "2026-03-30T00:17:55.883Z"
+status: unknown
+stopped_at: Completed 18-01-PLAN.md
+last_updated: "2026-03-30T01:14:03.676Z"
 progress:
-  total_phases: 5
-  completed_phases: 4
-  total_plans: 5
-  completed_plans: 5
+  total_phases: 6
+  completed_phases: 5
+  total_plans: 6
+  completed_plans: 6
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 17 — migrate-to-calculator-helpers-and-more-easily-testable-code-structure
+**Current focus:** Phase 18 — incorporate-feedback-from-library-notes
 
 ## Current Position
 
-Phase: 17
-Plan: Not started
+Phase: 18 (incorporate-feedback-from-library-notes) — EXECUTING
+Plan: 1 of 1
 
 ## Performance Metrics
 
@@ -53,6 +53,7 @@ Plan: Not started
 | Phase 16-unit-tests P01 | 3min | 2 tasks | 7 files |
 | Phase 16-unit-tests P02 | 5min | 1 tasks | 1 files |
 | Phase 17-migrate-to-calculator-helpers-and-more-easily-testable-code-structure P01 | 2min | 2 tasks | 3 files |
+| Phase 18-incorporate-feedback-from-library-notes P01 | 2min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -74,6 +75,8 @@ Recent decisions affecting current work:
 - [Phase 16-unit-tests]: IIFEs in calculator.js and url.js left unchanged; pure helpers extracted as separate ESM modules in src/js/lib/
 - [Phase 16-unit-tests]: Non-blocking CI workflow: site owner is a non-developer; tests visible in Actions tab without blocking push-to-deploy
 - [Phase 17-migrate-to-calculator-helpers-and-more-easily-testable-code-structure]: ESM import in browser scripts closes duplication gap from Phase 16 — browser scripts now call same pure functions as unit tests
+- [Phase 18-incorporate-feedback-from-library-notes]: Digital slider expanded from 4 placeholder tiers to 5 real tiers; isDefault moved to $55k current-level tier
+- [Phase 18-incorporate-feedback-from-library-notes]: Physical current-level marker moved from $10k to $15k — actual 2025 spend ~$12.5k; staffing annualCost remains PLACEHOLDER
 
 ### Roadmap Evolution
 
@@ -81,6 +84,7 @@ Recent decisions affecting current work:
 - Phase 15 added: Hours Update
 - Phase 16 added: unit tests
 - Phase 17 added: migrate to calculator helpers and more easily testable code structure.
+- Phase 18 added: incorporate feedback from library notes
 
 ### Pending Todos
 
@@ -93,6 +97,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-30T00:15:32.354Z
-Stopped at: Completed 17-01-PLAN.md
+Last session: 2026-03-30T01:14:03.673Z
+Stopped at: Completed 18-01-PLAN.md
 Resume file: None

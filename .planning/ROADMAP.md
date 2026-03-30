@@ -137,7 +137,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 18-01-PLAN.md — Update config.js with real librarian data and add config structure tests
+- [x] 18-01-PLAN.md — Update config.js with real librarian data and add config structure tests
 
 ## Progress
 
@@ -159,4 +159,4 @@ Plans:
 | 14. Separate Digital and Physical Collections | v1.3 | 1/1 | Complete    | 2026-03-28 |
 | 16. Unit Tests | v1.4 | 2/2 | Complete    | 2026-03-29 |
 | 17. Calculator Helpers Migration | v1.5 | 1/1 | Complete    | 2026-03-30 |
-| 18. Incorporate Feedback from Library Notes | v1.6 | 0/1 | In Progress | — |
+| 18. Incorporate Feedback from Library Notes | v1.6 | 1/1 | Complete   | 2026-03-30 |
