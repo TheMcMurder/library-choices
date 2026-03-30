@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: — Separate Digital and Physical Collections
-status: unknown
+status: Milestone complete
 stopped_at: Completed 17-01-PLAN.md
-last_updated: "2026-03-30T00:15:32.357Z"
+last_updated: "2026-03-30T00:17:55.883Z"
 progress:
   total_phases: 5
   completed_phases: 4
@@ -23,8 +23,8 @@ See: .planning/PROJECT.md (updated 2026-03-21)
 
 ## Current Position
 
-Phase: 17 (migrate-to-calculator-helpers-and-more-easily-testable-code-structure) — EXECUTING
-Plan: 1 of 1
+Phase: 17
+Plan: Not started
 
 ## Performance Metrics
 

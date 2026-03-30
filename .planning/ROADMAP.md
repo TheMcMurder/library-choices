@@ -141,4 +141,4 @@ Plans:
 | 13. Current Service Level Indicators | v1.2 | 1/1 | Complete    | 2026-03-22 |
 | 14. Separate Digital and Physical Collections | v1.3 | 1/1 | Complete    | 2026-03-28 |
 | 16. Unit Tests | v1.4 | 2/2 | Complete    | 2026-03-29 |
-| 17. Calculator Helpers Migration | v1.5 | 1/1 | Complete   | 2026-03-30 |
+| 17. Calculator Helpers Migration | v1.5 | 1/1 | Complete    | 2026-03-30 |
