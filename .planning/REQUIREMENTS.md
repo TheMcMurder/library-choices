@@ -76,13 +76,13 @@ Requirements for fixing the non-linear slider bug.
 
 ### Slider Index Fix
 
-- [ ] **SLIDER-01**: `slider.njk` range input uses `min="0"`, `max="{{ options | length - 1 }}"`, `step="1"` — slider value is a 0-based index into the options array, not a dollar amount
-- [ ] **SLIDER-02**: `slider.njk` initial value attribute uses `loop.index0` of the option with `isDefault: true` — slider starts at the correct index position
-- [ ] **SLIDER-03**: Tick buttons use `data-value="{{ loop.index0 }}"` (index, not dollar amount) — click-to-snap writes an index to slider.value
-- [ ] **SLIDER-04**: `calculator.js` `getDigitalCost()` and `getPhysicalCost()` read the slider index and look up the dollar value via `window.LIBRARY_DATA[key].options[idx].value` — with bounds checking
-- [ ] **SLIDER-05**: `calculator.js` `updateSliderLabels()` looks up the option by index directly (`options[idx]`) instead of searching by value in a for-loop — display still shows dollar amounts
-- [ ] **SLIDER-06**: `url-helpers.js` `encodeIndices` accepts `digitalIdx` and `physicalIdx` (0-based indices) instead of dollar values — removes `findIndex` lookups for digital and physical parameters
-- [ ] **SLIDER-07**: `url.js` reads slider value as index in `getCurrentSelections()`, passes indices to `encodeIndices`, and writes indices (not dollar amounts) in `applySelections()` — `test/url.test.js` updated to pass indices
+- [x] **SLIDER-01**: `slider.njk` range input uses `min="0"`, `max="{{ options | length - 1 }}"`, `step="1"` — slider value is a 0-based index into the options array, not a dollar amount
+- [x] **SLIDER-02**: `slider.njk` initial value attribute uses `loop.index0` of the option with `isDefault: true` — slider starts at the correct index position
+- [x] **SLIDER-03**: Tick buttons use `data-value="{{ loop.index0 }}"` (index, not dollar amount) — click-to-snap writes an index to slider.value
+- [x] **SLIDER-04**: `calculator.js` `getDigitalCost()` and `getPhysicalCost()` read the slider index and look up the dollar value via `window.LIBRARY_DATA[key].options[idx].value` — with bounds checking
+- [x] **SLIDER-05**: `calculator.js` `updateSliderLabels()` looks up the option by index directly (`options[idx]`) instead of searching by value in a for-loop — display still shows dollar amounts
+- [x] **SLIDER-06**: `url-helpers.js` `encodeIndices` accepts `digitalIdx` and `physicalIdx` (0-based indices) instead of dollar values — removes `findIndex` lookups for digital and physical parameters
+- [x] **SLIDER-07**: `url.js` reads slider value as index in `getCurrentSelections()`, passes indices to `encodeIndices`, and writes indices (not dollar amounts) in `applySelections()` — `test/url.test.js` updated to pass indices
 
 ## Future Requirements
 

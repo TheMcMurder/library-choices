@@ -1,14 +1,14 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.3
-milestone_name: — Separate Digital and Physical Collections
-status: Milestone complete
-stopped_at: Completed 18-01-PLAN.md
-last_updated: "2026-03-30T01:16:41.662Z"
+milestone: v1.7
+milestone_name: — Fix Slider Non-Linear Options
+status: unknown
+stopped_at: Completed 19-01-PLAN.md
+last_updated: "2026-03-30T21:02:36.638Z"
 progress:
-  total_phases: 6
+  total_phases: 7
   completed_phases: 5
-  total_plans: 6
+  total_plans: 7
   completed_plans: 6
 ---
 
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 18 — incorporate-feedback-from-library-notes
+**Current focus:** Phase 19 — fix-slider-issue-allow-for-non-linear-options
 
 ## Current Position
 
-Phase: 18
-Plan: Not started
+Phase: 19 (fix-slider-issue-allow-for-non-linear-options) — EXECUTING
+Plan: 1 of 1
 
 ## Performance Metrics
 
@@ -54,6 +54,7 @@ Plan: Not started
 | Phase 16-unit-tests P02 | 5min | 1 tasks | 1 files |
 | Phase 17-migrate-to-calculator-helpers-and-more-easily-testable-code-structure P01 | 2min | 2 tasks | 3 files |
 | Phase 18-incorporate-feedback-from-library-notes P01 | 2min | 2 tasks | 2 files |
+| Phase 19-fix-slider-issue-allow-for-non-linear-options P01 | 2min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -77,6 +78,8 @@ Recent decisions affecting current work:
 - [Phase 17-migrate-to-calculator-helpers-and-more-easily-testable-code-structure]: ESM import in browser scripts closes duplication gap from Phase 16 — browser scripts now call same pure functions as unit tests
 - [Phase 18-incorporate-feedback-from-library-notes]: Digital slider expanded from 4 placeholder tiers to 5 real tiers; isDefault moved to $55k current-level tier
 - [Phase 18-incorporate-feedback-from-library-notes]: Physical current-level marker moved from $10k to $15k — actual 2025 spend ~$12.5k; staffing annualCost remains PLACEHOLDER
+- [Phase 19-fix-slider-issue-allow-for-non-linear-options]: Slider value domain switched from dollar amounts to 0-based indices (0 through N-1), eliminating phantom positions on non-linearly-spaced digital collections options
+- [Phase 19-fix-slider-issue-allow-for-non-linear-options]: encodeIndices signature changed to accept digitalIdx/physicalIdx directly; removes findIndex value lookups; bounds check replaces them
 
 ### Roadmap Evolution
 
@@ -85,6 +88,7 @@ Recent decisions affecting current work:
 - Phase 16 added: unit tests
 - Phase 17 added: migrate to calculator helpers and more easily testable code structure.
 - Phase 18 added: incorporate feedback from library notes
+- Phase 19 added: fix slider issue - allow for non linear options
 
 ### Pending Todos
 
@@ -97,6 +101,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-30T01:14:03.673Z
-Stopped at: Completed 18-01-PLAN.md
+Last session: 2026-03-30T21:02:36.635Z
+Stopped at: Completed 19-01-PLAN.md
 Resume file: None
