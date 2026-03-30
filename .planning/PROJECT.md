@@ -19,7 +19,7 @@ Citizens can explore any combination of service and funding choices and immediat
 - Additive in tax calculation (staffing + digital + physical)
 - URL encoding: `delta` for digital index, `tau` for physical index
 
-## Current State (v1.3 — Phase 16 complete 2026-03-29)
+## Current State (v1.3 — Phase 17 complete 2026-03-30)
 
 - **Live at:** https://mcmurdie.github.io/library-choices/
 - **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + Nunjucks templates
@@ -77,6 +77,7 @@ Citizens can explore any combination of service and funding choices and immediat
 - ✓ Vitest 2.x with 21 tests: config structure, calculator math, URL encode/decode (TEST-01 to TEST-05) — Validated in Phase 16
 - ✓ Pure helper ESM modules extracted from calculator.js and url.js IIFEs (TEST-06) — Validated in Phase 16
 - ✓ Non-blocking GitHub Actions CI workflow running pnpm test on push/PR (TEST-07) — Validated in Phase 16
+- ✓ calculator.js and url.js refactored from IIFEs to flat ES modules importing lib helpers (CALC-01 to CALC-07) — Validated in Phase 17
 
 ### Deferred (post-v1.3)
 
@@ -146,4 +147,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-29 after Phase 16 complete — unit test suite (Vitest, 21 tests) and non-blocking CI workflow.*
+*Last updated: 2026-03-30 after Phase 17 complete — calculator.js and url.js converted to ES modules importing lib helpers; browser scripts now call the same tested pure functions as unit tests.*
