@@ -19,7 +19,7 @@ Citizens can explore any combination of service and funding choices and immediat
 - Additive in tax calculation (staffing + digital + physical)
 - URL encoding: `delta` for digital index, `tau` for physical index
 
-## Current State (v1.3 — Phase 17 complete 2026-03-30)
+## Current State (v1.3 — Phase 18 complete 2026-03-30)
 
 - **Live at:** https://mcmurdie.github.io/library-choices/
 - **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + Nunjucks templates
@@ -28,7 +28,7 @@ Citizens can explore any combination of service and funding choices and immediat
 - **Tests:** Vitest 2.x — 21 tests across 3 files (`test/config.test.js`, `test/calculator.test.js`, `test/url.test.js`); non-blocking CI via `.github/workflows/test.yml`
 - **Codebase:** ~1,400 LOC across src/ (HTML, Nunjucks, JS, CSS) + pure helper ESM modules in `src/js/lib/`
 - **URL sharing:** Compact pi/tau/phi params (~20 chars) with backward-compatible verbose decode
-- **Known placeholder:** All cost/household values in `config.js` are marked `// PLACEHOLDER` — awaiting real data from product owner before public launch
+- **Real data loaded:** Digital collections ($5k–$65k, 5 tiers, $55k current), physical collections ($10k–$15k, $15k current), staffing descriptions updated, programming cost comment added — all sourced from librarian's NOTES.md
 
 ## Requirements
 
@@ -78,6 +78,11 @@ Citizens can explore any combination of service and funding choices and immediat
 - ✓ Pure helper ESM modules extracted from calculator.js and url.js IIFEs (TEST-06) — Validated in Phase 16
 - ✓ Non-blocking GitHub Actions CI workflow running pnpm test on push/PR (TEST-07) — Validated in Phase 16
 - ✓ calculator.js and url.js refactored from IIFEs to flat ES modules importing lib helpers (CALC-01 to CALC-07) — Validated in Phase 17
+- ✓ Digital collections 5 real tiers ($5k/$15k/$30k/$55k/$65k), $55k as current service level (DATA-01, DATA-02) — Validated in Phase 18
+- ✓ Physical collections $15k as current service level (DATA-03) — Validated in Phase 18
+- ✓ Staffing descriptions updated with operational context (DATA-04) — Validated in Phase 18
+- ✓ Programming cost comment block in config.js (DATA-05) — Validated in Phase 18
+- ✓ Source attributions cite NOTES.md (DATA-06) — Validated in Phase 18
 
 ### Deferred (post-v1.3)
 
@@ -147,4 +152,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-30 after Phase 17 complete — calculator.js and url.js converted to ES modules importing lib helpers; browser scripts now call the same tested pure functions as unit tests.*
+*Last updated: 2026-03-30 after Phase 18 complete — real librarian cost data loaded into config.js; all placeholder values replaced with actual tier costs and current service level markers.*
