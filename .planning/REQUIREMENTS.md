@@ -57,6 +57,19 @@ Requirements for migrating browser scripts to use extracted helpers.
 - [x] **CALC-06**: Both `<script>` tags in `src/index.html` have `type="module"` attribute; inline `window.LIBRARY_DATA` script remains classic (no type="module")
 - [x] **CALC-07**: All existing tests (`pnpm test`) and build (`pnpm run build`) continue to pass with no test modifications
 
+## v1.6 Requirements
+
+Requirements for incorporating librarian feedback into config data.
+
+### Librarian Data Updates
+
+- [ ] **DATA-01**: `collectionsDigital.options` has exactly 5 tiers with values $5k/$15k/$30k/$55k/$65k — `isCurrentServiceLevel: true` and `isDefault: true` on the $55k option — descriptions reflect Beehive consortium trade-offs from librarian notes
+- [ ] **DATA-02**: `collectionsPhysical` options: `isCurrentServiceLevel: true` moved from $10k to $15k option — $15k description includes books, DVDs, exploration kits, and equipment — $10k description reflects reduced core collection
+- [ ] **DATA-03**: Staffing level descriptions updated to reflect librarian's operational context — hours outside 9-5 enabling working citizens, staff coverage patterns, accessibility impact of reduced hours
+- [ ] **DATA-04**: Programming cost data (~$2,300-$4,800/year breakdown) documented as comment block in config.js for future reference — not modeled as a slider
+- [ ] **DATA-05**: Source attribution on `collectionsDigital` and `collectionsPhysical` updated to reference librarian notes instead of old FY2025 budget proposal
+- [ ] **DATA-06**: `draft: true` remains unchanged — staffing costs still PLACEHOLDER pending Cache County HR data
+
 ## Future Requirements
 
 - Scenario summary text — human-readable sentence describing the selected combination (ENH-01)
@@ -71,6 +84,8 @@ Requirements for migrating browser scripts to use extracted helpers.
 | City "current" indicators | All four cities currently participate — no city has `isCurrentServiceLevel`; not needed |
 | Animated transition between indicator states | Motion disorder risk; instant update is more accessible |
 | DOM/UI behavior tests | Slider label updates, breakdown toggle, DOM event wiring — out of scope per D-07 |
+| Programming slider | Cost data captured as comment; new UI capability deferred to future phase |
+| Staffing annualCost real values | Needs Cache County HR data; tracked as known PLACEHOLDER |
 
 ## Traceability
 
@@ -104,14 +119,21 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CALC-05 | Phase 17 | Planned |
 | CALC-06 | Phase 17 | Planned |
 | CALC-07 | Phase 17 | Planned |
+| DATA-01 | Phase 18 | Planned |
+| DATA-02 | Phase 18 | Planned |
+| DATA-03 | Phase 18 | Planned |
+| DATA-04 | Phase 18 | Planned |
+| DATA-05 | Phase 18 | Planned |
+| DATA-06 | Phase 18 | Planned |
 
 **Coverage:**
 - v1.2 requirements: 5 total, 5 complete
 - v1.3 requirements: 7 total, 7 complete
 - v1.4 requirements: 7 total, 7 complete
 - v1.5 requirements: 7 total, 0 complete
+- v1.6 requirements: 6 total, 0 planned
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-21*
-*Last updated: 2026-03-29 — Phase 17 requirements added*
+*Last updated: 2026-03-29 — Phase 18 requirements added*

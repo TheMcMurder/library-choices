@@ -122,6 +122,23 @@ Plans:
 Plans:
 - [x] 17-01-PLAN.md — Refactor calculator.js and url.js to ES modules importing helpers, update script tags
 
+### Phase 18: Incorporate Feedback from Library Notes
+
+**Goal:** Update config.js with real librarian data — replace placeholder digital collection tiers with 5 real tiers reflecting Beehive consortium trade-offs, correct physical collections current-level marker, update staffing descriptions with real operational context, and document programming costs
+**Depends on:** Phase 17
+**Requirements**: DATA-01, DATA-02, DATA-03, DATA-04, DATA-05, DATA-06
+**Success Criteria** (what must be TRUE):
+  1. Digital collections slider has 5 tiers ($5k/$15k/$30k/$55k/$65k) with $55k marked as current service level and default
+  2. Physical collections current-level marker is on $15k option, not $10k
+  3. Staffing descriptions reflect librarian's real operational language about hours, staff coverage, and accessibility
+  4. Programming cost data documented as comment in config.js for future reference
+  5. Source attributions on both collection sliders reference librarian notes
+  6. draft: true remains unchanged
+**Plans**: 1 plan
+
+Plans:
+- [ ] 18-01-PLAN.md — Update config.js with real librarian data and add config structure tests
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -142,3 +159,4 @@ Plans:
 | 14. Separate Digital and Physical Collections | v1.3 | 1/1 | Complete    | 2026-03-28 |
 | 16. Unit Tests | v1.4 | 2/2 | Complete    | 2026-03-29 |
 | 17. Calculator Helpers Migration | v1.5 | 1/1 | Complete    | 2026-03-30 |
+| 18. Incorporate Feedback from Library Notes | v1.6 | 0/1 | In Progress | — |
