@@ -39,6 +39,14 @@ describe('config structure', () => {
       const current = config.collectionsDigital.options.filter(o => o.isCurrentServiceLevel === true);
       expect(current).toHaveLength(1);
     });
+    it('has exactly 5 options with values 5000, 15000, 30000, 55000, 65000', () => {
+      const values = config.collectionsDigital.options.map(o => o.value);
+      expect(values).toEqual([5000, 15000, 30000, 55000, 65000]);
+    });
+    it('marks $55,000 as current service level', () => {
+      const current = config.collectionsDigital.options.find(o => o.isCurrentServiceLevel === true);
+      expect(current.value).toBe(55000);
+    });
   });
 
   describe('collectionsPhysical', () => {
@@ -56,6 +64,10 @@ describe('config structure', () => {
     it('exactly one has isCurrentServiceLevel true', () => {
       const current = config.collectionsPhysical.options.filter(o => o.isCurrentServiceLevel === true);
       expect(current).toHaveLength(1);
+    });
+    it('marks $15,000 as current service level', () => {
+      const current = config.collectionsPhysical.options.find(o => o.isCurrentServiceLevel === true);
+      expect(current.value).toBe(15000);
     });
   });
 
