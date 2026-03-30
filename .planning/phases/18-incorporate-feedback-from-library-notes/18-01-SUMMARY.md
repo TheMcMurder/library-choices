@@ -106,6 +106,15 @@ None - no external service configuration required.
 - draft: true remains — watermark appropriate until staffing costs are finalized
 - Programming slider is a well-scoped future enhancement with cost data already documented in config.js comment
 
+## Self-Check: PASSED
+
+- FOUND: src/_data/config.js
+- FOUND: test/config.test.js
+- FOUND: 18-01-SUMMARY.md
+- FOUND commit: 29122b4 (feat: update config.js with real librarian data)
+- FOUND commit: b9b1a2f (test: lock in new digital tier values and current-level marker positions)
+- FOUND commit: 853bacb (docs: complete plan metadata)
+
 ---
 *Phase: 18-incorporate-feedback-from-library-notes*
 *Completed: 2026-03-29*
