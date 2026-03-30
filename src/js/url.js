@@ -11,19 +11,19 @@ function getCurrentSelections() {
   var staffingEl = form.querySelector('input[name="staffing"]:checked');
   var staffingId = staffingEl ? staffingEl.value : null;
   var digitalEl = document.getElementById('collections-digital');
-  var digitalValue = digitalEl ? parseInt(digitalEl.value, 10) : 0;
+  var digitalIdx = digitalEl ? parseInt(digitalEl.value, 10) : 0;
   var physicalEl = document.getElementById('collections-physical');
-  var physicalValue = physicalEl ? parseInt(physicalEl.value, 10) : 0;
+  var physicalIdx = physicalEl ? parseInt(physicalEl.value, 10) : 0;
   var cityIds = Array.from(form.querySelectorAll('input[name="cities"]:checked'))
     .map(function (cb) { return cb.value; });
-  return { staffingId: staffingId, digitalValue: digitalValue, physicalValue: physicalValue, cityIds: cityIds };
+  return { staffingId: staffingId, digitalIdx: digitalIdx, physicalIdx: physicalIdx, cityIds: cityIds };
 }
 
 // Stage 2 — Encode (calls helper)
 function encodeUrl() {
   var sel = getCurrentSelections();
   if (!sel.staffingId) return;
-  var params = encodeIndices(data, sel.staffingId, sel.digitalValue, sel.physicalValue, sel.cityIds);
+  var params = encodeIndices(data, sel.staffingId, sel.digitalIdx, sel.physicalIdx, sel.cityIds);
   var qs = params.toString();
   history.replaceState(null, '', qs ? '?' + qs : location.pathname);
 }
@@ -42,12 +42,12 @@ function applySelections(indices) {
   // Restore digital slider
   if (indices.digitalIdx !== null) {
     var digSlider = document.getElementById('collections-digital');
-    if (digSlider) digSlider.value = String(data.collectionsDigital.options[indices.digitalIdx].value);
+    if (digSlider) digSlider.value = String(indices.digitalIdx);
   }
   // Restore physical slider
   if (indices.physicalIdx !== null) {
     var physSlider = document.getElementById('collections-physical');
-    if (physSlider) physSlider.value = String(data.collectionsPhysical.options[indices.physicalIdx].value);
+    if (physSlider) physSlider.value = String(indices.physicalIdx);
   }
   // Restore cities
   if (indices.cityIndices.length) {

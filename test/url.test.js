@@ -5,11 +5,11 @@ import config from '../src/_data/config.js';
 describe('URL encode/decode round-trip', () => {
   it('round-trips all four selection types', () => {
     const staffingId = config.staffingLevels[1].id;       // "1fte-1pte"
-    const digitalValue = config.collectionsDigital.options[2].value;  // 15000
-    const physicalValue = config.collectionsPhysical.options[3].value; // 15000
+    const digitalIdx = 2;
+    const physicalIdx = 3;
     const cityIds = [config.cities[0].id, config.cities[2].id]; // ["providence", "millville"]
 
-    const params = encodeIndices(config, staffingId, digitalValue, physicalValue, cityIds);
+    const params = encodeIndices(config, staffingId, digitalIdx, physicalIdx, cityIds);
     const decoded = decodeIndices(config, params);
 
     expect(decoded.staffingIdx).toBe(1);

@@ -4,19 +4,21 @@
  *
  * @param {object} data - config data with staffingLevels, collectionsDigital, collectionsPhysical, cities
  * @param {string} staffingId - selected staffing level id
- * @param {number} digitalValue - selected digital collections value
- * @param {number} physicalValue - selected physical collections value
+ * @param {number} digitalIdx - 0-based index into collectionsDigital.options
+ * @param {number} physicalIdx - 0-based index into collectionsPhysical.options
  * @param {string[]} cityIds - array of selected city ids
  * @returns {URLSearchParams}
  */
-export function encodeIndices(data, staffingId, digitalValue, physicalValue, cityIds) {
+export function encodeIndices(data, staffingId, digitalIdx, physicalIdx, cityIds) {
   var params = new URLSearchParams();
   var pi = data.staffingLevels.findIndex(function (l) { return l.id === staffingId; });
   if (pi !== -1) params.set('pi', String(pi));
-  var delta = data.collectionsDigital.options.findIndex(function (o) { return o.value === digitalValue; });
-  if (delta !== -1) params.set('delta', String(delta));
-  var tau = data.collectionsPhysical.options.findIndex(function (o) { return o.value === physicalValue; });
-  if (tau !== -1) params.set('tau', String(tau));
+  if (typeof digitalIdx === 'number' && digitalIdx >= 0 && digitalIdx < data.collectionsDigital.options.length) {
+    params.set('delta', String(digitalIdx));
+  }
+  if (typeof physicalIdx === 'number' && physicalIdx >= 0 && physicalIdx < data.collectionsPhysical.options.length) {
+    params.set('tau', String(physicalIdx));
+  }
   var phi = cityIds.map(function (id) { return data.cities.findIndex(function (c) { return c.id === id; }); })
                    .filter(function (i) { return i !== -1; });
   if (phi.length) params.set('phi', phi.join(','));
