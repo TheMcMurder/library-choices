@@ -99,6 +99,47 @@
 
 ---
 
+## Milestone: v1.7 — Fix Slider Non-Linear Options
+
+**Shipped:** 2026-03-30
+**Phases:** 1 (19) | **Plans:** 1 | **Tasks:** 2
+
+### What Was Built
+
+- Converted both collection sliders from dollar-amount value domain to 0-based index domain (`min=0`, `max=N-1`, `step=1`) — eliminates phantom positions on the non-linearly-spaced digital tiers ($5k/$15k/$30k/$55k/$65k)
+- Calculator reads index and resolves dollar amount via `options[idx].value` at read time; `updateSliderLabels` uses direct array index lookup (no for-loop search)
+- URL encode/decode simplified — `encodeIndices` accepts indices directly, removing `findIndex` lookups for digital and physical params; `applySelections` writes index string directly to slider
+- `test/url.test.js` updated to pass indices instead of dollar values; all 48 tests pass
+
+### What Worked
+
+- **Root cause was precise**: The discuss-phase process correctly identified that the bug was structural (value domain mismatch), not cosmetic. The fix touched exactly the right files with no scope creep.
+- **Test coverage caught regressions immediately**: The existing url.test.js round-trip test failed on the old dollar-value approach, confirming the fix and preventing silent regression.
+- **Single-plan phase was the right size**: The fix was two clear tasks (slider/calculator layer, then URL layer) and shipped in a single session.
+
+### What Was Inefficient
+
+- **Worktree merge required manual conflict resolution**: The executor ran in an isolated worktree that branched from before the planning commits. This created a straightforward cherry-pick conflict in the planning files (REQUIREMENTS.md, ROADMAP.md) that required manual resolution. Could be avoided by ensuring worktrees branch from HEAD rather than a stale base.
+- **`tests` count in SUMMARY.md didn't reflect Phase 18 additions**: The previous SUMMARY mentioned 21 tests but Phase 18 had added more (total 48). Test count should be re-verified at plan completion rather than taken from memory.
+
+### Patterns Established
+
+- **Slider value domain = index, not value**: When a slider has non-linearly-spaced options, the range input's value domain must be indices (0-based integers), not the underlying values. Dollar amounts (or any values) are resolved at read time via `options[idx].value`. This pattern generalizes to any config-driven slider.
+- **Bounds-check on index reads**: `getDigitalCost` and `getPhysicalCost` now bounds-check before accessing `opts[idx]`. Defensive bounds-check should be standard on any index read from a DOM element.
+
+### Key Lessons
+
+1. **When options are non-linearly spaced, the slider value domain must be indices** — using the actual values creates gaps between ticks that the browser will position the thumb at.
+2. **Worktree isolation is valuable but adds merge overhead** — for single-plan phases with planning file changes, the cherry-pick conflict in docs files is routine but adds a resolution step. Accept this as normal cost of isolation.
+
+### Cost Observations
+
+- Model mix: all Sonnet
+- Sessions: single-session fix (2026-03-30)
+- Notable: discuss-phase context documented the root cause precisely, making the plan and execution straightforward
+
+---
+
 ## Cross-Milestone Trends
 
 ### Process Evolution
@@ -113,9 +154,11 @@
 |-----------|--------|-------|------------|
 | v1.0 | 6 | 10 | First milestone — baseline established |
 | v1.1 | 6 | 7 | Ad hoc phase additions mid-milestone; CSS-only card pattern discovered |
+| v1.7 | 1 | 1 | Single-issue fix; discuss-phase root-cause analysis made plan and execution fast |
 
 ### Top Lessons (Verified Across Milestones)
 
 1. Data-driven UI from day one reduces rework in later phases — don't hardcode values that need to change.
 2. Batch human verification into a dedicated late phase rather than blocking execution phases.
 3. CSS-only state via `has-[:checked]` is the right pattern for card-style radio/checkbox groups — no JavaScript needed, keyboard/screen-reader accessible by default.
+4. When a slider has non-linearly-spaced options, the value domain must be indices, not values — browser positions the thumb at arbitrary intermediate positions when the value is a number on a non-uniform scale.
