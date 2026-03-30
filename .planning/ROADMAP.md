@@ -182,4 +182,4 @@ Plans:
 | 16. Unit Tests | v1.4 | 2/2 | Complete    | 2026-03-29 |
 | 17. Calculator Helpers Migration | v1.5 | 1/1 | Complete    | 2026-03-30 |
 | 18. Incorporate Feedback from Library Notes | v1.6 | 1/1 | Complete    | 2026-03-30 |
-| 19. Fix Slider Non-Linear Options | v1.7 | 0/1 | In Progress | |
+| 19. Fix Slider Non-Linear Options | v1.7 | 0/1 | Complete    | 2026-03-30 |
