@@ -8,18 +8,11 @@ An interactive, mobile-first static website that helps Cache County citizens und
 
 Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
 
-## Current Milestone: v1.3 — Separate Digital and Physical Collections
+## Current Milestone: v1.7 — Fix Slider Non-Linear Options
 
-**Goal:** Replace the single blended collections budget slider with two independently-controlled sliders (digital and physical), each with its own cost and current service level indicator.
+**Goal:** Fix the collectionSlider Nunjucks macro and associated JavaScript so sliders use 0-based index values instead of dollar amounts, eliminating phantom positions on non-linearly-spaced options.
 
-**Target features:**
-- Digital collections budget slider ($5k–$20k, 5 options)
-- Physical print collections budget slider ($0–$20k, 5 options)
-- Both rendered by shared Nunjucks macro
-- Additive in tax calculation (staffing + digital + physical)
-- URL encoding: `delta` for digital index, `tau` for physical index
-
-## Current State (v1.3 — Phase 18 complete 2026-03-30)
+## Current State (v1.7 — Phase 19 complete 2026-03-30)
 
 - **Live at:** https://mcmurdie.github.io/library-choices/
 - **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + Nunjucks templates
@@ -84,7 +77,15 @@ Citizens can explore any combination of service and funding choices and immediat
 - ✓ Programming cost comment block in config.js (DATA-05) — Validated in Phase 18
 - ✓ Source attributions cite NOTES.md (DATA-06) — Validated in Phase 18
 
-### Deferred (post-v1.3)
+### Validated (v1.7)
+
+- ✓ `slider.njk` range input uses 0-based index as value domain (`min="0"`, `max="{{ options | length - 1 }}"`) — Validated in Phase 19
+- ✓ Tick buttons use `data-value="{{ loop.index0 }}"` — click-to-snap writes index to slider.value — Validated in Phase 19
+- ✓ `calculator.js` resolves index to dollar amount via `options[idx].value` at read time — Validated in Phase 19
+- ✓ `url-helpers.js` `encodeIndices` accepts indices directly, no `findIndex` for digital/physical — Validated in Phase 19
+- ✓ `url.js` reads/writes slider index throughout; URL round-trip passes indices — Validated in Phase 19
+
+### Deferred (post-v1.7)
 
 - Scenario summary text — human-readable sentence describing the selected combination (ENH-01)
 - Print stylesheet — printable version of the configured scenario (ENH-02)
