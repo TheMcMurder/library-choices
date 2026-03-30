@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: — Separate Digital and Physical Collections
-status: Milestone complete
-stopped_at: Completed 16-02-PLAN.md
-last_updated: "2026-03-29T19:24:25.336Z"
+status: unknown
+stopped_at: Completed 17-01-PLAN.md
+last_updated: "2026-03-30T00:15:32.357Z"
 progress:
-  total_phases: 4
-  completed_phases: 3
-  total_plans: 4
-  completed_plans: 4
+  total_phases: 5
+  completed_phases: 4
+  total_plans: 5
+  completed_plans: 5
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 16 — unit-tests
+**Current focus:** Phase 17 — migrate-to-calculator-helpers-and-more-easily-testable-code-structure
 
 ## Current Position
 
-Phase: 16
-Plan: Not started
+Phase: 17 (migrate-to-calculator-helpers-and-more-easily-testable-code-structure) — EXECUTING
+Plan: 1 of 1
 
 ## Performance Metrics
 
@@ -52,6 +52,7 @@ Plan: Not started
 | Phase 14-separate-digital-and-physical-collections P01 | 4min | 3 tasks | 5 files |
 | Phase 16-unit-tests P01 | 3min | 2 tasks | 7 files |
 | Phase 16-unit-tests P02 | 5min | 1 tasks | 1 files |
+| Phase 17-migrate-to-calculator-helpers-and-more-easily-testable-code-structure P01 | 2min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -72,6 +73,7 @@ Recent decisions affecting current work:
 - [Phase 16-unit-tests]: Vitest downgraded from 4.x to 2.x for Node 18 compatibility (node:util styleText missing in Node 18)
 - [Phase 16-unit-tests]: IIFEs in calculator.js and url.js left unchanged; pure helpers extracted as separate ESM modules in src/js/lib/
 - [Phase 16-unit-tests]: Non-blocking CI workflow: site owner is a non-developer; tests visible in Actions tab without blocking push-to-deploy
+- [Phase 17-migrate-to-calculator-helpers-and-more-easily-testable-code-structure]: ESM import in browser scripts closes duplication gap from Phase 16 — browser scripts now call same pure functions as unit tests
 
 ### Roadmap Evolution
 
@@ -91,6 +93,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-29T19:19:23.063Z
-Stopped at: Completed 16-02-PLAN.md
+Last session: 2026-03-30T00:15:32.354Z
+Stopped at: Completed 17-01-PLAN.md
 Resume file: None

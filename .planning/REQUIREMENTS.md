@@ -49,13 +49,13 @@ Requirements for migrating browser scripts to use extracted helpers.
 
 ### Calculator and URL Module Migration
 
-- [ ] **CALC-01**: `calculator.js` converted from IIFE to flat ES module with `import { calculatePerHousehold } from './lib/calculator-helpers.js'` — no IIFE wrapper remains
-- [ ] **CALC-02**: `updateResult()` calls imported `calculatePerHousehold(staffingCost, digitalCost, physicalCost, totalHouseholds)` instead of inline `totalCost / totalHouseholds` math
-- [ ] **CALC-03**: DOM-reading getters (`getStaffingCost`, `getDigitalCost`, `getPhysicalCost`) have defensive fallbacks returning 0 when DOM element is missing
-- [ ] **CALC-04**: `url.js` converted from IIFE to flat ES module with `import { encodeIndices, decodeIndices } from './lib/url-helpers.js'` — no IIFE wrapper remains
-- [ ] **CALC-05**: `url.js` restructured into four-stage model: `getCurrentSelections()` pulls DOM state, `encodeUrl()` calls `encodeIndices`, `restoreFromUrl()` reads URL params, `applySelections()` writes decoded indices to DOM
-- [ ] **CALC-06**: Both `<script>` tags in `src/index.html` have `type="module"` attribute; inline `window.LIBRARY_DATA` script remains classic (no type="module")
-- [ ] **CALC-07**: All existing tests (`pnpm test`) and build (`pnpm run build`) continue to pass with no test modifications
+- [x] **CALC-01**: `calculator.js` converted from IIFE to flat ES module with `import { calculatePerHousehold } from './lib/calculator-helpers.js'` — no IIFE wrapper remains
+- [x] **CALC-02**: `updateResult()` calls imported `calculatePerHousehold(staffingCost, digitalCost, physicalCost, totalHouseholds)` instead of inline `totalCost / totalHouseholds` math
+- [x] **CALC-03**: DOM-reading getters (`getStaffingCost`, `getDigitalCost`, `getPhysicalCost`) have defensive fallbacks returning 0 when DOM element is missing
+- [x] **CALC-04**: `url.js` converted from IIFE to flat ES module with `import { encodeIndices, decodeIndices } from './lib/url-helpers.js'` — no IIFE wrapper remains
+- [x] **CALC-05**: `url.js` restructured into four-stage model: `getCurrentSelections()` pulls DOM state, `encodeUrl()` calls `encodeIndices`, `restoreFromUrl()` reads URL params, `applySelections()` writes decoded indices to DOM
+- [x] **CALC-06**: Both `<script>` tags in `src/index.html` have `type="module"` attribute; inline `window.LIBRARY_DATA` script remains classic (no type="module")
+- [x] **CALC-07**: All existing tests (`pnpm test`) and build (`pnpm run build`) continue to pass with no test modifications
 
 ## Future Requirements
 

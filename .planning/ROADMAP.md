@@ -120,7 +120,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 17-01-PLAN.md — Refactor calculator.js and url.js to ES modules importing helpers, update script tags
+- [x] 17-01-PLAN.md — Refactor calculator.js and url.js to ES modules importing helpers, update script tags
 
 ## Progress
 
@@ -141,4 +141,4 @@ Plans:
 | 13. Current Service Level Indicators | v1.2 | 1/1 | Complete    | 2026-03-22 |
 | 14. Separate Digital and Physical Collections | v1.3 | 1/1 | Complete    | 2026-03-28 |
 | 16. Unit Tests | v1.4 | 2/2 | Complete    | 2026-03-29 |
-| 17. Calculator Helpers Migration | v1.5 | 0/1 | Planned    | — |
+| 17. Calculator Helpers Migration | v1.5 | 1/1 | Complete   | 2026-03-30 |
