@@ -77,3 +77,13 @@ Full phase details: [milestones/v1.7-ROADMAP.md](milestones/v1.7-ROADMAP.md)
 | 17. Calculator Helpers Migration | v1.5 | 1/1 | Complete | 2026-03-30 |
 | 18. Incorporate Feedback from Library Notes | v1.6 | 1/1 | Complete | 2026-03-30 |
 | 19. Fix Slider Non-Linear Options | v1.7 | 1/1 | Complete | 2026-03-30 |
+
+### Phase 20: update hours selection with new data
+
+**Goal:** Replace placeholder staffingLevels with real wage data from the Providence Library budget levels PDF — real costs, schedules, labels, and descriptions for 3 tiers.
+**Requirements**: [HRS-01]
+**Depends on:** Phase 19
+**Plans:** 1 plan
+
+Plans:
+- [ ] 20-01-PLAN.md — Update staffingLevels data and fix stale test comment
