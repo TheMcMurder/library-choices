@@ -83,7 +83,7 @@ Full phase details: [milestones/v1.7-ROADMAP.md](milestones/v1.7-ROADMAP.md)
 **Goal:** Replace placeholder staffingLevels with real wage data from the Providence Library budget levels PDF — real costs, schedules, labels, and descriptions for 3 tiers.
 **Requirements**: [HRS-01]
 **Depends on:** Phase 19
-**Plans:** 0/1 plans executed
+**Plans:** 1/1 plans complete
 
 Plans:
 - [ ] 20-01-PLAN.md — Update staffingLevels data and fix stale test comment
