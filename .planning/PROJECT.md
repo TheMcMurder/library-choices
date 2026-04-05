@@ -8,9 +8,9 @@ An interactive, mobile-first static website that helps Cache County citizens und
 
 Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
 
-## Current State (v1.7 shipped 2026-03-30)
+## Current State (v1.7 shipped 2026-03-30; Phase 20 complete 2026-04-05)
 
-All milestones shipped. The configurator is live with real librarian data, correct non-linear slider behavior, and a full unit test suite.
+All milestones shipped. The configurator is live with real Providence Library wage data, correct non-linear slider behavior, and a full unit test suite. Phase 20 replaced placeholder staffing costs with real PDF-derived figures.
 
 - **Live at:** https://mcmurdie.github.io/library-choices/
 - **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + Nunjucks templates
@@ -83,6 +83,7 @@ All milestones shipped. The configurator is live with real librarian data, corre
 - ✓ `calculator.js` resolves index to dollar amount via `options[idx].value` at read time — Validated in Phase 19
 - ✓ `url-helpers.js` `encodeIndices` accepts indices directly, no `findIndex` for digital/physical — Validated in Phase 19
 - ✓ `url.js` reads/writes slider index throughout; URL round-trip passes indices — Validated in Phase 19
+- ✓ staffingLevels replaced with real Providence Library wage data: Essential ($56,160/yr, 35hr/wk), Standard ($76,440/yr, 44hr/wk, current service level), Full Service ($160,000/yr, 44hr/wk FTE director) — Validated in Phase 20 (HRS-01)
 
 ### Deferred (post-v1.7)
 
@@ -153,4 +154,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-30 after v1.7 milestone complete — sliders converted to index-based value domain, eliminating phantom positions on non-linearly-spaced digital collection tiers.*
+*Last updated: 2026-04-05 after Phase 20 complete — staffingLevels replaced with real Providence Library wage data (Essential/Standard/Full Service) from budget PDF.*
