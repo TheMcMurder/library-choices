@@ -114,39 +114,41 @@ export default {
 
   staffingLevels: [
     {
-      id: "1fte",  // URL-IMMUTABLE — do not rename
-      label: "Basic",
-      annualCost: 150000, // PLACEHOLDER
+      id: "35hr-pt",  // URL: compact uses array index; verbose id changed from v1
+      label: "Essential",
+      annualCost: 56160,
       schedule: [
-        { days: "1-5", open: "11am", close: "4pm" },
+        { days: "1-5", open: "11am", close: "5pm" },
+        { days: "6",   open: "10am", close: "3pm" },
       ],
       description:
-        "One full-time staff member covering all open hours. Reduced hours limit accessibility \u2014 no evening or weekend access for working citizens.",
-      source: "Cache County HR salary schedule FY2025",
+        "Part-time director and two part-time clerks, 35 hours per week. Two staff working at a time for safety. Some Saturday hours but no evening access.",
+      source: "Providence Library budget levels (2026)",
     },
     {
-      id: "1fte-1pte",  // URL-IMMUTABLE — do not rename
-      label: "Extended",
-      annualCost: 190000, // PLACEHOLDER
-      schedule: [
-        { days: "1-5", open: "10am", close: "5pm" },
-      ],
-      description:
-        "One full-time and one part-time staff member. Some hours outside 9\u20135 for working citizens, but limited evening and no weekend coverage.",
-      source: "Cache County HR salary schedule FY2025",
-    },
-    {
-      id: "1fte-2pte",  // URL-IMMUTABLE — do not rename
-      label: "Current",
-      annualCost: 230000, // PLACEHOLDER
+      id: "44hr-pt",  // URL: compact uses array index; verbose id changed from v1
+      label: "Standard",
+      annualCost: 76440,
       schedule: [
         { days: "1-5", open: "10am", close: "6pm" },
         { days: "6",   open: "10am", close: "2pm" },
       ],
       description:
-        "Two staff working at a time Mon\u2013Fri, open 44 hrs/week with 10 hours outside normal 9\u20135. Enables working citizens to access the library evenings and Saturdays.",
-      source: "Cache County HR salary schedule FY2025",
+        "Part-time director and three part-time clerks, 44 hours per week. Two staff working at a time. Evening and Saturday hours for working citizens — the current operation level.",
+      source: "Providence Library budget levels (2026)",
       isCurrentServiceLevel: true,
+    },
+    {
+      id: "44hr-fte",  // URL: compact uses array index; verbose id changed from v1
+      label: "Full Service",
+      annualCost: 160000,
+      schedule: [
+        { days: "1-5", open: "10am", close: "6pm" },
+        { days: "6",   open: "10am", close: "2pm" },
+      ],
+      description:
+        "Full-time director plus three part-time staff, 44 hours per week. Two or three staff at a time. The director would have the education and time to implement more programs, improve library practices, and perform outreach.",
+      source: "Providence Library budget levels (2026)",
     },
   ],
 
