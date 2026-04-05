@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: v1.7 milestone complete
-stopped_at: Phase 20 context gathered
-last_updated: "2026-04-05T20:49:00.444Z"
+status: unknown
+stopped_at: Completed 20-01-PLAN.md
+last_updated: "2026-04-05T21:34:37.299Z"
 progress:
   total_phases: 1
   completed_phases: 0
-  total_plans: 0
+  total_plans: 1
   completed_plans: 0
 ---
 
@@ -19,11 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-30)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Planning next milestone
+**Current focus:** Phase 20 — update-hours-selection-with-new-data
 
 ## Current Position
 
-Milestone v1.7 complete. All 19 phases shipped. Planning next work.
+Phase: 20 (update-hours-selection-with-new-data) — EXECUTING
+Plan: 1 of 1
 
 ## Performance Metrics
 
@@ -54,6 +55,7 @@ Milestone v1.7 complete. All 19 phases shipped. Planning next work.
 | Phase 17-migrate-to-calculator-helpers-and-more-easily-testable-code-structure P01 | 2min | 2 tasks | 3 files |
 | Phase 18-incorporate-feedback-from-library-notes P01 | 2min | 2 tasks | 2 files |
 | Phase 19-fix-slider-issue-allow-for-non-linear-options P01 | 2min | 2 tasks | 5 files |
+| Phase 20-update-hours-selection-with-new-data P01 | 1min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -79,6 +81,7 @@ Recent decisions affecting current work:
 - [Phase 18-incorporate-feedback-from-library-notes]: Physical current-level marker moved from $10k to $15k — actual 2025 spend ~$12.5k; staffing annualCost remains PLACEHOLDER
 - [Phase 19-fix-slider-issue-allow-for-non-linear-options]: Slider value domain switched from dollar amounts to 0-based indices (0 through N-1), eliminating phantom positions on non-linearly-spaced digital collections options
 - [Phase 19-fix-slider-issue-allow-for-non-linear-options]: encodeIndices signature changed to accept digitalIdx/physicalIdx directly; removes findIndex value lookups; bounds check replaces them
+- [Phase 20-update-hours-selection-with-new-data]: annualCost = wages only per D-02; no overhead (ILS, programs, supplies). Tier 2 Standard (44hr-pt) is current service level. IDs updated to 35hr-pt/44hr-pt/44hr-fte; compact pi param uses array index so compact URLs remain valid.
 
 ### Roadmap Evolution
 
@@ -101,6 +104,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-04-05T20:49:00.440Z
-Stopped at: Phase 20 context gathered
-Resume file: .planning/phases/20-update-hours-selection-with-new-data/20-CONTEXT.md
+Last session: 2026-04-05T21:34:37.296Z
+Stopped at: Completed 20-01-PLAN.md
+Resume file: None
