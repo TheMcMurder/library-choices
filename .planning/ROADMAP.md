@@ -90,10 +90,10 @@ Plans:
 
 ### Phase 21: show-your-work-totals
 
-**Goal:** [To be planned]
-**Requirements**: TBD
+**Goal:** Expand the result bar so citizens see the individual cost components (Hours Open, Digital, Physical) that add up to the total, not just the final per-household figure.
+**Requirements**: [D-01, D-02, D-03, D-04, D-05, D-06]
 **Depends on:** Phase 20
-**Plans:** 0 plans
+**Plans:** 1 plan
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 21 to break down)
+- [ ] 21-01-PLAN.md — Update updateResult() with two-line collapsed bar and accounting-style formula popover
