@@ -42,7 +42,7 @@ function updateResult() {
   if (totalHouseholds === 0) {
     resultAmount.textContent = 'Select at least one city';
     resultAmount.className = 'text-base text-blue-100';
-    breakdownDetail.textContent = '';
+    breakdownDetail.innerHTML = '';
     return;
   }
 
@@ -52,9 +52,23 @@ function updateResult() {
   var perHousehold = calculatePerHousehold(staffingCost, digitalCost, physicalCost, totalHouseholds);
   var totalCost = staffingCost + digitalCost + physicalCost;
 
-  resultAmount.textContent = '$' + perHousehold.toFixed(2) + '/household/year';
-  resultAmount.className = 'text-2xl font-semibold';
-  breakdownDetail.textContent = '$' + totalCost.toLocaleString('en-US') + ' total \u00f7 ' + totalHouseholds.toLocaleString('en-US') + ' households';
+  // Collapsed bar: two-line display
+  resultAmount.innerHTML =
+    '<span class="block text-2xl font-semibold">$' + perHousehold.toFixed(2) + '/household/year</span>' +
+    '<span class="block text-sm text-blue-200">$' + totalCost.toLocaleString('en-US') + ' total</span>';
+  resultAmount.className = '';
+
+  // Popover: accounting-style formula table
+  breakdownDetail.innerHTML =
+    '<table class="w-full"><tbody>' +
+    '<tr><td class="text-right pr-3 tabular-nums">$' + staffingCost.toLocaleString('en-US') + '</td><td class="text-blue-200">Hours Open</td></tr>' +
+    '<tr><td class="text-right pr-3 tabular-nums">$' + digitalCost.toLocaleString('en-US') + '</td><td class="text-blue-200">Digital</td></tr>' +
+    '<tr><td class="text-right pr-3 tabular-nums">$' + physicalCost.toLocaleString('en-US') + '</td><td class="text-blue-200">Physical</td></tr>' +
+    '</tbody><tfoot>' +
+    '<tr><td colspan="2" class="pt-1 pb-1"><hr class="border-blue-700" /></td></tr>' +
+    '<tr><td class="text-right pr-3 tabular-nums font-semibold">$' + totalCost.toLocaleString('en-US') + '</td><td class="font-semibold">Total</td></tr>' +
+    '<tr><td colspan="2" class="pt-1 text-blue-200">$' + totalCost.toLocaleString('en-US') + ' \u00f7 ' + totalHouseholds.toLocaleString('en-US') + ' households = $' + perHousehold.toFixed(2) + '/year</td></tr>' +
+    '</tfoot></table>';
 }
 
 function updateSliderLabels(sliderId, dataKey, amountId, descriptionId) {
