@@ -1,5 +1,16 @@
 # Milestones
 
+## v1.8 Show Your Work (Shipped: 2026-04-15)
+
+**Phases completed:** 2 phases, 2 plans, 4 tasks
+
+**Key accomplishments:**
+
+- Three staffingLevels replaced with real Providence Library wage data: Essential ($56,160), Standard ($76,440, current), Full Service ($160,000) from 2026 budget PDF
+- Two-line result bar (per-household + total) and accounting-style formula popover (Hours Open / Digital / Physical) replacing single-textContent writes in updateResult()
+
+---
+
 ## v1.7 Fix Slider Non-Linear Options (Shipped: 2026-03-30)
 
 **Phases completed:** 7 phases, 7 plans, 12 tasks

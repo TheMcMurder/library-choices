@@ -140,6 +140,46 @@
 
 ---
 
+## Milestone: v1.8 — Show Your Work
+
+**Shipped:** 2026-04-15
+**Phases:** 2 (20–21) | **Plans:** 2 | **Tasks:** 4
+
+### What Was Built
+
+- Replaced 3 PLACEHOLDER staffingLevels entries with real Providence Library wage data from the 2026 budget PDF: Essential ($56,160/yr, 35hr/wk), Standard ($76,440/yr, 44hr/wk, current service level), Full Service ($160,000/yr, 44hr/wk FTE director)
+- Two-line result bar: large per-household/year cost + smaller blue-200 total cost, using innerHTML with inner spans (replacing single textContent write)
+- Accounting-style formula popover (`<table>` with `tabular-nums`): Hours Open, Digital, and Physical rows always rendered, even at $0; border-blue-700 separator; semibold Total row; division equation
+
+### What Worked
+
+- **innerHTML with inner spans for two-line display**: The pattern of clearing `className = ''` then writing `innerHTML` with inner `<span>` elements carrying their own Tailwind classes was clean. The empty state correctly falls back to `textContent` — no class cascade risk.
+- **`<table>` for accounting layout**: Avoided manual padding arithmetic for right-aligned dollar amounts. tabular-nums gives clean alignment across varying dollar widths.
+- **Phase 20 was pure config data**: Replacing placeholder staffingLevels required no template or script changes — the data-driven architecture from v1.0 paid forward exactly as intended.
+- **Human visual verification checkpoint**: Keeping the human-verify checkpoint in Phase 21 ensured the two-line bar and popover looked right before marking complete — not just tests passing.
+
+### What Was Inefficient
+
+- **Stale test expectation carried forward from Phase 18**: The `config.test.js` expectation for `collectionsPhysical.isCurrentServiceLevel` being $15,000 was stale (config had been updated to $10,000 in Phase 18 but test wasn't updated). Caught during Phase 21 verification. Test maintenance at plan completion would have prevented this.
+
+### Patterns Established
+
+- **`innerHTML` for multi-element DOM output in calculator.js**: When a result container needs multiple styled child elements (e.g., two-line display), use `innerHTML` with inner elements carrying Tailwind classes. Clear `className` on the outer element to prevent class cascade. Reserve `textContent` for single-value writes and empty state.
+- **`innerHTML = ''` for clearing HTML children**: When a popover container has been written with `innerHTML`, clear it with `innerHTML = ''`, not `textContent = ''` — the latter replaces HTML children with a text node rather than clearing them.
+
+### Key Lessons
+
+1. **Data-driven architecture from v1.0 pays forward exactly as expected** — Phase 20's config-only change required no template or calculator modifications, confirming the original architectural decision was correct.
+2. **Update tests at the same time as config data** — the Phase 18 stale expectation was a reminder that config changes and their test assertions must be updated together, not deferred.
+
+### Cost Observations
+
+- Model mix: all Sonnet
+- Sessions: 2 sessions (2026-04-05, 2026-04-15)
+- Notable: Phase 20 executed in 1 min — pure data update with no structural changes; Phase 21 in ~15 min including human visual verification checkpoint
+
+---
+
 ## Cross-Milestone Trends
 
 ### Process Evolution
@@ -155,6 +195,7 @@
 | v1.0 | 6 | 10 | First milestone — baseline established |
 | v1.1 | 6 | 7 | Ad hoc phase additions mid-milestone; CSS-only card pattern discovered |
 | v1.7 | 1 | 1 | Single-issue fix; discuss-phase root-cause analysis made plan and execution fast |
+| v1.8 | 2 | 2 | Data update (Phase 20) + display layer (Phase 21); data-driven architecture paid forward cleanly |
 
 ### Top Lessons (Verified Across Milestones)
 

@@ -8,9 +8,9 @@ An interactive, mobile-first static website that helps Cache County citizens und
 
 Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
 
-## Current State (v1.7 shipped 2026-03-30; Phase 20 complete 2026-04-05)
+## Current State (v1.8 shipped 2026-04-15)
 
-All milestones shipped. The configurator is live with real Providence Library wage data, correct non-linear slider behavior, and a full unit test suite. Phase 20 replaced placeholder staffing costs with real PDF-derived figures.
+All milestones shipped. The configurator now shows an itemized breakdown — each cost component (Hours Open, Digital, Physical) visible alongside the per-household total. Real Providence Library wage data drives staffing costs. All 72 tests passing.
 
 - **Live at:** https://mcmurdie.github.io/library-choices/
 - **Tech stack:** Eleventy v3 ESM + Tailwind CSS v4 (standalone CLI) + Nunjucks templates
@@ -85,7 +85,16 @@ All milestones shipped. The configurator is live with real Providence Library wa
 - ✓ `url.js` reads/writes slider index throughout; URL round-trip passes indices — Validated in Phase 19
 - ✓ staffingLevels replaced with real Providence Library wage data: Essential ($56,160/yr, 35hr/wk), Standard ($76,440/yr, 44hr/wk, current service level), Full Service ($160,000/yr, 44hr/wk FTE director) — Validated in Phase 20 (HRS-01)
 
-### Deferred (post-v1.7)
+### Validated (v1.8)
+
+- ✓ Two-line result bar: per-household cost (large) + total cost (smaller, blue-200) via innerHTML spans (D-01) — Validated in Phase 21
+- ✓ Empty state correctly uses textContent message + innerHTML = '' for popover clear (D-02) — Validated in Phase 21
+- ✓ Accounting-style formula popover with Hours Open, Digital, Physical rows (D-03) — Validated in Phase 21
+- ✓ All 3 cost rows always rendered even when $0 (D-04) — Validated in Phase 21
+- ✓ HTML table with tabular-nums, border-blue-700 separator, semibold Total row, and division equation (D-05) — Validated in Phase 21
+- ✓ Human visual verification approved for two-line bar and formula popover on desktop (D-06) — Validated in Phase 21
+
+### Deferred (post-v1.8)
 
 - Scenario summary text — human-readable sentence describing the selected combination (ENH-01)
 - Print stylesheet — printable version of the configured scenario (ENH-02)
@@ -135,6 +144,8 @@ The site owner (a city council member or civic tech advocate) needs to update nu
 | sr-only on radio/checkbox inputs inside cards | Preserves keyboard/screen-reader access vs type=hidden | ✓ Good — Tab/Space/arrow navigation preserved |
 | outline-offset-4 for focus indicators on cards | focus ring appears visibly outside selected-state ring-2 ring-blue-600 | ✓ Good — focus and selection rings are now visually distinct |
 | Slider value domain = 0-based index (not dollar amount) | Non-linear digital tiers ($5k/$15k/$30k/$55k/$65k) produced phantom positions when slider value was dollar amount — index domain gives exactly N valid positions with no phantoms | ✓ Good — eliminates phantom positions; calculator resolves index→dollar at read time |
+| innerHTML with inner spans for two-line result bar | textContent can't hold two styled lines; inner spans carry their own Tailwind classes; outer className cleared on happy path to prevent cascade | ✓ Good — clean two-line display with per-household + total |
+| `<table>` with tabular-nums for formula popover | Accounting-style right-alignment needed for 3 cost rows + total; table gives alignment without manual padding | ✓ Good — Hours Open / Digital / Physical breakdown legible and aligned |
 
 ## Evolution
 
@@ -154,4 +165,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-05 after Phase 20 complete — staffingLevels replaced with real Providence Library wage data (Essential/Standard/Full Service) from budget PDF.*
+*Last updated: 2026-04-15 after v1.8 milestone — show-your-work result bar and formula popover shipped (Phases 20-21).*
