@@ -99,7 +99,7 @@
 export default {
   siteName: "Cache County Library Service Choices",
 
-  draft: true, // Set to false when real numbers are finalized
+  draft: false, // Set to false when real numbers are finalized
 
   footerLinks: [
     // {
