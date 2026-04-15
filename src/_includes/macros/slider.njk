@@ -27,6 +27,8 @@
     {% endfor %}
   </div>
   <p id="{{ descriptionId }}" class="text-sm text-gray-600 leading-normal"></p>
+  {% if (source) %}
   <cite class="text-sm text-gray-500 not-italic">Source: {{ source }}</cite>
+  {% endif %}
 </div>
 {% endmacro %}

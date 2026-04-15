@@ -111,7 +111,6 @@ export default {
       url: "https://example.com/friends" // Site owner will supply real URL
     }
   ],
-
   staffingLevels: [
     {
       id: "35hr-pt",  // URL: compact uses array index; verbose id changed from v1
@@ -123,7 +122,6 @@ export default {
       ],
       description:
         "Part-time director and two part-time clerks, 35 hours per week. Two staff working at a time for safety. Some Saturday hours but no evening access.",
-      source: "Providence Library budget levels (2026)",
     },
     {
       id: "44hr-pt",  // URL: compact uses array index; verbose id changed from v1
@@ -135,8 +133,6 @@ export default {
       ],
       description:
         "Part-time director and three part-time clerks, 44 hours per week. Two staff working at a time. Evening and Saturday hours for working citizens — the current operation level.",
-      source: "Providence Library budget levels (2026)",
-      isCurrentServiceLevel: true,
     },
     {
       id: "44hr-fte",  // URL: compact uses array index; verbose id changed from v1
@@ -148,13 +144,12 @@ export default {
       ],
       description:
         "Full-time director plus three part-time staff, 44 hours per week. Two or three staff at a time. The director would have the education and time to implement more programs, improve library practices, and perform outreach.",
-      source: "Providence Library budget levels (2026)",
+      isCurrentServiceLevel: true,
     },
   ],
 
   collectionsDigital: {
     description: "Digital materials added to the collection each year.",
-    source: "Librarian cost data (NOTES.md)",
     options: [
       { value: 5000,  isDefault: false, description: "Beehive only \u2014 substantially longer wait times for digital titles, shared with the entire state library system" },
       { value: 15000, isDefault: false, description: "Beehive + our own digital titles \u2014 longer wait times for most titles with a few select accelerated titles that we purchase" },
@@ -168,15 +163,13 @@ export default {
 
   collectionsPhysical: {
     description: "Physical print and media materials added each year.",
-    source: "Librarian cost data (NOTES.md)",
     options: [
       { value: 0,     isDefault: false, description: "No physical print collection \u2014 digital only" },
       { value: 5000,  isDefault: false, description: "Small rotating print collection" },
-      { value: 10000, isDefault: false, description: "Reduced core collection \u2014 books and DVDs, limited specialty items" },
-      { value: 15000, isDefault: true,  description: "Current collection \u2014 books, DVDs, exploration kits, and equipment (telescopes, audiobook players)",
+      { value: 10000, isDefault: false, description: "Current collection \u2014 books, DVDs, exploration kits, and equipment (telescopes, audiobook players) - limited specialty items",
         isCurrentServiceLevel: true,
       },
-      { value: 20000, isDefault: false, description: "Full print + AV materials + periodicals" },
+      { value: 15000, isDefault: true,  description: "Everything + additional limited collection items"},
     ],
   },
 
