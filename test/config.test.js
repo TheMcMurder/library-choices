@@ -65,9 +65,9 @@ describe('config structure', () => {
       const current = config.collectionsPhysical.options.filter(o => o.isCurrentServiceLevel === true);
       expect(current).toHaveLength(1);
     });
-    it('marks $15,000 as current service level', () => {
+    it('marks $10,000 as current service level', () => {
       const current = config.collectionsPhysical.options.find(o => o.isCurrentServiceLevel === true);
-      expect(current.value).toBe(15000);
+      expect(current.value).toBe(10000);
     });
   });
 
