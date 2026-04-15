@@ -102,14 +102,14 @@ export default {
   draft: true, // Set to false when real numbers are finalized
 
   footerLinks: [
-    {
-      label: "County-wide ballot initiative",
-      url: "https://example.com/ballot" // Site owner will supply real URL
-    },
-    {
-      label: "Friends of the Library",
-      url: "https://example.com/friends" // Site owner will supply real URL
-    }
+    // {
+    //   label: "County-wide ballot initiative",
+    //   url: "https://example.com/ballot" // Site owner will supply real URL
+    // },
+    // {
+    //   label: "Friends of the Library",
+    //   url: "https://example.com/friends" // Site owner will supply real URL
+    // }
   ],
   staffingLevels: [
     {

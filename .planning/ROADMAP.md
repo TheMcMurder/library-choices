@@ -87,3 +87,13 @@ Full phase details: [milestones/v1.7-ROADMAP.md](milestones/v1.7-ROADMAP.md)
 
 Plans:
 - [ ] 20-01-PLAN.md — Update staffingLevels data and fix stale test comment
+
+### Phase 21: show-your-work-totals
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 20
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 21 to break down)
