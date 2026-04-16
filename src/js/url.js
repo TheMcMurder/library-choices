@@ -2,6 +2,7 @@
 // Source: MDN Web Docs — https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState
 
 import { encodeIndices, decodeIndices } from './lib/url-helpers.js';
+import { trackSharedUrlLoaded } from './lib/analytics.js';
 
 var data = window.LIBRARY_DATA;
 var form = document.getElementById('configurator');
@@ -66,6 +67,7 @@ function restoreFromUrl() {
   if (!params.toString()) return;
   var indices = decodeIndices(data, params);
   applySelections(indices);
+  trackSharedUrlLoaded();
 }
 
 // Module scripts are deferred — DOM is ready when they execute.

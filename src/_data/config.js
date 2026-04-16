@@ -91,6 +91,14 @@
  *                               of an array — never insert at the
  *                               beginning or middle.
  *
+ *   - To enable analytics:    Change "ga4MeasurementId: null" to
+ *                             your Google Analytics 4 Measurement ID.
+ *                             It looks like: "G-XXXXXXXXXX".
+ *                             Get it from analytics.google.com:
+ *                             Admin > Data Streams > your stream >
+ *                             Measurement ID. Keep the quotes.
+ *                             Set back to null to disable.
+ *
  * IMPORTANT: Do NOT change property names (the words before
  * the colons) or remove any curly braces { }.
  * ============================================================
@@ -100,6 +108,8 @@ export default {
   siteName: "Cache County Library Service Choices",
 
   draft: false, // Set to false when real numbers are finalized
+
+  ga4MeasurementId: null, // Google Analytics 4 Measurement ID (see guide above)
 
   footerLinks: [
     // {
