@@ -109,7 +109,7 @@ export default {
 
   draft: false, // Set to false when real numbers are finalized
 
-  ga4MeasurementId: null, // Google Analytics 4 Measurement ID (see guide above)
+  ga4MeasurementId: "G-XQCFHMQYZ9", // Google Analytics 4 Measurement ID (see guide above)
 
   footerLinks: [
     // {
