@@ -6,6 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ config.siteName }}</title>
     <link rel="stylesheet" href="/css/compiled.css" />
+    {% if config.ga4MeasurementId %}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.ga4MeasurementId }}"></script>
+    <script>
+      if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ config.ga4MeasurementId }}', {
+          'allow_google_signals': false,
+          'allow_ad_personalization_signals': false,
+          'storage': 'none'
+        });
+      }
+    </script>
+    {% endif %}
   </head>
   <body class="bg-white text-gray-900 pb-16">
 
