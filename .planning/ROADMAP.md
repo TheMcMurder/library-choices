@@ -90,3 +90,14 @@ Full phase details: [milestones/v1.8-ROADMAP.md](milestones/v1.8-ROADMAP.md)
 | 19. Fix Slider Non-Linear Options | v1.7 | 1/1 | Complete | 2026-03-30 |
 | 20. Update Hours Selection with New Data | v1.8 | 1/1 | Complete | 2026-04-05 |
 | 21. Show-Your-Work Totals | v1.8 | 1/1 | Complete | 2026-04-15 |
+
+### Phase 22: usage and other analytics tracking
+
+**Goal:** Add Google Analytics 4 (GA4) to the static GitHub Pages site with privacy-minimized config (cookieless, no ads), tracking citizen engagement via 6 custom events (staffing, sliders, cities, breakdown, shared URLs)
+**Requirements**: [ANA-01, ANA-02, ANA-03, ANA-04, ANA-05, ANA-06]
+**Depends on:** Phase 21
+**Plans:** 2 plans
+
+Plans:
+- [ ] 22-01-PLAN.md — Analytics foundation: analytics.js wrapper module + tests, config.js field, GA4 snippet in index.html
+- [ ] 22-02-PLAN.md — Event wiring: connect analytics calls to calculator.js and url.js event listeners
