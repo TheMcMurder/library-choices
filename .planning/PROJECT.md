@@ -85,6 +85,13 @@ All milestones shipped. The configurator now shows an itemized breakdown — eac
 - ✓ `url.js` reads/writes slider index throughout; URL round-trip passes indices — Validated in Phase 19
 - ✓ staffingLevels replaced with real Providence Library wage data: Essential ($56,160/yr, 35hr/wk), Standard ($76,440/yr, 44hr/wk, current service level), Full Service ($160,000/yr, 44hr/wk FTE director) — Validated in Phase 20 (HRS-01)
 
+### Validated (v1.9 — Phase 22)
+
+- ✓ GA4 analytics wrapper module (`src/js/lib/analytics.js`) with 6 named tracking functions behind `window.gtag` guard (ANA-01) — Validated in Phase 22
+- ✓ Conditional GA4 snippet in HTML with privacy-minimized config (no storage, no Signals, no ad personalization) and localhost guard (ANA-02, ANA-05) — Validated in Phase 22
+- ✓ `ga4MeasurementId: null` config field; snippet only injected when set (ANA-03) — Validated in Phase 22
+- ✓ GA4 custom events wired into calculator.js (library, city, currency, breakdown) and url.js (shared URL loaded) (ANA-04, ANA-06) — Validated in Phase 22
+
 ### Validated (v1.8)
 
 - ✓ Two-line result bar: per-household cost (large) + total cost (smaller, blue-200) via innerHTML spans (D-01) — Validated in Phase 21
@@ -165,4 +172,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-15 after v1.8 milestone — show-your-work result bar and formula popover shipped (Phases 20-21).*
+*Last updated: 2026-04-16 after Phase 22 — GA4 analytics tracking shipped (6 custom events, privacy-minimized, localhost guard).*
