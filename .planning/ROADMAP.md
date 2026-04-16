@@ -96,8 +96,8 @@ Full phase details: [milestones/v1.8-ROADMAP.md](milestones/v1.8-ROADMAP.md)
 **Goal:** Add Google Analytics 4 (GA4) to the static GitHub Pages site with privacy-minimized config (cookieless, no ads), tracking citizen engagement via 6 custom events (staffing, sliders, cities, breakdown, shared URLs)
 **Requirements**: [ANA-01, ANA-02, ANA-03, ANA-04, ANA-05, ANA-06]
 **Depends on:** Phase 21
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 
 Plans:
 - [x] 22-01-PLAN.md — Analytics foundation: analytics.js wrapper module + tests, config.js field, GA4 snippet in index.html
-- [ ] 22-02-PLAN.md — Event wiring: connect analytics calls to calculator.js and url.js event listeners
+- [x] 22-02-PLAN.md — Event wiring: connect analytics calls to calculator.js and url.js event listeners

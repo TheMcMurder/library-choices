@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 22-01-PLAN.md
-last_updated: "2026-04-16T09:11:53.126Z"
+stopped_at: Completed 22-usage-and-other-analytics-tracking-22-02-PLAN.md
+last_updated: "2026-04-16T09:16:31.256Z"
 progress:
   total_phases: 1
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 2
-  completed_plans: 1
+  completed_plans: 2
 ---
 
 # Project State
@@ -57,6 +57,7 @@ Plan: 2 of 2
 | Phase 19-fix-slider-issue-allow-for-non-linear-options P01 | 2min | 2 tasks | 5 files |
 | Phase 20-update-hours-selection-with-new-data P01 | 1min | 2 tasks | 2 files |
 | Phase 22 P01 | 4 | 2 tasks | 4 files |
+| Phase 22-usage-and-other-analytics-tracking P02 | 6min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -85,6 +86,9 @@ Recent decisions affecting current work:
 - [Phase 20-update-hours-selection-with-new-data]: annualCost = wages only per D-02; no overhead (ILS, programs, supplies). Tier 2 Standard (44hr-pt) is current service level. IDs updated to 35hr-pt/44hr-pt/44hr-fte; compact pi param uses array index so compact URLs remain valid.
 - [Phase 22]: Used @vitest-environment jsdom comment in analytics test file rather than global vitest config change — preserves node environment for all other test files
 - [Phase 22]: GA4 snippet is privacy-minimized: storage none, no Google Signals, no ad personalization — hostname guard prevents initialization on localhost
+- [Phase 22-usage-and-other-analytics-tracking]: Single delegated change listener in calculator.js dispatches both updateResult and analytics; no new event listeners added
+- [Phase 22-usage-and-other-analytics-tracking]: City label resolved from window.LIBRARY_DATA.cities.find(), not DOM scraping
+- [Phase 22-usage-and-other-analytics-tracking]: Analytics only on change events, never on input — prevents flooding during slider drag
 
 ### Roadmap Evolution
 
@@ -109,6 +113,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-04-16T09:11:53.123Z
-Stopped at: Completed 22-01-PLAN.md
+Last session: 2026-04-16T09:16:31.254Z
+Stopped at: Completed 22-usage-and-other-analytics-tracking-22-02-PLAN.md
 Resume file: None
