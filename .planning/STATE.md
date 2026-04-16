@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: v1.8 milestone complete
-stopped_at: Phase 22 context gathered
-last_updated: "2026-04-16T08:53:55.978Z"
+status: unknown
+stopped_at: Completed 22-01-PLAN.md
+last_updated: "2026-04-16T09:11:53.126Z"
 progress:
   total_phases: 1
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
+  total_plans: 2
+  completed_plans: 1
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-30)
 
 **Core value:** Citizens can explore any combination of service and funding choices and immediately see what it costs them — empowering informed participation in a real public decision.
-**Current focus:** Phase 21 — show-your-work-totals
+**Current focus:** Phase 22 — usage-and-other-analytics-tracking
 
 ## Current Position
 
-Phase: 21 (show-your-work-totals) — EXECUTING
-Plan: 1 of 1
+Phase: 22 (usage-and-other-analytics-tracking) — EXECUTING
+Plan: 2 of 2
 
 ## Performance Metrics
 
@@ -56,6 +56,7 @@ Plan: 1 of 1
 | Phase 18-incorporate-feedback-from-library-notes P01 | 2min | 2 tasks | 2 files |
 | Phase 19-fix-slider-issue-allow-for-non-linear-options P01 | 2min | 2 tasks | 5 files |
 | Phase 20-update-hours-selection-with-new-data P01 | 1min | 2 tasks | 2 files |
+| Phase 22 P01 | 4 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -82,6 +83,8 @@ Recent decisions affecting current work:
 - [Phase 19-fix-slider-issue-allow-for-non-linear-options]: Slider value domain switched from dollar amounts to 0-based indices (0 through N-1), eliminating phantom positions on non-linearly-spaced digital collections options
 - [Phase 19-fix-slider-issue-allow-for-non-linear-options]: encodeIndices signature changed to accept digitalIdx/physicalIdx directly; removes findIndex value lookups; bounds check replaces them
 - [Phase 20-update-hours-selection-with-new-data]: annualCost = wages only per D-02; no overhead (ILS, programs, supplies). Tier 2 Standard (44hr-pt) is current service level. IDs updated to 35hr-pt/44hr-pt/44hr-fte; compact pi param uses array index so compact URLs remain valid.
+- [Phase 22]: Used @vitest-environment jsdom comment in analytics test file rather than global vitest config change — preserves node environment for all other test files
+- [Phase 22]: GA4 snippet is privacy-minimized: storage none, no Google Signals, no ad personalization — hostname guard prevents initialization on localhost
 
 ### Roadmap Evolution
 
@@ -106,6 +109,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-04-16T08:53:55.975Z
-Stopped at: Phase 22 context gathered
-Resume file: .planning/phases/22-usage-and-other-analytics-tracking/22-CONTEXT.md
+Last session: 2026-04-16T09:11:53.123Z
+Stopped at: Completed 22-01-PLAN.md
+Resume file: None
