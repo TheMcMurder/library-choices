@@ -3,6 +3,7 @@
 // Source: MDN Web Docs — https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
 
 import { calculatePerHousehold } from './lib/calculator-helpers.js';
+import { trackStaffingSelected, trackDigitalSliderChanged, trackPhysicalSliderChanged, trackCityToggled, trackBreakdownOpened } from './lib/analytics.js';
 
 var form = document.getElementById('configurator');
 
@@ -104,6 +105,7 @@ toggleBtn.addEventListener('click', function (e) {
   var isHidden = breakdownDetail.hidden;
   breakdownDetail.hidden = !isHidden;
   toggleBtn.setAttribute('aria-label', isHidden ? 'Hide cost breakdown' : 'Show cost breakdown');
+  if (isHidden) trackBreakdownOpened();
 });
 
 document.addEventListener('click', function (e) {
@@ -114,7 +116,27 @@ document.addEventListener('click', function (e) {
 });
 
 // Single delegated listener covers all three control types
-form.addEventListener('change', updateResult);
+form.addEventListener('change', function (e) {
+  updateResult();
+  if (e.target.matches('input[name="staffing"]')) {
+    var level = window.LIBRARY_DATA.staffingLevels.find(function (l) { return l.id === e.target.value; });
+    if (level) trackStaffingSelected(e.target.value, level.label);
+  }
+  if (e.target.id === 'collections-digital') {
+    var idx = parseInt(e.target.value, 10);
+    var opts = window.LIBRARY_DATA.collectionsDigital.options;
+    if (opts[idx]) trackDigitalSliderChanged(opts[idx].value);
+  }
+  if (e.target.id === 'collections-physical') {
+    var idx = parseInt(e.target.value, 10);
+    var opts = window.LIBRARY_DATA.collectionsPhysical.options;
+    if (opts[idx]) trackPhysicalSliderChanged(opts[idx].value);
+  }
+  if (e.target.matches('input[name="cities"]')) {
+    var city = window.LIBRARY_DATA.cities.find(function (c) { return c.id === e.target.value; });
+    if (city) trackCityToggled(e.target.value, city.label, e.target.checked);
+  }
+});
 
 // Input event fires on every slider move (including during drag) — ensures live updates
 form.addEventListener('input', function () {
